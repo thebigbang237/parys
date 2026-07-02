@@ -15,6 +15,7 @@ model User {
   email         String    @unique
   name          String?
   avatar_url    String?
+  password_hash String?   // null for OAuth users (Google)
   role          Role      @default(STUDENT)
   country       String?
   created_at    DateTime  @default(now())

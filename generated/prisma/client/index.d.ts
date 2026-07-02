@@ -2648,6 +2648,7 @@ export namespace Prisma {
     email: string | null
     name: string | null
     avatar_url: string | null
+    password_hash: string | null
     role: $Enums.Role | null
     country: string | null
     created_at: Date | null
@@ -2659,6 +2660,7 @@ export namespace Prisma {
     email: string | null
     name: string | null
     avatar_url: string | null
+    password_hash: string | null
     role: $Enums.Role | null
     country: string | null
     created_at: Date | null
@@ -2670,6 +2672,7 @@ export namespace Prisma {
     email: number
     name: number
     avatar_url: number
+    password_hash: number
     role: number
     country: number
     created_at: number
@@ -2683,6 +2686,7 @@ export namespace Prisma {
     email?: true
     name?: true
     avatar_url?: true
+    password_hash?: true
     role?: true
     country?: true
     created_at?: true
@@ -2694,6 +2698,7 @@ export namespace Prisma {
     email?: true
     name?: true
     avatar_url?: true
+    password_hash?: true
     role?: true
     country?: true
     created_at?: true
@@ -2705,6 +2710,7 @@ export namespace Prisma {
     email?: true
     name?: true
     avatar_url?: true
+    password_hash?: true
     role?: true
     country?: true
     created_at?: true
@@ -2789,6 +2795,7 @@ export namespace Prisma {
     email: string
     name: string | null
     avatar_url: string | null
+    password_hash: string | null
     role: $Enums.Role
     country: string | null
     created_at: Date
@@ -2817,6 +2824,7 @@ export namespace Prisma {
     email?: boolean
     name?: boolean
     avatar_url?: boolean
+    password_hash?: boolean
     role?: boolean
     country?: boolean
     created_at?: boolean
@@ -2836,6 +2844,7 @@ export namespace Prisma {
     email?: boolean
     name?: boolean
     avatar_url?: boolean
+    password_hash?: boolean
     role?: boolean
     country?: boolean
     created_at?: boolean
@@ -2847,6 +2856,7 @@ export namespace Prisma {
     email?: boolean
     name?: boolean
     avatar_url?: boolean
+    password_hash?: boolean
     role?: boolean
     country?: boolean
     created_at?: boolean
@@ -2858,13 +2868,14 @@ export namespace Prisma {
     email?: boolean
     name?: boolean
     avatar_url?: boolean
+    password_hash?: boolean
     role?: boolean
     country?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "avatar_url" | "role" | "country" | "created_at" | "updated_at", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "avatar_url" | "password_hash" | "role" | "country" | "created_at" | "updated_at", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | User$accountsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
@@ -2894,6 +2905,7 @@ export namespace Prisma {
       email: string
       name: string | null
       avatar_url: string | null
+      password_hash: string | null
       role: $Enums.Role
       country: string | null
       created_at: Date
@@ -3332,6 +3344,7 @@ export namespace Prisma {
     readonly email: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
     readonly avatar_url: FieldRef<"User", 'String'>
+    readonly password_hash: FieldRef<"User", 'String'>
     readonly role: FieldRef<"User", 'Role'>
     readonly country: FieldRef<"User", 'String'>
     readonly created_at: FieldRef<"User", 'DateTime'>
@@ -20905,6 +20918,7 @@ export namespace Prisma {
     email: 'email',
     name: 'name',
     avatar_url: 'avatar_url',
+    password_hash: 'password_hash',
     role: 'role',
     country: 'country',
     created_at: 'created_at',
@@ -21332,6 +21346,7 @@ export namespace Prisma {
     email?: StringFilter<"User"> | string
     name?: StringNullableFilter<"User"> | string | null
     avatar_url?: StringNullableFilter<"User"> | string | null
+    password_hash?: StringNullableFilter<"User"> | string | null
     role?: EnumRoleFilter<"User"> | $Enums.Role
     country?: StringNullableFilter<"User"> | string | null
     created_at?: DateTimeFilter<"User"> | Date | string
@@ -21350,6 +21365,7 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrderInput | SortOrder
     avatar_url?: SortOrderInput | SortOrder
+    password_hash?: SortOrderInput | SortOrder
     role?: SortOrder
     country?: SortOrderInput | SortOrder
     created_at?: SortOrder
@@ -21371,6 +21387,7 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringNullableFilter<"User"> | string | null
     avatar_url?: StringNullableFilter<"User"> | string | null
+    password_hash?: StringNullableFilter<"User"> | string | null
     role?: EnumRoleFilter<"User"> | $Enums.Role
     country?: StringNullableFilter<"User"> | string | null
     created_at?: DateTimeFilter<"User"> | Date | string
@@ -21389,6 +21406,7 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrderInput | SortOrder
     avatar_url?: SortOrderInput | SortOrder
+    password_hash?: SortOrderInput | SortOrder
     role?: SortOrder
     country?: SortOrderInput | SortOrder
     created_at?: SortOrder
@@ -21406,6 +21424,7 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"User"> | string
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
     avatar_url?: StringNullableWithAggregatesFilter<"User"> | string | null
+    password_hash?: StringNullableWithAggregatesFilter<"User"> | string | null
     role?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
     country?: StringNullableWithAggregatesFilter<"User"> | string | null
     created_at?: DateTimeWithAggregatesFilter<"User"> | Date | string
@@ -22490,6 +22509,7 @@ export namespace Prisma {
     email: string
     name?: string | null
     avatar_url?: string | null
+    password_hash?: string | null
     role?: $Enums.Role
     country?: string | null
     created_at?: Date | string
@@ -22508,6 +22528,7 @@ export namespace Prisma {
     email: string
     name?: string | null
     avatar_url?: string | null
+    password_hash?: string | null
     role?: $Enums.Role
     country?: string | null
     created_at?: Date | string
@@ -22526,6 +22547,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar_url?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22544,6 +22566,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar_url?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22562,6 +22585,7 @@ export namespace Prisma {
     email: string
     name?: string | null
     avatar_url?: string | null
+    password_hash?: string | null
     role?: $Enums.Role
     country?: string | null
     created_at?: Date | string
@@ -22573,6 +22597,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar_url?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -22584,6 +22609,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar_url?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23847,6 +23873,7 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     avatar_url?: SortOrder
+    password_hash?: SortOrder
     role?: SortOrder
     country?: SortOrder
     created_at?: SortOrder
@@ -23858,6 +23885,7 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     avatar_url?: SortOrder
+    password_hash?: SortOrder
     role?: SortOrder
     country?: SortOrder
     created_at?: SortOrder
@@ -23869,6 +23897,7 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     avatar_url?: SortOrder
+    password_hash?: SortOrder
     role?: SortOrder
     country?: SortOrder
     created_at?: SortOrder
@@ -26646,6 +26675,7 @@ export namespace Prisma {
     email: string
     name?: string | null
     avatar_url?: string | null
+    password_hash?: string | null
     role?: $Enums.Role
     country?: string | null
     created_at?: Date | string
@@ -26663,6 +26693,7 @@ export namespace Prisma {
     email: string
     name?: string | null
     avatar_url?: string | null
+    password_hash?: string | null
     role?: $Enums.Role
     country?: string | null
     created_at?: Date | string
@@ -26696,6 +26727,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar_url?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26713,6 +26745,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar_url?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26730,6 +26763,7 @@ export namespace Prisma {
     email: string
     name?: string | null
     avatar_url?: string | null
+    password_hash?: string | null
     role?: $Enums.Role
     country?: string | null
     created_at?: Date | string
@@ -26747,6 +26781,7 @@ export namespace Prisma {
     email: string
     name?: string | null
     avatar_url?: string | null
+    password_hash?: string | null
     role?: $Enums.Role
     country?: string | null
     created_at?: Date | string
@@ -26780,6 +26815,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar_url?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -26797,6 +26833,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar_url?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27286,6 +27323,7 @@ export namespace Prisma {
     email: string
     name?: string | null
     avatar_url?: string | null
+    password_hash?: string | null
     role?: $Enums.Role
     country?: string | null
     created_at?: Date | string
@@ -27303,6 +27341,7 @@ export namespace Prisma {
     email: string
     name?: string | null
     avatar_url?: string | null
+    password_hash?: string | null
     role?: $Enums.Role
     country?: string | null
     created_at?: Date | string
@@ -27377,6 +27416,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar_url?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27394,6 +27434,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar_url?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27489,6 +27530,7 @@ export namespace Prisma {
     email: string
     name?: string | null
     avatar_url?: string | null
+    password_hash?: string | null
     role?: $Enums.Role
     country?: string | null
     created_at?: Date | string
@@ -27506,6 +27548,7 @@ export namespace Prisma {
     email: string
     name?: string | null
     avatar_url?: string | null
+    password_hash?: string | null
     role?: $Enums.Role
     country?: string | null
     created_at?: Date | string
@@ -27635,6 +27678,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar_url?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27652,6 +27696,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar_url?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27776,6 +27821,7 @@ export namespace Prisma {
     email: string
     name?: string | null
     avatar_url?: string | null
+    password_hash?: string | null
     role?: $Enums.Role
     country?: string | null
     created_at?: Date | string
@@ -27793,6 +27839,7 @@ export namespace Prisma {
     email: string
     name?: string | null
     avatar_url?: string | null
+    password_hash?: string | null
     role?: $Enums.Role
     country?: string | null
     created_at?: Date | string
@@ -27884,6 +27931,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar_url?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27901,6 +27949,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar_url?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27988,6 +28037,7 @@ export namespace Prisma {
     email: string
     name?: string | null
     avatar_url?: string | null
+    password_hash?: string | null
     role?: $Enums.Role
     country?: string | null
     created_at?: Date | string
@@ -28005,6 +28055,7 @@ export namespace Prisma {
     email: string
     name?: string | null
     avatar_url?: string | null
+    password_hash?: string | null
     role?: $Enums.Role
     country?: string | null
     created_at?: Date | string
@@ -28116,6 +28167,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar_url?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28133,6 +28185,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar_url?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28397,6 +28450,7 @@ export namespace Prisma {
     email: string
     name?: string | null
     avatar_url?: string | null
+    password_hash?: string | null
     role?: $Enums.Role
     country?: string | null
     created_at?: Date | string
@@ -28414,6 +28468,7 @@ export namespace Prisma {
     email: string
     name?: string | null
     avatar_url?: string | null
+    password_hash?: string | null
     role?: $Enums.Role
     country?: string | null
     created_at?: Date | string
@@ -28484,6 +28539,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar_url?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28501,6 +28557,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar_url?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string

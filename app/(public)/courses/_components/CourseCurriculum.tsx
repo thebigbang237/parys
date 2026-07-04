@@ -2,6 +2,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 type Lesson = {
   id: string;
@@ -69,17 +70,15 @@ export default function CourseCurriculum({
             <div className="border-t border-[#f0e0ec] divide-y divide-[#f0e0ec]">
               {module.lessons.map((lesson, lessonIdx) => {
                 const canAccess = isEnrolled || lesson.is_preview;
-                return (
-                  <div
-                    key={lesson.id}
-                    className="flex items-center gap-4 px-6 py-3"
-                  >
+
+                const lessonContent = (
+                  <>
                     <span className="text-xs text-gray-300 w-6">
                       {String(lessonIdx + 1).padStart(2, "0")}
                     </span>
 
                     <div className="flex-1 flex items-center gap-3">
-                      {/* Play icon */}
+                      {/* Play / Lock icon */}
                       <span
                         className={
                           canAccess ? "text-[#ff63ce]" : "text-gray-200"
@@ -87,11 +86,15 @@ export default function CourseCurriculum({
                       >
                         {canAccess ? "▶" : "🔒"}
                       </span>
+
                       <span
-                        className={`text-sm ${canAccess ? "text-gray-700" : "text-gray-400"}`}
+                        className={`text-sm ${
+                          canAccess ? "text-gray-700" : "text-gray-400"
+                        }`}
                       >
                         {lesson.title}
                       </span>
+
                       {lesson.is_preview && !isEnrolled && (
                         <span className="text-xs bg-[#fdf0fa] text-[#ff63ce] border border-[#f0e0ec] px-2 py-0.5">
                           Aperçu gratuit
@@ -104,6 +107,23 @@ export default function CourseCurriculum({
                         {formatDuration(lesson.duration_seconds)}
                       </span>
                     )}
+                  </>
+                );
+
+                return canAccess && isEnrolled ? (
+                  <Link
+                    key={lesson.id}
+                    href={`/learn/${lesson.id}`}
+                    className="flex items-center gap-4 px-6 py-3 hover:bg-[#fdf0fa] transition-colors"
+                  >
+                    {lessonContent}
+                  </Link>
+                ) : (
+                  <div
+                    key={lesson.id}
+                    className="flex items-center gap-4 px-6 py-3"
+                  >
+                    {lessonContent}
                   </div>
                 );
               })}

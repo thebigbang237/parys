@@ -18,6 +18,7 @@ export async function POST(req: Request) {
     country,
     phoneNumber,
     provider, // ← exact provider code from PawaPay config e.g. "MTN_MOMO_CMR"
+    couponId,
   } = await req.json();
 
   if (!phoneNumber) {
@@ -58,6 +59,7 @@ export async function POST(req: Request) {
     currency,
     provider: "pawapay",
     externalReference: deposit.depositId,
+    couponId: couponId ?? undefined,
   });
 
   return NextResponse.json({

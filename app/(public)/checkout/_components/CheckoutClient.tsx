@@ -4,6 +4,7 @@
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { formatPrice } from "@/lib/utils";
+import CouponInput from "@/components/checkout/CouponInput";
 import Image from "next/image";
 
 type Currency =
@@ -168,6 +169,10 @@ export default function CheckoutClient({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [mobileMoneyPending, setMobileMoneyPending] = useState(false);
+  const [appliedCouponId, setAppliedCouponId] = useState<string | null>(null);
+  const [couponDiscountedPrice, setCouponDiscountedPrice] = useState<
+    number | null
+  >(null);
 
   const canUseMobileMoney = country in PAWAPAY_COUNTRIES;
 
@@ -177,6 +182,8 @@ export default function CheckoutClient({
       : currency === "USD"
         ? course.price_usd
         : course.price_xaf;
+
+  const finalPrice = couponDiscountedPrice ?? price;
 
   // ── Fetch real operators when country changes ──
   useEffect(() => {
@@ -251,11 +258,12 @@ export default function CheckoutClient({
       body: JSON.stringify({
         productType: "COURSE",
         productId: course.id,
-        amount: Math.round(price),
+        amount: Math.round(finalPrice),
         currency,
         country,
         phoneNumber,
         provider: selectedOperator.provider, // exact code e.g. "MTN_MOMO_CMR"
+        couponId: appliedCouponId,
       }),
     });
 
@@ -318,8 +326,18 @@ export default function CheckoutClient({
 
     const paypalCurrency =
       currency === "USD" || currency === "EUR" ? currency : "USD";
-    const paypalAmount =
+
+    // If coupon applied, use discounted price converted to paypal currency
+    // Otherwise use the base price for that currency
+    const basePaypalAmount =
       paypalCurrency === "USD" ? course.price_usd : course.price_eur;
+
+    // Apply coupon discount proportionally if coupon was applied
+    let paypalAmount = basePaypalAmount;
+    if (appliedCouponId && couponDiscountedPrice !== null) {
+      const discountRatio = couponDiscountedPrice / price;
+      paypalAmount = Math.round(basePaypalAmount * discountRatio * 100) / 100;
+    }
 
     const res = await fetch("/api/payments/paypal/create", {
       method: "POST",
@@ -327,8 +345,9 @@ export default function CheckoutClient({
       body: JSON.stringify({
         productType: "COURSE",
         productId: course.id,
-        amount: paypalAmount,
+        amount: paypalAmount, // ← discounted
         currency: paypalCurrency,
+        couponId: appliedCouponId,
       }),
     });
 
@@ -404,6 +423,7 @@ export default function CheckoutClient({
           </div>
         </div>
 
+        {/* Price breakdown */}
         <div className="py-6 border-b border-[#f0e0ec] space-y-3">
           <div className="flex justify-between text-sm">
             <span className="text-gray-500">Sous-total</span>
@@ -411,10 +431,25 @@ export default function CheckoutClient({
               {formatPrice(price, currency)}
             </span>
           </div>
+
+          {couponDiscountedPrice !== null && (
+            <div className="flex justify-between text-sm text-green-600">
+              <span>Réduction code promo</span>
+              <span>
+                -{" "}
+                {formatPrice(
+                  price - couponDiscountedPrice,
+                  currency !== "USD" && currency !== "EUR" ? "XAF" : currency,
+                )}
+              </span>
+            </div>
+          )}
+
           <div className="flex justify-between text-sm">
             <span className="text-gray-500">Frais de traitement</span>
             <span className="text-gray-400">Inclus</span>
           </div>
+
           {currency !== "XAF" && currency !== "XOF" && (
             <div className="flex justify-between text-xs text-gray-400 pt-1 border-t border-[#f0e0ec]">
               <span>Équivalent XAF</span>
@@ -423,12 +458,13 @@ export default function CheckoutClient({
           )}
         </div>
 
+        {/* Total */}
         <div className="pt-6 flex justify-between items-center">
           <span className="text-xs tracking-[2px] uppercase text-gray-400">
             Total
           </span>
           <span className="font-serif text-3xl font-medium text-gray-900">
-            {formatPrice(price, currency)}
+            {formatPrice(finalPrice, currency)} {/* ← finalPrice not price */}
           </span>
         </div>
 
@@ -704,6 +740,20 @@ export default function CheckoutClient({
           </div>
         )}
 
+        <CouponInput
+          courseId={course.id}
+          originalPrice={price}
+          currency={currency === "USD" || currency === "EUR" ? currency : "XAF"}
+          onApply={(discountedPrice, couponId) => {
+            setCouponDiscountedPrice(discountedPrice);
+            setAppliedCouponId(couponId);
+          }}
+          onRemove={() => {
+            setCouponDiscountedPrice(null);
+            setAppliedCouponId(null);
+          }}
+        />
+
         {error && (
           <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 text-sm">
             {error}
@@ -723,9 +773,9 @@ export default function CheckoutClient({
             ? "Traitement en cours..."
             : method === "mobile_money"
               ? selectedOperator
-                ? `Payer ${formatPrice(Math.round(price), currency)} via ${selectedOperator.displayName}`
+                ? `Payer ${formatPrice(Math.round(finalPrice), currency)} via ${selectedOperator.displayName}`
                 : "Sélectionnez un opérateur"
-              : `Payer ${formatPrice(currency === "USD" || currency === "EUR" ? price : course.price_usd, currency === "USD" || currency === "EUR" ? currency : "USD")} avec PayPal`}
+              : `Payer avec PayPal`}
         </button>
 
         <p className="text-xs text-gray-400 text-center">

@@ -267,7 +267,8 @@ exports.Prisma.PaymentScalarFieldEnum = {
   external_reference: 'external_reference',
   status: 'status',
   created_at: 'created_at',
-  updated_at: 'updated_at'
+  updated_at: 'updated_at',
+  coupon_id: 'coupon_id'
 };
 
 exports.Prisma.CouponScalarFieldEnum = {

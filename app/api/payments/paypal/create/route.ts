@@ -10,7 +10,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const { productType, productId, amount, currency } = await req.json();
+  const { productType, productId, amount, currency, couponId } =
+    await req.json();
 
   const appUrl = process.env.NEXT_PUBLIC_APP_URL!;
 
@@ -31,6 +32,7 @@ export async function POST(req: Request) {
     currency,
     provider: "paypal",
     externalReference: orderId,
+    couponId: couponId ?? undefined,
   });
 
   return NextResponse.json({ orderId, approvalUrl });

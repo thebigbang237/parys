@@ -234,9 +234,11 @@ model Payment {
   created_at         DateTime      @default(now())
   updated_at         DateTime      @updatedAt
 
-  user    User             @relation(fields: [user_id], references: [id], onDelete: Cascade)
-  course  Course?          @relation(fields: [course_id], references: [id])
-  booking CoachingBooking? @relation(fields: [booking_id], references: [id])
+  user      User             @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  course    Course?          @relation(fields: [course_id], references: [id])
+  booking   CoachingBooking? @relation(fields: [booking_id], references: [id])
+  coupon_id String?
+  coupon    Coupon?          @relation(fields: [coupon_id], references: [id])
 }
 
 enum ProductType {
@@ -265,8 +267,9 @@ model Coupon {
   active        Boolean      @default(true)
   created_at    DateTime     @default(now())
 
-  course Course?       @relation(fields: [course_id], references: [id])
-  usages CouponUsage[]
+  course   Course?       @relation(fields: [course_id], references: [id])
+  usages   CouponUsage[]
+  payments Payment[]
 }
 
 enum DiscountType {

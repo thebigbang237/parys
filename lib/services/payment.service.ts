@@ -30,6 +30,7 @@ export async function createPaymentRecord(params: {
   currency: string;
   provider: PaymentProvider;
   externalReference?: string;
+  couponId?: string;
 }) {
   return prisma.payment.create({
     data: {
@@ -41,6 +42,7 @@ export async function createPaymentRecord(params: {
       currency: params.currency,
       provider: params.provider,
       external_reference: params.externalReference,
+      coupon_id: params.couponId ?? null,
       status: "PENDING",
     },
   });
@@ -51,37 +53,31 @@ export async function handlePaymentSuccess(
   externalReference: string,
   provider: string,
 ) {
-  // Idempotency — never process twice
   const existing = await prisma.payment.findFirst({
-    where: {
-      external_reference: externalReference,
-      status: "SUCCESS",
-    },
+    where: { external_reference: externalReference, status: "SUCCESS" },
   });
+  if (existing) return;
 
-  if (existing) {
-    console.log(`Payment ${externalReference} already processed — skipping`);
-    return;
-  }
-
+  // ← explicitly select all fields including coupon_id
   const payment = await prisma.payment.findFirst({
     where: { external_reference: externalReference },
+    select: {
+      id: true,
+      user_id: true,
+      product_type: true,
+      course_id: true,
+      booking_id: true,
+      coupon_id: true,
+    },
   });
+  if (!payment) return;
 
-  if (!payment) {
-    console.error(`Payment not found: ${externalReference}`);
-    return;
-  }
-
-  // Transaction — all or nothing
   await prisma.$transaction(async (tx) => {
-    // Mark payment as successful
     await tx.payment.update({
       where: { id: payment.id },
       data: { status: "SUCCESS", updated_at: new Date() },
     });
 
-    // Grant access based on product type
     if (payment.product_type === "COURSE" && payment.course_id) {
       await tx.enrollment.upsert({
         where: {
@@ -104,7 +100,32 @@ export async function handlePaymentSuccess(
         data: { status: "CONFIRMED" },
       });
     }
+
+    if (payment.coupon_id) {
+      await tx.couponUsage.upsert({
+        where: {
+          coupon_id_user_id: {
+            coupon_id: payment.coupon_id,
+            user_id: payment.user_id,
+          },
+        },
+        create: {
+          coupon_id: payment.coupon_id,
+          user_id: payment.user_id,
+        },
+        update: {},
+      });
+
+      await tx.coupon.update({
+        where: { id: payment.coupon_id },
+        data: { uses_count: { increment: 1 } },
+      });
+    }
   });
+
+  console.log(
+    `Payment ${externalReference} processed. coupon_id: ${payment.coupon_id}`,
+  );
 
   return payment;
 }

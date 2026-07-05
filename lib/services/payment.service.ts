@@ -2,8 +2,9 @@
 import { prisma } from "@/lib/prisma";
 import {
   sendCourseEnrollmentEmail,
-  sendBookingConfirmedEmail,
+  sendAdminNewEnrollmentEmail,
 } from "@/lib/services/email.service";
+import { confirmCoachingBooking } from "@/lib/services/coaching.service";
 
 export type PaymentProvider = "pawapay" | "paypal";
 export type ProductType = "COURSE" | "COACHING";
@@ -72,6 +73,8 @@ export async function handlePaymentSuccess(
       course_id: true,
       booking_id: true,
       coupon_id: true,
+      amount: true,
+      currency: true,
     },
   });
   if (!payment) return;
@@ -95,13 +98,6 @@ export async function handlePaymentSuccess(
           course_id: payment.course_id,
         },
         update: {},
-      });
-    }
-
-    if (payment.product_type === "COACHING" && payment.booking_id) {
-      await tx.coachingBooking.update({
-        where: { id: payment.booking_id },
-        data: { status: "CONFIRMED" },
       });
     }
 
@@ -150,27 +146,19 @@ export async function handlePaymentSuccess(
           course.title,
           course.slug,
         );
+
+        await sendAdminNewEnrollmentEmail({
+          studentName: user.name || "Anonyme",
+          studentEmail: user.email,
+          courseTitle: course.title,
+          amount: payment.amount,
+          currency: payment.currency,
+        });
       }
     }
 
     if (payment.product_type === "COACHING" && payment.booking_id) {
-      const booking = await prisma.coachingBooking.findUnique({
-        where: { id: payment.booking_id },
-        include: {
-          user: { select: { email: true, name: true } },
-          session_type: true,
-        },
-      });
-      if (booking) {
-        await sendBookingConfirmedEmail(
-          booking.user.email,
-          booking.user.name || "",
-          booking.session_type.name,
-          booking.start_datetime,
-          booking.session_type.duration,
-          booking.zoom_join_url,
-        );
-      }
+      await confirmCoachingBooking(payment.booking_id);
     }
   } catch (err) {
     console.error("Failed to send payment confirmation email:", err);

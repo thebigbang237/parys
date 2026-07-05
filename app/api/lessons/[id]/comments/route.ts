@@ -52,7 +52,7 @@ export async function POST(
       status: "ACTIVE",
     },
     include: {
-      user: { select: { id: true, name: true, avatar_url: true } },
+      user: { select: { id: true, name: true, image: true } },
     },
   });
 

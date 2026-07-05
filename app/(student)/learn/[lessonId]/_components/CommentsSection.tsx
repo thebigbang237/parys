@@ -4,7 +4,7 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
-type User = { id: string; name: string | null; avatar_url: string | null };
+type User = { id: string; name: string | null; image: string | null };
 
 type Reply = {
   id: string;
@@ -33,10 +33,10 @@ function Avatar({ user, size = "sm" }: { user: User; size?: "sm" | "md" }) {
 
   const sizeClass = size === "sm" ? "w-8 h-8 text-xs" : "w-10 h-10 text-sm";
 
-  if (user.avatar_url) {
+  if (user.image) {
     return (
       <img
-        src={user.avatar_url}
+        src={user.image}
         alt={user.name || ""}
         className={cn("rounded-full object-cover flex-shrink-0", sizeClass)}
       />

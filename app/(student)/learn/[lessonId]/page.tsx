@@ -69,11 +69,11 @@ export default async function LearnPage({
   const comments = await prisma.comment.findMany({
     where: { lesson_id: lessonId, status: "ACTIVE", parent_id: null },
     include: {
-      user: { select: { id: true, name: true, avatar_url: true } },
+      user: { select: { id: true, name: true, image: true } },
       replies: {
         where: { status: "ACTIVE" },
         include: {
-          user: { select: { id: true, name: true, avatar_url: true } },
+          user: { select: { id: true, name: true, image: true } },
         },
         orderBy: { created_at: "asc" },
       },
@@ -156,7 +156,7 @@ export default async function LearnPage({
               currentUser={{
                 id: session.user.id,
                 name: session.user.name || "Anonyme",
-                avatar_url: session.user.image || null,
+                image: session.user.image || null,
               }}
             />
           </div>

@@ -2,8 +2,11 @@
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
-import { sendBookingConfirmedEmail } from "@/lib/services/email.service";
-import { createMeetSession } from "@/lib/services/google-meet.service";
+import { confirmCoachingBooking } from "@/lib/services/coaching.service";
+import {
+  sendBookingCancelledEmail,
+  sendBookingCompletedEmail,
+} from "@/lib/services/email.service";
 
 export async function PATCH(req: Request) {
   const session = await auth();
@@ -13,83 +16,46 @@ export async function PATCH(req: Request) {
 
   const { id, status } = await req.json();
 
-  let meetJoinUrl: string | null = null;
-
-  // Auto-generate Google Meet when confirming
   if (status === "CONFIRMED") {
-    const existingBooking = await prisma.coachingBooking.findUnique({
-      where: { id },
-      include: {
-        session_type: true,
-        user: { select: { email: true, name: true, timezone: true } },
-      },
-    });
-
-    if (existingBooking) {
-      try {
-        const meet = await createMeetSession({
-          title: `Session Coaching — ${existingBooking.session_type.name} avec Parys`,
-          description: [
-            `Étudiante: ${existingBooking.user.name || ""}`,
-            `Session: ${existingBooking.session_type.name} (${existingBooking.session_type.duration} min)`,
-            existingBooking.intake_goal
-              ? `Objectif: ${existingBooking.intake_goal}`
-              : "",
-            existingBooking.intake_challenges
-              ? `Défis: ${existingBooking.intake_challenges}`
-              : "",
-          ]
-            .filter(Boolean)
-            .join("\n"),
-          startTime: existingBooking.start_datetime,
-          endTime: existingBooking.end_datetime,
-          attendeeEmail: existingBooking.user.email,
-          timezone:
-            existingBooking.timezone ||
-            existingBooking.user.timezone ||
-            "Africa/Douala",
-        });
-        meetJoinUrl = meet.meetLink;
-        console.log(`Google Meet created: ${meet.meetLink}`);
-      } catch (err) {
-        console.error("Failed to create Google Meet:", err);
-        // Don't block confirmation — admin can still proceed
-      }
+    const updatedBooking = await confirmCoachingBooking(id);
+    if (!updatedBooking) {
+      return NextResponse.json({ error: "Booking not found" }, { status: 404 });
     }
+    return NextResponse.json(updatedBooking);
   }
 
-  // Update booking
   const updatedBooking = await prisma.coachingBooking.update({
     where: { id },
-    data: {
-      status,
-      meet_join_url: meetJoinUrl, // field reused for Meet link
-    },
+    data: { status },
     include: {
       user: { select: { email: true, name: true } },
       session_type: true,
     },
   });
 
-  // Send confirmation email
-  if (status === "CONFIRMED") {
+  if (status === "CANCELLED") {
     try {
-      await sendBookingConfirmedEmail(
+      await sendBookingCancelledEmail(
         updatedBooking.user.email,
         updatedBooking.user.name || "",
         updatedBooking.session_type.name,
         updatedBooking.start_datetime,
-        updatedBooking.session_type.duration,
-        meetJoinUrl,
       );
     } catch (err) {
-      console.error("Failed to send confirmation email:", err);
+      console.error("Failed to send cancellation email:", err);
     }
   }
 
-  // Handle cancellation email later if needed
-  if (status === "CANCELLED") {
-    // Optional: send cancellation email
+  if (status === "COMPLETED") {
+    try {
+      await sendBookingCompletedEmail(
+        updatedBooking.user.email,
+        updatedBooking.user.name || "",
+        updatedBooking.session_type.name,
+      );
+    } catch (err) {
+      console.error("Failed to send completion email:", err);
+    }
   }
 
   return NextResponse.json(updatedBooking);

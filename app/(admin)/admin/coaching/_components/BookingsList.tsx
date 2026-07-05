@@ -9,7 +9,7 @@ type Booking = {
   start_datetime: Date
   end_datetime: Date
   status: string
-  zoom_join_url: string | null
+  meet_join_url: string | null
   intake_goal: string | null
   currency_paid: string
   amount_paid: number
@@ -17,9 +17,14 @@ type Booking = {
   session_type: { name: string; duration: number }
 }
 
-export default function BookingsList({ bookings }: { bookings: Booking[] }) {
+export default function BookingsList({
+  bookings,
+  total,
+}: {
+  bookings: Booking[]
+  total?: number
+}) {
   const router = useRouter()
-  const [zoomUrl, setZoomUrl] = useState<Record<string, string>>({})
   const [loading, setLoading] = useState<string | null>(null)
 
   async function confirmBooking(id: string) {
@@ -27,11 +32,7 @@ export default function BookingsList({ bookings }: { bookings: Booking[] }) {
     await fetch("/api/admin/coaching/bookings", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        id,
-        status: "CONFIRMED",
-        zoom_join_url: zoomUrl[id] || null,
-      }),
+      body: JSON.stringify({ id, status: "CONFIRMED" }),
     })
     setLoading(null)
     router.refresh()
@@ -44,6 +45,18 @@ export default function BookingsList({ bookings }: { bookings: Booking[] }) {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, status: "CANCELLED" }),
+    })
+    setLoading(null)
+    router.refresh()
+  }
+
+  async function completeBooking(id: string) {
+    if (!confirm("Marquer cette session comme terminée ?")) return
+    setLoading(id)
+    await fetch("/api/admin/coaching/bookings", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, status: "COMPLETED" }),
     })
     setLoading(null)
     router.refresh()
@@ -66,7 +79,7 @@ export default function BookingsList({ bookings }: { bookings: Booking[] }) {
   return (
     <div>
       <h2 className="text-xs tracking-[3px] uppercase text-gray-500 font-medium mb-6">
-        Réservations ({bookings.length})
+        Réservations ({total ?? bookings.length})
       </h2>
 
       {bookings.length === 0 ? (
@@ -129,25 +142,42 @@ export default function BookingsList({ bookings }: { bookings: Booking[] }) {
                   </td>
                   <td className="px-4 py-3">
                     {booking.status === "PENDING" && (
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => confirmBooking(booking.id)}
+                          disabled={loading === booking.id}
+                          className="text-xs bg-green-600 text-white px-3 py-1 hover:bg-green-700 transition-colors disabled:opacity-50"
+                        >
+                          Confirmer
+                        </button>
+                        <button
+                          onClick={() => cancelBooking(booking.id)}
+                          disabled={loading === booking.id}
+                          className="text-xs text-red-400 hover:text-red-600"
+                        >
+                          Annuler
+                        </button>
+                      </div>
+                    )}
+                    {booking.status === "CONFIRMED" && (
                       <div className="space-y-2">
-                        <input
-                          value={zoomUrl[booking.id] || ""}
-                          onChange={(e) =>
-                            setZoomUrl((prev) => ({
-                              ...prev,
-                              [booking.id]: e.target.value,
-                            }))
-                          }
-                          placeholder="Lien Zoom (optionnel)"
-                          className="w-full border border-gray-200 rounded px-2 py-1 text-xs focus:outline-none focus:border-[#ff63ce]"
-                        />
+                        {booking.meet_join_url && (
+                          <a
+                            href={booking.meet_join_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs text-[#ff63ce] hover:underline block"
+                          >
+                            Lien Meet →
+                          </a>
+                        )}
                         <div className="flex gap-2">
                           <button
-                            onClick={() => confirmBooking(booking.id)}
+                            onClick={() => completeBooking(booking.id)}
                             disabled={loading === booking.id}
-                            className="text-xs bg-green-600 text-white px-3 py-1 hover:bg-green-700 transition-colors disabled:opacity-50"
+                            className="text-xs bg-gray-800 text-white px-3 py-1 hover:bg-[#111] transition-colors disabled:opacity-50"
                           >
-                            Confirmer
+                            Marquer terminée
                           </button>
                           <button
                             onClick={() => cancelBooking(booking.id)}
@@ -158,16 +188,6 @@ export default function BookingsList({ bookings }: { bookings: Booking[] }) {
                           </button>
                         </div>
                       </div>
-                    )}
-                    {booking.status === "CONFIRMED" && booking.zoom_join_url && (
-                      <a
-                        href={booking.zoom_join_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs text-[#ff63ce] hover:underline"
-                      >
-                        Lien Zoom →
-                      </a>
                     )}
                   </td>
                 </tr>

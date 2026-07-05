@@ -2,6 +2,7 @@
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import { sendAdminNewBookingEmail } from "@/lib/services/email.service";
 
 export async function POST(req: Request) {
   const session = await auth();
@@ -20,10 +21,10 @@ export async function POST(req: Request) {
   } = await req.json();
 
   
-    // Get user's timezone
+    // Get user's timezone + contact info
   const user = await prisma.user.findUnique({
     where: { id: session.user.id },
-    select: { timezone: true },
+    select: { timezone: true, name: true, email: true },
   })
 
   const sessionType = await prisma.coachingSessionType.findUnique({
@@ -73,9 +74,27 @@ export async function POST(req: Request) {
       amount_paid: amount,
       intake_goal: intake_goal || null,
       intake_challenges: intake_challenges || null,
-      timezone: user?.timezone || "Africa/Douala", 
+      timezone: user?.timezone || "Africa/Douala",
     },
   });
+
+  if (user) {
+    try {
+      await sendAdminNewBookingEmail({
+        studentName: user.name || "Anonyme",
+        studentEmail: user.email,
+        sessionName: sessionType.name,
+        startDatetime: start,
+        duration: sessionType.duration,
+        intakeGoal: intake_goal || null,
+        intakeChallenges: intake_challenges || null,
+        amount,
+        currency,
+      });
+    } catch (err) {
+      console.error("Failed to send admin booking notification email:", err);
+    }
+  }
 
   return NextResponse.json(booking);
 }

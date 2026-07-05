@@ -99,7 +99,7 @@ export default async function AdminCouponsPage() {
                               className={`text-xs px-2 py-1 rounded-full font-medium ${
                                 !coupon.active || isExpired || isMaxed
                                   ? "bg-red-50 text-red-600"
-                                  : "bg-green-50 text-green-700"
+                                  : "bg-[#fdf0fa] text-[#ff63ce]"
                               }`}
                             >
                               {!coupon.active

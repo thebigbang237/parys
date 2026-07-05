@@ -1,7 +1,7 @@
 // app/(public)/layout.tsx
 import { auth } from "@/auth";
 import Link from "next/link";
-import { logout } from "@/lib/actions/auth.actions";
+import HeaderNav from "./_components/HeaderNav";
 
 export default async function PublicLayout({
   children,
@@ -23,62 +23,10 @@ export default async function PublicLayout({
             <span className="text-[#ff63ce] italic">Academy</span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-8">
-            {[
-              { href: "/courses", label: "Formations" },
-              { href: "/coaching", label: "Coaching privé" },
-              { href: "/about", label: "À propos" },
-            ].map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-xs tracking-[2px] uppercase text-gray-500 hover:text-gray-900 transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-4">
-            {session ? (
-              <>
-                <Link
-                  href="/dashboard"
-                  className="text-xs tracking-[2px] uppercase text-gray-500 hover:text-gray-900 transition-colors"
-                >
-                  Mon espace
-                </Link>
-                {session.user.role === "ADMIN" && (
-                  <Link
-                    href="/admin"
-                    className="text-xs tracking-[2px] uppercase text-[#ff63ce] hover:text-gray-900 transition-colors"
-                  >
-                    Admin
-                  </Link>
-                )}
-                <form action={logout}>
-                  <button className="text-xs tracking-[2px] uppercase text-gray-500 hover:text-gray-900 transition-colors">
-                    Déconnexion
-                  </button>
-                </form>
-              </>
-            ) : (
-              <>
-                <Link
-                  href="/login"
-                  className="text-xs tracking-[2px] uppercase text-gray-500 hover:text-gray-900 transition-colors"
-                >
-                  Connexion
-                </Link>
-                <Link
-                  href="/register"
-                  className="bg-[#ff63ce] text-white px-5 py-2.5 text-xs tracking-[2px] uppercase hover:bg-[#111] transition-colors"
-                >
-                  S'inscrire
-                </Link>
-              </>
-            )}
-          </div>
+          <HeaderNav
+            isLoggedIn={!!session}
+            isAdmin={session?.user.role === "ADMIN"}
+          />
         </div>
       </nav>
 

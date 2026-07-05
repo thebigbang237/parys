@@ -196,7 +196,7 @@ function LessonRow({ lesson, courseId }: { lesson: Lesson; courseId: string }) {
         <div className="text-sm font-medium truncate">{lesson.title}</div>
         <div className="flex items-center gap-2 mt-0.5">
           {videoId ? (
-            <span className="flex items-center gap-1 text-xs text-green-600">
+            <span className="flex items-center gap-1 text-xs text-[#ff63ce]">
               <CheckCircle2 size={12} /> Vidéo uploadée
             </span>
           ) : (

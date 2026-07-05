@@ -444,7 +444,7 @@ export default function CheckoutClient({
           </div>
 
           {couponDiscountedPrice !== null && (
-            <div className="flex justify-between text-sm text-green-600">
+            <div className="flex justify-between text-sm text-[#ff63ce]">
               <span>Réduction code promo</span>
               <span>
                 -{" "}

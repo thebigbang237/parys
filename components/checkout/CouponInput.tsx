@@ -66,19 +66,19 @@ export default function CouponInput({
 
   if (applied) {
     return (
-      <div className="bg-green-50 border border-green-200 px-4 py-3 flex items-center justify-between">
+      <div className="bg-[#fdf0fa] border border-[#f0e0ec] px-4 py-3 flex items-center justify-between">
         <div>
-          <p className="flex items-center gap-1 text-xs font-medium text-green-700">
+          <p className="flex items-center gap-1 text-xs font-medium text-[#ff63ce]">
             <Check size={12} /> {applied.message}
           </p>
-          <p className="text-xs text-green-600 mt-0.5">
+          <p className="text-xs text-[#ff63ce] mt-0.5">
             Réduction de{" "}
             {formatPrice(applied.discountAmount, currency)} appliquée
           </p>
         </div>
         <button
           onClick={handleRemove}
-          className="text-xs text-green-600 hover:text-green-800 underline"
+          className="text-xs text-[#ff63ce] hover:text-[#111] underline"
         >
           Retirer
         </button>

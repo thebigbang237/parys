@@ -71,7 +71,7 @@ export default function BookingsList({
 
   const statusColor: Record<string, string> = {
     PENDING: "bg-yellow-50 text-yellow-600",
-    CONFIRMED: "bg-green-50 text-green-600",
+    CONFIRMED: "bg-[#fdf0fa] text-[#ff63ce]",
     CANCELLED: "bg-red-50 text-red-600",
     COMPLETED: "bg-gray-100 text-gray-500",
   }
@@ -146,7 +146,7 @@ export default function BookingsList({
                         <button
                           onClick={() => confirmBooking(booking.id)}
                           disabled={loading === booking.id}
-                          className="text-xs bg-green-600 text-white px-3 py-1 hover:bg-green-700 transition-colors disabled:opacity-50"
+                          className="text-xs bg-[#ff63ce] text-white px-3 py-1 hover:bg-[#111] transition-colors disabled:opacity-50"
                         >
                           Confirmer
                         </button>

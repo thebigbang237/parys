@@ -32,82 +32,73 @@ export default async function HomePage() {
     }),
   ]);
 
+  const homeVideoId = process.env.HOME_VIDEO_ID;
+  const streamCustomerCode = process.env.CLOUDFLARE_STREAM_CUSTOMER_CODE;
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-16 items-center">
+      <section className="max-w-6xl h-dvh mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
         <div>
-          <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-6">
-            <Sparkles size={12} /> Content Level Up Academy
-          </p>
-          <h1 className="font-serif text-5xl md:text-6xl font-medium text-gray-900 leading-tight mb-8">
-            Construis ton succès avec{" "}
-            <span className="italic text-[#ff63ce]">Parys</span>
+          <h1 className="font-serif text-5xl md:text-6xl font-medium text-gray-900 leading-none mb-5">
+            Bienvenue <span>Chez</span>{" "}
+            <span className="font-bold font-sans text-[#ff63ce]">Parys</span>
           </h1>
-          <p className="text-gray-500 text-lg leading-relaxed mb-10 max-w-md">
+          <p className="text-gray-500 text-lg leading-relaxed mb-5 max-w-md">
             Des formations premium en création de contenu conçues pour les
             femmes ambitieuses d'Afrique et du monde.
           </p>
           <div className="flex gap-4">
             <Link
               href="/courses"
-              className="bg-[#ff63ce] text-white px-10 py-4 text-xs tracking-[3px] uppercase hover:bg-[#111] transition-colors"
+              className="bg-[#ff63ce] text-white rounded-3xl px-10 py-4 text-xs tracking-[3px] uppercase hover:bg-[#ff63cec7] transition-colors"
             >
-              Voir les formations
+              Rejoins-moi
             </Link>
-            <Link
-              href="/coaching"
-              className="border border-gray-200 text-gray-900 px-10 py-4 text-xs tracking-[3px] uppercase hover:bg-gray-50 transition-colors"
-            >
-              Coaching privé
-            </Link>
-          </div>
-
-          {/* Stats */}
-          <div className="flex gap-10 mt-14 pt-10 border-t border-[#f0e0ec]">
-            {[
-              { value: "2 400+", label: "Étudiantes" },
-              { value: "4.9★", label: "Note moyenne" },
-              { value: "30+", label: "Pays africains" },
-            ].map((s) => (
-              <div key={s.label}>
-                <div className="font-serif text-2xl font-medium text-gray-900">
-                  {s.value}
-                </div>
-                <div className="text-xs tracking-[2px] uppercase text-gray-500 mt-1">
-                  {s.label}
-                </div>
-              </div>
-            ))}
           </div>
         </div>
 
         {/* Right panel */}
-        <div className="relative bg-[#fdf0fa] border border-[#f0e0ec] aspect-[4/5] hidden md:block overflow-hidden">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="font-serif text-[200px] text-[#ff63ce] opacity-10 italic select-none">
-              P
-            </span>
-          </div>
-          <div className="absolute bottom-8 left-8 right-8 bg-white border border-[#f0e0ec] p-6">
-            <p className="text-xs tracking-[2px] uppercase text-[#ff63ce] mb-2">
-              Formation disponible
-            </p>
-            <p className="font-serif text-xl font-medium text-gray-900">
-              Création de contenu
-            </p>
-          </div>
+        <div className="relative h-full aspect-4/6 hidden md:flex overflow-hidden">
+          <Image
+            src="/images/Parys-Acceuil.png"
+            alt="Parys Batonda"
+            fill
+            priority
+            className="object-contain object-bottom"
+          />
+        </div>
+      </section>
+
+      {/* Intro video */}
+      <section className="max-w-6xl mx-auto mb-20 px-6">
+        <div className="relative aspect-video bg-[#111] overflow-hidden">
+          {homeVideoId && streamCustomerCode ? (
+            <iframe
+              src={`https://customer-${streamCustomerCode}.cloudflarestream.com/${homeVideoId}/iframe?preload=true&poster=${encodeURIComponent(
+                `https://customer-${streamCustomerCode}.cloudflarestream.com/${homeVideoId}/thumbnails/thumbnail.jpg?height=600`,
+              )}`}
+              loading="lazy"
+              allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
+              allowFullScreen
+              className="absolute inset-0 w-full h-full border-0"
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <p className="text-white/40 text-sm">Vidéo bientôt disponible</p>
+            </div>
+          )}
         </div>
       </section>
 
       {/* Courses preview */}
       {courses.length > 0 && (
-        <section className="bg-[#fdf0fa] border-y border-[#f0e0ec] py-24">
+        <section className="bg-[#fdf0fa]  py-24">
           <div className="max-w-6xl mx-auto px-6">
             <div className="flex justify-between items-end mb-12">
               <div>
                 <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-3">
-                  <Sparkles size={12} /> Mes formations
+                  Mes formations
                 </p>
                 <h2 className="font-serif text-4xl font-medium text-gray-900">
                   Des programmes pensés pour toi
@@ -272,6 +263,46 @@ export default async function HomePage() {
                 </Link>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="px-6 py-24 border-b border-[#f0e0ec]">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="font-serif text-4xl font-medium text-gray-900 text-center underline decoration-[#ff63ce] decoration-1 underline-offset-8 mb-16">
+            Ils nous font confiance
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[
+              {
+                quote:
+                  "L'académie a radicalement changé ma vision du branding. Je vends maintenant trois fois plus cher.",
+                name: "Marie-Lucie, Dakar",
+              },
+              {
+                quote:
+                  "Un contenu d'une qualité rare en Afrique. Parys est une mentore exceptionnelle et dévouée.",
+                name: "Fatou, Abidjan",
+              },
+              {
+                quote:
+                  "Enfin une formation qui comprend les réalités de nos marchés tout en visant l'excellence internationale.",
+                name: "Grace, Douala",
+              },
+            ].map((t) => (
+              <div
+                key={t.name}
+                className="flex flex-col items-center text-center"
+              >
+                <p className="font-serif text-xl italic text-gray-900 leading-relaxed mb-8">
+                  "{t.quote}"
+                </p>
+                <p className="text-xs tracking-[4px] uppercase font-medium text-gray-500">
+                  {t.name}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

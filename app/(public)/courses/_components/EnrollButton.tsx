@@ -57,7 +57,7 @@ export default function EnrollButton({
       <button
         onClick={handleClick}
         className={cn(
-          "bg-green-600 text-white py-4 text-xs tracking-[3px] uppercase font-medium hover:bg-green-700 transition-colors",
+          "bg-[#111] text-white py-4 text-xs tracking-[3px] uppercase font-medium hover:bg-[#ff63ce] transition-colors",
           fullWidth ? "w-full" : "px-10",
         )}
       >

@@ -5,10 +5,10 @@ import Link from "next/link";
 
 const statusColor: Record<string, string> = {
   PENDING: "bg-yellow-50 text-yellow-600",
-  SUCCESS: "bg-green-50 text-green-600",
+  SUCCESS: "bg-[#fdf0fa] text-[#ff63ce]",
   FAILED: "bg-red-50 text-red-600",
   REFUNDED: "bg-gray-100 text-gray-500",
-  CONFIRMED: "bg-green-50 text-green-600",
+  CONFIRMED: "bg-[#fdf0fa] text-[#ff63ce]",
   CANCELLED: "bg-red-50 text-red-600",
   COMPLETED: "bg-gray-100 text-gray-500",
 };

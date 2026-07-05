@@ -12,8 +12,8 @@ export default async function CheckoutSuccessPage({
   return (
     <div className="min-h-screen bg-[#fcf8f8] flex items-center justify-center">
       <div className="text-center max-w-md px-6">
-        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-          <Check size={28} className="text-green-600" />
+        <div className="w-16 h-16 bg-[#fdf0fa] rounded-full flex items-center justify-center mx-auto mb-6">
+          <Check size={28} className="text-[#ff63ce]" />
         </div>
         <h1 className="font-serif text-3xl font-medium text-gray-900 mb-4">
           Paiement confirmé !

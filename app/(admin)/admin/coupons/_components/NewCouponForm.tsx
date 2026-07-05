@@ -134,7 +134,7 @@ export default function NewCouponForm() {
         </div>
 
         {error && <p className="text-xs text-red-500">{error}</p>}
-        {success && <p className="text-xs text-green-600">{success}</p>}
+        {success && <p className="text-xs text-[#ff63ce]">{success}</p>}
 
         <button
           type="submit"

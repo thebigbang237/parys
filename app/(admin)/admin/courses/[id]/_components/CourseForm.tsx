@@ -111,7 +111,7 @@ export default function CourseForm({ course }: { course: any }) {
         {message && (
           <p
             className={`flex items-center justify-center gap-1.5 text-xs ${
-              message.type === "success" ? "text-green-600" : "text-red-600"
+              message.type === "success" ? "text-[#ff63ce]" : "text-red-600"
             }`}
           >
             {message.type === "success" ? (

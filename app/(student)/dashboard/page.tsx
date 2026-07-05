@@ -200,7 +200,7 @@ export default async function DashboardPage() {
                     <span
                       className={`text-xs px-2 py-1 rounded-full ${
                         booking.status === "CONFIRMED"
-                          ? "bg-green-50 text-green-600"
+                          ? "bg-[#fdf0fa] text-[#ff63ce]"
                           : "bg-yellow-50 text-yellow-600"
                       }`}
                     >

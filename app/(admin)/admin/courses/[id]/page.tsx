@@ -44,7 +44,7 @@ export default async function AdminCourseDetailPage({
           <div className="flex items-center gap-4 mt-2">
             <span className={`text-xs px-2 py-1 rounded-full font-medium ${
               course.status === "PUBLISHED"
-                ? "bg-green-50 text-green-700"
+                ? "bg-[#fdf0fa] text-[#ff63ce]"
                 : "bg-gray-100 text-gray-500"
             }`}>
               {course.status === "PUBLISHED" ? "Publié" : "Brouillon"}
@@ -58,7 +58,7 @@ export default async function AdminCourseDetailPage({
         <div className="flex gap-3">
           {course.status === "DRAFT" ? (
             <form action={publishCourse.bind(null, course.id)}>
-              <button className="bg-green-600 text-white px-5 py-2.5 text-xs tracking-[2px] uppercase hover:bg-green-700 transition-colors">
+              <button className="bg-[#ff63ce] text-white px-5 py-2.5 text-xs tracking-[2px] uppercase hover:bg-[#111] transition-colors">
                 Publier
               </button>
             </form>

@@ -154,7 +154,7 @@ export default function SessionTypesManager({
                 onClick={() => toggleActive(s.id, s.active)}
                 className={`text-xs px-2 py-1 rounded-full ${
                   s.active
-                    ? "bg-green-50 text-green-600"
+                    ? "bg-[#fdf0fa] text-[#ff63ce]"
                     : "bg-gray-100 text-gray-500"
                 }`}
               >

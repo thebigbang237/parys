@@ -6,6 +6,7 @@ import { prisma } from "@/lib/prisma"
 import { AuthError } from "next-auth"
 import bcrypt from "bcryptjs"
 import { z } from "zod"
+import { sendWelcomeEmail } from "@/lib/services/email.service"
 
 const RegisterSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -38,6 +39,12 @@ export async function register(formData: z.infer<typeof RegisterSchema>) {
       country: country || null,
     },
   })
+
+  try {
+    await sendWelcomeEmail(email, name)
+  } catch (err) {
+    console.error("Failed to send welcome email:", err)
+  }
 
   // Auto sign in after registration
   await signIn("credentials", {

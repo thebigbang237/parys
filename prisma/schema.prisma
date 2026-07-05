@@ -13,8 +13,9 @@ datasource db {
 model User {
   id            String    @id @default(cuid())
   email         String    @unique
+  emailVerified DateTime?
   name          String?
-  avatar_url    String?
+  image    String?
   password_hash String?   // null for OAuth users (Google)
   role          Role      @default(STUDENT)
   country       String?

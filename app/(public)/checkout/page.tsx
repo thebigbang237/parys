@@ -9,15 +9,74 @@ export default async function CheckoutPage({
 }: {
   searchParams: Promise<{
     courseId?: string
+    bookingId?: string
+    sessionTypeId?: string
     currency?: string
     country?: string
+    amount?: string
+    type?: string
   }>
 }) {
   const session = await auth()
   if (!session) redirect("/login")
 
-  const { courseId, currency = "XAF", country = "CM" } = await searchParams
+  const {
+    courseId,
+    bookingId,
+    sessionTypeId,
+    currency = "XAF",
+    country = "CM",
+    amount: amountStr,
+    type = "COURSE",
+  } = await searchParams
 
+  // ── COACHING FLOW ──────────────────────────
+  if (type === "COACHING" && bookingId && sessionTypeId) {
+    const sessionType = await prisma.coachingSessionType.findUnique({
+      where: { id: sessionTypeId },
+    })
+
+    if (!sessionType) redirect("/coaching")
+
+    const price =
+      Number(amountStr) ||
+      (currency === "EUR"
+        ? sessionType.price_eur
+        : currency === "USD"
+        ? sessionType.price_usd
+        : sessionType.price_xaf)
+
+    return (
+      <div className="min-h-screen bg-[#fcf8f8] py-16">
+        <div className="max-w-4xl mx-auto px-6">
+          <p className="text-xs tracking-[4px] uppercase text-[#ff63ce] mb-3">
+            ✦ Paiement sécurisé
+          </p>
+          <h1 className="font-serif text-3xl font-medium text-gray-900 mb-12">
+            Finaliser ma réservation
+          </h1>
+          <CheckoutClient
+            course={{
+              id: bookingId,
+              title: sessionType.name,
+              thumbnail_url: null,
+              price_xaf: sessionType.price_xaf,
+              price_usd: sessionType.price_usd,
+              price_eur: sessionType.price_eur,
+              is_free: false,
+            }}
+            initialCurrency={currency}
+            initialCountry={country}
+            userEmail={session.user.email!}
+            productType="COACHING"
+            productId={bookingId}
+          />
+        </div>
+      </div>
+    )
+  }
+
+  // ── COURSE FLOW ────────────────────────────
   if (!courseId) redirect("/courses")
 
   const course = await prisma.course.findUnique({
@@ -55,12 +114,13 @@ export default async function CheckoutPage({
         <h1 className="font-serif text-3xl font-medium text-gray-900 mb-12">
           Finaliser mon inscription
         </h1>
-
         <CheckoutClient
           course={course}
           initialCurrency={currency}
           initialCountry={country}
           userEmail={session.user.email!}
+          productType="COURSE"
+          productId={courseId}
         />
       </div>
     </div>

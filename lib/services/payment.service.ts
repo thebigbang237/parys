@@ -1,5 +1,9 @@
 // lib/services/payment.service.ts
 import { prisma } from "@/lib/prisma";
+import {
+  sendCourseEnrollmentEmail,
+  sendBookingConfirmedEmail,
+} from "@/lib/services/email.service";
 
 export type PaymentProvider = "pawapay" | "paypal";
 export type ProductType = "COURSE" | "COACHING";
@@ -126,6 +130,51 @@ export async function handlePaymentSuccess(
   console.log(
     `Payment ${externalReference} processed. coupon_id: ${payment.coupon_id}`,
   );
+
+  try {
+    if (payment.product_type === "COURSE" && payment.course_id) {
+      const [user, course] = await Promise.all([
+        prisma.user.findUnique({
+          where: { id: payment.user_id },
+          select: { email: true, name: true },
+        }),
+        prisma.course.findUnique({
+          where: { id: payment.course_id },
+          select: { title: true, slug: true },
+        }),
+      ]);
+      if (user && course) {
+        await sendCourseEnrollmentEmail(
+          user.email,
+          user.name || "toi",
+          course.title,
+          course.slug,
+        );
+      }
+    }
+
+    if (payment.product_type === "COACHING" && payment.booking_id) {
+      const booking = await prisma.coachingBooking.findUnique({
+        where: { id: payment.booking_id },
+        include: {
+          user: { select: { email: true, name: true } },
+          session_type: true,
+        },
+      });
+      if (booking) {
+        await sendBookingConfirmedEmail(
+          booking.user.email,
+          booking.user.name || "",
+          booking.session_type.name,
+          booking.start_datetime,
+          booking.session_type.duration,
+          booking.zoom_join_url,
+        );
+      }
+    }
+  } catch (err) {
+    console.error("Failed to send payment confirmation email:", err);
+  }
 
   return payment;
 }

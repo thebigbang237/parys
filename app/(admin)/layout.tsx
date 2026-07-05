@@ -33,6 +33,7 @@ export default async function AdminLayout({
             { href: "/admin/students", label: "Étudiantes", icon: "▣" },
             { href: "/admin/bookings", label: "Sessions", icon: "▢" },
             { href: "/admin/coupons", label: "Coupons", icon: "◈" },
+            { href: "/admin/coaching", label: "Coaching", icon: "◎" },
           ].map((item) => (
             <Link
               key={item.href}

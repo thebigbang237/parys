@@ -10,15 +10,16 @@ datasource db {
 // ─── AUTH ─────────────────────────────────────────────
 
 model User {
-  id            String   @id @default(cuid())
-  email         String   @unique
+  id            String    @id @default(cuid())
+  email         String    @unique
+  emailVerified DateTime?
   name          String?
-  avatar_url    String?
+  image         String?
   password_hash String? // null for OAuth users (Google)
-  role          Role     @default(STUDENT)
+  role          Role      @default(STUDENT)
   country       String?
-  created_at    DateTime @default(now())
-  updated_at    DateTime @updatedAt
+  created_at    DateTime  @default(now())
+  updated_at    DateTime  @updatedAt
 
   accounts      Account[]
   sessions      Session[]

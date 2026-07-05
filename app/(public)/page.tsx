@@ -6,7 +6,7 @@ import { formatPrice } from "@/lib/utils";
 import Image from "next/image";
 
 export default async function HomePage() {
-  const [courses, geo] = await Promise.all([
+  const [courses, geo, coachingSessions] = await Promise.all([
     prisma.course.findMany({
       where: { status: "PUBLISHED" },
       take: 3,
@@ -24,6 +24,11 @@ export default async function HomePage() {
       },
     }),
     getUserGeoContext(),
+    prisma.coachingSessionType.findMany({
+      where: { active: true },
+      orderBy: { price_xaf: "asc" },
+      take: 3,
+    }),
   ]);
 
   return (
@@ -171,6 +176,104 @@ export default async function HomePage() {
           </div>
         </section>
       )}
+
+      {/* Coaching section */}
+      <section className="border-b border-[#f0e0ec]">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2">
+            {/* Left — features */}
+            <div className="px-6 py-24 border-r border-[#f0e0ec]">
+              <p className="text-xs tracking-[4px] uppercase text-[#ff63ce] mb-4">
+                Accompagnement privé
+              </p>
+              <h2 className="font-serif text-4xl font-medium text-gray-900 mb-12">
+                Le Coaching 1-to-1
+              </h2>
+              <div className="space-y-10">
+                {[
+                  {
+                    icon: "🎥",
+                    title: "Sessions visio",
+                    desc: "60 minutes d'échange intense pour débloquer vos problématiques business spécifiques.",
+                  },
+                  {
+                    icon: "📅",
+                    title: "Calendrier flexible",
+                    desc: "Réservez votre créneau en fonction de vos disponibilités.",
+                  },
+                  {
+                    icon: "📊",
+                    title: "Suivi personnalisé",
+                    desc: "Compte-rendu écrit et plan d'action concret après chaque séance.",
+                  },
+                ].map((f) => (
+                  <div key={f.title} className="flex gap-5">
+                    <span className="text-xl mt-0.5">{f.icon}</span>
+                    <div>
+                      <h4 className="text-xs tracking-[2px] uppercase font-medium text-gray-900 mb-1">
+                        {f.title}
+                      </h4>
+                      <p className="text-sm text-gray-500 leading-relaxed">
+                        {f.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right — session types */}
+            <div className="bg-[#fdf0fa] px-6 py-24 flex items-center">
+              <div className="bg-white border border-[#f0e0ec] p-8 space-y-4 w-full">
+                <h3 className="font-serif text-xl font-medium text-gray-900 text-center mb-6">
+                  Réserver une séance
+                </h3>
+                {coachingSessions.length === 0 ? (
+                  <p className="text-sm text-gray-400 text-center py-4">
+                    Sessions bientôt disponibles
+                  </p>
+                ) : (
+                  coachingSessions.slice(0, 3).map((s, idx) => (
+                    <div
+                      key={s.id}
+                      className={`p-5 border cursor-pointer transition-colors ${
+                        idx === 0
+                          ? "border-[#ff63ce] bg-[#fdf0fa]"
+                          : "border-[#f0e0ec] hover:border-[#ff63ce]"
+                      }`}
+                    >
+                      <div className="flex justify-between items-center mb-1">
+                        <span className="text-xs tracking-[2px] uppercase font-medium text-gray-900">
+                          {s.name}
+                        </span>
+                        <span className="font-serif text-lg text-gray-900">
+                          {formatPrice(
+                            geo.currency === "EUR"
+                              ? s.price_eur
+                              : geo.currency === "USD"
+                                ? s.price_usd
+                                : s.price_xaf,
+                            geo.currency,
+                          )}
+                        </span>
+                      </div>
+                      <p className="text-xs text-gray-400">
+                        Session de {s.duration} minutes
+                      </p>
+                    </div>
+                  ))
+                )}
+                <Link
+                  href="/coaching"
+                  className="w-full bg-[#111] text-white py-4 text-xs tracking-[3px] uppercase hover:bg-[#ff63ce] transition-colors text-center block mt-4"
+                >
+                  Continuer vers le calendrier →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Payment methods */}
       <section className="py-12 border-b border-[#f0e0ec]">

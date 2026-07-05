@@ -143,11 +143,15 @@ export default function CheckoutClient({
   initialCurrency,
   initialCountry,
   userEmail,
+  productType = "COURSE",
+  productId,
 }: {
   course: Course;
   initialCurrency: string;
   initialCountry: string;
   userEmail: string;
+  productType?: "COURSE" | "COACHING";
+  productId?: string;
 }) {
   const [country, setCountry] = useState(initialCountry);
   const [currency, setCurrency] = useState<Currency>(
@@ -256,8 +260,8 @@ export default function CheckoutClient({
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        productType: "COURSE",
-        productId: course.id,
+        productType,
+        productId: productId ?? course.id,
         amount: Math.round(finalPrice),
         currency,
         country,
@@ -302,7 +306,7 @@ export default function CheckoutClient({
         console.log(`Poll ${attempts}:`, data.status);
 
         if (data.status === "COMPLETED") {
-          window.location.href = `/checkout/success?productType=COURSE&productId=${course.id}`;
+          window.location.href = `/checkout/success?productType=${productType}&productId=${productId ?? course.id}`;
           return;
         }
         if (data.status === "FAILED" || data.status === "CANCELLED") {
@@ -343,8 +347,8 @@ export default function CheckoutClient({
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        productType: "COURSE",
-        productId: course.id,
+        productType,
+        productId: productId ?? course.id,
         amount: paypalAmount, // ← discounted
         currency: paypalCurrency,
         couponId: appliedCouponId,
@@ -417,9 +421,15 @@ export default function CheckoutClient({
             )}
           </div>
           <div>
-            <p className="text-xs text-gray-400 mb-1">Formation</p>
+            <p className="text-xs text-gray-400 mb-1">
+              {productType === "COACHING" ? "Session coaching" : "Formation"}
+            </p>
             <p className="font-medium text-gray-900">{course.title}</p>
-            <p className="text-xs text-gray-400 mt-1">Accès à vie</p>
+            <p className="text-xs text-gray-400 mt-1">
+              {productType === "COACHING"
+                ? "Session 1-to-1 avec Parys"
+                : "Accès à vie"}
+            </p>
           </div>
         </div>
 
@@ -740,19 +750,23 @@ export default function CheckoutClient({
           </div>
         )}
 
-        <CouponInput
-          courseId={course.id}
-          originalPrice={price}
-          currency={currency === "USD" || currency === "EUR" ? currency : "XAF"}
-          onApply={(discountedPrice, couponId) => {
-            setCouponDiscountedPrice(discountedPrice);
-            setAppliedCouponId(couponId);
-          }}
-          onRemove={() => {
-            setCouponDiscountedPrice(null);
-            setAppliedCouponId(null);
-          }}
-        />
+        {productType === "COURSE" && (
+          <CouponInput
+            courseId={productId ?? course.id}
+            originalPrice={price}
+            currency={
+              currency === "USD" || currency === "EUR" ? currency : "XAF"
+            }
+            onApply={(discountedPrice, couponId) => {
+              setCouponDiscountedPrice(discountedPrice);
+              setAppliedCouponId(couponId);
+            }}
+            onRemove={() => {
+              setCouponDiscountedPrice(null);
+              setAppliedCouponId(null);
+            }}
+          />
+        )}
 
         {error && (
           <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 text-sm">

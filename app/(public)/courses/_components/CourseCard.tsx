@@ -20,12 +20,14 @@ interface CourseCardProps {
   };
   currency: Currency;
   lessonsCount: number;
+  isEnrolled?: boolean;
 }
 
 export default function CourseCard({
   course,
   currency,
   lessonsCount,
+  isEnrolled = false,
 }: CourseCardProps) {
   const price =
     currency === "XAF"
@@ -69,7 +71,7 @@ export default function CourseCard({
         <p className="text-xs tracking-[2px] uppercase text-[#ff63ce] mb-2">
           Par Parys Batonda
         </p>
-        <h3 className="font-serif text-xl font-medium text-gray-900 mb-3 group-hover:italic transition-all">
+        <h3 className="font-serif text-xl font-medium text-gray-900 mb-3 transition-all">
           {course.title}
         </h3>
         <p className="text-sm text-gray-500 line-clamp-2 leading-relaxed mb-4">
@@ -95,11 +97,9 @@ export default function CourseCard({
 
         {/* Price + CTA */}
         <div className="mt-auto flex justify-between items-center pt-4 border-t border-[#f0e0ec]">
-          <span className="font-serif text-2xl font-medium text-gray-900">
-            {course.is_free ? "Gratuit" : formatPrice(price, currency)}
-          </span>
+
           <span className="text-xs tracking-[2px] uppercase text-[#ff63ce] group-hover:underline">
-            Voir →
+            {isEnrolled ? "Continuer →" : "Voir →"}
           </span>
         </div>
       </div>

@@ -14,6 +14,7 @@ interface EnrollButtonProps {
   isLoggedIn: boolean;
   canUseMobileMoney: boolean;
   country: string;
+  firstLessonId?: string | null;
   fullWidth?: boolean;
 }
 
@@ -27,13 +28,14 @@ export default function EnrollButton({
   isLoggedIn,
   canUseMobileMoney,
   country,
+  firstLessonId,
   fullWidth = false,
 }: EnrollButtonProps) {
   const router = useRouter();
 
   function handleClick() {
     if (isEnrolled) {
-      router.push(`/dashboard`);
+      router.push(firstLessonId ? `/learn/${firstLessonId}` : `/dashboard`);
       return;
     }
 

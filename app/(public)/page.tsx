@@ -1,6 +1,7 @@
 // app/page.tsx
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
+import { auth } from "@/auth";
 import { getUserGeoContext } from "@/lib/actions/geo.actions";
 import { formatPrice } from "@/lib/utils";
 import Image from "next/image";
@@ -15,7 +16,7 @@ import {
 import TestimonialsCarousel from "./_components/TestimonialsCarousel";
 
 export default async function HomePage() {
-  const [courses, geo, coachingSessions] = await Promise.all([
+  const [courses, geo, coachingSessions, session] = await Promise.all([
     prisma.course.findMany({
       where: { status: "PUBLISHED" },
       take: 3,
@@ -38,7 +39,20 @@ export default async function HomePage() {
       orderBy: { price_xaf: "asc" },
       take: 3,
     }),
+    auth(),
   ]);
+
+  let enrolledCourseIds = new Set<string>();
+  if (session?.user?.id) {
+    const enrollments = await prisma.enrollment.findMany({
+      where: {
+        user_id: session.user.id,
+        course_id: { in: courses.map((c) => c.id) },
+      },
+      select: { course_id: true },
+    });
+    enrolledCourseIds = new Set(enrollments.map((e) => e.course_id));
+  }
 
   const homeVideoId = process.env.HOME_VIDEO_ID;
   const streamCustomerCode = process.env.CLOUDFLARE_STREAM_CUSTOMER_CODE;
@@ -140,6 +154,7 @@ export default async function HomePage() {
                     : geo.currency === "EUR"
                       ? course.price_eur
                       : course.price_usd;
+                const isEnrolled = enrolledCourseIds.has(course.id);
 
                 return (
                   <Link
@@ -164,20 +179,16 @@ export default async function HomePage() {
                       )}
                     </div>
                     <div className="p-5">
-                      <h3 className="font-serif text-xl font-medium text-gray-900 mb-2 group-hover:italic transition-all">
+                      <h3 className="font-serif text-xl font-medium text-gray-900 mb-2  transition-all">
                         {course.title}
                       </h3>
                       <p className="text-sm text-gray-500 line-clamp-2 mb-4">
                         {course.description}
                       </p>
                       <div className="flex justify-between items-center">
-                        <span className="font-serif text-xl text-gray-900">
-                          {course.is_free
-                            ? "Gratuit"
-                            : formatPrice(price, geo.currency)}
-                        </span>
+
                         <span className="text-xs text-[#ff63ce]">
-                          S'inscrire →
+                          {isEnrolled ? "Continuer →" : "S'inscrire →"}
                         </span>
                       </div>
                     </div>

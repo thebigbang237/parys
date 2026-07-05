@@ -1,11 +1,12 @@
 // app/(public)/courses/page.tsx
 import { prisma } from "@/lib/prisma"
+import { auth } from "@/auth"
 import { getUserGeoContext } from "@/lib/actions/geo.actions"
 import CourseCard from "./_components/CourseCard"
 import { Sparkles } from "lucide-react"
 
 export default async function CoursesPage() {
-  const [courses, geo] = await Promise.all([
+  const [courses, geo, session] = await Promise.all([
     prisma.course.findMany({
       where: { status: "PUBLISHED" },
       orderBy: { created_at: "desc" },
@@ -21,7 +22,17 @@ export default async function CoursesPage() {
       },
     }),
     getUserGeoContext(),
+    auth(),
   ])
+
+  let enrolledCourseIds = new Set<string>()
+  if (session?.user?.id) {
+    const enrollments = await prisma.enrollment.findMany({
+      where: { user_id: session.user.id },
+      select: { course_id: true },
+    })
+    enrolledCourseIds = new Set(enrollments.map((e) => e.course_id))
+  }
 
   const totalLessons = (course: typeof courses[0]) =>
     course.modules.reduce((sum, m) => sum + m._count.lessons, 0)
@@ -58,6 +69,7 @@ export default async function CoursesPage() {
                 course={course}
                 currency={geo.currency}
                 lessonsCount={totalLessons(course)}
+                isEnrolled={enrolledCourseIds.has(course.id)}
               />
             ))}
           </div>

@@ -58,6 +58,8 @@ export default async function CourseDetailPage({
       ? course.price_eur
       : course.price_usd
 
+  const firstLessonId = course.modules[0]?.lessons?.[0]?.id ?? null
+
   const totalLessons = course.modules.reduce(
     (sum, m) => sum + m.lessons.length,
     0
@@ -79,13 +81,13 @@ export default async function CourseDetailPage({
   return (
     <div className="min-h-screen bg-[#fcf8f8]">
       {/* Hero */}
-      <div className="bg-white border-b border-[#f0e0ec]">
+      <div className="bg-white border-b pt-24 border-[#f0e0ec]">
         <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12 items-center">
           <div>
             <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-4">
-              <Sparkles size={12} /> Formation
+              Formation
             </p>
-            <h1 className="font-serif text-4xl md:text-5xl font-medium text-gray-900 mb-6 leading-tight">
+            <h1 className="font-serif text-4xl md:text-5xl font-medium text-gray-900 leading-tight">
               {course.title}
             </h1>
             <p className="text-gray-500 text-lg leading-relaxed mb-8">
@@ -117,15 +119,23 @@ export default async function CourseDetailPage({
             {/* Price + Enroll */}
             <div className="pt-8 flex items-center gap-6">
               <div>
-                <div className="font-serif text-4xl font-medium text-gray-900">
-                  {course.is_free
-                    ? "Gratuit"
-                    : formatPrice(price, geo.currency)}
-                </div>
-                {!course.is_free && geo.currency !== "XAF" && (
-                  <div className="text-xs text-gray-500 mt-1">
-                    ≈ {formatPrice(course.price_xaf, "XAF")}
+                {isEnrolled ? (
+                  <div className="flex items-center gap-2 text-sm font-medium text-[#ff63ce]">
+                     Formation débloquée
                   </div>
+                ) : (
+                  <>
+                    <div className="font-serif text-4xl font-medium text-gray-900">
+                      {course.is_free
+                        ? "Gratuit"
+                        : formatPrice(price, geo.currency)}
+                    </div>
+                    {!course.is_free && geo.currency !== "XAF" && (
+                      <div className="text-xs text-gray-500 mt-1">
+                        ≈ {formatPrice(course.price_xaf, "XAF")}
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
 
@@ -139,6 +149,7 @@ export default async function CourseDetailPage({
                 isLoggedIn={!!session}
                 canUseMobileMoney={geo.mobileMoney}
                 country={geo.country}
+                firstLessonId={firstLessonId}
               />
             </div>
           </div>
@@ -168,7 +179,7 @@ export default async function CourseDetailPage({
         <div className="grid md:grid-cols-3 gap-12">
           <div className="md:col-span-2">
             <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-4">
-              <Sparkles size={12} /> Programme
+               Programme
             </p>
             <h2 className="font-serif text-3xl font-medium text-gray-900 mb-8">
               Ce que tu vas apprendre
@@ -206,11 +217,17 @@ export default async function CourseDetailPage({
                 ))}
 
               <div className="pt-4 border-t border-[#f0e0ec]">
-                <div className="font-serif text-3xl font-medium text-gray-900 mb-4">
-                  {course.is_free
-                    ? "Gratuit"
-                    : formatPrice(price, geo.currency)}
-                </div>
+                {isEnrolled ? (
+                  <div className="flex items-center gap-2 text-sm font-medium text-[#ff63ce] mb-4">
+                    <Check size={16} /> Formation débloquée
+                  </div>
+                ) : (
+                  <div className="font-serif text-3xl font-medium text-gray-900 mb-4">
+                    {course.is_free
+                      ? "Gratuit"
+                      : formatPrice(price, geo.currency)}
+                  </div>
+                )}
                 <EnrollButton
                   courseId={course.id}
                   courseSlug={course.slug}
@@ -221,6 +238,7 @@ export default async function CourseDetailPage({
                   isLoggedIn={!!session}
                   canUseMobileMoney={geo.mobileMoney}
                   country={geo.country}
+                  firstLessonId={firstLessonId}
                   fullWidth
                 />
               </div>

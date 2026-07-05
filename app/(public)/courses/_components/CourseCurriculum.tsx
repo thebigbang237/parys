@@ -114,7 +114,7 @@ export default function CourseCurriculum({
                   </>
                 );
 
-                return canAccess && isEnrolled ? (
+                return canAccess ? (
                   <Link
                     key={lesson.id}
                     href={`/learn/${lesson.id}`}

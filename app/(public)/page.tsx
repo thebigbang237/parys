@@ -4,7 +4,15 @@ import { prisma } from "@/lib/prisma";
 import { getUserGeoContext } from "@/lib/actions/geo.actions";
 import { formatPrice } from "@/lib/utils";
 import Image from "next/image";
-import { Video, Calendar, FileText, Sparkles } from "lucide-react";
+import {
+  Video,
+  Calendar,
+  FileText,
+  Wallet,
+  CreditCard,
+  Landmark,
+} from "lucide-react";
+import TestimonialsCarousel from "./_components/TestimonialsCarousel";
 
 export default async function HomePage() {
   const [courses, geo, coachingSessions] = await Promise.all([
@@ -36,10 +44,22 @@ export default async function HomePage() {
   const streamCustomerCode = process.env.CLOUDFLARE_STREAM_CUSTOMER_CODE;
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white pt-24">
+              {/* Dot pattern overlay */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 opacity-[.5] pointer-events-none"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, #ff63ce 1.5px, transparent 1.5px)",
+            backgroundSize: "24px 24px",
+          }}
+        />
       {/* Hero */}
-      <section className="max-w-6xl h-dvh mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-        <div>
+      <section className="relative overflow-hidden max-w-6xl h-dvh mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+
+
+        <div className="relative z-10">
           <h1 className="font-serif text-5xl md:text-6xl font-medium text-gray-900 leading-none mb-5">
             Bienvenue <span>Chez</span>{" "}
             <span className="font-bold font-sans text-[#ff63ce]">Parys</span>
@@ -59,7 +79,7 @@ export default async function HomePage() {
         </div>
 
         {/* Right panel */}
-        <div className="relative h-full aspect-4/6 hidden md:flex overflow-hidden">
+        <div className="relative z-10 h-full aspect-4/6 hidden md:flex overflow-hidden">
           <Image
             src="/images/Parys-Acceuil.png"
             alt="Parys Batonda"
@@ -273,8 +293,8 @@ export default async function HomePage() {
           <h2 className="font-serif text-4xl font-medium text-gray-900 text-center underline decoration-[#ff63ce] decoration-1 underline-offset-8 mb-16">
             Ils nous font confiance
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {[
+          <TestimonialsCarousel
+            testimonials={[
               {
                 quote:
                   "L'académie a radicalement changé ma vision du branding. Je vends maintenant trois fois plus cher.",
@@ -290,47 +310,40 @@ export default async function HomePage() {
                   "Enfin une formation qui comprend les réalités de nos marchés tout en visant l'excellence internationale.",
                 name: "Grace, Douala",
               },
-            ].map((t) => (
-              <div
-                key={t.name}
-                className="flex flex-col items-center text-center"
-              >
-                <p className="font-serif text-xl italic text-gray-900 leading-relaxed mb-8">
-                  "{t.quote}"
-                </p>
-                <p className="text-xs tracking-[4px] uppercase font-medium text-gray-500">
-                  {t.name}
-                </p>
-              </div>
-            ))}
-          </div>
+            ]}
+          />
         </div>
       </section>
 
       {/* Payment methods */}
       <section className="py-12 border-b border-[#f0e0ec]">
-        <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs tracking-[4px] uppercase text-gray-500 text-center mb-6">
-            Moyens de paiement acceptés
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            {[
-              { label: "MTN MoMo", color: "#ffcc00" },
-              { label: "Orange Money", color: "#ff6600" },
-              { label: "Wave", color: "#2c4eff" },
-              { label: "M-Pesa", color: "#00a550" },
-              { label: "Airtel Money", color: "#e31837" },
-              { label: "PayPal", color: "#003087" },
-              { label: "Visa / Mastercard", color: "#555" },
-            ].map((p) => (
-              <div
-                key={p.label}
-                className="border border-[#f0e0ec] bg-white px-4 py-2 text-xs font-medium"
-                style={{ color: p.color }}
-              >
-                {p.label}
-              </div>
-            ))}
+        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <span className="text-xs tracking-[3px] uppercase text-gray-500 whitespace-nowrap">
+              Paiement sécurisé via mobile money
+            </span>
+            <div className="flex flex-wrap justify-center gap-3">
+              {[
+                { label: "MTN", color: "#ffcc00" },
+                { label: "Orange", color: "#ff6600" },
+                { label: "Wave", color: "#2c4eff" },
+                { label: "M-Pesa", color: "#e31837" },
+                { label: "+", color: "#6a7282 " },
+              ].map((p) => (
+                <div
+                  key={p.label}
+                  className="px-3 py-1 bg-white border border-[#f0e0ec] font-bold text-[10px]"
+                  style={{ color: p.color }}
+                >
+                  {p.label}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="flex items-center gap-6 text-gray-400">
+            <Wallet size={20} strokeWidth={1.5} />
+            <CreditCard size={20} strokeWidth={1.5} />
+            <span>PAYPAL</span>
           </div>
         </div>
       </section>

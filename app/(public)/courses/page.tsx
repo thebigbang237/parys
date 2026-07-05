@@ -27,9 +27,9 @@ export default async function CoursesPage() {
     course.modules.reduce((sum, m) => sum + m._count.lessons, 0)
 
   return (
-    <div className="min-h-screen bg-[#fcf8f8]">
+    <div className="min-h-screen bg-[#fcf8f8] ">
       {/* Header */}
-      <div className="bg-white border-b border-[#f0e0ec]">
+      <div className="bg-white pt-24 border-b border-[#f0e0ec]">
         <div className="max-w-6xl mx-auto px-6 py-16">
           <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-3">
             <Sparkles size={12} /> Formations

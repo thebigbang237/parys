@@ -1,10 +1,10 @@
 // app/(public)/coaching/page.tsx
-import { prisma } from "@/lib/prisma"
-import { auth } from "@/auth"
-import { getUserGeoContext } from "@/lib/actions/geo.actions"
-import { formatPrice } from "@/lib/utils"
-import CoachingBookingFlow from "./_components/CoachingBookingFlow"
-import { Sparkles } from "lucide-react"
+import { prisma } from "@/lib/prisma";
+import { auth } from "@/auth";
+import { getUserGeoContext } from "@/lib/actions/geo.actions";
+import { formatPrice } from "@/lib/utils";
+import CoachingBookingFlow from "./_components/CoachingBookingFlow";
+import { Sparkles } from "lucide-react";
 
 export default async function CoachingPage() {
   const [session, sessionTypes, geo] = await Promise.all([
@@ -14,12 +14,12 @@ export default async function CoachingPage() {
       orderBy: { price_xaf: "asc" },
     }),
     getUserGeoContext(),
-  ])
+  ]);
 
   return (
     <div className="min-h-screen bg-[#fcf8f8]">
       {/* Hero */}
-      <div className="bg-white border-b border-[#f0e0ec]">
+      <div className="bg-white border-b pt-24 border-[#f0e0ec]">
         <div className="max-w-5xl mx-auto px-6 py-16">
           <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-3">
             <Sparkles size={12} /> Coaching privé
@@ -29,8 +29,8 @@ export default async function CoachingPage() {
             <span className="italic text-[#ff63ce]">sur-mesure</span>
           </h1>
           <p className="text-gray-500 text-lg max-w-xl">
-            Réservez une session en tête-à-tête avec Parys. Stratégie,
-            création de contenu, personal branding — une heure qui change tout.
+            Réservez une session en tête-à-tête avec Parys. Stratégie, création
+            de contenu, personal branding — une heure qui change tout.
           </p>
         </div>
       </div>
@@ -46,11 +46,12 @@ export default async function CoachingPage() {
           <CoachingBookingFlow
             sessionTypes={sessionTypes.map((s) => ({
               ...s,
-              price: geo.currency === "EUR"
-                ? s.price_eur
-                : geo.currency === "USD"
-                ? s.price_usd
-                : s.price_xaf,
+              price:
+                geo.currency === "EUR"
+                  ? s.price_eur
+                  : geo.currency === "USD"
+                    ? s.price_usd
+                    : s.price_xaf,
             }))}
             currency={geo.currency}
             country={geo.country}
@@ -60,5 +61,5 @@ export default async function CoachingPage() {
         )}
       </div>
     </div>
-  )
+  );
 }

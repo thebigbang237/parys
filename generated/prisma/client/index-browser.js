@@ -130,7 +130,8 @@ exports.Prisma.UserScalarFieldEnum = {
   role: 'role',
   country: 'country',
   created_at: 'created_at',
-  updated_at: 'updated_at'
+  updated_at: 'updated_at',
+  timezone: 'timezone'
 };
 
 exports.Prisma.AccountScalarFieldEnum = {
@@ -247,13 +248,14 @@ exports.Prisma.CoachingBookingScalarFieldEnum = {
   start_datetime: 'start_datetime',
   end_datetime: 'end_datetime',
   status: 'status',
-  zoom_join_url: 'zoom_join_url',
+  meet_join_url: 'meet_join_url',
   intake_goal: 'intake_goal',
   intake_challenges: 'intake_challenges',
   currency_paid: 'currency_paid',
   amount_paid: 'amount_paid',
   created_at: 'created_at',
-  updated_at: 'updated_at'
+  updated_at: 'updated_at',
+  timezone: 'timezone'
 };
 
 exports.Prisma.PaymentScalarFieldEnum = {

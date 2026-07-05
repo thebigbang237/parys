@@ -2663,6 +2663,7 @@ export namespace Prisma {
     country: string | null
     created_at: Date | null
     updated_at: Date | null
+    timezone: string | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -2676,6 +2677,7 @@ export namespace Prisma {
     country: string | null
     created_at: Date | null
     updated_at: Date | null
+    timezone: string | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -2689,6 +2691,7 @@ export namespace Prisma {
     country: number
     created_at: number
     updated_at: number
+    timezone: number
     _all: number
   }
 
@@ -2704,6 +2707,7 @@ export namespace Prisma {
     country?: true
     created_at?: true
     updated_at?: true
+    timezone?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -2717,6 +2721,7 @@ export namespace Prisma {
     country?: true
     created_at?: true
     updated_at?: true
+    timezone?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -2730,6 +2735,7 @@ export namespace Prisma {
     country?: true
     created_at?: true
     updated_at?: true
+    timezone?: true
     _all?: true
   }
 
@@ -2816,6 +2822,7 @@ export namespace Prisma {
     country: string | null
     created_at: Date
     updated_at: Date
+    timezone: string
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -2846,6 +2853,7 @@ export namespace Prisma {
     country?: boolean
     created_at?: boolean
     updated_at?: boolean
+    timezone?: boolean
     accounts?: boolean | User$accountsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     enrollments?: boolean | User$enrollmentsArgs<ExtArgs>
@@ -2867,6 +2875,7 @@ export namespace Prisma {
     country?: boolean
     created_at?: boolean
     updated_at?: boolean
+    timezone?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2880,6 +2889,7 @@ export namespace Prisma {
     country?: boolean
     created_at?: boolean
     updated_at?: boolean
+    timezone?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -2893,9 +2903,10 @@ export namespace Prisma {
     country?: boolean
     created_at?: boolean
     updated_at?: boolean
+    timezone?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "emailVerified" | "name" | "image" | "password_hash" | "role" | "country" | "created_at" | "updated_at", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "emailVerified" | "name" | "image" | "password_hash" | "role" | "country" | "created_at" | "updated_at" | "timezone", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | User$accountsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
@@ -2931,6 +2942,7 @@ export namespace Prisma {
       country: string | null
       created_at: Date
       updated_at: Date
+      timezone: string
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -3371,6 +3383,7 @@ export namespace Prisma {
     readonly country: FieldRef<"User", 'String'>
     readonly created_at: FieldRef<"User", 'DateTime'>
     readonly updated_at: FieldRef<"User", 'DateTime'>
+    readonly timezone: FieldRef<"User", 'String'>
   }
     
 
@@ -16197,13 +16210,14 @@ export namespace Prisma {
     start_datetime: Date | null
     end_datetime: Date | null
     status: $Enums.BookingStatus | null
-    zoom_join_url: string | null
+    meet_join_url: string | null
     intake_goal: string | null
     intake_challenges: string | null
     currency_paid: string | null
     amount_paid: number | null
     created_at: Date | null
     updated_at: Date | null
+    timezone: string | null
   }
 
   export type CoachingBookingMaxAggregateOutputType = {
@@ -16213,13 +16227,14 @@ export namespace Prisma {
     start_datetime: Date | null
     end_datetime: Date | null
     status: $Enums.BookingStatus | null
-    zoom_join_url: string | null
+    meet_join_url: string | null
     intake_goal: string | null
     intake_challenges: string | null
     currency_paid: string | null
     amount_paid: number | null
     created_at: Date | null
     updated_at: Date | null
+    timezone: string | null
   }
 
   export type CoachingBookingCountAggregateOutputType = {
@@ -16229,13 +16244,14 @@ export namespace Prisma {
     start_datetime: number
     end_datetime: number
     status: number
-    zoom_join_url: number
+    meet_join_url: number
     intake_goal: number
     intake_challenges: number
     currency_paid: number
     amount_paid: number
     created_at: number
     updated_at: number
+    timezone: number
     _all: number
   }
 
@@ -16255,13 +16271,14 @@ export namespace Prisma {
     start_datetime?: true
     end_datetime?: true
     status?: true
-    zoom_join_url?: true
+    meet_join_url?: true
     intake_goal?: true
     intake_challenges?: true
     currency_paid?: true
     amount_paid?: true
     created_at?: true
     updated_at?: true
+    timezone?: true
   }
 
   export type CoachingBookingMaxAggregateInputType = {
@@ -16271,13 +16288,14 @@ export namespace Prisma {
     start_datetime?: true
     end_datetime?: true
     status?: true
-    zoom_join_url?: true
+    meet_join_url?: true
     intake_goal?: true
     intake_challenges?: true
     currency_paid?: true
     amount_paid?: true
     created_at?: true
     updated_at?: true
+    timezone?: true
   }
 
   export type CoachingBookingCountAggregateInputType = {
@@ -16287,13 +16305,14 @@ export namespace Prisma {
     start_datetime?: true
     end_datetime?: true
     status?: true
-    zoom_join_url?: true
+    meet_join_url?: true
     intake_goal?: true
     intake_challenges?: true
     currency_paid?: true
     amount_paid?: true
     created_at?: true
     updated_at?: true
+    timezone?: true
     _all?: true
   }
 
@@ -16390,13 +16409,14 @@ export namespace Prisma {
     start_datetime: Date
     end_datetime: Date
     status: $Enums.BookingStatus
-    zoom_join_url: string | null
+    meet_join_url: string | null
     intake_goal: string | null
     intake_challenges: string | null
     currency_paid: string
     amount_paid: number
     created_at: Date
     updated_at: Date
+    timezone: string
     _count: CoachingBookingCountAggregateOutputType | null
     _avg: CoachingBookingAvgAggregateOutputType | null
     _sum: CoachingBookingSumAggregateOutputType | null
@@ -16425,13 +16445,14 @@ export namespace Prisma {
     start_datetime?: boolean
     end_datetime?: boolean
     status?: boolean
-    zoom_join_url?: boolean
+    meet_join_url?: boolean
     intake_goal?: boolean
     intake_challenges?: boolean
     currency_paid?: boolean
     amount_paid?: boolean
     created_at?: boolean
     updated_at?: boolean
+    timezone?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     session_type?: boolean | CoachingSessionTypeDefaultArgs<ExtArgs>
     payment?: boolean | CoachingBooking$paymentArgs<ExtArgs>
@@ -16444,13 +16465,14 @@ export namespace Prisma {
     start_datetime?: boolean
     end_datetime?: boolean
     status?: boolean
-    zoom_join_url?: boolean
+    meet_join_url?: boolean
     intake_goal?: boolean
     intake_challenges?: boolean
     currency_paid?: boolean
     amount_paid?: boolean
     created_at?: boolean
     updated_at?: boolean
+    timezone?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     session_type?: boolean | CoachingSessionTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["coachingBooking"]>
@@ -16462,13 +16484,14 @@ export namespace Prisma {
     start_datetime?: boolean
     end_datetime?: boolean
     status?: boolean
-    zoom_join_url?: boolean
+    meet_join_url?: boolean
     intake_goal?: boolean
     intake_challenges?: boolean
     currency_paid?: boolean
     amount_paid?: boolean
     created_at?: boolean
     updated_at?: boolean
+    timezone?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     session_type?: boolean | CoachingSessionTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["coachingBooking"]>
@@ -16480,16 +16503,17 @@ export namespace Prisma {
     start_datetime?: boolean
     end_datetime?: boolean
     status?: boolean
-    zoom_join_url?: boolean
+    meet_join_url?: boolean
     intake_goal?: boolean
     intake_challenges?: boolean
     currency_paid?: boolean
     amount_paid?: boolean
     created_at?: boolean
     updated_at?: boolean
+    timezone?: boolean
   }
 
-  export type CoachingBookingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "session_type_id" | "start_datetime" | "end_datetime" | "status" | "zoom_join_url" | "intake_goal" | "intake_challenges" | "currency_paid" | "amount_paid" | "created_at" | "updated_at", ExtArgs["result"]["coachingBooking"]>
+  export type CoachingBookingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "session_type_id" | "start_datetime" | "end_datetime" | "status" | "meet_join_url" | "intake_goal" | "intake_challenges" | "currency_paid" | "amount_paid" | "created_at" | "updated_at" | "timezone", ExtArgs["result"]["coachingBooking"]>
   export type CoachingBookingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     session_type?: boolean | CoachingSessionTypeDefaultArgs<ExtArgs>
@@ -16518,13 +16542,14 @@ export namespace Prisma {
       start_datetime: Date
       end_datetime: Date
       status: $Enums.BookingStatus
-      zoom_join_url: string | null
+      meet_join_url: string | null
       intake_goal: string | null
       intake_challenges: string | null
       currency_paid: string
       amount_paid: number
       created_at: Date
       updated_at: Date
+      timezone: string
     }, ExtArgs["result"]["coachingBooking"]>
     composites: {}
   }
@@ -16957,13 +16982,14 @@ export namespace Prisma {
     readonly start_datetime: FieldRef<"CoachingBooking", 'DateTime'>
     readonly end_datetime: FieldRef<"CoachingBooking", 'DateTime'>
     readonly status: FieldRef<"CoachingBooking", 'BookingStatus'>
-    readonly zoom_join_url: FieldRef<"CoachingBooking", 'String'>
+    readonly meet_join_url: FieldRef<"CoachingBooking", 'String'>
     readonly intake_goal: FieldRef<"CoachingBooking", 'String'>
     readonly intake_challenges: FieldRef<"CoachingBooking", 'String'>
     readonly currency_paid: FieldRef<"CoachingBooking", 'String'>
     readonly amount_paid: FieldRef<"CoachingBooking", 'Float'>
     readonly created_at: FieldRef<"CoachingBooking", 'DateTime'>
     readonly updated_at: FieldRef<"CoachingBooking", 'DateTime'>
+    readonly timezone: FieldRef<"CoachingBooking", 'String'>
   }
     
 
@@ -21013,7 +21039,8 @@ export namespace Prisma {
     role: 'role',
     country: 'country',
     created_at: 'created_at',
-    updated_at: 'updated_at'
+    updated_at: 'updated_at',
+    timezone: 'timezone'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -21166,13 +21193,14 @@ export namespace Prisma {
     start_datetime: 'start_datetime',
     end_datetime: 'end_datetime',
     status: 'status',
-    zoom_join_url: 'zoom_join_url',
+    meet_join_url: 'meet_join_url',
     intake_goal: 'intake_goal',
     intake_challenges: 'intake_challenges',
     currency_paid: 'currency_paid',
     amount_paid: 'amount_paid',
     created_at: 'created_at',
-    updated_at: 'updated_at'
+    updated_at: 'updated_at',
+    timezone: 'timezone'
   };
 
   export type CoachingBookingScalarFieldEnum = (typeof CoachingBookingScalarFieldEnum)[keyof typeof CoachingBookingScalarFieldEnum]
@@ -21444,6 +21472,7 @@ export namespace Prisma {
     country?: StringNullableFilter<"User"> | string | null
     created_at?: DateTimeFilter<"User"> | Date | string
     updated_at?: DateTimeFilter<"User"> | Date | string
+    timezone?: StringFilter<"User"> | string
     accounts?: AccountListRelationFilter
     sessions?: SessionListRelationFilter
     enrollments?: EnrollmentListRelationFilter
@@ -21464,6 +21493,7 @@ export namespace Prisma {
     country?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    timezone?: SortOrder
     accounts?: AccountOrderByRelationAggregateInput
     sessions?: SessionOrderByRelationAggregateInput
     enrollments?: EnrollmentOrderByRelationAggregateInput
@@ -21487,6 +21517,7 @@ export namespace Prisma {
     country?: StringNullableFilter<"User"> | string | null
     created_at?: DateTimeFilter<"User"> | Date | string
     updated_at?: DateTimeFilter<"User"> | Date | string
+    timezone?: StringFilter<"User"> | string
     accounts?: AccountListRelationFilter
     sessions?: SessionListRelationFilter
     enrollments?: EnrollmentListRelationFilter
@@ -21507,6 +21538,7 @@ export namespace Prisma {
     country?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    timezone?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -21526,6 +21558,7 @@ export namespace Prisma {
     country?: StringNullableWithAggregatesFilter<"User"> | string | null
     created_at?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    timezone?: StringWithAggregatesFilter<"User"> | string
   }
 
   export type AccountWhereInput = {
@@ -22271,13 +22304,14 @@ export namespace Prisma {
     start_datetime?: DateTimeFilter<"CoachingBooking"> | Date | string
     end_datetime?: DateTimeFilter<"CoachingBooking"> | Date | string
     status?: EnumBookingStatusFilter<"CoachingBooking"> | $Enums.BookingStatus
-    zoom_join_url?: StringNullableFilter<"CoachingBooking"> | string | null
+    meet_join_url?: StringNullableFilter<"CoachingBooking"> | string | null
     intake_goal?: StringNullableFilter<"CoachingBooking"> | string | null
     intake_challenges?: StringNullableFilter<"CoachingBooking"> | string | null
     currency_paid?: StringFilter<"CoachingBooking"> | string
     amount_paid?: FloatFilter<"CoachingBooking"> | number
     created_at?: DateTimeFilter<"CoachingBooking"> | Date | string
     updated_at?: DateTimeFilter<"CoachingBooking"> | Date | string
+    timezone?: StringFilter<"CoachingBooking"> | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     session_type?: XOR<CoachingSessionTypeScalarRelationFilter, CoachingSessionTypeWhereInput>
     payment?: XOR<PaymentNullableScalarRelationFilter, PaymentWhereInput> | null
@@ -22290,13 +22324,14 @@ export namespace Prisma {
     start_datetime?: SortOrder
     end_datetime?: SortOrder
     status?: SortOrder
-    zoom_join_url?: SortOrderInput | SortOrder
+    meet_join_url?: SortOrderInput | SortOrder
     intake_goal?: SortOrderInput | SortOrder
     intake_challenges?: SortOrderInput | SortOrder
     currency_paid?: SortOrder
     amount_paid?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    timezone?: SortOrder
     user?: UserOrderByWithRelationInput
     session_type?: CoachingSessionTypeOrderByWithRelationInput
     payment?: PaymentOrderByWithRelationInput
@@ -22312,13 +22347,14 @@ export namespace Prisma {
     start_datetime?: DateTimeFilter<"CoachingBooking"> | Date | string
     end_datetime?: DateTimeFilter<"CoachingBooking"> | Date | string
     status?: EnumBookingStatusFilter<"CoachingBooking"> | $Enums.BookingStatus
-    zoom_join_url?: StringNullableFilter<"CoachingBooking"> | string | null
+    meet_join_url?: StringNullableFilter<"CoachingBooking"> | string | null
     intake_goal?: StringNullableFilter<"CoachingBooking"> | string | null
     intake_challenges?: StringNullableFilter<"CoachingBooking"> | string | null
     currency_paid?: StringFilter<"CoachingBooking"> | string
     amount_paid?: FloatFilter<"CoachingBooking"> | number
     created_at?: DateTimeFilter<"CoachingBooking"> | Date | string
     updated_at?: DateTimeFilter<"CoachingBooking"> | Date | string
+    timezone?: StringFilter<"CoachingBooking"> | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     session_type?: XOR<CoachingSessionTypeScalarRelationFilter, CoachingSessionTypeWhereInput>
     payment?: XOR<PaymentNullableScalarRelationFilter, PaymentWhereInput> | null
@@ -22331,13 +22367,14 @@ export namespace Prisma {
     start_datetime?: SortOrder
     end_datetime?: SortOrder
     status?: SortOrder
-    zoom_join_url?: SortOrderInput | SortOrder
+    meet_join_url?: SortOrderInput | SortOrder
     intake_goal?: SortOrderInput | SortOrder
     intake_challenges?: SortOrderInput | SortOrder
     currency_paid?: SortOrder
     amount_paid?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    timezone?: SortOrder
     _count?: CoachingBookingCountOrderByAggregateInput
     _avg?: CoachingBookingAvgOrderByAggregateInput
     _max?: CoachingBookingMaxOrderByAggregateInput
@@ -22355,13 +22392,14 @@ export namespace Prisma {
     start_datetime?: DateTimeWithAggregatesFilter<"CoachingBooking"> | Date | string
     end_datetime?: DateTimeWithAggregatesFilter<"CoachingBooking"> | Date | string
     status?: EnumBookingStatusWithAggregatesFilter<"CoachingBooking"> | $Enums.BookingStatus
-    zoom_join_url?: StringNullableWithAggregatesFilter<"CoachingBooking"> | string | null
+    meet_join_url?: StringNullableWithAggregatesFilter<"CoachingBooking"> | string | null
     intake_goal?: StringNullableWithAggregatesFilter<"CoachingBooking"> | string | null
     intake_challenges?: StringNullableWithAggregatesFilter<"CoachingBooking"> | string | null
     currency_paid?: StringWithAggregatesFilter<"CoachingBooking"> | string
     amount_paid?: FloatWithAggregatesFilter<"CoachingBooking"> | number
     created_at?: DateTimeWithAggregatesFilter<"CoachingBooking"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"CoachingBooking"> | Date | string
+    timezone?: StringWithAggregatesFilter<"CoachingBooking"> | string
   }
 
   export type PaymentWhereInput = {
@@ -22623,6 +22661,7 @@ export namespace Prisma {
     country?: string | null
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     enrollments?: EnrollmentCreateNestedManyWithoutUserInput
@@ -22643,6 +22682,7 @@ export namespace Prisma {
     country?: string | null
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
@@ -22663,6 +22703,7 @@ export namespace Prisma {
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
@@ -22683,6 +22724,7 @@ export namespace Prisma {
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
@@ -22703,6 +22745,7 @@ export namespace Prisma {
     country?: string | null
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
   }
 
   export type UserUpdateManyMutationInput = {
@@ -22716,6 +22759,7 @@ export namespace Prisma {
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -22729,6 +22773,7 @@ export namespace Prisma {
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
   }
 
   export type AccountCreateInput = {
@@ -23508,13 +23553,14 @@ export namespace Prisma {
     start_datetime: Date | string
     end_datetime: Date | string
     status?: $Enums.BookingStatus
-    zoom_join_url?: string | null
+    meet_join_url?: string | null
     intake_goal?: string | null
     intake_challenges?: string | null
     currency_paid: string
     amount_paid: number
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
     user: UserCreateNestedOneWithoutBookingsInput
     session_type: CoachingSessionTypeCreateNestedOneWithoutBookingsInput
     payment?: PaymentCreateNestedOneWithoutBookingInput
@@ -23527,13 +23573,14 @@ export namespace Prisma {
     start_datetime: Date | string
     end_datetime: Date | string
     status?: $Enums.BookingStatus
-    zoom_join_url?: string | null
+    meet_join_url?: string | null
     intake_goal?: string | null
     intake_challenges?: string | null
     currency_paid: string
     amount_paid: number
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
     payment?: PaymentUncheckedCreateNestedOneWithoutBookingInput
   }
 
@@ -23542,13 +23589,14 @@ export namespace Prisma {
     start_datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     end_datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
-    zoom_join_url?: NullableStringFieldUpdateOperationsInput | string | null
+    meet_join_url?: NullableStringFieldUpdateOperationsInput | string | null
     intake_goal?: NullableStringFieldUpdateOperationsInput | string | null
     intake_challenges?: NullableStringFieldUpdateOperationsInput | string | null
     currency_paid?: StringFieldUpdateOperationsInput | string
     amount_paid?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
     user?: UserUpdateOneRequiredWithoutBookingsNestedInput
     session_type?: CoachingSessionTypeUpdateOneRequiredWithoutBookingsNestedInput
     payment?: PaymentUpdateOneWithoutBookingNestedInput
@@ -23561,13 +23609,14 @@ export namespace Prisma {
     start_datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     end_datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
-    zoom_join_url?: NullableStringFieldUpdateOperationsInput | string | null
+    meet_join_url?: NullableStringFieldUpdateOperationsInput | string | null
     intake_goal?: NullableStringFieldUpdateOperationsInput | string | null
     intake_challenges?: NullableStringFieldUpdateOperationsInput | string | null
     currency_paid?: StringFieldUpdateOperationsInput | string
     amount_paid?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
     payment?: PaymentUncheckedUpdateOneWithoutBookingNestedInput
   }
 
@@ -23578,13 +23627,14 @@ export namespace Prisma {
     start_datetime: Date | string
     end_datetime: Date | string
     status?: $Enums.BookingStatus
-    zoom_join_url?: string | null
+    meet_join_url?: string | null
     intake_goal?: string | null
     intake_challenges?: string | null
     currency_paid: string
     amount_paid: number
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
   }
 
   export type CoachingBookingUpdateManyMutationInput = {
@@ -23592,13 +23642,14 @@ export namespace Prisma {
     start_datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     end_datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
-    zoom_join_url?: NullableStringFieldUpdateOperationsInput | string | null
+    meet_join_url?: NullableStringFieldUpdateOperationsInput | string | null
     intake_goal?: NullableStringFieldUpdateOperationsInput | string | null
     intake_challenges?: NullableStringFieldUpdateOperationsInput | string | null
     currency_paid?: StringFieldUpdateOperationsInput | string
     amount_paid?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
   }
 
   export type CoachingBookingUncheckedUpdateManyInput = {
@@ -23608,13 +23659,14 @@ export namespace Prisma {
     start_datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     end_datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
-    zoom_join_url?: NullableStringFieldUpdateOperationsInput | string | null
+    meet_join_url?: NullableStringFieldUpdateOperationsInput | string | null
     intake_goal?: NullableStringFieldUpdateOperationsInput | string | null
     intake_challenges?: NullableStringFieldUpdateOperationsInput | string | null
     currency_paid?: StringFieldUpdateOperationsInput | string
     amount_paid?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
   }
 
   export type PaymentCreateInput = {
@@ -24015,6 +24067,7 @@ export namespace Prisma {
     country?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    timezone?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -24028,6 +24081,7 @@ export namespace Prisma {
     country?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    timezone?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -24041,6 +24095,7 @@ export namespace Prisma {
     country?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    timezone?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -24737,13 +24792,14 @@ export namespace Prisma {
     start_datetime?: SortOrder
     end_datetime?: SortOrder
     status?: SortOrder
-    zoom_join_url?: SortOrder
+    meet_join_url?: SortOrder
     intake_goal?: SortOrder
     intake_challenges?: SortOrder
     currency_paid?: SortOrder
     amount_paid?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    timezone?: SortOrder
   }
 
   export type CoachingBookingAvgOrderByAggregateInput = {
@@ -24757,13 +24813,14 @@ export namespace Prisma {
     start_datetime?: SortOrder
     end_datetime?: SortOrder
     status?: SortOrder
-    zoom_join_url?: SortOrder
+    meet_join_url?: SortOrder
     intake_goal?: SortOrder
     intake_challenges?: SortOrder
     currency_paid?: SortOrder
     amount_paid?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    timezone?: SortOrder
   }
 
   export type CoachingBookingMinOrderByAggregateInput = {
@@ -24773,13 +24830,14 @@ export namespace Prisma {
     start_datetime?: SortOrder
     end_datetime?: SortOrder
     status?: SortOrder
-    zoom_join_url?: SortOrder
+    meet_join_url?: SortOrder
     intake_goal?: SortOrder
     intake_challenges?: SortOrder
     currency_paid?: SortOrder
     amount_paid?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    timezone?: SortOrder
   }
 
   export type CoachingBookingSumOrderByAggregateInput = {
@@ -26524,13 +26582,14 @@ export namespace Prisma {
     start_datetime: Date | string
     end_datetime: Date | string
     status?: $Enums.BookingStatus
-    zoom_join_url?: string | null
+    meet_join_url?: string | null
     intake_goal?: string | null
     intake_challenges?: string | null
     currency_paid: string
     amount_paid: number
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
     session_type: CoachingSessionTypeCreateNestedOneWithoutBookingsInput
     payment?: PaymentCreateNestedOneWithoutBookingInput
   }
@@ -26541,13 +26600,14 @@ export namespace Prisma {
     start_datetime: Date | string
     end_datetime: Date | string
     status?: $Enums.BookingStatus
-    zoom_join_url?: string | null
+    meet_join_url?: string | null
     intake_goal?: string | null
     intake_challenges?: string | null
     currency_paid: string
     amount_paid: number
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
     payment?: PaymentUncheckedCreateNestedOneWithoutBookingInput
   }
 
@@ -26767,13 +26827,14 @@ export namespace Prisma {
     start_datetime?: DateTimeFilter<"CoachingBooking"> | Date | string
     end_datetime?: DateTimeFilter<"CoachingBooking"> | Date | string
     status?: EnumBookingStatusFilter<"CoachingBooking"> | $Enums.BookingStatus
-    zoom_join_url?: StringNullableFilter<"CoachingBooking"> | string | null
+    meet_join_url?: StringNullableFilter<"CoachingBooking"> | string | null
     intake_goal?: StringNullableFilter<"CoachingBooking"> | string | null
     intake_challenges?: StringNullableFilter<"CoachingBooking"> | string | null
     currency_paid?: StringFilter<"CoachingBooking"> | string
     amount_paid?: FloatFilter<"CoachingBooking"> | number
     created_at?: DateTimeFilter<"CoachingBooking"> | Date | string
     updated_at?: DateTimeFilter<"CoachingBooking"> | Date | string
+    timezone?: StringFilter<"CoachingBooking"> | string
   }
 
   export type CommentUpsertWithWhereUniqueWithoutUserInput = {
@@ -26878,6 +26939,7 @@ export namespace Prisma {
     country?: string | null
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
     sessions?: SessionCreateNestedManyWithoutUserInput
     enrollments?: EnrollmentCreateNestedManyWithoutUserInput
     bookings?: CoachingBookingCreateNestedManyWithoutUserInput
@@ -26897,6 +26959,7 @@ export namespace Prisma {
     country?: string | null
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
     bookings?: CoachingBookingUncheckedCreateNestedManyWithoutUserInput
@@ -26932,6 +26995,7 @@ export namespace Prisma {
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
     sessions?: SessionUpdateManyWithoutUserNestedInput
     enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
     bookings?: CoachingBookingUpdateManyWithoutUserNestedInput
@@ -26951,6 +27015,7 @@ export namespace Prisma {
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
     bookings?: CoachingBookingUncheckedUpdateManyWithoutUserNestedInput
@@ -26970,6 +27035,7 @@ export namespace Prisma {
     country?: string | null
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
     accounts?: AccountCreateNestedManyWithoutUserInput
     enrollments?: EnrollmentCreateNestedManyWithoutUserInput
     bookings?: CoachingBookingCreateNestedManyWithoutUserInput
@@ -26989,6 +27055,7 @@ export namespace Prisma {
     country?: string | null
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
     bookings?: CoachingBookingUncheckedCreateNestedManyWithoutUserInput
@@ -27024,6 +27091,7 @@ export namespace Prisma {
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
     enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
     bookings?: CoachingBookingUpdateManyWithoutUserNestedInput
@@ -27043,6 +27111,7 @@ export namespace Prisma {
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
     bookings?: CoachingBookingUncheckedUpdateManyWithoutUserNestedInput
@@ -27538,6 +27607,7 @@ export namespace Prisma {
     country?: string | null
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     bookings?: CoachingBookingCreateNestedManyWithoutUserInput
@@ -27557,6 +27627,7 @@ export namespace Prisma {
     country?: string | null
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     bookings?: CoachingBookingUncheckedCreateNestedManyWithoutUserInput
@@ -27633,6 +27704,7 @@ export namespace Prisma {
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     bookings?: CoachingBookingUpdateManyWithoutUserNestedInput
@@ -27652,6 +27724,7 @@ export namespace Prisma {
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     bookings?: CoachingBookingUncheckedUpdateManyWithoutUserNestedInput
@@ -27749,6 +27822,7 @@ export namespace Prisma {
     country?: string | null
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     enrollments?: EnrollmentCreateNestedManyWithoutUserInput
@@ -27768,6 +27842,7 @@ export namespace Prisma {
     country?: string | null
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
@@ -27899,6 +27974,7 @@ export namespace Prisma {
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
@@ -27918,6 +27994,7 @@ export namespace Prisma {
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
@@ -27980,13 +28057,14 @@ export namespace Prisma {
     start_datetime: Date | string
     end_datetime: Date | string
     status?: $Enums.BookingStatus
-    zoom_join_url?: string | null
+    meet_join_url?: string | null
     intake_goal?: string | null
     intake_challenges?: string | null
     currency_paid: string
     amount_paid: number
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
     user: UserCreateNestedOneWithoutBookingsInput
     payment?: PaymentCreateNestedOneWithoutBookingInput
   }
@@ -27997,13 +28075,14 @@ export namespace Prisma {
     start_datetime: Date | string
     end_datetime: Date | string
     status?: $Enums.BookingStatus
-    zoom_join_url?: string | null
+    meet_join_url?: string | null
     intake_goal?: string | null
     intake_challenges?: string | null
     currency_paid: string
     amount_paid: number
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
     payment?: PaymentUncheckedCreateNestedOneWithoutBookingInput
   }
 
@@ -28044,6 +28123,7 @@ export namespace Prisma {
     country?: string | null
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     enrollments?: EnrollmentCreateNestedManyWithoutUserInput
@@ -28063,6 +28143,7 @@ export namespace Prisma {
     country?: string | null
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
@@ -28158,6 +28239,7 @@ export namespace Prisma {
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
@@ -28177,6 +28259,7 @@ export namespace Prisma {
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
@@ -28268,6 +28351,7 @@ export namespace Prisma {
     country?: string | null
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     enrollments?: EnrollmentCreateNestedManyWithoutUserInput
@@ -28287,6 +28371,7 @@ export namespace Prisma {
     country?: string | null
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
@@ -28346,13 +28431,14 @@ export namespace Prisma {
     start_datetime: Date | string
     end_datetime: Date | string
     status?: $Enums.BookingStatus
-    zoom_join_url?: string | null
+    meet_join_url?: string | null
     intake_goal?: string | null
     intake_challenges?: string | null
     currency_paid: string
     amount_paid: number
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
     user: UserCreateNestedOneWithoutBookingsInput
     session_type: CoachingSessionTypeCreateNestedOneWithoutBookingsInput
   }
@@ -28364,13 +28450,14 @@ export namespace Prisma {
     start_datetime: Date | string
     end_datetime: Date | string
     status?: $Enums.BookingStatus
-    zoom_join_url?: string | null
+    meet_join_url?: string | null
     intake_goal?: string | null
     intake_challenges?: string | null
     currency_paid: string
     amount_paid: number
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
   }
 
   export type CoachingBookingCreateOrConnectWithoutPaymentInput = {
@@ -28433,6 +28520,7 @@ export namespace Prisma {
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
@@ -28452,6 +28540,7 @@ export namespace Prisma {
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
@@ -28523,13 +28612,14 @@ export namespace Prisma {
     start_datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     end_datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
-    zoom_join_url?: NullableStringFieldUpdateOperationsInput | string | null
+    meet_join_url?: NullableStringFieldUpdateOperationsInput | string | null
     intake_goal?: NullableStringFieldUpdateOperationsInput | string | null
     intake_challenges?: NullableStringFieldUpdateOperationsInput | string | null
     currency_paid?: StringFieldUpdateOperationsInput | string
     amount_paid?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
     user?: UserUpdateOneRequiredWithoutBookingsNestedInput
     session_type?: CoachingSessionTypeUpdateOneRequiredWithoutBookingsNestedInput
   }
@@ -28541,13 +28631,14 @@ export namespace Prisma {
     start_datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     end_datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
-    zoom_join_url?: NullableStringFieldUpdateOperationsInput | string | null
+    meet_join_url?: NullableStringFieldUpdateOperationsInput | string | null
     intake_goal?: NullableStringFieldUpdateOperationsInput | string | null
     intake_challenges?: NullableStringFieldUpdateOperationsInput | string | null
     currency_paid?: StringFieldUpdateOperationsInput | string
     amount_paid?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
   }
 
   export type CouponUpsertWithoutPaymentsInput = {
@@ -28815,6 +28906,7 @@ export namespace Prisma {
     country?: string | null
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     enrollments?: EnrollmentCreateNestedManyWithoutUserInput
@@ -28834,6 +28926,7 @@ export namespace Prisma {
     country?: string | null
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
@@ -28908,6 +29001,7 @@ export namespace Prisma {
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
@@ -28927,6 +29021,7 @@ export namespace Prisma {
     country?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
@@ -28967,13 +29062,14 @@ export namespace Prisma {
     start_datetime: Date | string
     end_datetime: Date | string
     status?: $Enums.BookingStatus
-    zoom_join_url?: string | null
+    meet_join_url?: string | null
     intake_goal?: string | null
     intake_challenges?: string | null
     currency_paid: string
     amount_paid: number
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
   }
 
   export type CommentCreateManyUserInput = {
@@ -29090,13 +29186,14 @@ export namespace Prisma {
     start_datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     end_datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
-    zoom_join_url?: NullableStringFieldUpdateOperationsInput | string | null
+    meet_join_url?: NullableStringFieldUpdateOperationsInput | string | null
     intake_goal?: NullableStringFieldUpdateOperationsInput | string | null
     intake_challenges?: NullableStringFieldUpdateOperationsInput | string | null
     currency_paid?: StringFieldUpdateOperationsInput | string
     amount_paid?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
     session_type?: CoachingSessionTypeUpdateOneRequiredWithoutBookingsNestedInput
     payment?: PaymentUpdateOneWithoutBookingNestedInput
   }
@@ -29107,13 +29204,14 @@ export namespace Prisma {
     start_datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     end_datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
-    zoom_join_url?: NullableStringFieldUpdateOperationsInput | string | null
+    meet_join_url?: NullableStringFieldUpdateOperationsInput | string | null
     intake_goal?: NullableStringFieldUpdateOperationsInput | string | null
     intake_challenges?: NullableStringFieldUpdateOperationsInput | string | null
     currency_paid?: StringFieldUpdateOperationsInput | string
     amount_paid?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
     payment?: PaymentUncheckedUpdateOneWithoutBookingNestedInput
   }
 
@@ -29123,13 +29221,14 @@ export namespace Prisma {
     start_datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     end_datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
-    zoom_join_url?: NullableStringFieldUpdateOperationsInput | string | null
+    meet_join_url?: NullableStringFieldUpdateOperationsInput | string | null
     intake_goal?: NullableStringFieldUpdateOperationsInput | string | null
     intake_challenges?: NullableStringFieldUpdateOperationsInput | string | null
     currency_paid?: StringFieldUpdateOperationsInput | string
     amount_paid?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
   }
 
   export type CommentUpdateWithoutUserInput = {
@@ -29537,13 +29636,14 @@ export namespace Prisma {
     start_datetime: Date | string
     end_datetime: Date | string
     status?: $Enums.BookingStatus
-    zoom_join_url?: string | null
+    meet_join_url?: string | null
     intake_goal?: string | null
     intake_challenges?: string | null
     currency_paid: string
     amount_paid: number
     created_at?: Date | string
     updated_at?: Date | string
+    timezone?: string
   }
 
   export type CoachingBookingUpdateWithoutSession_typeInput = {
@@ -29551,13 +29651,14 @@ export namespace Prisma {
     start_datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     end_datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
-    zoom_join_url?: NullableStringFieldUpdateOperationsInput | string | null
+    meet_join_url?: NullableStringFieldUpdateOperationsInput | string | null
     intake_goal?: NullableStringFieldUpdateOperationsInput | string | null
     intake_challenges?: NullableStringFieldUpdateOperationsInput | string | null
     currency_paid?: StringFieldUpdateOperationsInput | string
     amount_paid?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
     user?: UserUpdateOneRequiredWithoutBookingsNestedInput
     payment?: PaymentUpdateOneWithoutBookingNestedInput
   }
@@ -29568,13 +29669,14 @@ export namespace Prisma {
     start_datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     end_datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
-    zoom_join_url?: NullableStringFieldUpdateOperationsInput | string | null
+    meet_join_url?: NullableStringFieldUpdateOperationsInput | string | null
     intake_goal?: NullableStringFieldUpdateOperationsInput | string | null
     intake_challenges?: NullableStringFieldUpdateOperationsInput | string | null
     currency_paid?: StringFieldUpdateOperationsInput | string
     amount_paid?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
     payment?: PaymentUncheckedUpdateOneWithoutBookingNestedInput
   }
 
@@ -29584,13 +29686,14 @@ export namespace Prisma {
     start_datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     end_datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
-    zoom_join_url?: NullableStringFieldUpdateOperationsInput | string | null
+    meet_join_url?: NullableStringFieldUpdateOperationsInput | string | null
     intake_goal?: NullableStringFieldUpdateOperationsInput | string | null
     intake_challenges?: NullableStringFieldUpdateOperationsInput | string | null
     currency_paid?: StringFieldUpdateOperationsInput | string
     amount_paid?: FloatFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    timezone?: StringFieldUpdateOperationsInput | string
   }
 
   export type CouponUsageCreateManyCouponInput = {

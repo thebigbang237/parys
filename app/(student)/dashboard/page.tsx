@@ -207,9 +207,9 @@ export default async function DashboardPage() {
                         ? "Confirmée"
                         : "En attente"}
                     </span>
-                    {booking.zoom_join_url && (
+                    {booking.meet_join_url && (
                       <a
-                        href={booking.zoom_join_url}
+                        href={booking.meet_join_url}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="bg-[#ff63ce] text-white px-4 py-2 text-xs tracking-[1px] uppercase hover:bg-[#111] transition-colors"

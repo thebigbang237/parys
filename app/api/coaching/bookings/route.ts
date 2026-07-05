@@ -9,6 +9,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
+
   const {
     session_type_id,
     start_datetime,
@@ -17,6 +18,13 @@ export async function POST(req: Request) {
     intake_goal,
     intake_challenges,
   } = await req.json();
+
+  
+    // Get user's timezone
+  const user = await prisma.user.findUnique({
+    where: { id: session.user.id },
+    select: { timezone: true },
+  })
 
   const sessionType = await prisma.coachingSessionType.findUnique({
     where: { id: session_type_id, active: true },
@@ -65,6 +73,7 @@ export async function POST(req: Request) {
       amount_paid: amount,
       intake_goal: intake_goal || null,
       intake_challenges: intake_challenges || null,
+      timezone: user?.timezone || "Africa/Douala", 
     },
   });
 

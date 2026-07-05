@@ -28,6 +28,7 @@ model User {
   comments      Comment[]
   payments      Payment[]
   coupon_usages CouponUsage[]
+  timezone      String            @default("Africa/Douala")
 }
 
 enum Role {
@@ -199,7 +200,7 @@ model CoachingBooking {
   start_datetime    DateTime
   end_datetime      DateTime
   status            BookingStatus @default(PENDING)
-  zoom_join_url     String?
+  meet_join_url     String?
   intake_goal       String?       @db.Text
   intake_challenges String?       @db.Text
   currency_paid     String
@@ -210,6 +211,7 @@ model CoachingBooking {
   user         User                @relation(fields: [user_id], references: [id], onDelete: Cascade)
   session_type CoachingSessionType @relation(fields: [session_type_id], references: [id])
   payment      Payment?
+  timezone     String              @default("Africa/Douala")
 }
 
 enum BookingStatus {

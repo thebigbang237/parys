@@ -16,11 +16,13 @@ export default function RegisterPage() {
     setLoading(true);
     setError("");
 
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const form = new FormData(e.currentTarget);
     const result = await register({
       name: form.get("name") as string,
       email: form.get("email") as string,
       password: form.get("password") as string,
+      timezone,
     });
 
     if (result?.error) {

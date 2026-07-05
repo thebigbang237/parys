@@ -180,17 +180,11 @@ model CoachingSessionType {
 }
 
 model CoachingAvailability {
-  id          String  @id @default(cuid())
-  day_of_week Int // 0=Monday ... 6=Sunday
-  start_time  String // "09:00"
-  end_time    String // "17:00"
-  active      Boolean @default(true)
-}
-
-model CoachingException {
-  id     String   @id @default(cuid())
-  date   DateTime // specific date blocked
-  reason String?
+  id         String   @id @default(cuid())
+  date       DateTime @db.Date // specific calendar date
+  start_time String // "09:00"
+  end_time   String // "17:00"
+  active     Boolean  @default(true)
 }
 
 model CoachingBooking {

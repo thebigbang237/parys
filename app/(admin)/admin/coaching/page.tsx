@@ -10,17 +10,33 @@ const PAGE_SIZE = 20
 export default async function AdminCoachingPage({
   searchParams,
 }: {
-  searchParams: Promise<{ page?: string }>
+  searchParams: Promise<{
+    page?: string
+    availYear?: string
+    availMonth?: string
+  }>
 }) {
-  const { page: pageParam } = await searchParams
+  const {
+    page: pageParam,
+    availYear: availYearParam,
+    availMonth: availMonthParam,
+  } = await searchParams
   const page = Math.max(1, Number(pageParam) || 1)
 
-  const [sessionTypes, availabilities, bookings, bookingsTotal] = await Promise.all([
+  const now = new Date()
+  const availYear = Number(availYearParam) || now.getFullYear()
+  const availMonth = availMonthParam !== undefined ? Number(availMonthParam) : now.getMonth()
+
+  const monthStartUTC = new Date(Date.UTC(availYear, availMonth, 1))
+  const monthEndUTC = new Date(Date.UTC(availYear, availMonth + 1, 0))
+
+  const [sessionTypes, availabilitiesRaw, bookings, bookingsTotal] = await Promise.all([
     prisma.coachingSessionType.findMany({
       orderBy: { price_xaf: "asc" },
     }),
     prisma.coachingAvailability.findMany({
-      orderBy: { day_of_week: "asc" },
+      where: { date: { gte: monthStartUTC, lte: monthEndUTC } },
+      orderBy: { date: "asc" },
     }),
     prisma.coachingBooking.findMany({
       orderBy: { start_datetime: "desc" },
@@ -33,6 +49,11 @@ export default async function AdminCoachingPage({
     }),
     prisma.coachingBooking.count(),
   ])
+
+  const availabilities = availabilitiesRaw.map((a) => ({
+    ...a,
+    date: a.date.toISOString().slice(0, 10),
+  }))
 
   const totalPages = Math.max(1, Math.ceil(bookingsTotal / PAGE_SIZE))
 
@@ -47,7 +68,12 @@ export default async function AdminCoachingPage({
 
       <div className="grid grid-cols-2 gap-8">
         <SessionTypesManager initialSessionTypes={sessionTypes} />
-        <AvailabilityManager initialAvailabilities={availabilities} />
+        <AvailabilityManager
+          initialAvailabilities={availabilities}
+          year={availYear}
+          month={availMonth}
+          bookingsPage={page}
+        />
       </div>
 
       <div>
@@ -56,6 +82,10 @@ export default async function AdminCoachingPage({
           basePath="/admin/coaching"
           currentPage={page}
           totalPages={totalPages}
+          searchParams={{
+            availYear: String(availYear),
+            availMonth: String(availMonth),
+          }}
         />
       </div>
     </div>

@@ -229,16 +229,10 @@ exports.Prisma.CoachingSessionTypeScalarFieldEnum = {
 
 exports.Prisma.CoachingAvailabilityScalarFieldEnum = {
   id: 'id',
-  day_of_week: 'day_of_week',
+  date: 'date',
   start_time: 'start_time',
   end_time: 'end_time',
   active: 'active'
-};
-
-exports.Prisma.CoachingExceptionScalarFieldEnum = {
-  id: 'id',
-  date: 'date',
-  reason: 'reason'
 };
 
 exports.Prisma.CoachingBookingScalarFieldEnum = {
@@ -364,7 +358,6 @@ exports.Prisma.ModelName = {
   Comment: 'Comment',
   CoachingSessionType: 'CoachingSessionType',
   CoachingAvailability: 'CoachingAvailability',
-  CoachingException: 'CoachingException',
   CoachingBooking: 'CoachingBooking',
   Payment: 'Payment',
   Coupon: 'Coupon',

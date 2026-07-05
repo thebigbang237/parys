@@ -12,14 +12,15 @@ export async function getAvailableSlots(
 ): Promise<TimeSlot[]> {
   const { prisma } = await import("@/lib/prisma");
 
-  // day_of_week: 0=Monday, 6=Sunday
-  // JS getDay(): 0=Sunday, 1=Monday... so we adjust
-  const jsDay = date.getDay();
-  const ourDay = jsDay === 0 ? 6 : jsDay - 1;
+  // @db.Date columns are stored/returned as UTC-midnight instants —
+  // build the filter the same way regardless of server timezone.
+  const dateOnly = new Date(
+    Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()),
+  );
 
-  // Get availabilities for this day
+  // Get availabilities set for this specific date
   const availabilities = await prisma.coachingAvailability.findMany({
-    where: { day_of_week: ourDay, active: true },
+    where: { date: dateOnly, active: true },
   });
 
   if (availabilities.length === 0) return [];

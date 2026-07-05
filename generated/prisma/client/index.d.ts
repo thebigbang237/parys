@@ -69,11 +69,6 @@ export type CoachingSessionType = $Result.DefaultSelection<Prisma.$CoachingSessi
  */
 export type CoachingAvailability = $Result.DefaultSelection<Prisma.$CoachingAvailabilityPayload>
 /**
- * Model CoachingException
- * 
- */
-export type CoachingException = $Result.DefaultSelection<Prisma.$CoachingExceptionPayload>
-/**
  * Model CoachingBooking
  * 
  */
@@ -429,16 +424,6 @@ export class PrismaClient<
     * ```
     */
   get coachingAvailability(): Prisma.CoachingAvailabilityDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.coachingException`: Exposes CRUD operations for the **CoachingException** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more CoachingExceptions
-    * const coachingExceptions = await prisma.coachingException.findMany()
-    * ```
-    */
-  get coachingException(): Prisma.CoachingExceptionDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.coachingBooking`: Exposes CRUD operations for the **CoachingBooking** model.
@@ -924,7 +909,6 @@ export namespace Prisma {
     Comment: 'Comment',
     CoachingSessionType: 'CoachingSessionType',
     CoachingAvailability: 'CoachingAvailability',
-    CoachingException: 'CoachingException',
     CoachingBooking: 'CoachingBooking',
     Payment: 'Payment',
     Coupon: 'Coupon',
@@ -944,7 +928,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "account" | "session" | "verificationToken" | "course" | "module" | "lesson" | "enrollment" | "comment" | "coachingSessionType" | "coachingAvailability" | "coachingException" | "coachingBooking" | "payment" | "coupon" | "couponUsage"
+      modelProps: "user" | "account" | "session" | "verificationToken" | "course" | "module" | "lesson" | "enrollment" | "comment" | "coachingSessionType" | "coachingAvailability" | "coachingBooking" | "payment" | "coupon" | "couponUsage"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1762,80 +1746,6 @@ export namespace Prisma {
           }
         }
       }
-      CoachingException: {
-        payload: Prisma.$CoachingExceptionPayload<ExtArgs>
-        fields: Prisma.CoachingExceptionFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.CoachingExceptionFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CoachingExceptionPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.CoachingExceptionFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CoachingExceptionPayload>
-          }
-          findFirst: {
-            args: Prisma.CoachingExceptionFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CoachingExceptionPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.CoachingExceptionFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CoachingExceptionPayload>
-          }
-          findMany: {
-            args: Prisma.CoachingExceptionFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CoachingExceptionPayload>[]
-          }
-          create: {
-            args: Prisma.CoachingExceptionCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CoachingExceptionPayload>
-          }
-          createMany: {
-            args: Prisma.CoachingExceptionCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.CoachingExceptionCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CoachingExceptionPayload>[]
-          }
-          delete: {
-            args: Prisma.CoachingExceptionDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CoachingExceptionPayload>
-          }
-          update: {
-            args: Prisma.CoachingExceptionUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CoachingExceptionPayload>
-          }
-          deleteMany: {
-            args: Prisma.CoachingExceptionDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.CoachingExceptionUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.CoachingExceptionUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CoachingExceptionPayload>[]
-          }
-          upsert: {
-            args: Prisma.CoachingExceptionUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CoachingExceptionPayload>
-          }
-          aggregate: {
-            args: Prisma.CoachingExceptionAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateCoachingException>
-          }
-          groupBy: {
-            args: Prisma.CoachingExceptionGroupByArgs<ExtArgs>
-            result: $Utils.Optional<CoachingExceptionGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.CoachingExceptionCountArgs<ExtArgs>
-            result: $Utils.Optional<CoachingExceptionCountAggregateOutputType> | number
-          }
-        }
-      }
       CoachingBooking: {
         payload: Prisma.$CoachingBookingPayload<ExtArgs>
         fields: Prisma.CoachingBookingFieldRefs
@@ -2251,7 +2161,6 @@ export namespace Prisma {
     comment?: CommentOmit
     coachingSessionType?: CoachingSessionTypeOmit
     coachingAvailability?: CoachingAvailabilityOmit
-    coachingException?: CoachingExceptionOmit
     coachingBooking?: CoachingBookingOmit
     payment?: PaymentOmit
     coupon?: CouponOmit
@@ -14181,23 +14090,13 @@ export namespace Prisma {
 
   export type AggregateCoachingAvailability = {
     _count: CoachingAvailabilityCountAggregateOutputType | null
-    _avg: CoachingAvailabilityAvgAggregateOutputType | null
-    _sum: CoachingAvailabilitySumAggregateOutputType | null
     _min: CoachingAvailabilityMinAggregateOutputType | null
     _max: CoachingAvailabilityMaxAggregateOutputType | null
   }
 
-  export type CoachingAvailabilityAvgAggregateOutputType = {
-    day_of_week: number | null
-  }
-
-  export type CoachingAvailabilitySumAggregateOutputType = {
-    day_of_week: number | null
-  }
-
   export type CoachingAvailabilityMinAggregateOutputType = {
     id: string | null
-    day_of_week: number | null
+    date: Date | null
     start_time: string | null
     end_time: string | null
     active: boolean | null
@@ -14205,7 +14104,7 @@ export namespace Prisma {
 
   export type CoachingAvailabilityMaxAggregateOutputType = {
     id: string | null
-    day_of_week: number | null
+    date: Date | null
     start_time: string | null
     end_time: string | null
     active: boolean | null
@@ -14213,7 +14112,7 @@ export namespace Prisma {
 
   export type CoachingAvailabilityCountAggregateOutputType = {
     id: number
-    day_of_week: number
+    date: number
     start_time: number
     end_time: number
     active: number
@@ -14221,17 +14120,9 @@ export namespace Prisma {
   }
 
 
-  export type CoachingAvailabilityAvgAggregateInputType = {
-    day_of_week?: true
-  }
-
-  export type CoachingAvailabilitySumAggregateInputType = {
-    day_of_week?: true
-  }
-
   export type CoachingAvailabilityMinAggregateInputType = {
     id?: true
-    day_of_week?: true
+    date?: true
     start_time?: true
     end_time?: true
     active?: true
@@ -14239,7 +14130,7 @@ export namespace Prisma {
 
   export type CoachingAvailabilityMaxAggregateInputType = {
     id?: true
-    day_of_week?: true
+    date?: true
     start_time?: true
     end_time?: true
     active?: true
@@ -14247,7 +14138,7 @@ export namespace Prisma {
 
   export type CoachingAvailabilityCountAggregateInputType = {
     id?: true
-    day_of_week?: true
+    date?: true
     start_time?: true
     end_time?: true
     active?: true
@@ -14292,18 +14183,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: CoachingAvailabilityAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: CoachingAvailabilitySumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: CoachingAvailabilityMinAggregateInputType
@@ -14334,21 +14213,17 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: CoachingAvailabilityCountAggregateInputType | true
-    _avg?: CoachingAvailabilityAvgAggregateInputType
-    _sum?: CoachingAvailabilitySumAggregateInputType
     _min?: CoachingAvailabilityMinAggregateInputType
     _max?: CoachingAvailabilityMaxAggregateInputType
   }
 
   export type CoachingAvailabilityGroupByOutputType = {
     id: string
-    day_of_week: number
+    date: Date
     start_time: string
     end_time: string
     active: boolean
     _count: CoachingAvailabilityCountAggregateOutputType | null
-    _avg: CoachingAvailabilityAvgAggregateOutputType | null
-    _sum: CoachingAvailabilitySumAggregateOutputType | null
     _min: CoachingAvailabilityMinAggregateOutputType | null
     _max: CoachingAvailabilityMaxAggregateOutputType | null
   }
@@ -14369,7 +14244,7 @@ export namespace Prisma {
 
   export type CoachingAvailabilitySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    day_of_week?: boolean
+    date?: boolean
     start_time?: boolean
     end_time?: boolean
     active?: boolean
@@ -14377,7 +14252,7 @@ export namespace Prisma {
 
   export type CoachingAvailabilitySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    day_of_week?: boolean
+    date?: boolean
     start_time?: boolean
     end_time?: boolean
     active?: boolean
@@ -14385,7 +14260,7 @@ export namespace Prisma {
 
   export type CoachingAvailabilitySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    day_of_week?: boolean
+    date?: boolean
     start_time?: boolean
     end_time?: boolean
     active?: boolean
@@ -14393,20 +14268,20 @@ export namespace Prisma {
 
   export type CoachingAvailabilitySelectScalar = {
     id?: boolean
-    day_of_week?: boolean
+    date?: boolean
     start_time?: boolean
     end_time?: boolean
     active?: boolean
   }
 
-  export type CoachingAvailabilityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "day_of_week" | "start_time" | "end_time" | "active", ExtArgs["result"]["coachingAvailability"]>
+  export type CoachingAvailabilityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "date" | "start_time" | "end_time" | "active", ExtArgs["result"]["coachingAvailability"]>
 
   export type $CoachingAvailabilityPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "CoachingAvailability"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      day_of_week: number
+      date: Date
       start_time: string
       end_time: string
       active: boolean
@@ -14834,7 +14709,7 @@ export namespace Prisma {
    */
   interface CoachingAvailabilityFieldRefs {
     readonly id: FieldRef<"CoachingAvailability", 'String'>
-    readonly day_of_week: FieldRef<"CoachingAvailability", 'Int'>
+    readonly date: FieldRef<"CoachingAvailability", 'DateTime'>
     readonly start_time: FieldRef<"CoachingAvailability", 'String'>
     readonly end_time: FieldRef<"CoachingAvailability", 'String'>
     readonly active: FieldRef<"CoachingAvailability", 'Boolean'>
@@ -15206,980 +15081,6 @@ export namespace Prisma {
      * Omit specific fields from the CoachingAvailability
      */
     omit?: CoachingAvailabilityOmit<ExtArgs> | null
-  }
-
-
-  /**
-   * Model CoachingException
-   */
-
-  export type AggregateCoachingException = {
-    _count: CoachingExceptionCountAggregateOutputType | null
-    _min: CoachingExceptionMinAggregateOutputType | null
-    _max: CoachingExceptionMaxAggregateOutputType | null
-  }
-
-  export type CoachingExceptionMinAggregateOutputType = {
-    id: string | null
-    date: Date | null
-    reason: string | null
-  }
-
-  export type CoachingExceptionMaxAggregateOutputType = {
-    id: string | null
-    date: Date | null
-    reason: string | null
-  }
-
-  export type CoachingExceptionCountAggregateOutputType = {
-    id: number
-    date: number
-    reason: number
-    _all: number
-  }
-
-
-  export type CoachingExceptionMinAggregateInputType = {
-    id?: true
-    date?: true
-    reason?: true
-  }
-
-  export type CoachingExceptionMaxAggregateInputType = {
-    id?: true
-    date?: true
-    reason?: true
-  }
-
-  export type CoachingExceptionCountAggregateInputType = {
-    id?: true
-    date?: true
-    reason?: true
-    _all?: true
-  }
-
-  export type CoachingExceptionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which CoachingException to aggregate.
-     */
-    where?: CoachingExceptionWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CoachingExceptions to fetch.
-     */
-    orderBy?: CoachingExceptionOrderByWithRelationInput | CoachingExceptionOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: CoachingExceptionWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CoachingExceptions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CoachingExceptions.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned CoachingExceptions
-    **/
-    _count?: true | CoachingExceptionCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: CoachingExceptionMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: CoachingExceptionMaxAggregateInputType
-  }
-
-  export type GetCoachingExceptionAggregateType<T extends CoachingExceptionAggregateArgs> = {
-        [P in keyof T & keyof AggregateCoachingException]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateCoachingException[P]>
-      : GetScalarType<T[P], AggregateCoachingException[P]>
-  }
-
-
-
-
-  export type CoachingExceptionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CoachingExceptionWhereInput
-    orderBy?: CoachingExceptionOrderByWithAggregationInput | CoachingExceptionOrderByWithAggregationInput[]
-    by: CoachingExceptionScalarFieldEnum[] | CoachingExceptionScalarFieldEnum
-    having?: CoachingExceptionScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: CoachingExceptionCountAggregateInputType | true
-    _min?: CoachingExceptionMinAggregateInputType
-    _max?: CoachingExceptionMaxAggregateInputType
-  }
-
-  export type CoachingExceptionGroupByOutputType = {
-    id: string
-    date: Date
-    reason: string | null
-    _count: CoachingExceptionCountAggregateOutputType | null
-    _min: CoachingExceptionMinAggregateOutputType | null
-    _max: CoachingExceptionMaxAggregateOutputType | null
-  }
-
-  type GetCoachingExceptionGroupByPayload<T extends CoachingExceptionGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<CoachingExceptionGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof CoachingExceptionGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], CoachingExceptionGroupByOutputType[P]>
-            : GetScalarType<T[P], CoachingExceptionGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type CoachingExceptionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    date?: boolean
-    reason?: boolean
-  }, ExtArgs["result"]["coachingException"]>
-
-  export type CoachingExceptionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    date?: boolean
-    reason?: boolean
-  }, ExtArgs["result"]["coachingException"]>
-
-  export type CoachingExceptionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    date?: boolean
-    reason?: boolean
-  }, ExtArgs["result"]["coachingException"]>
-
-  export type CoachingExceptionSelectScalar = {
-    id?: boolean
-    date?: boolean
-    reason?: boolean
-  }
-
-  export type CoachingExceptionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "date" | "reason", ExtArgs["result"]["coachingException"]>
-
-  export type $CoachingExceptionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "CoachingException"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      date: Date
-      reason: string | null
-    }, ExtArgs["result"]["coachingException"]>
-    composites: {}
-  }
-
-  type CoachingExceptionGetPayload<S extends boolean | null | undefined | CoachingExceptionDefaultArgs> = $Result.GetResult<Prisma.$CoachingExceptionPayload, S>
-
-  type CoachingExceptionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<CoachingExceptionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: CoachingExceptionCountAggregateInputType | true
-    }
-
-  export interface CoachingExceptionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CoachingException'], meta: { name: 'CoachingException' } }
-    /**
-     * Find zero or one CoachingException that matches the filter.
-     * @param {CoachingExceptionFindUniqueArgs} args - Arguments to find a CoachingException
-     * @example
-     * // Get one CoachingException
-     * const coachingException = await prisma.coachingException.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends CoachingExceptionFindUniqueArgs>(args: SelectSubset<T, CoachingExceptionFindUniqueArgs<ExtArgs>>): Prisma__CoachingExceptionClient<$Result.GetResult<Prisma.$CoachingExceptionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one CoachingException that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {CoachingExceptionFindUniqueOrThrowArgs} args - Arguments to find a CoachingException
-     * @example
-     * // Get one CoachingException
-     * const coachingException = await prisma.coachingException.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends CoachingExceptionFindUniqueOrThrowArgs>(args: SelectSubset<T, CoachingExceptionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CoachingExceptionClient<$Result.GetResult<Prisma.$CoachingExceptionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first CoachingException that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CoachingExceptionFindFirstArgs} args - Arguments to find a CoachingException
-     * @example
-     * // Get one CoachingException
-     * const coachingException = await prisma.coachingException.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends CoachingExceptionFindFirstArgs>(args?: SelectSubset<T, CoachingExceptionFindFirstArgs<ExtArgs>>): Prisma__CoachingExceptionClient<$Result.GetResult<Prisma.$CoachingExceptionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first CoachingException that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CoachingExceptionFindFirstOrThrowArgs} args - Arguments to find a CoachingException
-     * @example
-     * // Get one CoachingException
-     * const coachingException = await prisma.coachingException.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends CoachingExceptionFindFirstOrThrowArgs>(args?: SelectSubset<T, CoachingExceptionFindFirstOrThrowArgs<ExtArgs>>): Prisma__CoachingExceptionClient<$Result.GetResult<Prisma.$CoachingExceptionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more CoachingExceptions that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CoachingExceptionFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all CoachingExceptions
-     * const coachingExceptions = await prisma.coachingException.findMany()
-     * 
-     * // Get first 10 CoachingExceptions
-     * const coachingExceptions = await prisma.coachingException.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const coachingExceptionWithIdOnly = await prisma.coachingException.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends CoachingExceptionFindManyArgs>(args?: SelectSubset<T, CoachingExceptionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CoachingExceptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a CoachingException.
-     * @param {CoachingExceptionCreateArgs} args - Arguments to create a CoachingException.
-     * @example
-     * // Create one CoachingException
-     * const CoachingException = await prisma.coachingException.create({
-     *   data: {
-     *     // ... data to create a CoachingException
-     *   }
-     * })
-     * 
-     */
-    create<T extends CoachingExceptionCreateArgs>(args: SelectSubset<T, CoachingExceptionCreateArgs<ExtArgs>>): Prisma__CoachingExceptionClient<$Result.GetResult<Prisma.$CoachingExceptionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many CoachingExceptions.
-     * @param {CoachingExceptionCreateManyArgs} args - Arguments to create many CoachingExceptions.
-     * @example
-     * // Create many CoachingExceptions
-     * const coachingException = await prisma.coachingException.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends CoachingExceptionCreateManyArgs>(args?: SelectSubset<T, CoachingExceptionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many CoachingExceptions and returns the data saved in the database.
-     * @param {CoachingExceptionCreateManyAndReturnArgs} args - Arguments to create many CoachingExceptions.
-     * @example
-     * // Create many CoachingExceptions
-     * const coachingException = await prisma.coachingException.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many CoachingExceptions and only return the `id`
-     * const coachingExceptionWithIdOnly = await prisma.coachingException.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends CoachingExceptionCreateManyAndReturnArgs>(args?: SelectSubset<T, CoachingExceptionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CoachingExceptionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a CoachingException.
-     * @param {CoachingExceptionDeleteArgs} args - Arguments to delete one CoachingException.
-     * @example
-     * // Delete one CoachingException
-     * const CoachingException = await prisma.coachingException.delete({
-     *   where: {
-     *     // ... filter to delete one CoachingException
-     *   }
-     * })
-     * 
-     */
-    delete<T extends CoachingExceptionDeleteArgs>(args: SelectSubset<T, CoachingExceptionDeleteArgs<ExtArgs>>): Prisma__CoachingExceptionClient<$Result.GetResult<Prisma.$CoachingExceptionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one CoachingException.
-     * @param {CoachingExceptionUpdateArgs} args - Arguments to update one CoachingException.
-     * @example
-     * // Update one CoachingException
-     * const coachingException = await prisma.coachingException.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends CoachingExceptionUpdateArgs>(args: SelectSubset<T, CoachingExceptionUpdateArgs<ExtArgs>>): Prisma__CoachingExceptionClient<$Result.GetResult<Prisma.$CoachingExceptionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more CoachingExceptions.
-     * @param {CoachingExceptionDeleteManyArgs} args - Arguments to filter CoachingExceptions to delete.
-     * @example
-     * // Delete a few CoachingExceptions
-     * const { count } = await prisma.coachingException.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends CoachingExceptionDeleteManyArgs>(args?: SelectSubset<T, CoachingExceptionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more CoachingExceptions.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CoachingExceptionUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many CoachingExceptions
-     * const coachingException = await prisma.coachingException.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends CoachingExceptionUpdateManyArgs>(args: SelectSubset<T, CoachingExceptionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more CoachingExceptions and returns the data updated in the database.
-     * @param {CoachingExceptionUpdateManyAndReturnArgs} args - Arguments to update many CoachingExceptions.
-     * @example
-     * // Update many CoachingExceptions
-     * const coachingException = await prisma.coachingException.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more CoachingExceptions and only return the `id`
-     * const coachingExceptionWithIdOnly = await prisma.coachingException.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends CoachingExceptionUpdateManyAndReturnArgs>(args: SelectSubset<T, CoachingExceptionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CoachingExceptionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one CoachingException.
-     * @param {CoachingExceptionUpsertArgs} args - Arguments to update or create a CoachingException.
-     * @example
-     * // Update or create a CoachingException
-     * const coachingException = await prisma.coachingException.upsert({
-     *   create: {
-     *     // ... data to create a CoachingException
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the CoachingException we want to update
-     *   }
-     * })
-     */
-    upsert<T extends CoachingExceptionUpsertArgs>(args: SelectSubset<T, CoachingExceptionUpsertArgs<ExtArgs>>): Prisma__CoachingExceptionClient<$Result.GetResult<Prisma.$CoachingExceptionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of CoachingExceptions.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CoachingExceptionCountArgs} args - Arguments to filter CoachingExceptions to count.
-     * @example
-     * // Count the number of CoachingExceptions
-     * const count = await prisma.coachingException.count({
-     *   where: {
-     *     // ... the filter for the CoachingExceptions we want to count
-     *   }
-     * })
-    **/
-    count<T extends CoachingExceptionCountArgs>(
-      args?: Subset<T, CoachingExceptionCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], CoachingExceptionCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a CoachingException.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CoachingExceptionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends CoachingExceptionAggregateArgs>(args: Subset<T, CoachingExceptionAggregateArgs>): Prisma.PrismaPromise<GetCoachingExceptionAggregateType<T>>
-
-    /**
-     * Group by CoachingException.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CoachingExceptionGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends CoachingExceptionGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: CoachingExceptionGroupByArgs['orderBy'] }
-        : { orderBy?: CoachingExceptionGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, CoachingExceptionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCoachingExceptionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the CoachingException model
-   */
-  readonly fields: CoachingExceptionFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for CoachingException.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__CoachingExceptionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the CoachingException model
-   */
-  interface CoachingExceptionFieldRefs {
-    readonly id: FieldRef<"CoachingException", 'String'>
-    readonly date: FieldRef<"CoachingException", 'DateTime'>
-    readonly reason: FieldRef<"CoachingException", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * CoachingException findUnique
-   */
-  export type CoachingExceptionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CoachingException
-     */
-    select?: CoachingExceptionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CoachingException
-     */
-    omit?: CoachingExceptionOmit<ExtArgs> | null
-    /**
-     * Filter, which CoachingException to fetch.
-     */
-    where: CoachingExceptionWhereUniqueInput
-  }
-
-  /**
-   * CoachingException findUniqueOrThrow
-   */
-  export type CoachingExceptionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CoachingException
-     */
-    select?: CoachingExceptionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CoachingException
-     */
-    omit?: CoachingExceptionOmit<ExtArgs> | null
-    /**
-     * Filter, which CoachingException to fetch.
-     */
-    where: CoachingExceptionWhereUniqueInput
-  }
-
-  /**
-   * CoachingException findFirst
-   */
-  export type CoachingExceptionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CoachingException
-     */
-    select?: CoachingExceptionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CoachingException
-     */
-    omit?: CoachingExceptionOmit<ExtArgs> | null
-    /**
-     * Filter, which CoachingException to fetch.
-     */
-    where?: CoachingExceptionWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CoachingExceptions to fetch.
-     */
-    orderBy?: CoachingExceptionOrderByWithRelationInput | CoachingExceptionOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for CoachingExceptions.
-     */
-    cursor?: CoachingExceptionWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CoachingExceptions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CoachingExceptions.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of CoachingExceptions.
-     */
-    distinct?: CoachingExceptionScalarFieldEnum | CoachingExceptionScalarFieldEnum[]
-  }
-
-  /**
-   * CoachingException findFirstOrThrow
-   */
-  export type CoachingExceptionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CoachingException
-     */
-    select?: CoachingExceptionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CoachingException
-     */
-    omit?: CoachingExceptionOmit<ExtArgs> | null
-    /**
-     * Filter, which CoachingException to fetch.
-     */
-    where?: CoachingExceptionWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CoachingExceptions to fetch.
-     */
-    orderBy?: CoachingExceptionOrderByWithRelationInput | CoachingExceptionOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for CoachingExceptions.
-     */
-    cursor?: CoachingExceptionWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CoachingExceptions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CoachingExceptions.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of CoachingExceptions.
-     */
-    distinct?: CoachingExceptionScalarFieldEnum | CoachingExceptionScalarFieldEnum[]
-  }
-
-  /**
-   * CoachingException findMany
-   */
-  export type CoachingExceptionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CoachingException
-     */
-    select?: CoachingExceptionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CoachingException
-     */
-    omit?: CoachingExceptionOmit<ExtArgs> | null
-    /**
-     * Filter, which CoachingExceptions to fetch.
-     */
-    where?: CoachingExceptionWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CoachingExceptions to fetch.
-     */
-    orderBy?: CoachingExceptionOrderByWithRelationInput | CoachingExceptionOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing CoachingExceptions.
-     */
-    cursor?: CoachingExceptionWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CoachingExceptions from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CoachingExceptions.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of CoachingExceptions.
-     */
-    distinct?: CoachingExceptionScalarFieldEnum | CoachingExceptionScalarFieldEnum[]
-  }
-
-  /**
-   * CoachingException create
-   */
-  export type CoachingExceptionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CoachingException
-     */
-    select?: CoachingExceptionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CoachingException
-     */
-    omit?: CoachingExceptionOmit<ExtArgs> | null
-    /**
-     * The data needed to create a CoachingException.
-     */
-    data: XOR<CoachingExceptionCreateInput, CoachingExceptionUncheckedCreateInput>
-  }
-
-  /**
-   * CoachingException createMany
-   */
-  export type CoachingExceptionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many CoachingExceptions.
-     */
-    data: CoachingExceptionCreateManyInput | CoachingExceptionCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * CoachingException createManyAndReturn
-   */
-  export type CoachingExceptionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CoachingException
-     */
-    select?: CoachingExceptionSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the CoachingException
-     */
-    omit?: CoachingExceptionOmit<ExtArgs> | null
-    /**
-     * The data used to create many CoachingExceptions.
-     */
-    data: CoachingExceptionCreateManyInput | CoachingExceptionCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * CoachingException update
-   */
-  export type CoachingExceptionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CoachingException
-     */
-    select?: CoachingExceptionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CoachingException
-     */
-    omit?: CoachingExceptionOmit<ExtArgs> | null
-    /**
-     * The data needed to update a CoachingException.
-     */
-    data: XOR<CoachingExceptionUpdateInput, CoachingExceptionUncheckedUpdateInput>
-    /**
-     * Choose, which CoachingException to update.
-     */
-    where: CoachingExceptionWhereUniqueInput
-  }
-
-  /**
-   * CoachingException updateMany
-   */
-  export type CoachingExceptionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update CoachingExceptions.
-     */
-    data: XOR<CoachingExceptionUpdateManyMutationInput, CoachingExceptionUncheckedUpdateManyInput>
-    /**
-     * Filter which CoachingExceptions to update
-     */
-    where?: CoachingExceptionWhereInput
-    /**
-     * Limit how many CoachingExceptions to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * CoachingException updateManyAndReturn
-   */
-  export type CoachingExceptionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CoachingException
-     */
-    select?: CoachingExceptionSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the CoachingException
-     */
-    omit?: CoachingExceptionOmit<ExtArgs> | null
-    /**
-     * The data used to update CoachingExceptions.
-     */
-    data: XOR<CoachingExceptionUpdateManyMutationInput, CoachingExceptionUncheckedUpdateManyInput>
-    /**
-     * Filter which CoachingExceptions to update
-     */
-    where?: CoachingExceptionWhereInput
-    /**
-     * Limit how many CoachingExceptions to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * CoachingException upsert
-   */
-  export type CoachingExceptionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CoachingException
-     */
-    select?: CoachingExceptionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CoachingException
-     */
-    omit?: CoachingExceptionOmit<ExtArgs> | null
-    /**
-     * The filter to search for the CoachingException to update in case it exists.
-     */
-    where: CoachingExceptionWhereUniqueInput
-    /**
-     * In case the CoachingException found by the `where` argument doesn't exist, create a new CoachingException with this data.
-     */
-    create: XOR<CoachingExceptionCreateInput, CoachingExceptionUncheckedCreateInput>
-    /**
-     * In case the CoachingException was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<CoachingExceptionUpdateInput, CoachingExceptionUncheckedUpdateInput>
-  }
-
-  /**
-   * CoachingException delete
-   */
-  export type CoachingExceptionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CoachingException
-     */
-    select?: CoachingExceptionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CoachingException
-     */
-    omit?: CoachingExceptionOmit<ExtArgs> | null
-    /**
-     * Filter which CoachingException to delete.
-     */
-    where: CoachingExceptionWhereUniqueInput
-  }
-
-  /**
-   * CoachingException deleteMany
-   */
-  export type CoachingExceptionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which CoachingExceptions to delete
-     */
-    where?: CoachingExceptionWhereInput
-    /**
-     * Limit how many CoachingExceptions to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * CoachingException without action
-   */
-  export type CoachingExceptionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CoachingException
-     */
-    select?: CoachingExceptionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CoachingException
-     */
-    omit?: CoachingExceptionOmit<ExtArgs> | null
   }
 
 
@@ -21168,22 +20069,13 @@ export namespace Prisma {
 
   export const CoachingAvailabilityScalarFieldEnum: {
     id: 'id',
-    day_of_week: 'day_of_week',
+    date: 'date',
     start_time: 'start_time',
     end_time: 'end_time',
     active: 'active'
   };
 
   export type CoachingAvailabilityScalarFieldEnum = (typeof CoachingAvailabilityScalarFieldEnum)[keyof typeof CoachingAvailabilityScalarFieldEnum]
-
-
-  export const CoachingExceptionScalarFieldEnum: {
-    id: 'id',
-    date: 'date',
-    reason: 'reason'
-  };
-
-  export type CoachingExceptionScalarFieldEnum = (typeof CoachingExceptionScalarFieldEnum)[keyof typeof CoachingExceptionScalarFieldEnum]
 
 
   export const CoachingBookingScalarFieldEnum: {
@@ -22203,7 +21095,7 @@ export namespace Prisma {
     OR?: CoachingAvailabilityWhereInput[]
     NOT?: CoachingAvailabilityWhereInput | CoachingAvailabilityWhereInput[]
     id?: StringFilter<"CoachingAvailability"> | string
-    day_of_week?: IntFilter<"CoachingAvailability"> | number
+    date?: DateTimeFilter<"CoachingAvailability"> | Date | string
     start_time?: StringFilter<"CoachingAvailability"> | string
     end_time?: StringFilter<"CoachingAvailability"> | string
     active?: BoolFilter<"CoachingAvailability"> | boolean
@@ -22211,7 +21103,7 @@ export namespace Prisma {
 
   export type CoachingAvailabilityOrderByWithRelationInput = {
     id?: SortOrder
-    day_of_week?: SortOrder
+    date?: SortOrder
     start_time?: SortOrder
     end_time?: SortOrder
     active?: SortOrder
@@ -22222,7 +21114,7 @@ export namespace Prisma {
     AND?: CoachingAvailabilityWhereInput | CoachingAvailabilityWhereInput[]
     OR?: CoachingAvailabilityWhereInput[]
     NOT?: CoachingAvailabilityWhereInput | CoachingAvailabilityWhereInput[]
-    day_of_week?: IntFilter<"CoachingAvailability"> | number
+    date?: DateTimeFilter<"CoachingAvailability"> | Date | string
     start_time?: StringFilter<"CoachingAvailability"> | string
     end_time?: StringFilter<"CoachingAvailability"> | string
     active?: BoolFilter<"CoachingAvailability"> | boolean
@@ -22230,15 +21122,13 @@ export namespace Prisma {
 
   export type CoachingAvailabilityOrderByWithAggregationInput = {
     id?: SortOrder
-    day_of_week?: SortOrder
+    date?: SortOrder
     start_time?: SortOrder
     end_time?: SortOrder
     active?: SortOrder
     _count?: CoachingAvailabilityCountOrderByAggregateInput
-    _avg?: CoachingAvailabilityAvgOrderByAggregateInput
     _max?: CoachingAvailabilityMaxOrderByAggregateInput
     _min?: CoachingAvailabilityMinOrderByAggregateInput
-    _sum?: CoachingAvailabilitySumOrderByAggregateInput
   }
 
   export type CoachingAvailabilityScalarWhereWithAggregatesInput = {
@@ -22246,52 +21136,10 @@ export namespace Prisma {
     OR?: CoachingAvailabilityScalarWhereWithAggregatesInput[]
     NOT?: CoachingAvailabilityScalarWhereWithAggregatesInput | CoachingAvailabilityScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"CoachingAvailability"> | string
-    day_of_week?: IntWithAggregatesFilter<"CoachingAvailability"> | number
+    date?: DateTimeWithAggregatesFilter<"CoachingAvailability"> | Date | string
     start_time?: StringWithAggregatesFilter<"CoachingAvailability"> | string
     end_time?: StringWithAggregatesFilter<"CoachingAvailability"> | string
     active?: BoolWithAggregatesFilter<"CoachingAvailability"> | boolean
-  }
-
-  export type CoachingExceptionWhereInput = {
-    AND?: CoachingExceptionWhereInput | CoachingExceptionWhereInput[]
-    OR?: CoachingExceptionWhereInput[]
-    NOT?: CoachingExceptionWhereInput | CoachingExceptionWhereInput[]
-    id?: StringFilter<"CoachingException"> | string
-    date?: DateTimeFilter<"CoachingException"> | Date | string
-    reason?: StringNullableFilter<"CoachingException"> | string | null
-  }
-
-  export type CoachingExceptionOrderByWithRelationInput = {
-    id?: SortOrder
-    date?: SortOrder
-    reason?: SortOrderInput | SortOrder
-  }
-
-  export type CoachingExceptionWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: CoachingExceptionWhereInput | CoachingExceptionWhereInput[]
-    OR?: CoachingExceptionWhereInput[]
-    NOT?: CoachingExceptionWhereInput | CoachingExceptionWhereInput[]
-    date?: DateTimeFilter<"CoachingException"> | Date | string
-    reason?: StringNullableFilter<"CoachingException"> | string | null
-  }, "id">
-
-  export type CoachingExceptionOrderByWithAggregationInput = {
-    id?: SortOrder
-    date?: SortOrder
-    reason?: SortOrderInput | SortOrder
-    _count?: CoachingExceptionCountOrderByAggregateInput
-    _max?: CoachingExceptionMaxOrderByAggregateInput
-    _min?: CoachingExceptionMinOrderByAggregateInput
-  }
-
-  export type CoachingExceptionScalarWhereWithAggregatesInput = {
-    AND?: CoachingExceptionScalarWhereWithAggregatesInput | CoachingExceptionScalarWhereWithAggregatesInput[]
-    OR?: CoachingExceptionScalarWhereWithAggregatesInput[]
-    NOT?: CoachingExceptionScalarWhereWithAggregatesInput | CoachingExceptionScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"CoachingException"> | string
-    date?: DateTimeWithAggregatesFilter<"CoachingException"> | Date | string
-    reason?: StringNullableWithAggregatesFilter<"CoachingException"> | string | null
   }
 
   export type CoachingBookingWhereInput = {
@@ -23452,7 +22300,7 @@ export namespace Prisma {
 
   export type CoachingAvailabilityCreateInput = {
     id?: string
-    day_of_week: number
+    date: Date | string
     start_time: string
     end_time: string
     active?: boolean
@@ -23460,7 +22308,7 @@ export namespace Prisma {
 
   export type CoachingAvailabilityUncheckedCreateInput = {
     id?: string
-    day_of_week: number
+    date: Date | string
     start_time: string
     end_time: string
     active?: boolean
@@ -23468,7 +22316,7 @@ export namespace Prisma {
 
   export type CoachingAvailabilityUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    day_of_week?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     start_time?: StringFieldUpdateOperationsInput | string
     end_time?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
@@ -23476,7 +22324,7 @@ export namespace Prisma {
 
   export type CoachingAvailabilityUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    day_of_week?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     start_time?: StringFieldUpdateOperationsInput | string
     end_time?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
@@ -23484,7 +22332,7 @@ export namespace Prisma {
 
   export type CoachingAvailabilityCreateManyInput = {
     id?: string
-    day_of_week: number
+    date: Date | string
     start_time: string
     end_time: string
     active?: boolean
@@ -23492,7 +22340,7 @@ export namespace Prisma {
 
   export type CoachingAvailabilityUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    day_of_week?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     start_time?: StringFieldUpdateOperationsInput | string
     end_time?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
@@ -23500,52 +22348,10 @@ export namespace Prisma {
 
   export type CoachingAvailabilityUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    day_of_week?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     start_time?: StringFieldUpdateOperationsInput | string
     end_time?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type CoachingExceptionCreateInput = {
-    id?: string
-    date: Date | string
-    reason?: string | null
-  }
-
-  export type CoachingExceptionUncheckedCreateInput = {
-    id?: string
-    date: Date | string
-    reason?: string | null
-  }
-
-  export type CoachingExceptionUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    reason?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type CoachingExceptionUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    reason?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type CoachingExceptionCreateManyInput = {
-    id?: string
-    date: Date | string
-    reason?: string | null
-  }
-
-  export type CoachingExceptionUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    reason?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type CoachingExceptionUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
-    reason?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type CoachingBookingCreateInput = {
@@ -24720,19 +23526,15 @@ export namespace Prisma {
 
   export type CoachingAvailabilityCountOrderByAggregateInput = {
     id?: SortOrder
-    day_of_week?: SortOrder
+    date?: SortOrder
     start_time?: SortOrder
     end_time?: SortOrder
     active?: SortOrder
   }
 
-  export type CoachingAvailabilityAvgOrderByAggregateInput = {
-    day_of_week?: SortOrder
-  }
-
   export type CoachingAvailabilityMaxOrderByAggregateInput = {
     id?: SortOrder
-    day_of_week?: SortOrder
+    date?: SortOrder
     start_time?: SortOrder
     end_time?: SortOrder
     active?: SortOrder
@@ -24740,32 +23542,10 @@ export namespace Prisma {
 
   export type CoachingAvailabilityMinOrderByAggregateInput = {
     id?: SortOrder
-    day_of_week?: SortOrder
+    date?: SortOrder
     start_time?: SortOrder
     end_time?: SortOrder
     active?: SortOrder
-  }
-
-  export type CoachingAvailabilitySumOrderByAggregateInput = {
-    day_of_week?: SortOrder
-  }
-
-  export type CoachingExceptionCountOrderByAggregateInput = {
-    id?: SortOrder
-    date?: SortOrder
-    reason?: SortOrder
-  }
-
-  export type CoachingExceptionMaxOrderByAggregateInput = {
-    id?: SortOrder
-    date?: SortOrder
-    reason?: SortOrder
-  }
-
-  export type CoachingExceptionMinOrderByAggregateInput = {
-    id?: SortOrder
-    date?: SortOrder
-    reason?: SortOrder
   }
 
   export type EnumBookingStatusFilter<$PrismaModel = never> = {

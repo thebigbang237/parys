@@ -13,10 +13,21 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
   }
 
-  const { day_of_week, start_time, end_time } = await req.json()
+  const { date, start_time, end_time } = await req.json()
+
+  if (!date || !start_time || !end_time) {
+    return NextResponse.json(
+      { error: "date, start_time and end_time are required" },
+      { status: 400 },
+    )
+  }
+
+  // Normalize to a UTC-midnight instant, matching how @db.Date is stored
+  const [y, m, d] = date.split("-").map(Number)
+  const dateUTC = new Date(Date.UTC(y, m - 1, d))
 
   const availability = await prisma.coachingAvailability.create({
-    data: { day_of_week, start_time, end_time, active: true },
+    data: { date: dateUTC, start_time, end_time, active: true },
   })
 
   return NextResponse.json(availability)

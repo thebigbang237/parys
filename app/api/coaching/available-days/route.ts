@@ -12,21 +12,21 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "year and month required" }, { status: 400 })
   }
 
-  // Get all active availabilities
+  // Get existing bookings for this month
+  const startOfMonth = new Date(year, month, 1)
+  const endOfMonth = new Date(year, month + 1, 0, 23, 59, 59)
+
+  // Get availabilities set for specific dates within this month
+  const monthStartUTC = new Date(Date.UTC(year, month, 1))
+  const monthEndUTC = new Date(Date.UTC(year, month + 1, 0))
+
   const availabilities = await prisma.coachingAvailability.findMany({
-    where: { active: true },
+    where: { active: true, date: { gte: monthStartUTC, lte: monthEndUTC } },
   })
 
   if (availabilities.length === 0) {
     return NextResponse.json({ availableDays: [] })
   }
-
-  // Get available day_of_week numbers (0=Monday)
-  const availableDayOfWeek = new Set(availabilities.map((a) => a.day_of_week))
-
-  // Get existing bookings for this month
-  const startOfMonth = new Date(year, month, 1)
-  const endOfMonth = new Date(year, month + 1, 0, 23, 59, 59)
 
   const bookings = await prisma.coachingBooking.findMany({
     where: {
@@ -46,16 +46,14 @@ export async function GET(req: Request) {
     const date = new Date(year, month, day)
     if (date < today) continue
 
-    // JS getDay(): 0=Sunday → convert to our 0=Monday
-    const jsDay = date.getDay()
-    const ourDay = jsDay === 0 ? 6 : jsDay - 1
-
-    if (!availableDayOfWeek.has(ourDay)) continue
+    const dateUTC = new Date(Date.UTC(year, month, day))
 
     // Check if at least one slot is available this day
     const dayAvailabilities = availabilities.filter(
-      (a) => a.day_of_week === ourDay
+      (a) => a.date.getTime() === dateUTC.getTime()
     )
+
+    if (dayAvailabilities.length === 0) continue
 
     let hasAvailableSlot = false
 

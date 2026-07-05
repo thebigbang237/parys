@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { ChevronUp, ChevronDown, Play, Lock } from "lucide-react";
 
 type Lesson = {
   id: string;
@@ -56,13 +57,17 @@ export default function CourseCurriculum({
                 {String(idx + 1).padStart(2, "0")}
               </span>
               <span className="font-medium text-gray-900">{module.title}</span>
-              <span className="text-xs text-gray-400">
+              <span className="text-xs text-gray-500">
                 {module.lessons.length} leçon
                 {module.lessons.length !== 1 ? "s" : ""}
               </span>
             </div>
-            <span className="text-[#ff63ce] text-xs">
-              {expanded.includes(module.id) ? "▲" : "▼"}
+            <span className="text-[#ff63ce]">
+              {expanded.includes(module.id) ? (
+                <ChevronUp size={16} />
+              ) : (
+                <ChevronDown size={16} />
+              )}
             </span>
           </button>
 
@@ -78,18 +83,17 @@ export default function CourseCurriculum({
                     </span>
 
                     <div className="flex-1 flex items-center gap-3">
-                      {/* Play / Lock icon */}
                       <span
                         className={
                           canAccess ? "text-[#ff63ce]" : "text-gray-200"
                         }
                       >
-                        {canAccess ? "▶" : "🔒"}
+                        {canAccess ? <Play size={14} /> : <Lock size={14} />}
                       </span>
 
                       <span
                         className={`text-sm ${
-                          canAccess ? "text-gray-700" : "text-gray-400"
+                          canAccess ? "text-gray-700" : "text-gray-500"
                         }`}
                       >
                         {lesson.title}
@@ -103,7 +107,7 @@ export default function CourseCurriculum({
                     </div>
 
                     {lesson.duration_seconds && (
-                      <span className="text-xs text-gray-400">
+                      <span className="text-xs text-gray-500">
                         {formatDuration(lesson.duration_seconds)}
                       </span>
                     )}

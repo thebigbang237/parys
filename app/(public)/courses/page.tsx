@@ -2,6 +2,7 @@
 import { prisma } from "@/lib/prisma"
 import { getUserGeoContext } from "@/lib/actions/geo.actions"
 import CourseCard from "./_components/CourseCard"
+import { Sparkles } from "lucide-react"
 
 export default async function CoursesPage() {
   const [courses, geo] = await Promise.all([
@@ -30,8 +31,8 @@ export default async function CoursesPage() {
       {/* Header */}
       <div className="bg-white border-b border-[#f0e0ec]">
         <div className="max-w-6xl mx-auto px-6 py-16">
-          <p className="text-xs tracking-[4px] uppercase text-[#ff63ce] mb-3">
-            ✦ Formations
+          <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-3">
+            <Sparkles size={12} /> Formations
           </p>
           <h1 className="font-serif text-4xl md:text-5xl font-medium text-gray-900 mb-4">
             Toutes les formations
@@ -47,7 +48,7 @@ export default async function CoursesPage() {
       <div className="max-w-6xl mx-auto px-6 py-16">
         {courses.length === 0 ? (
           <div className="text-center py-24">
-            <p className="text-gray-400">Aucune formation disponible pour l'instant.</p>
+            <p className="text-gray-500">Aucune formation disponible pour l'instant.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

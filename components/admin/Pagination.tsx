@@ -25,7 +25,7 @@ export default function Pagination({
 
   return (
     <div className="flex items-center justify-between mt-4">
-      <p className="text-xs text-gray-400">
+      <p className="text-xs text-gray-500">
         Page {currentPage} / {totalPages}
       </p>
       <div className="flex gap-2">

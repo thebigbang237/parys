@@ -16,7 +16,7 @@ export default async function AdminCouponsPage() {
 
   return (
     <div className="p-8">
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-8">
         <div>
           <p className="text-xs tracking-[3px] uppercase text-[#ff63ce] mb-1">
             Administration
@@ -25,20 +25,20 @@ export default async function AdminCouponsPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* New coupon form */}
-        <div className="col-span-1">
+        <div className="lg:col-span-1">
           <NewCouponForm />
         </div>
 
         {/* Coupons list */}
-        <div className="col-span-2">
+        <div className="lg:col-span-2">
           {coupons.length === 0 ? (
             <div className="border border-dashed border-gray-200 p-12 text-center">
-              <p className="text-gray-400 text-sm">Aucun code promo créé.</p>
+              <p className="text-gray-500 text-sm">Aucun code promo créé.</p>
             </div>
           ) : (
-            <div className="bg-white border border-gray-100 rounded overflow-hidden">
+            <div className="bg-white border border-gray-100 rounded overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-[#fdf0fa] border-b border-[#f0e0ec]">
                   <tr>

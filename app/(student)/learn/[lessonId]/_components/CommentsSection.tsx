@@ -99,7 +99,7 @@ function CommentItem({
             <span className="text-sm font-medium text-gray-900">
               {comment.user.name || "Anonyme"}
             </span>
-            <span className="text-xs text-gray-400">
+            <span className="text-xs text-gray-500">
               {new Date(comment.created_at).toLocaleDateString("fr-FR", {
                 day: "numeric",
                 month: "short",
@@ -111,7 +111,7 @@ function CommentItem({
           </p>
           <button
             onClick={() => setShowReplyBox(!showReplyBox)}
-            className="text-xs text-gray-400 hover:text-[#ff63ce] transition-colors mt-2"
+            className="text-xs text-gray-500 hover:text-[#ff63ce] transition-colors mt-2"
           >
             Répondre
           </button>
@@ -129,7 +129,7 @@ function CommentItem({
                   <span className="text-sm font-medium text-gray-900">
                     {reply.user.name || "Anonyme"}
                   </span>
-                  <span className="text-xs text-gray-400">
+                  <span className="text-xs text-gray-500">
                     {new Date(reply.created_at).toLocaleDateString("fr-FR", {
                       day: "numeric",
                       month: "short",
@@ -167,7 +167,7 @@ function CommentItem({
               </button>
               <button
                 onClick={() => setShowReplyBox(false)}
-                className="text-xs text-gray-400 hover:text-gray-600"
+                className="text-xs text-gray-500 hover:text-gray-600"
               >
                 Annuler
               </button>
@@ -250,7 +250,7 @@ export default function CommentsSection({
 
       {/* Comments list */}
       {comments.length === 0 ? (
-        <p className="text-gray-400 text-sm text-center py-8">
+        <p className="text-gray-500 text-sm text-center py-8">
           Sois la première à poser une question sur cette leçon.
         </p>
       ) : (

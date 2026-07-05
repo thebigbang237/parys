@@ -15,7 +15,7 @@ export default async function AdminCoursesPage() {
 
   return (
     <div className="p-8">
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-8">
         <div>
           <p className="text-xs tracking-[3px] uppercase text-[#ff63ce] mb-1">
             Administration
@@ -32,7 +32,7 @@ export default async function AdminCoursesPage() {
 
       {courses.length === 0 ? (
         <div className="border border-dashed border-gray-200 rounded p-16 text-center">
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-500 text-sm">
             Aucune formation pour l'instant.
           </p>
           <Link
@@ -43,7 +43,7 @@ export default async function AdminCoursesPage() {
           </Link>
         </div>
       ) : (
-        <div className="bg-white border border-gray-100 rounded overflow-hidden">
+        <div className="bg-white border border-gray-100 rounded overflow-x-auto">
           <table className="w-full">
             <thead className="bg-[#fdf0fa] border-b border-[#f0e0ec]">
               <tr>
@@ -72,7 +72,7 @@ export default async function AdminCoursesPage() {
                 >
                   <td className="px-6 py-4">
                     <div className="font-medium text-sm">{course.title}</div>
-                    <div className="text-xs text-gray-400 mt-0.5">
+                    <div className="text-xs text-gray-500 mt-0.5">
                       {course.slug}
                     </div>
                   </td>

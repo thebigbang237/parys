@@ -35,7 +35,7 @@ export default async function AdminCourseDetailPage({
   return (
     <div className="p-8">
       {/* Header */}
-      <div className="flex justify-between items-start mb-8">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-8">
         <div>
           <p className="text-xs tracking-[3px] uppercase text-[#ff63ce] mb-1">
             Formations / {course.title}
@@ -49,7 +49,7 @@ export default async function AdminCourseDetailPage({
             }`}>
               {course.status === "PUBLISHED" ? "Publié" : "Brouillon"}
             </span>
-            <span className="text-xs text-gray-400">
+            <span className="text-xs text-gray-500">
               {course._count.enrollments} inscription(s)
             </span>
           </div>
@@ -75,8 +75,8 @@ export default async function AdminCourseDetailPage({
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-8">
-        <div className="col-span-2">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2">
           <CourseModules course={course} />
         </div>
         <div>

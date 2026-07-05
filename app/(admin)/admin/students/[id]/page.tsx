@@ -44,7 +44,7 @@ export default async function AdminStudentDetailPage({
       <div>
         <Link
           href="/admin/students"
-          className="text-xs text-gray-400 hover:text-[#ff63ce] transition-colors"
+          className="text-xs text-gray-500 hover:text-[#ff63ce] transition-colors"
         >
           ← Étudiantes
         </Link>
@@ -63,7 +63,7 @@ export default async function AdminStudentDetailPage({
           </span>
         </div>
         <p className="text-sm text-gray-500 mt-1">{user.email}</p>
-        <p className="text-xs text-gray-400 mt-1">
+        <p className="text-xs text-gray-500 mt-1">
           {user.country || "Pays inconnu"} · Inscrite le{" "}
           {new Date(user.created_at).toLocaleDateString("fr-FR")}
         </p>
@@ -75,9 +75,9 @@ export default async function AdminStudentDetailPage({
           Formations ({user.enrollments.length})
         </h2>
         {user.enrollments.length === 0 ? (
-          <p className="text-sm text-gray-400">Aucune formation.</p>
+          <p className="text-sm text-gray-500">Aucune formation.</p>
         ) : (
-          <div className="bg-white border border-gray-100 rounded overflow-hidden">
+          <div className="bg-white border border-gray-100 rounded overflow-x-auto">
             <table className="w-full">
               <tbody className="divide-y divide-gray-50">
                 {user.enrollments.map((e) => (
@@ -85,7 +85,7 @@ export default async function AdminStudentDetailPage({
                     <td className="px-4 py-3 text-sm text-gray-900">
                       {e.course.title}
                     </td>
-                    <td className="px-4 py-3 text-xs text-gray-400 text-right">
+                    <td className="px-4 py-3 text-xs text-gray-500 text-right">
                       Inscrite le{" "}
                       {new Date(e.enrolled_at).toLocaleDateString("fr-FR")}
                     </td>
@@ -103,9 +103,9 @@ export default async function AdminStudentDetailPage({
           Sessions coaching ({user.bookings.length})
         </h2>
         {user.bookings.length === 0 ? (
-          <p className="text-sm text-gray-400">Aucune session.</p>
+          <p className="text-sm text-gray-500">Aucune session.</p>
         ) : (
-          <div className="bg-white border border-gray-100 rounded overflow-hidden">
+          <div className="bg-white border border-gray-100 rounded overflow-x-auto">
             <table className="w-full">
               <tbody className="divide-y divide-gray-50">
                 {user.bookings.map((b) => (
@@ -141,9 +141,9 @@ export default async function AdminStudentDetailPage({
           Paiements ({user.payments.length})
         </h2>
         {user.payments.length === 0 ? (
-          <p className="text-sm text-gray-400">Aucun paiement.</p>
+          <p className="text-sm text-gray-500">Aucun paiement.</p>
         ) : (
-          <div className="bg-white border border-gray-100 rounded overflow-hidden">
+          <div className="bg-white border border-gray-100 rounded overflow-x-auto">
             <table className="w-full">
               <tbody className="divide-y divide-gray-50">
                 {user.payments.map((p) => (

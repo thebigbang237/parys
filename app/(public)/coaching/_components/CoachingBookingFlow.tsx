@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { formatPrice } from "@/lib/utils";
 import { cn } from "@/lib/utils";
+import { Video, Calendar, FileText, ChevronLeft, ChevronRight } from "lucide-react";
 
 type SessionType = {
   id: string;
@@ -167,23 +168,23 @@ export default function CoachingBookingFlow({
           <div className="space-y-8">
             {[
               {
-                icon: "🎥",
+                icon: Video,
                 title: "Sessions visio",
                 desc: "60 minutes d'échange intense pour débloquer vos problématiques business spécifiques.",
               },
               {
-                icon: "📅",
+                icon: Calendar,
                 title: "Calendrier flexible",
                 desc: "Réservez votre créneau en fonction de vos disponibilités.",
               },
               {
-                icon: "📊",
+                icon: FileText,
                 title: "Suivi personnalisé",
                 desc: "Compte-rendu écrit et plan d'action concret après chaque séance.",
               },
             ].map((feature) => (
               <div key={feature.title} className="flex gap-5">
-                <span className="text-xl mt-0.5">{feature.icon}</span>
+                <feature.icon className="text-[#ff63ce] mt-0.5" size={22} />
                 <div>
                   <h4 className="text-xs tracking-[2px] uppercase font-medium text-gray-900 mb-1">
                     {feature.title}
@@ -224,7 +225,7 @@ export default function CoachingBookingFlow({
                       {formatPrice(type.price, currency as any)}
                     </span>
                   </div>
-                  <p className="text-xs text-gray-400">
+                  <p className="text-xs text-gray-500">
                     Session de {type.duration} minutes
                   </p>
                 </button>
@@ -256,7 +257,7 @@ export default function CoachingBookingFlow({
         <div className="flex items-center gap-4">
           <button
             onClick={() => setStep("select")}
-            className="text-xs text-gray-400 hover:text-gray-600"
+            className="text-xs text-gray-500 hover:text-gray-600"
           >
             ← Retour
           </button>
@@ -268,7 +269,7 @@ export default function CoachingBookingFlow({
           <p className="text-xs tracking-[4px] uppercase text-[#ff63ce] mb-2">
             02 — Choisir une date
           </p>
-          <p className="text-xs text-gray-400 mb-6">
+          <p className="text-xs text-gray-500 mb-6">
             Les dates disponibles sont mises en évidence en rose.
           </p>
 
@@ -277,25 +278,25 @@ export default function CoachingBookingFlow({
             <div className="flex items-center justify-between mb-6">
               <button
                 onClick={() => setCurrentMonth(new Date(year, month - 1, 1))}
-                className="text-gray-400 hover:text-gray-600 text-lg w-8 h-8 flex items-center justify-center"
+                className="text-gray-500 hover:text-gray-600 w-8 h-8 flex items-center justify-center"
               >
-                ‹
+                <ChevronLeft size={18} />
               </button>
               <span className="font-medium text-gray-900">
                 {MONTHS_FR[month]} {year}
               </span>
               <button
                 onClick={() => setCurrentMonth(new Date(year, month + 1, 1))}
-                className="text-gray-400 hover:text-gray-600 text-lg w-8 h-8 flex items-center justify-center"
+                className="text-gray-500 hover:text-gray-600 w-8 h-8 flex items-center justify-center"
               >
-                ›
+                <ChevronRight size={18} />
               </button>
             </div>
 
             {/* Day headers */}
             <div className="grid grid-cols-7 mb-2">
               {DAYS_FR.map((d) => (
-                <div key={d} className="text-center text-xs text-gray-400 py-1">
+                <div key={d} className="text-center text-xs text-gray-500 py-1">
                   {d}
                 </div>
               ))}
@@ -357,11 +358,11 @@ export default function CoachingBookingFlow({
             <div className="flex items-center gap-4 mt-4 pt-4 border-t border-[#f0e0ec]">
               <div className="flex items-center gap-1.5">
                 <div className="w-3 h-3 rounded ring-1 ring-[#f0e0ec] bg-white" />
-                <span className="text-xs text-gray-400">Disponible</span>
+                <span className="text-xs text-gray-500">Disponible</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <div className="w-3 h-3 rounded bg-gray-100" />
-                <span className="text-xs text-gray-400">Non disponible</span>
+                <span className="text-xs text-gray-500">Non disponible</span>
               </div>
             </div>
           </div>
@@ -379,7 +380,7 @@ export default function CoachingBookingFlow({
         <div className="flex items-center gap-4">
           <button
             onClick={() => setStep("calendar")}
-            className="text-xs text-gray-400 hover:text-gray-600"
+            className="text-xs text-gray-500 hover:text-gray-600"
           >
             ← Retour
           </button>
@@ -397,18 +398,18 @@ export default function CoachingBookingFlow({
           <p className="text-xs tracking-[4px] uppercase text-[#ff63ce] mb-2">
             03 — Choisir un créneau
           </p>
-          <p className="text-xs text-gray-400 mb-6">
+          <p className="text-xs text-gray-500 mb-6">
             Session de {selectedType?.duration} minutes
           </p>
 
           {loadingSlots ? (
-            <div className="flex items-center gap-3 text-gray-400">
+            <div className="flex items-center gap-3 text-gray-500">
               <div className="w-4 h-4 border-2 border-[#ff63ce] border-t-transparent rounded-full animate-spin" />
               Chargement des créneaux...
             </div>
           ) : availableSlots.length === 0 ? (
             <div className="bg-white border border-[#f0e0ec] p-8 text-center">
-              <p className="text-gray-400 mb-4">
+              <p className="text-gray-500 mb-4">
                 Aucun créneau disponible ce jour-là.
               </p>
               <button
@@ -442,7 +443,7 @@ export default function CoachingBookingFlow({
                         minute: "2-digit",
                       })}
                     </div>
-                    <div className="text-xs text-gray-400 mt-0.5">
+                    <div className="text-xs text-gray-500 mt-0.5">
                       →{" "}
                       {end.toLocaleTimeString("fr-FR", {
                         hour: "2-digit",
@@ -475,7 +476,7 @@ export default function CoachingBookingFlow({
         <div className="flex items-center gap-4">
           <button
             onClick={() => setStep("slots")}
-            className="text-xs text-gray-400 hover:text-gray-600"
+            className="text-xs text-gray-500 hover:text-gray-600"
           >
             ← Retour
           </button>
@@ -488,7 +489,7 @@ export default function CoachingBookingFlow({
 
           <div className="bg-white border border-[#f0e0ec] p-8 space-y-6">
             <div className="space-y-2">
-              <label className="text-xs tracking-[2px] uppercase text-gray-400">
+              <label className="text-xs tracking-[2px] uppercase text-gray-500">
                 Quel est votre objectif principal ?
               </label>
               <textarea
@@ -501,7 +502,7 @@ export default function CoachingBookingFlow({
             </div>
 
             <div className="space-y-2">
-              <label className="text-xs tracking-[2px] uppercase text-gray-400">
+              <label className="text-xs tracking-[2px] uppercase text-gray-500">
                 Quels défis rencontrez-vous ?
               </label>
               <textarea

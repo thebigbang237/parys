@@ -3,6 +3,7 @@ import { auth } from "@/auth"
 import { prisma } from "@/lib/prisma"
 import { redirect } from "next/navigation"
 import CheckoutClient from "./_components/CheckoutClient"
+import { Sparkles } from "lucide-react"
 
 export default async function CheckoutPage({
   searchParams,
@@ -49,8 +50,8 @@ export default async function CheckoutPage({
     return (
       <div className="min-h-screen bg-[#fcf8f8] py-16">
         <div className="max-w-4xl mx-auto px-6">
-          <p className="text-xs tracking-[4px] uppercase text-[#ff63ce] mb-3">
-            ✦ Paiement sécurisé
+          <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-3">
+            <Sparkles size={12} /> Paiement sécurisé
           </p>
           <h1 className="font-serif text-3xl font-medium text-gray-900 mb-12">
             Finaliser ma réservation
@@ -108,8 +109,8 @@ export default async function CheckoutPage({
   return (
     <div className="min-h-screen bg-[#fcf8f8] py-16">
       <div className="max-w-4xl mx-auto px-6">
-        <p className="text-xs tracking-[4px] uppercase text-[#ff63ce] mb-3">
-          ✦ Paiement sécurisé
+        <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-3">
+          <Sparkles size={12} /> Paiement sécurisé
         </p>
         <h1 className="font-serif text-3xl font-medium text-gray-900 mb-12">
           Finaliser mon inscription

@@ -84,10 +84,10 @@ export default function BookingsList({
 
       {bookings.length === 0 ? (
         <div className="border border-dashed border-gray-200 p-12 text-center">
-          <p className="text-gray-400 text-sm">Aucune réservation</p>
+          <p className="text-gray-500 text-sm">Aucune réservation</p>
         </div>
       ) : (
-        <div className="bg-white border border-gray-100 rounded overflow-hidden">
+        <div className="bg-white border border-gray-100 rounded overflow-x-auto">
           <table className="w-full">
             <thead className="bg-[#fdf0fa] border-b border-[#f0e0ec]">
               <tr>
@@ -108,13 +108,13 @@ export default function BookingsList({
                     <p className="text-sm font-medium text-gray-900">
                       {booking.user.name || "—"}
                     </p>
-                    <p className="text-xs text-gray-400">{booking.user.email}</p>
+                    <p className="text-xs text-gray-500">{booking.user.email}</p>
                   </td>
                   <td className="px-4 py-3">
                     <p className="text-sm text-gray-700">
                       {booking.session_type.name}
                     </p>
-                    <p className="text-xs text-gray-400">
+                    <p className="text-xs text-gray-500">
                       {booking.session_type.duration} min
                     </p>
                   </td>
@@ -125,7 +125,7 @@ export default function BookingsList({
                       year: "numeric",
                     })}
                     <br />
-                    <span className="text-xs text-gray-400">
+                    <span className="text-xs text-gray-500">
                       {new Date(booking.start_datetime).toLocaleTimeString("fr-FR", {
                         hour: "2-digit",
                         minute: "2-digit",

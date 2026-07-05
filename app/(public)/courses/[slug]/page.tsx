@@ -7,6 +7,7 @@ import Image from "next/image"
 import { formatPrice } from "@/lib/utils"
 import EnrollButton from "../_components/EnrollButton"
 import CourseCurriculum from "../_components/CourseCurriculum"
+import { Check, Sparkles } from "lucide-react"
 
 export default async function CourseDetailPage({
   params,
@@ -81,8 +82,8 @@ export default async function CourseDetailPage({
       <div className="bg-white border-b border-[#f0e0ec]">
         <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <p className="text-xs tracking-[4px] uppercase text-[#ff63ce] mb-4">
-              ✦ Formation
+            <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-4">
+              <Sparkles size={12} /> Formation
             </p>
             <h1 className="font-serif text-4xl md:text-5xl font-medium text-gray-900 mb-6 leading-tight">
               {course.title}
@@ -106,7 +107,7 @@ export default async function CourseDetailPage({
                   <div className="font-serif text-2xl font-medium text-gray-900">
                     {stat.value}
                   </div>
-                  <div className="text-xs tracking-[2px] uppercase text-gray-400 mt-1">
+                  <div className="text-xs tracking-[2px] uppercase text-gray-500 mt-1">
                     {stat.label}
                   </div>
                 </div>
@@ -122,7 +123,7 @@ export default async function CourseDetailPage({
                     : formatPrice(price, geo.currency)}
                 </div>
                 {!course.is_free && geo.currency !== "XAF" && (
-                  <div className="text-xs text-gray-400 mt-1">
+                  <div className="text-xs text-gray-500 mt-1">
                     ≈ {formatPrice(course.price_xaf, "XAF")}
                   </div>
                 )}
@@ -166,8 +167,8 @@ export default async function CourseDetailPage({
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-3 gap-12">
           <div className="md:col-span-2">
-            <p className="text-xs tracking-[4px] uppercase text-[#ff63ce] mb-4">
-              ✦ Programme
+            <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-4">
+              <Sparkles size={12} /> Programme
             </p>
             <h2 className="font-serif text-3xl font-medium text-gray-900 mb-8">
               Ce que tu vas apprendre
@@ -181,7 +182,7 @@ export default async function CourseDetailPage({
           {/* Sticky sidebar */}
           <div className="hidden md:block">
             <div className="sticky top-8 bg-white border border-[#f0e0ec] p-6 space-y-4">
-              <p className="text-xs tracking-[3px] uppercase text-gray-400">
+              <p className="text-xs tracking-[3px] uppercase text-gray-500">
                 Cette formation inclut
               </p>
               {[
@@ -199,7 +200,7 @@ export default async function CourseDetailPage({
                     key={item}
                     className="flex items-center gap-3 text-sm text-gray-600"
                   >
-                    <span className="text-[#ff63ce]">✓</span>
+                    <Check size={16} className="text-[#ff63ce]" />
                     {item}
                   </div>
                 ))}

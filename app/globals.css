@@ -8,19 +8,23 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  /* Names are inverted on purpose: the codebase already uses `font-serif`
+     everywhere as its "important/display heading" class, so it points to
+     Inter. Body text has no explicit class and uses `font-sans` (the
+     Tailwind default), which points to Merriweather. */
+  --font-sans: var(--font-merriweather);
+  --font-serif: var(--font-inter);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-merriweather), Georgia, serif;
 }

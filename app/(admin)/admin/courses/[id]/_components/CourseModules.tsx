@@ -9,6 +9,14 @@ import {
   deleteLesson,
   updateLesson,
 } from "@/lib/actions/course.actions";
+import {
+  ChevronDown,
+  ChevronRight,
+  GripVertical,
+  CheckCircle2,
+  Upload,
+  X,
+} from "lucide-react";
 
 type Lesson = {
   id: string;
@@ -58,7 +66,7 @@ export default function CourseModules({ course }: { course: Course }) {
         <h2 className="text-xs tracking-[3px] uppercase text-gray-500 font-medium">
           Curriculum
         </h2>
-        <span className="text-xs text-gray-400">
+        <span className="text-xs text-gray-500">
           {course.modules.length} module(s)
         </span>
       </div>
@@ -73,11 +81,15 @@ export default function CourseModules({ course }: { course: Course }) {
               onClick={() => toggleModule(module.id)}
               className="flex items-center gap-2 text-left flex-1"
             >
-              <span className="text-[#ff63ce] text-xs">
-                {expandedModules.includes(module.id) ? "▼" : "▶"}
+              <span className="text-[#ff63ce]">
+                {expandedModules.includes(module.id) ? (
+                  <ChevronDown size={14} />
+                ) : (
+                  <ChevronRight size={14} />
+                )}
               </span>
               <span className="font-medium text-sm">{module.title}</span>
-              <span className="text-xs text-gray-400 ml-2">
+              <span className="text-xs text-gray-500 ml-2">
                 ({module.lessons.length} leçon
                 {module.lessons.length !== 1 ? "s" : ""})
               </span>
@@ -178,15 +190,17 @@ function LessonRow({ lesson, courseId }: { lesson: Lesson; courseId: string }) {
 
   return (
     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded group">
-      <span className="text-gray-300 text-xs">☰</span>
+      <GripVertical size={16} className="text-gray-300" />
 
       <div className="flex-1 min-w-0">
         <div className="text-sm font-medium truncate">{lesson.title}</div>
         <div className="flex items-center gap-2 mt-0.5">
           {videoId ? (
-            <span className="text-xs text-green-600">✓ Vidéo uploadée</span>
+            <span className="flex items-center gap-1 text-xs text-green-600">
+              <CheckCircle2 size={12} /> Vidéo uploadée
+            </span>
           ) : (
-            <span className="text-xs text-gray-400">Pas de vidéo</span>
+            <span className="text-xs text-gray-500">Pas de vidéo</span>
           )}
           {lesson.is_preview && (
             <span className="text-xs bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded">
@@ -226,9 +240,15 @@ function LessonRow({ lesson, courseId }: { lesson: Lesson; courseId: string }) {
           />
           <button
             onClick={() => fileInputRef.current?.click()}
-            className="text-xs text-[#ff63ce] hover:underline opacity-0 group-hover:opacity-100 transition-opacity"
+            className="flex items-center gap-1 text-xs text-[#ff63ce] hover:underline opacity-0 group-hover:opacity-100 transition-opacity"
           >
-            {videoId ? "Remplacer" : "↑ Upload"}
+            {videoId ? (
+              "Remplacer"
+            ) : (
+              <>
+                <Upload size={12} /> Upload
+              </>
+            )}
           </button>
         </>
       )}
@@ -239,9 +259,9 @@ function LessonRow({ lesson, courseId }: { lesson: Lesson; courseId: string }) {
             await deleteLesson(lesson.id, courseId);
           }
         }}
-        className="text-xs text-red-400 hover:text-red-600 opacity-0 group-hover:opacity-100 transition-opacity"
+        className="text-red-400 hover:text-red-600 opacity-0 group-hover:opacity-100 transition-opacity"
       >
-        ✕
+        <X size={14} />
       </button>
     </div>
   );

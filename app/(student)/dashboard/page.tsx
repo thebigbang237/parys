@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import Image from "next/image";
+import { Sparkles } from "lucide-react";
 
 export default async function DashboardPage() {
   const session = await auth();
@@ -53,13 +54,13 @@ export default async function DashboardPage() {
       {/* Header */}
       <div className="bg-white border-b border-[#f0e0ec] px-6 py-8">
         <div className="max-w-5xl mx-auto">
-          <p className="text-xs tracking-[4px] uppercase text-[#ff63ce] mb-2">
-            ✦ Mon espace
+          <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-2">
+            <Sparkles size={12} /> Mon espace
           </p>
           <h1 className="font-serif text-3xl font-medium text-gray-900">
             Bonjour, {firstName} 👋
           </h1>
-          <p className="text-gray-400 text-sm mt-1">
+          <p className="text-gray-500 text-sm mt-1">
             {enrollments.length} formation{enrollments.length !== 1 ? "s" : ""}{" "}
             · {bookings.length} session{bookings.length !== 1 ? "s" : ""} à
             venir
@@ -84,7 +85,7 @@ export default async function DashboardPage() {
 
           {enrollments.length === 0 ? (
             <div className="border border-dashed border-[#f0e0ec] bg-white p-16 text-center">
-              <p className="text-gray-400 text-sm mb-4">
+              <p className="text-gray-500 text-sm mb-4">
                 Tu n'es inscrite à aucune formation pour l'instant.
               </p>
               <Link
@@ -129,7 +130,7 @@ export default async function DashboardPage() {
                       <h3 className="font-serif text-xl font-medium text-gray-900 mb-2">
                         {course.title}
                       </h3>
-                      <div className="flex gap-4 text-xs text-gray-400 mb-6">
+                      <div className="flex gap-4 text-xs text-gray-500 mb-6">
                         <span>{course.modules.length} modules</span>
                         <span>·</span>
                         <span>{lessons} leçons</span>
@@ -150,7 +151,7 @@ export default async function DashboardPage() {
                           Continuer la formation →
                         </Link>
                       ) : (
-                        <div className="w-full bg-gray-100 text-gray-400 py-3 text-xs tracking-[2px] uppercase text-center">
+                        <div className="w-full bg-gray-100 text-gray-500 py-3 text-xs tracking-[2px] uppercase text-center">
                           Contenu bientôt disponible
                         </div>
                       )}
@@ -178,7 +179,7 @@ export default async function DashboardPage() {
                     <p className="font-medium text-sm text-gray-900">
                       {booking.session_type.name}
                     </p>
-                    <p className="text-xs text-gray-400 mt-1">
+                    <p className="text-xs text-gray-500 mt-1">
                       {new Date(booking.start_datetime).toLocaleDateString(
                         "fr-FR",
                         {

@@ -40,7 +40,7 @@ export default function LoginPage() {
             La plateforme de référence pour les créatrices de contenu
             ambitieuses en Afrique.
           </p>
-          <div className="text-xs tracking-[4px] text-gray-400 uppercase">
+          <div className="text-xs tracking-[4px] text-gray-500 uppercase">
             by Parys Batonda
           </div>
         </div>
@@ -116,7 +116,7 @@ export default function LoginPage() {
               <div className="w-full border-t border-gray-100" />
             </div>
             <div className="relative flex justify-center">
-              <span className="bg-white px-4 text-xs text-gray-400 uppercase tracking-[2px]">
+              <span className="bg-white px-4 text-xs text-gray-500 uppercase tracking-[2px]">
                 ou
               </span>
             </div>

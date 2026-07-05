@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { getUserGeoContext } from "@/lib/actions/geo.actions";
 import { formatPrice } from "@/lib/utils";
 import Image from "next/image";
+import { Video, Calendar, FileText, Sparkles } from "lucide-react";
 
 export default async function HomePage() {
   const [courses, geo, coachingSessions] = await Promise.all([
@@ -36,8 +37,8 @@ export default async function HomePage() {
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-16 items-center">
         <div>
-          <p className="text-xs tracking-[4px] uppercase text-[#ff63ce] mb-6">
-            ✦ Content Level Up Academy
+          <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-6">
+            <Sparkles size={12} /> Content Level Up Academy
           </p>
           <h1 className="font-serif text-5xl md:text-6xl font-medium text-gray-900 leading-tight mb-8">
             Construis ton succès avec{" "}
@@ -73,7 +74,7 @@ export default async function HomePage() {
                 <div className="font-serif text-2xl font-medium text-gray-900">
                   {s.value}
                 </div>
-                <div className="text-xs tracking-[2px] uppercase text-gray-400 mt-1">
+                <div className="text-xs tracking-[2px] uppercase text-gray-500 mt-1">
                   {s.label}
                 </div>
               </div>
@@ -105,8 +106,8 @@ export default async function HomePage() {
           <div className="max-w-6xl mx-auto px-6">
             <div className="flex justify-between items-end mb-12">
               <div>
-                <p className="text-xs tracking-[4px] uppercase text-[#ff63ce] mb-3">
-                  ✦ Mes formations
+                <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-3">
+                  <Sparkles size={12} /> Mes formations
                 </p>
                 <h2 className="font-serif text-4xl font-medium text-gray-900">
                   Des programmes pensés pour toi
@@ -192,23 +193,23 @@ export default async function HomePage() {
               <div className="space-y-10">
                 {[
                   {
-                    icon: "🎥",
+                    icon: Video,
                     title: "Sessions visio",
                     desc: "60 minutes d'échange intense pour débloquer vos problématiques business spécifiques.",
                   },
                   {
-                    icon: "📅",
+                    icon: Calendar,
                     title: "Calendrier flexible",
                     desc: "Réservez votre créneau en fonction de vos disponibilités.",
                   },
                   {
-                    icon: "📊",
+                    icon: FileText,
                     title: "Suivi personnalisé",
                     desc: "Compte-rendu écrit et plan d'action concret après chaque séance.",
                   },
                 ].map((f) => (
                   <div key={f.title} className="flex gap-5">
-                    <span className="text-xl mt-0.5">{f.icon}</span>
+                    <f.icon className="text-[#ff63ce] mt-0.5" size={22} />
                     <div>
                       <h4 className="text-xs tracking-[2px] uppercase font-medium text-gray-900 mb-1">
                         {f.title}
@@ -229,7 +230,7 @@ export default async function HomePage() {
                   Réserver une séance
                 </h3>
                 {coachingSessions.length === 0 ? (
-                  <p className="text-sm text-gray-400 text-center py-4">
+                  <p className="text-sm text-gray-500 text-center py-4">
                     Sessions bientôt disponibles
                   </p>
                 ) : (
@@ -257,7 +258,7 @@ export default async function HomePage() {
                           )}
                         </span>
                       </div>
-                      <p className="text-xs text-gray-400">
+                      <p className="text-xs text-gray-500">
                         Session de {s.duration} minutes
                       </p>
                     </div>
@@ -278,7 +279,7 @@ export default async function HomePage() {
       {/* Payment methods */}
       <section className="py-12 border-b border-[#f0e0ec]">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs tracking-[4px] uppercase text-gray-400 text-center mb-6">
+          <p className="text-xs tracking-[4px] uppercase text-gray-500 text-center mb-6">
             Moyens de paiement acceptés
           </p>
           <div className="flex flex-wrap justify-center gap-4">

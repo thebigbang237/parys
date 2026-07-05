@@ -112,7 +112,7 @@ export default function ImageUpload({
           </div>
         ) : (
           // Empty state
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-gray-400">
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-gray-500">
             <svg
               className="w-8 h-8"
               fill="none"
@@ -130,7 +130,7 @@ export default function ImageUpload({
               <p className="text-xs font-medium text-gray-500">
                 Glisse une image ici
               </p>
-              <p className="text-xs text-gray-400 mt-0.5">
+              <p className="text-xs text-gray-500 mt-0.5">
                 ou clique pour choisir
               </p>
               <p className="text-xs text-gray-300 mt-1">

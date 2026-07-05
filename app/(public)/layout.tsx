@@ -57,7 +57,7 @@ export default async function PublicLayout({
                   </Link>
                 )}
                 <form action={logout}>
-                  <button className="text-xs tracking-[2px] uppercase text-gray-400 hover:text-gray-900 transition-colors">
+                  <button className="text-xs tracking-[2px] uppercase text-gray-500 hover:text-gray-900 transition-colors">
                     Déconnexion
                   </button>
                 </form>
@@ -100,7 +100,7 @@ export default async function PublicLayout({
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-xs tracking-[2px] uppercase text-gray-400 hover:text-white transition-colors"
+                className="text-xs tracking-[2px] uppercase text-gray-500 hover:text-white transition-colors"
               >
                 {link.label}
               </Link>

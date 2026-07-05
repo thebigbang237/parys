@@ -57,7 +57,7 @@ export default function NewCouponForm() {
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="space-y-1">
-          <label className="text-xs text-gray-400 uppercase tracking-[1px]">
+          <label className="text-xs text-gray-500 uppercase tracking-[1px]">
             Code *
           </label>
           <input
@@ -69,7 +69,7 @@ export default function NewCouponForm() {
         </div>
 
         <div className="space-y-1">
-          <label className="text-xs text-gray-400 uppercase tracking-[1px]">
+          <label className="text-xs text-gray-500 uppercase tracking-[1px]">
             Type de réduction
           </label>
           <div className="flex gap-2">
@@ -91,7 +91,7 @@ export default function NewCouponForm() {
         </div>
 
         <div className="space-y-1">
-          <label className="text-xs text-gray-400 uppercase tracking-[1px]">
+          <label className="text-xs text-gray-500 uppercase tracking-[1px]">
             Valeur * {discountType === "PERCENTAGE" ? "(%)" : "(XAF)"}
           </label>
           <input
@@ -106,7 +106,7 @@ export default function NewCouponForm() {
         </div>
 
         <div className="space-y-1">
-          <label className="text-xs text-gray-400 uppercase tracking-[1px]">
+          <label className="text-xs text-gray-500 uppercase tracking-[1px]">
             Date d'expiration
           </label>
           <input
@@ -120,7 +120,7 @@ export default function NewCouponForm() {
         </div>
 
         <div className="space-y-1">
-          <label className="text-xs text-gray-400 uppercase tracking-[1px]">
+          <label className="text-xs text-gray-500 uppercase tracking-[1px]">
             Limite d'utilisation
           </label>
           <input

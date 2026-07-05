@@ -4,9 +4,13 @@
 import { useState } from "react";
 import { updateCourse } from "@/lib/actions/course.actions";
 import ImageUpload from "@/components/admin/ImageUpload";
+import { Check, X } from "lucide-react";
 
 export default function CourseForm({ course }: { course: any }) {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
   const [thumbnailUrl, setThumbnailUrl] = useState(course.thumbnail_url || "");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -16,10 +20,10 @@ export default function CourseForm({ course }: { course: any }) {
 
     const result = await updateCourse(course.id, formData);
     if (result?.error) {
-      setMessage("❌ " + result.error);
+      setMessage({ type: "error", text: result.error });
     } else {
-      setMessage("✓ Sauvegardé");
-      setTimeout(() => setMessage(""), 3000);
+      setMessage({ type: "success", text: "Sauvegardé" });
+      setTimeout(() => setMessage(null), 3000);
     }
   }
 
@@ -39,7 +43,7 @@ export default function CourseForm({ course }: { course: any }) {
         />
 
         <div className="space-y-1">
-          <label className="text-xs text-gray-400 uppercase tracking-[1px]">
+          <label className="text-xs text-gray-500 uppercase tracking-[1px]">
             Titre
           </label>
           <input
@@ -51,7 +55,7 @@ export default function CourseForm({ course }: { course: any }) {
         </div>
 
         <div className="space-y-1">
-          <label className="text-xs text-gray-400 uppercase tracking-[1px]">
+          <label className="text-xs text-gray-500 uppercase tracking-[1px]">
             Description
           </label>
           <textarea
@@ -70,7 +74,7 @@ export default function CourseForm({ course }: { course: any }) {
             { name: "price_eur", label: "EUR", value: course.price_eur },
           ].map((f) => (
             <div key={f.name} className="space-y-1">
-              <label className="text-xs text-gray-400 uppercase tracking-[1px]">
+              <label className="text-xs text-gray-500 uppercase tracking-[1px]">
                 Prix {f.label}
               </label>
               <input
@@ -105,7 +109,18 @@ export default function CourseForm({ course }: { course: any }) {
         </button>
 
         {message && (
-          <p className="text-xs text-center text-green-600">{message}</p>
+          <p
+            className={`flex items-center justify-center gap-1.5 text-xs ${
+              message.type === "success" ? "text-green-600" : "text-red-600"
+            }`}
+          >
+            {message.type === "success" ? (
+              <Check size={14} />
+            ) : (
+              <X size={14} />
+            )}
+            {message.text}
+          </p>
         )}
       </form>
     </div>

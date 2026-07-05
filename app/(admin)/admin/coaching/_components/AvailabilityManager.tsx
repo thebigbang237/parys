@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const DAYS_FR = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"];
@@ -118,25 +119,25 @@ export default function AvailabilityManager({
         <div className="flex items-center gap-3">
           <Link
             href={monthHref(prevMonth)}
-            className="text-gray-400 hover:text-gray-600 text-lg w-6 h-6 flex items-center justify-center"
+            className="text-gray-500 hover:text-gray-600 w-6 h-6 flex items-center justify-center"
           >
-            ‹
+            <ChevronLeft size={16} />
           </Link>
           <span className="text-sm font-medium text-gray-900 whitespace-nowrap">
             {MONTHS_FR[month]} {year}
           </span>
           <Link
             href={monthHref(nextMonth)}
-            className="text-gray-400 hover:text-gray-600 text-lg w-6 h-6 flex items-center justify-center"
+            className="text-gray-500 hover:text-gray-600 w-6 h-6 flex items-center justify-center"
           >
-            ›
+            <ChevronRight size={16} />
           </Link>
         </div>
       </div>
 
       <div className="grid grid-cols-7 mb-1">
         {DAYS_FR.map((d) => (
-          <div key={d} className="text-center text-xs text-gray-400 py-1">
+          <div key={d} className="text-center text-xs text-gray-500 py-1">
             {d}
           </div>
         ))}
@@ -201,7 +202,7 @@ export default function AvailabilityManager({
                   <span
                     className={cn(
                       "text-sm",
-                      a.active ? "text-gray-900" : "text-gray-400",
+                      a.active ? "text-gray-900" : "text-gray-500",
                     )}
                   >
                     {a.start_time} – {a.end_time}
@@ -209,7 +210,7 @@ export default function AvailabilityManager({
                   <div className="flex gap-2">
                     <button
                       onClick={() => handleToggle(a.id, a.active)}
-                      className="text-xs text-gray-400 hover:text-gray-600"
+                      className="text-xs text-gray-500 hover:text-gray-600"
                     >
                       {a.active ? "Désactiver" : "Activer"}
                     </button>
@@ -227,7 +228,7 @@ export default function AvailabilityManager({
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="text-xs text-gray-400 uppercase tracking-[1px]">
+              <label className="text-xs text-gray-500 uppercase tracking-[1px]">
                 Début
               </label>
               <input
@@ -240,7 +241,7 @@ export default function AvailabilityManager({
               />
             </div>
             <div>
-              <label className="text-xs text-gray-400 uppercase tracking-[1px]">
+              <label className="text-xs text-gray-500 uppercase tracking-[1px]">
                 Fin
               </label>
               <input
@@ -264,7 +265,7 @@ export default function AvailabilityManager({
       )}
 
       {!selectedDate && (
-        <p className="text-xs text-gray-400 text-center">
+        <p className="text-xs text-gray-500 text-center">
           Sélectionne une date pour définir tes disponibilités.
         </p>
       )}

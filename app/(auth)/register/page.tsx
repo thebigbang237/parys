@@ -116,7 +116,7 @@ export default function RegisterPage() {
               <div className="w-full border-t border-gray-100" />
             </div>
             <div className="relative flex justify-center">
-              <span className="bg-white px-4 text-xs text-gray-400 uppercase tracking-[2px]">
+              <span className="bg-white px-4 text-xs text-gray-500 uppercase tracking-[2px]">
                 ou
               </span>
             </div>

@@ -89,7 +89,7 @@ export default function SessionTypesManager({
           />
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="text-xs text-gray-400 uppercase tracking-[1px]">
+              <label className="text-xs text-gray-500 uppercase tracking-[1px]">
                 Durée (min)
               </label>
               <input
@@ -109,7 +109,7 @@ export default function SessionTypesManager({
               { key: "price_eur", label: "EUR" },
             ].map(({ key, label }) => (
               <div key={key}>
-                <label className="text-xs text-gray-400 uppercase tracking-[1px]">
+                <label className="text-xs text-gray-500 uppercase tracking-[1px]">
                   {label}
                 </label>
                 <input
@@ -135,7 +135,7 @@ export default function SessionTypesManager({
 
       <div className="space-y-3">
         {sessionTypes.length === 0 ? (
-          <p className="text-sm text-gray-400 text-center py-4">
+          <p className="text-sm text-gray-500 text-center py-4">
             Aucun type de session
           </p>
         ) : (
@@ -146,7 +146,7 @@ export default function SessionTypesManager({
             >
               <div>
                 <p className="text-sm font-medium text-gray-900">{s.name}</p>
-                <p className="text-xs text-gray-400">
+                <p className="text-xs text-gray-500">
                   {s.duration} min · {formatPrice(s.price_xaf, "XAF")}
                 </p>
               </div>
@@ -155,7 +155,7 @@ export default function SessionTypesManager({
                 className={`text-xs px-2 py-1 rounded-full ${
                   s.active
                     ? "bg-green-50 text-green-600"
-                    : "bg-gray-100 text-gray-400"
+                    : "bg-gray-100 text-gray-500"
                 }`}
               >
                 {s.active ? "Actif" : "Inactif"}

@@ -4,6 +4,7 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { formatPrice } from "@/lib/utils";
+import { ChevronDown, Globe } from "lucide-react";
 
 type Currency = "XAF" | "USD" | "EUR";
 type PaymentMethod = "mobile_money" | "paypal";
@@ -189,7 +190,7 @@ export default function CheckoutForm({
             Acceptez la demande sur votre téléphone pour finaliser.
           </p>
         </div>
-        <p className="text-xs text-gray-400 tracking-[2px] uppercase animate-pulse">
+        <p className="text-xs text-gray-500 tracking-[2px] uppercase animate-pulse">
           En attente de confirmation...
         </p>
       </div>
@@ -200,7 +201,7 @@ export default function CheckoutForm({
     <div className="bg-white border border-[#f0e0ec] p-8 space-y-6">
       {/* Currency / Country switcher */}
       <div>
-        <h2 className="text-xs tracking-[3px] uppercase text-gray-400 mb-4">
+        <h2 className="text-xs tracking-[3px] uppercase text-gray-500 mb-4">
           Votre localisation
         </h2>
         <div className="flex gap-3 flex-wrap">
@@ -245,11 +246,15 @@ export default function CheckoutForm({
               onClick={() => setShowCountryPicker(!showCountryPicker)}
               className="flex items-center gap-2 text-sm text-gray-600 border border-gray-200 px-4 py-2 hover:border-[#ff63ce] transition-colors w-full"
             >
-              <span>{PAWAPAY_COUNTRY_CONFIG[country]?.flag || "🌍"}</span>
+              <span>
+                {PAWAPAY_COUNTRY_CONFIG[country]?.flag || (
+                  <Globe size={16} className="inline" />
+                )}
+              </span>
               <span>
                 {PAWAPAY_COUNTRY_CONFIG[country]?.name || "Choisir un pays"}
               </span>
-              <span className="ml-auto text-gray-400">▾</span>
+              <ChevronDown size={16} className="ml-auto text-gray-500" />
             </button>
 
             {showCountryPicker && (
@@ -263,7 +268,7 @@ export default function CheckoutForm({
                     >
                       <span>{config.flag}</span>
                       <span>{config.name}</span>
-                      <span className="ml-auto text-xs text-gray-400">
+                      <span className="ml-auto text-xs text-gray-500">
                         {config.currency}
                       </span>
                     </button>
@@ -279,9 +284,9 @@ export default function CheckoutForm({
                     }}
                     className="w-full flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-[#fdf0fa] transition-colors text-left"
                   >
-                    <span>🌍</span>
+                    <Globe size={16} />
                     <span>Autre pays</span>
-                    <span className="ml-auto text-xs text-gray-400">USD</span>
+                    <span className="ml-auto text-xs text-gray-500">USD</span>
                   </button>
                 </div>
               </div>
@@ -292,7 +297,7 @@ export default function CheckoutForm({
 
       {/* Payment method */}
       <div>
-        <h2 className="text-xs tracking-[3px] uppercase text-gray-400 mb-4">
+        <h2 className="text-xs tracking-[3px] uppercase text-gray-500 mb-4">
           Moyen de paiement
         </h2>
         <div className="space-y-3">
@@ -311,7 +316,7 @@ export default function CheckoutForm({
                   <p className="font-medium text-sm text-gray-900">
                     Mobile Money
                   </p>
-                  <p className="text-xs text-gray-400 mt-0.5">
+                  <p className="text-xs text-gray-500 mt-0.5">
                     MTN, Orange, Wave, M-Pesa et plus
                   </p>
                 </div>
@@ -343,7 +348,7 @@ export default function CheckoutForm({
                 <p className="font-medium text-sm text-gray-900">
                   PayPal / Carte bancaire
                 </p>
-                <p className="text-xs text-gray-400 mt-0.5">
+                <p className="text-xs text-gray-500 mt-0.5">
                   Visa, Mastercard, PayPal — mondial
                 </p>
               </div>
@@ -356,7 +361,7 @@ export default function CheckoutForm({
       {/* Phone number for mobile money */}
       {method === "mobile_money" && (
         <div className="space-y-2">
-          <label className="text-xs tracking-[2px] uppercase text-gray-400">
+          <label className="text-xs tracking-[2px] uppercase text-gray-500">
             Numéro Mobile Money
           </label>
           <input
@@ -374,7 +379,7 @@ export default function CheckoutForm({
             }
             className="w-full border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#ff63ce] transition-colors"
           />
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-gray-500">
             Incluez l'indicatif pays (ex: +237 pour Cameroun)
           </p>
         </div>
@@ -402,7 +407,7 @@ export default function CheckoutForm({
             : `Payer avec PayPal`}
       </button>
 
-      <p className="text-xs text-gray-400 text-center">
+      <p className="text-xs text-gray-500 text-center">
         Paiement 100% sécurisé · Accès immédiat après confirmation
       </p>
     </div>

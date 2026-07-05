@@ -1,8 +1,9 @@
 // app/(student)/learn/[lessonId]/_components/LessonSidebar.tsx
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { ChevronLeft, ChevronRight, ChevronDown, Play, Circle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Lesson = {
@@ -46,6 +47,11 @@ export default function LessonSidebar({
     course.modules.map((m) => m.id),
   );
 
+  // Default to collapsed on small screens so the video isn't squeezed
+  useEffect(() => {
+    if (window.innerWidth < 768) setCollapsed(true);
+  }, []);
+
   function toggleModule(id: string) {
     setExpandedModules((prev) =>
       prev.includes(id) ? prev.filter((m) => m !== id) : [...prev, id],
@@ -57,9 +63,9 @@ export default function LessonSidebar({
       <div className="w-10 bg-[#1a1a1a] border-r border-white/10 flex flex-col items-center py-4">
         <button
           onClick={() => setCollapsed(false)}
-          className="text-white/40 hover:text-white transition-colors text-xs"
+          className="text-white/40 hover:text-white transition-colors"
         >
-          ▶
+          <ChevronRight size={16} />
         </button>
       </div>
     );
@@ -74,9 +80,9 @@ export default function LessonSidebar({
         </span>
         <button
           onClick={() => setCollapsed(true)}
-          className="text-white/30 hover:text-white transition-colors text-xs"
+          className="text-white/30 hover:text-white transition-colors"
         >
-          ◀
+          <ChevronLeft size={16} />
         </button>
       </div>
 
@@ -94,8 +100,12 @@ export default function LessonSidebar({
               <span className="text-white/70 text-xs flex-1 font-medium">
                 {module.title}
               </span>
-              <span className="text-white/30 text-xs">
-                {expandedModules.includes(module.id) ? "▼" : "▶"}
+              <span className="text-white/30">
+                {expandedModules.includes(module.id) ? (
+                  <ChevronDown size={14} />
+                ) : (
+                  <ChevronRight size={14} />
+                )}
               </span>
             </button>
 
@@ -135,10 +145,10 @@ export default function LessonSidebar({
                         )}
                       </div>
                       {isCurrent && (
-                        <span className="text-[#ff63ce] text-xs">▶</span>
+                        <Play size={12} className="text-[#ff63ce]" />
                       )}
                       {!hasVideo && !isCurrent && (
-                        <span className="text-white/20 text-xs">○</span>
+                        <Circle size={10} className="text-white/20" />
                       )}
                     </Link>
                   );

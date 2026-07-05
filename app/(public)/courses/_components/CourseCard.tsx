@@ -77,7 +77,7 @@ export default function CourseCard({
         </p>
 
         {/* Meta */}
-        <div className="flex gap-4 text-xs text-gray-400 mb-6">
+        <div className="flex gap-4 text-xs text-gray-500 mb-6">
           <span>
             {course._count.modules} module
             {course._count.modules !== 1 ? "s" : ""}

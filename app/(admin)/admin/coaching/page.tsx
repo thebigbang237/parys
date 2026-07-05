@@ -66,7 +66,7 @@ export default async function AdminCoachingPage({
         <h1 className="text-2xl font-serif font-medium">Coaching privé</h1>
       </div>
 
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <SessionTypesManager initialSessionTypes={sessionTypes} />
         <AvailabilityManager
           initialAvailabilities={availabilities}

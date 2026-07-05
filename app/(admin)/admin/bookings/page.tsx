@@ -75,7 +75,7 @@ export default async function AdminBookingsPage({
           Administration
         </p>
         <h1 className="text-2xl font-serif font-medium">
-          Sessions & Paiements <span className="text-gray-400 text-lg">({total})</span>
+          Sessions & Paiements <span className="text-gray-500 text-lg">({total})</span>
         </h1>
       </div>
 
@@ -112,10 +112,10 @@ export default async function AdminBookingsPage({
 
       {payments.length === 0 ? (
         <div className="border border-dashed border-gray-200 rounded p-16 text-center">
-          <p className="text-gray-400 text-sm">Aucun paiement trouvé.</p>
+          <p className="text-gray-500 text-sm">Aucun paiement trouvé.</p>
         </div>
       ) : (
-        <div className="bg-white border border-gray-100 rounded overflow-hidden">
+        <div className="bg-white border border-gray-100 rounded overflow-x-auto">
           <table className="w-full">
             <thead className="bg-[#fdf0fa] border-b border-[#f0e0ec]">
               <tr>

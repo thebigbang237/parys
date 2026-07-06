@@ -6,7 +6,12 @@ import { formatPrice } from "@/lib/utils";
 import CoachingBookingFlow from "./_components/CoachingBookingFlow";
 import { Sparkles } from "lucide-react";
 
-export default async function CoachingPage() {
+export default async function CoachingPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ sessionType?: string }>;
+}) {
+  const { sessionType } = await searchParams;
   const [session, sessionTypes, geo] = await Promise.all([
     auth(),
     prisma.coachingSessionType.findMany({
@@ -21,16 +26,16 @@ export default async function CoachingPage() {
       {/* Hero */}
       <div className="bg-white border-b pt-24 border-[#f0e0ec]">
         <div className="max-w-5xl mx-auto px-6 py-16">
-          <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-3">
-            <Sparkles size={12} /> Coaching privé
+          <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-1">
+            Coaching privé
           </p>
-          <h1 className="font-serif text-4xl md:text-5xl font-medium text-gray-900 mb-4">
+          <h1 className="font-serif text-xl md:text-3xl font-medium text-gray-900 mb-2">
             Un accompagnement{" "}
-            <span className="italic text-[#ff63ce]">sur-mesure</span>
+            <span className=" text-[#ff63ce]">sur-mesure</span>
           </h1>
-          <p className="text-gray-500 text-lg max-w-xl">
+          <p className="text-gray-500 text-base sm:text-lg max-w-xl">
             Réservez une session en tête-à-tête avec Parys. Stratégie, création
-            de contenu, personal branding — une heure qui change tout.
+            de contenu, personal branding — des moments qui change tout.
           </p>
         </div>
       </div>
@@ -57,6 +62,7 @@ export default async function CoachingPage() {
             country={geo.country}
             isLoggedIn={!!session}
             canUseMobileMoney={geo.mobileMoney}
+            initialSessionTypeId={sessionType}
           />
         )}
       </div>

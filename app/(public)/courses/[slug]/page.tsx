@@ -84,13 +84,13 @@ export default async function CourseDetailPage({
       <div className="bg-white border-b pt-24 border-[#f0e0ec]">
         <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-4">
+            <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-2">
               Formation
             </p>
-            <h1 className="font-serif text-4xl md:text-5xl font-medium text-gray-900 leading-tight">
+            <h1 className="font-serif text-xl md:text-3xl font-medium text-gray-900 leading-tight">
               {course.title}
             </h1>
-            <p className="text-gray-500 text-lg leading-relaxed mb-8">
+            <p className="text-gray-500 text-sm leading-relaxed mb-8">
               {course.description}
             </p>
 

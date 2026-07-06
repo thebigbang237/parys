@@ -47,16 +47,21 @@ export default function CoachingBookingFlow({
   country,
   isLoggedIn,
   canUseMobileMoney,
+  initialSessionTypeId,
 }: {
   sessionTypes: SessionType[];
   currency: string;
   country: string;
   isLoggedIn: boolean;
   canUseMobileMoney: boolean;
+  initialSessionTypeId?: string;
 }) {
   const router = useRouter();
-  const [step, setStep] = useState<Step>("select");
-  const [selectedType, setSelectedType] = useState<SessionType | null>(null);
+  const preselected = sessionTypes.find((t) => t.id === initialSessionTypeId);
+  const [step, setStep] = useState<Step>(preselected ? "calendar" : "select");
+  const [selectedType, setSelectedType] = useState<SessionType | null>(
+    preselected ?? null,
+  );
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [slots, setSlots] = useState<TimeSlot[]>([]);
   const [selectedSlot, setSelectedSlot] = useState<TimeSlot | null>(null);
@@ -157,10 +162,10 @@ export default function CoachingBookingFlow({
         {/* Left — features */}
         <div className="flex flex-col justify-center space-y-10">
           <div>
-            <p className="text-xs tracking-[4px] uppercase text-[#ff63ce] mb-4">
+            <p className="text-xs tracking-[4px] uppercase text-[#ff63ce] mb-2">
               Accompagnement privé
             </p>
-            <h2 className="font-serif text-3xl font-medium text-gray-900 mb-8">
+            <h2 className="font-serif text-xl md:text-3xl font-medium text-gray-900 md:mb-8">
               Le Coaching 1-to-1
             </h2>
           </div>
@@ -170,7 +175,7 @@ export default function CoachingBookingFlow({
               {
                 icon: Video,
                 title: "Sessions visio",
-                desc: "60 minutes d'échange intense pour débloquer vos problématiques business spécifiques.",
+                desc: "Des échanges intense pour débloquer vos problématiques business spécifiques.",
               },
               {
                 icon: Calendar,
@@ -199,8 +204,8 @@ export default function CoachingBookingFlow({
         </div>
 
         {/* Right — session selector */}
-        <div className="bg-[#fdf0fa] p-8">
-          <div className="bg-white border border-[#f0e0ec] p-8 space-y-6">
+        <div className="bg-[#fdf0fa] max-sm:px-2 p-8">
+          <div className="bg-white border border-[#f0e0ec]  p-8 space-y-6">
             <h3 className="font-serif text-xl font-medium text-gray-900 text-center">
               Réserver une séance
             </h3>

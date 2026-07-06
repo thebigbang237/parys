@@ -3,7 +3,6 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
 import { getUserGeoContext } from "@/lib/actions/geo.actions";
-import { formatPrice } from "@/lib/utils";
 import Image from "next/image";
 import {
   Video,
@@ -14,6 +13,7 @@ import {
   Landmark,
 } from "lucide-react";
 import TestimonialsCarousel from "./_components/TestimonialsCarousel";
+import HomeCoachingPicker from "./_components/HomeCoachingPicker";
 
 export default async function HomePage() {
   const [courses, geo, coachingSessions, session] = await Promise.all([
@@ -74,11 +74,11 @@ export default async function HomePage() {
 
 
         <div className="relative z-10">
-          <h1 className="font-serif text-5xl md:text-6xl font-medium text-gray-900 leading-none mb-5">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-medium text-gray-900 leading-tight sm:leading-none mb-5">
             Bienvenue <span>Chez</span>{" "}
             <span className="font-bold font-sans text-[#ff63ce]">Parys</span>
           </h1>
-          <p className="text-gray-500 text-lg leading-relaxed mb-5 max-w-md">
+          <p className="text-gray-500 text-base sm:text-lg leading-relaxed mb-5 max-w-md">
             Des formations premium en création de contenu conçues pour les
             femmes ambitieuses d'Afrique et du monde.
           </p>
@@ -129,18 +129,18 @@ export default async function HomePage() {
       {courses.length > 0 && (
         <section className="bg-[#fdf0fa]  py-24">
           <div className="max-w-6xl mx-auto px-6">
-            <div className="flex justify-between items-end mb-12">
+            <div className="flex justify-between items-end mb-12 gap-4">
               <div>
-                <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-3">
+                <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-2">
                   Mes formations
                 </p>
-                <h2 className="font-serif text-4xl font-medium text-gray-900">
+                <h2 className="font-serif text-xl leading-none sm:text-3xl md:text-4xl font-medium text-gray-900">
                   Des programmes pensés pour toi
                 </h2>
               </div>
               <Link
                 href="/courses"
-                className="text-xs tracking-[2px] uppercase border-b border-gray-900 pb-0.5 hover:text-[#ff63ce] hover:border-[#ff63ce] transition-colors hidden md:block"
+                className="text-xs tracking-[2px] uppercase border-b border-gray-900 pb-0.5 hover:text-[#ff63ce] hover:border-[#ff63ce] transition-colors shrink-0"
               >
                 Tout voir →
               </Link>
@@ -148,12 +148,6 @@ export default async function HomePage() {
 
             <div className="grid md:grid-cols-3 gap-6">
               {courses.map((course) => {
-                const price =
-                  geo.currency === "XAF"
-                    ? course.price_xaf
-                    : geo.currency === "EUR"
-                      ? course.price_eur
-                      : course.price_usd;
                 const isEnrolled = enrolledCourseIds.has(course.id);
 
                 return (
@@ -206,12 +200,22 @@ export default async function HomePage() {
           <div className="grid md:grid-cols-2">
             {/* Left — features */}
             <div className="px-6 py-24 border-r border-[#f0e0ec]">
-              <p className="text-xs tracking-[4px] uppercase text-[#ff63ce] mb-4">
-                Accompagnement privé
-              </p>
-              <h2 className="font-serif text-4xl font-medium text-gray-900 mb-12">
-                Le Coaching 1-to-1
-              </h2>
+              <div className="flex items-start justify-between gap-4 mb-12">
+                <div>
+                  <p className="text-xs tracking-[4px] uppercase text-[#ff63ce] mb-2">
+                    Accompagnement privé
+                  </p>
+                  <h2 className="font-serif text-xl leading-none md:text-3xl font-medium text-gray-900">
+                    Le Coaching 1-to-1
+                  </h2>
+                </div>
+                <Link
+                  href="/coaching"
+                  className="text-xs tracking-[2px] uppercase border-b border-gray-900 pb-0.5 hover:text-[#ff63ce] hover:border-[#ff63ce] transition-colors shrink-0"
+                >
+                  Tout voir →
+                </Link>
+              </div>
               <div className="space-y-10">
                 {[
                   {
@@ -247,52 +251,31 @@ export default async function HomePage() {
 
             {/* Right — session types */}
             <div className="bg-[#fdf0fa] px-6 py-24 flex items-center">
-              <div className="bg-white border border-[#f0e0ec] p-8 space-y-4 w-full">
-                <h3 className="font-serif text-xl font-medium text-gray-900 text-center mb-6">
-                  Réserver une séance
-                </h3>
-                {coachingSessions.length === 0 ? (
+              {coachingSessions.length === 0 ? (
+                <div className="bg-white border border-[#f0e0ec] p-8 w-full">
+                  <h3 className="font-serif text-lg sm:text-xl font-medium text-gray-900 text-center mb-6">
+                    Réserver une séance
+                  </h3>
                   <p className="text-sm text-gray-500 text-center py-4">
                     Sessions bientôt disponibles
                   </p>
-                ) : (
-                  coachingSessions.slice(0, 3).map((s, idx) => (
-                    <div
-                      key={s.id}
-                      className={`p-5 border cursor-pointer transition-colors ${
-                        idx === 0
-                          ? "border-[#ff63ce] bg-[#fdf0fa]"
-                          : "border-[#f0e0ec] hover:border-[#ff63ce]"
-                      }`}
-                    >
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-xs tracking-[2px] uppercase font-medium text-gray-900">
-                          {s.name}
-                        </span>
-                        <span className="font-serif text-lg text-gray-900">
-                          {formatPrice(
-                            geo.currency === "EUR"
-                              ? s.price_eur
-                              : geo.currency === "USD"
-                                ? s.price_usd
-                                : s.price_xaf,
-                            geo.currency,
-                          )}
-                        </span>
-                      </div>
-                      <p className="text-xs text-gray-500">
-                        Session de {s.duration} minutes
-                      </p>
-                    </div>
-                  ))
-                )}
-                <Link
-                  href="/coaching"
-                  className="w-full bg-[#111] text-white py-4 text-xs tracking-[3px] uppercase hover:bg-[#ff63ce] transition-colors text-center block mt-4"
-                >
-                  Continuer vers le calendrier →
-                </Link>
-              </div>
+                </div>
+              ) : (
+                <HomeCoachingPicker
+                  sessions={coachingSessions.slice(0, 3).map((s) => ({
+                    id: s.id,
+                    name: s.name,
+                    duration: s.duration,
+                    price:
+                      geo.currency === "EUR"
+                        ? s.price_eur
+                        : geo.currency === "USD"
+                          ? s.price_usd
+                          : s.price_xaf,
+                  }))}
+                  currency={geo.currency}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -301,7 +284,7 @@ export default async function HomePage() {
       {/* Testimonials */}
       <section className="px-6 py-24 border-b border-[#f0e0ec]">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-serif text-4xl font-medium text-gray-900 text-center underline decoration-[#ff63ce] decoration-1 underline-offset-8 mb-16">
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-gray-900 text-center underline decoration-[#ff63ce] decoration-1 underline-offset-8 mb-16">
             Ils nous font confiance
           </h2>
           <TestimonialsCarousel

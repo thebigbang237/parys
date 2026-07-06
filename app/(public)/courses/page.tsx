@@ -42,10 +42,10 @@ export default async function CoursesPage() {
       {/* Header */}
       <div className="bg-white pt-24 border-b border-[#f0e0ec]">
         <div className="max-w-6xl mx-auto px-6 py-16">
-          <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-3">
-            <Sparkles size={12} /> Formations
+          <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-1">
+            Formations
           </p>
-          <h1 className="font-serif text-4xl md:text-5xl font-medium text-gray-900 mb-4">
+          <h1 className="font-serif text-xl md:text-5xl font-medium text-gray-900 mb-2">
             Toutes les formations
           </h1>
           <p className="text-gray-500 text-lg max-w-xl">

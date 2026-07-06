@@ -83,7 +83,7 @@ export default async function CourseDetailPage({
       {/* Hero */}
       <div className="bg-white border-b pt-24 border-[#f0e0ec]">
         <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12 items-center">
-          <div>
+          <div className="order-2 md:order-1">
             <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-2">
               Formation
             </p>
@@ -95,7 +95,7 @@ export default async function CourseDetailPage({
             </p>
 
             {/* Stats */}
-            <div className="flex gap-8 pb-8 border-b border-[#f0e0ec]">
+            <div className="grid grid-cols-2 gap-x-6 gap-y-6 min-[450px]:flex sm:gap-8 pb-8 border-b border-[#f0e0ec]">
               {[
                 { value: course.modules.length, label: "Modules" },
                 { value: totalLessons, label: "Leçons" },
@@ -106,10 +106,10 @@ export default async function CourseDetailPage({
                 { value: course._count.enrollments, label: "Étudiantes" },
               ].map((stat) => (
                 <div key={stat.label}>
-                  <div className="font-serif text-2xl font-medium text-gray-900">
+                  <div className="font-serif text-xl sm:text-2xl font-medium text-gray-900">
                     {stat.value}
                   </div>
-                  <div className="text-xs tracking-[2px] uppercase text-gray-500 mt-1">
+                  <div className="text-xs tracking-[2px] text-gray-500 mt-1">
                     {stat.label}
                   </div>
                 </div>
@@ -117,7 +117,7 @@ export default async function CourseDetailPage({
             </div>
 
             {/* Price + Enroll */}
-            <div className="pt-8 flex items-center gap-6">
+            <div className="pt-8 text-lg md:text-xl lg:text-3xl flex items-center gap-6">
               <div>
                 {isEnrolled ? (
                   <div className="flex items-center gap-2 text-sm font-medium text-[#ff63ce]">
@@ -125,13 +125,13 @@ export default async function CourseDetailPage({
                   </div>
                 ) : (
                   <>
-                    <div className="font-serif text-4xl font-medium text-gray-900">
+                    <div className="font-serif font-medium text-gray-900">
                       {course.is_free
                         ? "Gratuit"
                         : formatPrice(price, geo.currency)}
                     </div>
                     {!course.is_free && geo.currency !== "XAF" && (
-                      <div className="text-xs text-gray-500 mt-1">
+                      <div className=" text-gray-500 mt-1">
                         ≈ {formatPrice(course.price_xaf, "XAF")}
                       </div>
                     )}
@@ -155,7 +155,7 @@ export default async function CourseDetailPage({
           </div>
 
           {/* Thumbnail */}
-          <div className="relative aspect-video bg-[#fdf0fa] border border-[#f0e0ec] overflow-hidden">
+          <div className="order-1 md:order-2 relative aspect-video bg-[#fdf0fa] border border-[#f0e0ec] overflow-hidden">
             {course.thumbnail_url ? (
               <Image
                 src={course.thumbnail_url}

@@ -99,7 +99,7 @@ export default function CourseCard({
         <div className="mt-auto flex justify-between items-center pt-4 border-t border-[#f0e0ec]">
 
           <span className="text-xs tracking-[2px] uppercase text-[#ff63ce] group-hover:underline">
-            {isEnrolled ? "Continuer →" : "Voir →"}
+            {isEnrolled ? "Continuer →" : "S'inscrire →"}
           </span>
         </div>
       </div>

@@ -59,7 +59,7 @@ export default function EnrollButton({
       <button
         onClick={handleClick}
         className={cn(
-          "bg-[#111] text-white py-4 text-xs tracking-[3px] uppercase font-medium hover:bg-[#ff63ce] transition-colors",
+          "bg-[#ff63ce] cursor-pointer text-white py-4 text-xs tracking-[3px] uppercase font-medium hover:bg-[#ff63ceda] transition-colors",
           fullWidth ? "w-full" : "px-10",
         )}
       >
@@ -72,7 +72,7 @@ export default function EnrollButton({
     <button
       onClick={handleClick}
       className={cn(
-        "bg-[#ff63ce] text-white py-4 text-xs tracking-[3px] uppercase font-medium hover:bg-[#111] transition-colors",
+        "bg-[#ff63ce] cursor-pointer text-white py-4 text-xs tracking-[3px] uppercase font-medium hover:bg-[#ff63ceda] transition-colors",
         fullWidth ? "w-full" : "px-10",
       )}
     >

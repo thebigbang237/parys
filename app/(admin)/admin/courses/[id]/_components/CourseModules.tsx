@@ -157,6 +157,9 @@ function LessonRow({ lesson, courseId }: { lesson: Lesson; courseId: string }) {
     setUploadError("");
 
     try {
+      // Read the video's duration from the local file (doesn't wait on Cloudflare processing)
+      const durationPromise = getVideoDuration(file).catch(() => null);
+
       // Step 1 — get signed upload URL + videoId from our API
       const res = await fetch("/api/stream/upload-url", {
         method: "POST",
@@ -173,9 +176,12 @@ function LessonRow({ lesson, courseId }: { lesson: Lesson; courseId: string }) {
         setUploadProgress(progress);
       });
 
-      // Step 3 — save videoId to the lesson in DB
+      const duration = await durationPromise;
+
+      // Step 3 — save videoId + duration to the lesson in DB
       await updateLesson(lesson.id, courseId, {
         cloudflare_video_id: newVideoId,
+        ...(duration ? { duration_seconds: Math.round(duration) } : {}),
       });
 
       setVideoId(newVideoId);
@@ -318,6 +324,23 @@ function AddLessonForm({
       </button>
     </div>
   );
+}
+
+// ── Read duration from the local video file ───
+function getVideoDuration(file: File): Promise<number> {
+  return new Promise((resolve, reject) => {
+    const video = document.createElement("video");
+    video.preload = "metadata";
+    video.onloadedmetadata = () => {
+      URL.revokeObjectURL(video.src);
+      resolve(video.duration);
+    };
+    video.onerror = () => {
+      URL.revokeObjectURL(video.src);
+      reject(new Error("Could not read video metadata"));
+    };
+    video.src = URL.createObjectURL(file);
+  });
 }
 
 // ── Cloudflare tus upload ─────────────────────

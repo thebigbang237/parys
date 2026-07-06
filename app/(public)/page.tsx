@@ -181,7 +181,7 @@ export default async function HomePage() {
                       </p>
                       <div className="flex justify-between items-center">
 
-                        <span className="text-xs text-[#ff63ce]">
+                        <span className="text-xs text-[#ff63ce] uppercase">
                           {isEnrolled ? "Continuer →" : "S'inscrire →"}
                         </span>
                       </div>

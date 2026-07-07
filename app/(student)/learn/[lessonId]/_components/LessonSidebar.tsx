@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, ChevronDown, Play, Circle } from "lucide-react";
+import { ChevronLeft, ChevronRight, ChevronDown, Play, Circle, CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type Lesson = {
@@ -37,10 +37,12 @@ export default function LessonSidebar({
   course,
   currentLessonId,
   userId,
+  completedLessonIds = [],
 }: {
   course: Course;
   currentLessonId: string;
   userId: string;
+  completedLessonIds?: string[];
 }) {
   const [collapsed, setCollapsed] = useState(false);
   const [expandedModules, setExpandedModules] = useState<string[]>(
@@ -114,6 +116,7 @@ export default function LessonSidebar({
                 {module.lessons.map((lesson, lessonIdx) => {
                   const isCurrent = lesson.id === currentLessonId;
                   const hasVideo = !!lesson.cloudflare_video_id;
+                  const isCompleted = completedLessonIds.includes(lesson.id);
 
                   return (
                     <Link
@@ -144,12 +147,13 @@ export default function LessonSidebar({
                           </p>
                         )}
                       </div>
-                      {isCurrent && (
+                      {isCurrent ? (
                         <Play size={12} className="text-[#ff63ce]" />
-                      )}
-                      {!hasVideo && !isCurrent && (
+                      ) : isCompleted ? (
+                        <CheckCircle2 size={14} className="text-[#ff63ce]" />
+                      ) : !hasVideo ? (
                         <Circle size={10} className="text-white/20" />
-                      )}
+                      ) : null}
                     </Link>
                   );
                 })}

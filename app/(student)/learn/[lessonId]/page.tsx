@@ -6,6 +6,7 @@ import { getSignedPlaybackToken } from "@/lib/services/stream.service";
 import LessonPlayer from "./_components/LessonPlayer";
 import LessonSidebar from "./_components/LessonSidebar";
 import CommentsSection from "./_components/CommentsSection";
+import LessonCompleteToggle from "./_components/LessonCompleteToggle";
 
 export default async function LearnPage({
   params,
@@ -65,6 +66,14 @@ export default async function LearnPage({
     videoToken = await getSignedPlaybackToken(lesson.cloudflare_video_id);
   }
 
+  // Completion state for every lesson in this course, for the sidebar + toggle
+  const allLessonIds = course.modules.flatMap((m) => m.lessons.map((l) => l.id));
+  const progress = await prisma.lessonProgress.findMany({
+    where: { user_id: session.user.id, lesson_id: { in: allLessonIds } },
+    select: { lesson_id: true },
+  });
+  const completedLessonIds = progress.map((p) => p.lesson_id);
+
   // Fetch comments
   const comments = await prisma.comment.findMany({
     where: { lesson_id: lessonId, status: "ACTIVE", parent_id: null },
@@ -119,6 +128,7 @@ export default async function LearnPage({
           course={course}
           currentLessonId={lessonId}
           userId={session.user.id}
+          completedLessonIds={completedLessonIds}
         />
 
         {/* Main content */}
@@ -141,13 +151,20 @@ export default async function LearnPage({
 
           {/* Lesson info + comments */}
           <div className="bg-white max-w-4xl mx-auto px-8 py-10 space-y-10">
-            <div>
-              <p className="text-xs tracking-[3px] uppercase text-[#ff63ce] mb-2">
-                {lesson.module.title}
-              </p>
-              <h1 className="font-serif text-3xl font-medium text-gray-900">
-                {lesson.title}
-              </h1>
+            <div className="flex items-start justify-between gap-4 flex-wrap">
+              <div>
+                <p className="text-xs tracking-[3px] uppercase text-[#ff63ce] mb-2">
+                  {lesson.module.title}
+                </p>
+                <h1 className="font-serif text-3xl font-medium text-gray-900">
+                  {lesson.title}
+                </h1>
+              </div>
+              <LessonCompleteToggle
+                lessonId={lessonId}
+                courseSlug={course.slug}
+                initialCompleted={completedLessonIds.includes(lessonId)}
+              />
             </div>
 
             <CommentsSection

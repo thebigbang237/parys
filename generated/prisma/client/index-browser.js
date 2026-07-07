@@ -199,6 +199,13 @@ exports.Prisma.LessonScalarFieldEnum = {
   updated_at: 'updated_at'
 };
 
+exports.Prisma.LessonProgressScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  lesson_id: 'lesson_id',
+  completed_at: 'completed_at'
+};
+
 exports.Prisma.EnrollmentScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
@@ -354,6 +361,7 @@ exports.Prisma.ModelName = {
   Course: 'Course',
   Module: 'Module',
   Lesson: 'Lesson',
+  LessonProgress: 'LessonProgress',
   Enrollment: 'Enrollment',
   Comment: 'Comment',
   CoachingSessionType: 'CoachingSessionType',

@@ -21,14 +21,15 @@ model User {
   created_at    DateTime  @default(now())
   updated_at    DateTime  @updatedAt
 
-  accounts      Account[]
-  sessions      Session[]
-  enrollments   Enrollment[]
-  bookings      CoachingBooking[]
-  comments      Comment[]
-  payments      Payment[]
-  coupon_usages CouponUsage[]
-  timezone      String            @default("Africa/Douala")
+  accounts        Account[]
+  sessions        Session[]
+  enrollments     Enrollment[]
+  bookings        CoachingBooking[]
+  comments        Comment[]
+  payments        Payment[]
+  coupon_usages   CouponUsage[]
+  lesson_progress LessonProgress[]
+  timezone        String            @default("Africa/Douala")
 }
 
 enum Role {
@@ -123,13 +124,26 @@ model Lesson {
   created_at          DateTime     @default(now())
   updated_at          DateTime     @updatedAt
 
-  module   Module    @relation(fields: [module_id], references: [id], onDelete: Cascade)
+  module   Module           @relation(fields: [module_id], references: [id], onDelete: Cascade)
   comments Comment[]
+  progress LessonProgress[]
 }
 
 enum LessonStatus {
   DRAFT
   PUBLISHED
+}
+
+model LessonProgress {
+  id           String   @id @default(cuid())
+  user_id      String
+  lesson_id    String
+  completed_at DateTime @default(now())
+
+  user   User   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  lesson Lesson @relation(fields: [lesson_id], references: [id], onDelete: Cascade)
+
+  @@unique([user_id, lesson_id])
 }
 
 model Enrollment {

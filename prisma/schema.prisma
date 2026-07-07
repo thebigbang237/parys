@@ -29,6 +29,7 @@ model User {
   comments      Comment[]
   payments      Payment[]
   coupon_usages CouponUsage[]
+  lesson_progress LessonProgress[]
   timezone  String  @default("Africa/Douala")
 
 }
@@ -127,11 +128,24 @@ model Lesson {
 
   module              Module       @relation(fields: [module_id], references: [id], onDelete: Cascade)
   comments            Comment[]
+  progress            LessonProgress[]
 }
 
 enum LessonStatus {
   DRAFT
   PUBLISHED
+}
+
+model LessonProgress {
+  id           String   @id @default(cuid())
+  user_id      String
+  lesson_id    String
+  completed_at DateTime @default(now())
+
+  user   User   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  lesson Lesson @relation(fields: [lesson_id], references: [id], onDelete: Cascade)
+
+  @@unique([user_id, lesson_id])
 }
 
 model Enrollment {

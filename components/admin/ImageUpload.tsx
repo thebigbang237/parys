@@ -11,6 +11,7 @@ interface ImageUploadProps {
   folder?: "courses" | "profiles";
   aspect?: "video" | "square" | "wide";
   label?: string;
+  endpoint?: string;
 }
 
 export default function ImageUpload({
@@ -19,6 +20,7 @@ export default function ImageUpload({
   folder = "courses",
   aspect = "video",
   label = "Image",
+  endpoint = "/api/upload/image",
 }: ImageUploadProps) {
   const [uploading, setUploading] = useState(false);
   const [dragOver, setDragOver] = useState(false);
@@ -49,7 +51,7 @@ export default function ImageUpload({
       formData.append("file", file);
       formData.append("folder", folder);
 
-      const res = await fetch("/api/upload/image", {
+      const res = await fetch(endpoint, {
         method: "POST",
         body: formData,
       });

@@ -21,16 +21,17 @@ model User {
   created_at    DateTime  @default(now())
   updated_at    DateTime  @updatedAt
 
-  accounts              Account[]
-  sessions              Session[]
-  enrollments           Enrollment[]
-  bookings              CoachingBooking[]
-  comments              Comment[]
-  payments              Payment[]
-  coupon_usages         CouponUsage[]
-  lesson_progress       LessonProgress[]
-  password_reset_tokens PasswordResetToken[]
-  timezone              String               @default("Africa/Douala")
+  accounts                  Account[]
+  sessions                  Session[]
+  enrollments               Enrollment[]
+  bookings                  CoachingBooking[]
+  comments                  Comment[]
+  payments                  Payment[]
+  coupon_usages             CouponUsage[]
+  lesson_progress           LessonProgress[]
+  password_reset_tokens     PasswordResetToken[]
+  email_verification_tokens EmailVerificationToken[]
+  timezone                  String                   @default("Africa/Douala")
 }
 
 enum Role {
@@ -75,6 +76,17 @@ model VerificationToken {
 }
 
 model PasswordResetToken {
+  id         String    @id @default(cuid())
+  user_id    String
+  token_hash String    @unique
+  expires_at DateTime
+  used_at    DateTime?
+  created_at DateTime  @default(now())
+
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model EmailVerificationToken {
   id         String    @id @default(cuid())
   user_id    String
   token_hash String    @unique

@@ -48,6 +48,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
         if (!passwordMatch) return null;
 
+        // Defense in depth: block sign-in for unverified accounts even if
+        // this provider is ever invoked outside loginWithCredentials().
+        if (!user.emailVerified) return null;
+
         return {
           id: user.id,
           email: user.email,

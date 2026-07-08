@@ -5,6 +5,7 @@ import { useState } from "react";
 import {
   loginWithCredentials,
   loginWithGoogle,
+  resendVerificationEmail,
 } from "@/lib/actions/auth.actions";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -13,18 +14,31 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [needsVerification, setNeedsVerification] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [resending, setResending] = useState(false);
+  const [resent, setResent] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
     setError("");
+    setNeedsVerification(false);
+    setResent(false);
 
     const result = await loginWithCredentials(email, password);
     if (result?.error) {
       setError(result.error);
+      setNeedsVerification(result.code === "EMAIL_NOT_VERIFIED");
       setLoading(false);
     }
+  }
+
+  async function handleResend() {
+    setResending(true);
+    await resendVerificationEmail(email);
+    setResending(false);
+    setResent(true);
   }
 
   return (
@@ -57,8 +71,22 @@ export default function LoginPage() {
           </div>
 
           {error && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 text-sm">
-              {error}
+            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 text-sm space-y-2">
+              <p>{error}</p>
+              {needsVerification && (
+                <button
+                  type="button"
+                  onClick={handleResend}
+                  disabled={resending || resent}
+                  className="text-[#ff63ce] font-medium hover:underline disabled:opacity-60 disabled:no-underline"
+                >
+                  {resent
+                    ? "Email renvoyé ✓"
+                    : resending
+                      ? "Envoi..."
+                      : "Renvoyer l'email de confirmation"}
+                </button>
+              )}
             </div>
           )}
 

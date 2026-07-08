@@ -172,6 +172,29 @@ export async function sendBookingCompletedEmail(
   });
 }
 
+export async function sendVerificationEmail(
+  to: string,
+  name: string,
+  verifyUrl: string,
+) {
+  await resend.emails.send({
+    from: FROM,
+    to,
+    subject: "Confirme ton adresse email",
+    html: `
+      <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
+        <h2 style="color:#111;">Bienvenue, ${name} !</h2>
+        <p>Encore une étape avant d'accéder à ton compte Content Level Up Academy : confirme ton adresse email en cliquant sur le bouton ci-dessous. Ce lien expire dans 24 heures.</p>
+        <a href="${verifyUrl}" style="background:#ff63ce;color:white;padding:12px 24px;text-decoration:none;display:inline-block;margin-top:16px;">
+          Confirmer mon email →
+        </a>
+        <p style="color:#888;font-size:13px;margin-top:24px;">Si tu n'es pas à l'origine de cette inscription, tu peux ignorer cet email.</p>
+        <p style="color:#888;font-size:12px;margin-top:32px;">Content Level Up Academy · parysbatonda.com</p>
+      </div>
+    `,
+  });
+}
+
 export async function sendPasswordResetEmail(
   to: string,
   name: string,

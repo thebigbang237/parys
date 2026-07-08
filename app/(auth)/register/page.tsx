@@ -2,14 +2,27 @@
 "use client";
 
 import { useState } from "react";
-import { register } from "@/lib/actions/auth.actions";
-import { loginWithGoogle } from "@/lib/actions/auth.actions";
+import {
+  register,
+  loginWithGoogle,
+  resendVerificationEmail,
+} from "@/lib/actions/auth.actions";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [registeredEmail, setRegisteredEmail] = useState("");
+  const [resending, setResending] = useState(false);
+  const [resent, setResent] = useState(false);
+
+  async function handleResend() {
+    setResending(true);
+    await resendVerificationEmail(registeredEmail);
+    setResending(false);
+    setResent(true);
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -18,15 +31,19 @@ export default function RegisterPage() {
 
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const form = new FormData(e.currentTarget);
+    const email = form.get("email") as string;
     const result = await register({
       name: form.get("name") as string,
-      email: form.get("email") as string,
+      email,
       password: form.get("password") as string,
       timezone,
     });
 
     if (result?.error) {
       setError(result.error);
+      setLoading(false);
+    } else if (result?.success) {
+      setRegisteredEmail(email);
       setLoading(false);
     }
   }
@@ -48,99 +65,148 @@ export default function RegisterPage() {
 
       <div className="flex-1 flex flex-col justify-center items-center px-6 bg-white">
         <div className="w-full max-w-[400px] space-y-8">
-          <div>
-            <h2 className="text-2xl font-semibold tracking-tight">
-              Créer mon compte
-            </h2>
-            <p className="text-gray-500 mt-1 text-sm">
-              Rejoins des milliers d'étudiantes.
-            </p>
-          </div>
-
-          {error && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 text-sm">
-              {error}
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit} className="space-y-5">
-            {[
-              {
-                name: "name",
-                label: "Nom complet",
-                type: "text",
-                placeholder: "Parys Batonda",
-              },
-              {
-                name: "email",
-                label: "Adresse e-mail",
-                type: "email",
-                placeholder: "votre@email.com",
-              },
-              {
-                name: "password",
-                label: "Mot de passe",
-                type: "password",
-                placeholder: "8 caractères minimum",
-              },
-            ].map((field) => (
-              <div key={field.name} className="space-y-1">
-                <label className="text-xs tracking-[2px] uppercase text-gray-500">
-                  {field.label}
-                </label>
-                <input
-                  name={field.name}
-                  type={field.type}
-                  placeholder={field.placeholder}
-                  required
-                  minLength={field.name === "password" ? 8 : undefined}
-                  className="w-full border-0 border-b border-gray-200 py-3 px-0 text-sm focus:outline-none focus:border-[#ff63ce] transition-colors bg-transparent"
-                />
+          {registeredEmail ? (
+            <>
+              <div>
+                <h2 className="text-2xl font-semibold tracking-tight">
+                  Vérifie ta boîte mail 📬
+                </h2>
+                <p className="text-gray-500 mt-1 text-sm">
+                  On a envoyé un lien de confirmation à{" "}
+                  <span className="font-medium text-gray-900">
+                    {registeredEmail}
+                  </span>
+                  . Clique dessus pour activer ton compte.
+                </p>
               </div>
-            ))}
 
-            <button
-              type="submit"
-              disabled={loading}
-              className={cn(
-                "w-full bg-[#ff63ce] text-white py-4 text-xs tracking-[3px] uppercase font-medium transition-all",
-                loading ? "opacity-60 cursor-not-allowed" : "hover:bg-[#111]",
+              {resent && (
+                <div className="bg-[#fdf0fa] border border-[#ff63ce]/30 text-gray-700 px-4 py-3 text-sm">
+                  Email renvoyé — pense à vérifier tes spams.
+                </div>
               )}
-            >
-              {loading ? "Création..." : "Créer mon compte"}
-            </button>
-          </form>
 
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-100" />
-            </div>
-            <div className="relative flex justify-center">
-              <span className="bg-white px-4 text-xs text-gray-500 uppercase tracking-[2px]">
-                ou
-              </span>
-            </div>
-          </div>
+              <button
+                onClick={handleResend}
+                disabled={resending}
+                className={cn(
+                  "w-full border border-gray-200 py-4 text-xs tracking-[2px] uppercase transition-colors",
+                  resending
+                    ? "opacity-60 cursor-not-allowed"
+                    : "hover:bg-gray-50",
+                )}
+              >
+                {resending ? "Envoi..." : "Renvoyer l'email"}
+              </button>
 
-          <form action={loginWithGoogle}>
-            <button
-              type="submit"
-              className="w-full border border-gray-200 py-4 text-xs tracking-[2px] uppercase flex items-center justify-center gap-3 hover:bg-gray-50 transition-colors"
-            >
-              <GoogleIcon />
-              Continuer avec Google
-            </button>
-          </form>
+              <p className="text-center text-sm text-gray-500">
+                <Link
+                  href="/login"
+                  className="text-[#ff63ce] font-medium hover:underline"
+                >
+                  ← Retour à la connexion
+                </Link>
+              </p>
+            </>
+          ) : (
+            <>
+              <div>
+                <h2 className="text-2xl font-semibold tracking-tight">
+                  Créer mon compte
+                </h2>
+                <p className="text-gray-500 mt-1 text-sm">
+                  Rejoins des milliers d'étudiantes.
+                </p>
+              </div>
 
-          <p className="text-center text-sm text-gray-500">
-            Déjà un compte ?{" "}
-            <Link
-              href="/login"
-              className="text-[#ff63ce] font-medium hover:underline"
-            >
-              Se connecter
-            </Link>
-          </p>
+              {error && (
+                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 text-sm">
+                  {error}
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit} className="space-y-5">
+                {[
+                  {
+                    name: "name",
+                    label: "Nom complet",
+                    type: "text",
+                    placeholder: "Parys Batonda",
+                  },
+                  {
+                    name: "email",
+                    label: "Adresse e-mail",
+                    type: "email",
+                    placeholder: "votre@email.com",
+                  },
+                  {
+                    name: "password",
+                    label: "Mot de passe",
+                    type: "password",
+                    placeholder: "8 caractères minimum",
+                  },
+                ].map((field) => (
+                  <div key={field.name} className="space-y-1">
+                    <label className="text-xs tracking-[2px] uppercase text-gray-500">
+                      {field.label}
+                    </label>
+                    <input
+                      name={field.name}
+                      type={field.type}
+                      placeholder={field.placeholder}
+                      required
+                      minLength={field.name === "password" ? 8 : undefined}
+                      className="w-full border-0 border-b border-gray-200 py-3 px-0 text-sm focus:outline-none focus:border-[#ff63ce] transition-colors bg-transparent"
+                    />
+                  </div>
+                ))}
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className={cn(
+                    "w-full bg-[#ff63ce] text-white py-4 text-xs tracking-[3px] uppercase font-medium transition-all",
+                    loading
+                      ? "opacity-60 cursor-not-allowed"
+                      : "hover:bg-[#111]",
+                  )}
+                >
+                  {loading ? "Création..." : "Créer mon compte"}
+                </button>
+              </form>
+
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-gray-100" />
+                </div>
+                <div className="relative flex justify-center">
+                  <span className="bg-white px-4 text-xs text-gray-500 uppercase tracking-[2px]">
+                    ou
+                  </span>
+                </div>
+              </div>
+
+              <form action={loginWithGoogle}>
+                <button
+                  type="submit"
+                  className="w-full border border-gray-200 py-4 text-xs tracking-[2px] uppercase flex items-center justify-center gap-3 hover:bg-gray-50 transition-colors"
+                >
+                  <GoogleIcon />
+                  Continuer avec Google
+                </button>
+              </form>
+
+              <p className="text-center text-sm text-gray-500">
+                Déjà un compte ?{" "}
+                <Link
+                  href="/login"
+                  className="text-[#ff63ce] font-medium hover:underline"
+                >
+                  Se connecter
+                </Link>
+              </p>
+            </>
+          )}
         </div>
       </div>
     </main>

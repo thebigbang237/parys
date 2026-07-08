@@ -172,6 +172,51 @@ export async function sendBookingCompletedEmail(
   });
 }
 
+export async function sendPasswordResetEmail(
+  to: string,
+  name: string,
+  resetUrl: string,
+) {
+  await resend.emails.send({
+    from: FROM,
+    to,
+    subject: "Réinitialise ton mot de passe",
+    html: `
+      <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
+        <h2 style="color:#111;">Réinitialisation du mot de passe</h2>
+        <p>Bonjour ${name},</p>
+        <p>Tu as demandé à réinitialiser ton mot de passe sur Content Level Up Academy. Clique sur le bouton ci-dessous pour en choisir un nouveau. Ce lien expire dans 1 heure.</p>
+        <a href="${resetUrl}" style="background:#ff63ce;color:white;padding:12px 24px;text-decoration:none;display:inline-block;margin-top:16px;">
+          Réinitialiser mon mot de passe →
+        </a>
+        <p style="color:#888;font-size:13px;margin-top:24px;">Si tu n'es pas à l'origine de cette demande, tu peux ignorer cet email — ton mot de passe restera inchangé.</p>
+        <p style="color:#888;font-size:12px;margin-top:32px;">Content Level Up Academy · parysbatonda.com</p>
+      </div>
+    `,
+  });
+}
+
+export async function sendGoogleAccountResetAttemptEmail(to: string, name: string) {
+  await resend.emails.send({
+    from: FROM,
+    to,
+    subject: "Ton compte utilise la connexion Google",
+    html: `
+      <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
+        <h2 style="color:#111;">Pas de mot de passe à réinitialiser</h2>
+        <p>Bonjour ${name},</p>
+        <p>Quelqu'un a demandé une réinitialisation de mot de passe pour ce compte, mais celui-ci est connecté via Google — il n'y a pas de mot de passe associé.</p>
+        <p>Pour te connecter, utilise simplement le bouton "Continuer avec Google" sur la page de connexion.</p>
+        <a href="${APP_URL}/login" style="background:#111;color:white;padding:12px 24px;text-decoration:none;display:inline-block;margin-top:16px;">
+          Aller à la connexion →
+        </a>
+        <p style="color:#888;font-size:13px;margin-top:24px;">Si tu n'es pas à l'origine de cette demande, tu peux ignorer cet email.</p>
+        <p style="color:#888;font-size:12px;margin-top:32px;">Content Level Up Academy · parysbatonda.com</p>
+      </div>
+    `,
+  });
+}
+
 // ── Admin notifications ────────────────────────────────
 
 export async function sendAdminNewBookingEmail(params: {

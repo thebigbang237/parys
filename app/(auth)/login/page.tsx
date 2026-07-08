@@ -1,7 +1,8 @@
 // app/(auth)/login/page.tsx
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   loginWithCredentials,
   loginWithGoogle,
@@ -10,10 +11,35 @@ import {
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
+function mapAuthError(code: string | null): string {
+  switch (code) {
+    case null:
+    case "":
+      return "";
+    case "OAuthAccountNotLinked":
+      return "Un compte existe déjà avec cet email. Connecte-toi et réessaie Google ensuite.";
+    case "AccessDenied":
+      return "Accès refusé.";
+    default:
+      return "Une erreur est survenue lors de la connexion. Réessaie.";
+  }
+}
+
 export default function LoginPage() {
+  return (
+    <Suspense fallback={null}>
+      <LoginForm />
+    </Suspense>
+  );
+}
+
+function LoginForm() {
+  const searchParams = useSearchParams();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(() =>
+    mapAuthError(searchParams.get("error")),
+  );
   const [needsVerification, setNeedsVerification] = useState(false);
   const [loading, setLoading] = useState(false);
   const [resending, setResending] = useState(false);

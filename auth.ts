@@ -18,6 +18,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     Google({
       clientId: process.env.AUTH_GOOGLE_ID!,
       clientSecret: process.env.AUTH_GOOGLE_SECRET!,
+      // Google verifies email ownership itself, so it's safe to link a
+      // Google sign-in to an existing credentials account with the same
+      // email instead of blocking with OAuthAccountNotLinked.
+      allowDangerousEmailAccountLinking: true,
     }),
     Credentials({
       name: "credentials",
@@ -62,6 +66,22 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     }),
   ],
   callbacks: {
+    async signIn({ user, account, profile }) {
+      // A Google sign-in with a verified email proves ownership just like
+      // clicking our own verification link — reflect that on the account,
+      // including when it just got linked to a pre-existing credentials user.
+      if (account?.provider === "google" && user.id && profile?.email_verified) {
+        try {
+          await prisma.user.update({
+            where: { id: user.id },
+            data: { emailVerified: new Date() },
+          });
+        } catch (err) {
+          console.error("Failed to mark user verified after Google sign-in:", err);
+        }
+      }
+      return true;
+    },
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;

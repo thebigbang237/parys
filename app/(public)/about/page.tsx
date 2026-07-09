@@ -18,15 +18,15 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="max-w-6xl h-dvh pt-24 mx-auto px-6 py-16 md:py-24 grid md:grid-cols-12 gap-12 items-center">
         <div className="md:col-span-7">
-          <p className="text-xs tracking-[4px] text-[#ff63ce] mb-5">
+          <p className="text-xs tracking-[4px] text-gray-900 font-bold mb-5">
             Entrepreneure · Animatrice de télé · Maîtresse de cérémonie ·
             Productrice de contenu
           </p>
-          <h1 className="font-serif text-xl sm:text-3xl md:text-4xl font-medium text-gray-900 leading-none sm:leading-none mb-6">
+          <h1 className="font-serif text-xl sm:text-3xl md:text-4xl font-medium text-gray-900 leading-none sm:leading-none mb-4">
             De la caméra <br />
-            <span className=" text-[#ff63ce]">au mentorat.</span>
+            <span className=" text-[#ff63ce] font-bold">au mentorat.</span>
           </h1>
-          <p className="text-gray-500 text-xs sm:text-lg leading-relaxed max-w-xl">
+          <p className="text-gray-500 text-sm sm:text-lg leading-relaxed max-w-xl">
             Parys Batonda évolue dans l&rsquo;univers de la création de contenu
             depuis 2018. Aujourd&rsquo;hui, elle partage son expérience pour
             aider une nouvelle génération de créatrices à grandir et à se
@@ -49,22 +49,22 @@ export default function AboutPage() {
       <section className="">
         <div className="max-w-6xl mx-auto px-6 py-16 md:py-24 grid md:grid-cols-2 gap-16 md:gap-24">
           <div>
-            <p className="text-xs tracking-[4px] uppercase text-[#ff63ce] mb-3">
+            <p className="text-base tracking-[4px] uppercase text-[#ff63ce] mb-3">
               Son histoire
             </p>
             <div className="space-y-4">
-              <p className="font-serif text-xs md:text-2xl text-gray-900 leading-tight">
+              <p className="font-serif italic text-sm md:text-2xl text-gray-900 leading-tight">
                 &ldquo;Partager son expérience, c&rsquo;est aussi continuer à
                 apprendre.&rdquo;
               </p>
-              <p className="text-gray-500 text-base sm:text-lg leading-relaxed">
+              <p className="text-gray-500 text-sm sm:text-lg leading-relaxed">
                 Au fil des années, son parcours l&rsquo;a menée derrière et
                 devant la caméra&nbsp;: animatrice sur Chill Zone (Vox Africa),
                 chroniqueuse sur Même pas fatiguée&nbsp;! (Canal+), et aussi son
                 propre show, Le Parys Show, qu&rsquo;elle produit elle-même et
                 diffuse sur sa chaîne YouTube.
               </p>
-              <p className="text-gray-500 text-base sm:text-lg leading-relaxed">
+              <p className="text-gray-500 text-sm sm:text-lg leading-relaxed">
                 Au-delà des plateaux, Parys a su fédérer une communauté fidèle,
                 qui la suit pour son authenticité, la qualité de son travail et
                 les valeurs qu&rsquo;elle défend.
@@ -131,7 +131,7 @@ export default function AboutPage() {
           </h2>
           <div className="grid md:grid-cols-3 gap-0 border border-[#f0e0ec]">
             <div className="p-12 bg-white border-b md:border-b-0 md:border-r border-[#f0e0ec] flex flex-col items-center text-center">
-              <FingerprintPattern 
+              <FingerprintPattern
                 className="text-[#ff63ce] mb-6"
                 size={32}
                 strokeWidth={1.5}

@@ -30,7 +30,7 @@ export default function NewCoursePage() {
   return (
     <div className="p-8 max-w-2xl">
       <div className="mb-8">
-        <p className="text-xs tracking-[3px] uppercase text-[#ff63ce] mb-1">
+        <p className="text-xs tracking-[3px] uppercase text-[#a61968] mb-1">
           Formations
         </p>
         <h1 className="text-2xl font-serif font-medium">Nouvelle formation</h1>
@@ -63,7 +63,7 @@ export default function NewCoursePage() {
             name="title"
             required
             placeholder="Création de contenu"
-            className="w-full border border-gray-200 rounded px-4 py-3 text-sm focus:outline-none focus:border-[#ff63ce] transition-colors"
+            className="w-full border border-gray-200 rounded px-4 py-3 text-sm focus:outline-none focus:border-[#a61968] transition-colors"
           />
         </div>
 
@@ -76,7 +76,7 @@ export default function NewCoursePage() {
             required
             rows={4}
             placeholder="Décris ta formation en détail..."
-            className="w-full border border-gray-200 rounded px-4 py-3 text-sm focus:outline-none focus:border-[#ff63ce] transition-colors resize-none"
+            className="w-full border border-gray-200 rounded px-4 py-3 text-sm focus:outline-none focus:border-[#a61968] transition-colors resize-none"
           />
         </div>
 
@@ -96,7 +96,7 @@ export default function NewCoursePage() {
                 min="0"
                 required
                 placeholder={field.placeholder}
-                className="w-full border border-gray-200 rounded px-4 py-3 text-sm focus:outline-none focus:border-[#ff63ce] transition-colors"
+                className="w-full border border-gray-200 rounded px-4 py-3 text-sm focus:outline-none focus:border-[#a61968] transition-colors"
               />
             </div>
           ))}
@@ -107,7 +107,7 @@ export default function NewCoursePage() {
             type="checkbox"
             name="is_free"
             id="is_free"
-            className="accent-[#ff63ce]"
+            className="accent-[#a61968]"
           />
           <label htmlFor="is_free" className="text-sm text-gray-600">
             Formation gratuite
@@ -118,7 +118,7 @@ export default function NewCoursePage() {
           <button
             type="submit"
             disabled={loading}
-            className="bg-[#ff63ce] text-white px-8 py-3 text-xs tracking-[2px] uppercase hover:bg-[#111] transition-colors disabled:opacity-60"
+            className="bg-[#a61968] text-white px-8 py-3 text-xs tracking-[2px] uppercase hover:bg-[#172A39] transition-colors disabled:opacity-60"
           >
             {loading ? "Création..." : "Créer la formation"}
           </button>

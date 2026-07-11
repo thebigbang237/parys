@@ -176,8 +176,8 @@ export default function CheckoutForm({
   // Pending mobile money confirmation screen
   if (mobileMoneyPending) {
     return (
-      <div className="bg-white border border-[#f0e0ec] p-8 text-center space-y-6">
-        <div className="w-16 h-16 border-4 border-[#ff63ce] border-t-transparent rounded-full animate-spin mx-auto" />
+      <div className="bg-white border border-[#f3dfea] p-8 text-center space-y-6">
+        <div className="w-16 h-16 border-4 border-[#a61968] border-t-transparent rounded-full animate-spin mx-auto" />
         <div>
           <h3 className="font-serif text-xl font-medium text-gray-900 mb-2">
             Confirmez sur votre téléphone
@@ -198,7 +198,7 @@ export default function CheckoutForm({
   }
 
   return (
-    <div className="bg-white border border-[#f0e0ec] p-8 space-y-6">
+    <div className="bg-white border border-[#f3dfea] p-8 space-y-6">
       {/* Currency / Country switcher */}
       <div>
         <h2 className="text-xs tracking-[3px] uppercase text-gray-500 mb-4">
@@ -227,8 +227,8 @@ export default function CheckoutForm({
                       "GNF",
                       "CDF",
                     ].includes(currency))
-                  ? "border-[#ff63ce] bg-[#fdf0fa] text-[#ff63ce]"
-                  : "border-gray-200 text-gray-500 hover:border-[#ff63ce]",
+                  ? "border-[#a61968] bg-[#f9eff4] text-[#a61968]"
+                  : "border-gray-200 text-gray-500 hover:border-[#a61968]",
               )}
             >
               {c}
@@ -244,7 +244,7 @@ export default function CheckoutForm({
           <div className="mt-3 relative">
             <button
               onClick={() => setShowCountryPicker(!showCountryPicker)}
-              className="flex items-center gap-2 text-sm text-gray-600 border border-gray-200 px-4 py-2 hover:border-[#ff63ce] transition-colors w-full"
+              className="flex items-center gap-2 text-sm text-gray-600 border border-gray-200 px-4 py-2 hover:border-[#a61968] transition-colors w-full"
             >
               <span>
                 {PAWAPAY_COUNTRY_CONFIG[country]?.flag || (
@@ -264,7 +264,7 @@ export default function CheckoutForm({
                     <button
                       key={code}
                       onClick={() => handleCountryChange(code)}
-                      className="w-full flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-[#fdf0fa] transition-colors text-left"
+                      className="w-full flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-[#f9eff4] transition-colors text-left"
                     >
                       <span>{config.flag}</span>
                       <span>{config.name}</span>
@@ -282,7 +282,7 @@ export default function CheckoutForm({
                       setMethod("paypal");
                       setShowCountryPicker(false);
                     }}
-                    className="w-full flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-[#fdf0fa] transition-colors text-left"
+                    className="w-full flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-[#f9eff4] transition-colors text-left"
                   >
                     <Globe size={16} />
                     <span>Autre pays</span>
@@ -307,8 +307,8 @@ export default function CheckoutForm({
               className={cn(
                 "w-full p-4 border text-left transition-colors",
                 method === "mobile_money"
-                  ? "border-[#ff63ce] bg-[#fdf0fa]"
-                  : "border-gray-200 hover:border-[#ff63ce]",
+                  ? "border-[#a61968] bg-[#f9eff4]"
+                  : "border-gray-200 hover:border-[#a61968]",
               )}
             >
               <div className="flex justify-between items-center">
@@ -339,8 +339,8 @@ export default function CheckoutForm({
             className={cn(
               "w-full p-4 border text-left transition-colors",
               method === "paypal"
-                ? "border-[#ff63ce] bg-[#fdf0fa]"
-                : "border-gray-200 hover:border-[#ff63ce]",
+                ? "border-[#a61968] bg-[#f9eff4]"
+                : "border-gray-200 hover:border-[#a61968]",
             )}
           >
             <div className="flex justify-between items-center">
@@ -377,7 +377,7 @@ export default function CheckoutForm({
                     ? "+221 7X XXX XX XX"
                     : "+XXX XXXXXXXXX"
             }
-            className="w-full border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#ff63ce] transition-colors"
+            className="w-full border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#a61968] transition-colors"
           />
           <p className="text-xs text-gray-500">
             Incluez l'indicatif pays (ex: +237 pour Cameroun)
@@ -398,7 +398,7 @@ export default function CheckoutForm({
             : handlePayPalPayment
         }
         disabled={loading}
-        className="w-full bg-[#ff63ce] text-white py-4 text-xs tracking-[3px] uppercase font-medium hover:bg-[#111] transition-colors disabled:opacity-60"
+        className="w-full bg-[#a61968] text-white py-4 text-xs tracking-[3px] uppercase font-medium hover:bg-[#172A39] transition-colors disabled:opacity-60"
       >
         {loading
           ? "Traitement..."

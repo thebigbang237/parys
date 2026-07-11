@@ -91,8 +91,8 @@ export default function HeaderNav({
           className={cn(
             "rounded-[20px] overflow-hidden backdrop-blur-2xl [backdrop-filter:blur(24px)_saturate(180%)] transition-[background-color,box-shadow] duration-300",
             scrolled
-              ? "bg-white/[.9] ring-1 ring-black/[.07] shadow-[inset_0_1px_0_rgba(255,255,255,.8),0_8px_32px_rgba(0,0,0,.10)]"
-              : "bg-white/[.78] ring-1 ring-black/[.05] shadow-[inset_0_1px_0_rgba(255,255,255,.7),0_4px_20px_rgba(0,0,0,.07)]",
+              ? "bg-[#E9E4E0]/[.9] ring-1 ring-black/[.07] shadow-[inset_0_1px_0_rgba(255,255,255,.8),0_8px_32px_rgba(0,0,0,.10)]"
+              : "bg-[#E9E4E0]/[.78] ring-1 ring-black/[.05] shadow-[inset_0_1px_0_rgba(255,255,255,.7),0_4px_20px_rgba(0,0,0,.07)]",
           )}
         >
           {/* Top row */}
@@ -118,8 +118,8 @@ export default function HeaderNav({
                     className={cn(
                       "px-4 py-2 rounded-xl text-[13px] font-medium tracking-wide transition-all duration-150",
                       isActive(link.href)
-                        ? "text-[#ff63ce] bg-[#ff63ce]/[.08]"
-                        : "text-gray-500 hover:text-gray-900 hover:bg-gray-900/[.04]",
+                        ? "text-[#a61968] bg-[#a61968]/[.08]"
+                        : "text-[#172A39] hover:text-gray-900 hover:bg-gray-900/[.04]",
                     )}
                   >
                     {link.label}
@@ -138,7 +138,7 @@ export default function HeaderNav({
                       "text-xs tracking-[2px] uppercase transition-colors",
                       isActive("/dashboard")
                         ? "text-gray-900 font-medium"
-                        : "text-gray-500 hover:text-gray-900",
+                        : "text-[#172A39] hover:text-gray-900",
                     )}
                   >
                     Mon espace
@@ -152,7 +152,7 @@ export default function HeaderNav({
                           "text-xs tracking-[2px] uppercase transition-colors",
                           isActive("/admin")
                             ? "text-gray-900 font-medium"
-                            : "text-[#ff63ce] hover:text-gray-900",
+                            : "text-[#a61968] hover:text-gray-900",
                         )}
                       >
                         Admin
@@ -162,7 +162,7 @@ export default function HeaderNav({
                   <NavSeparator />
                   <form action={logout}>
                     <button className="text-xs tracking-[2px] uppercase text-gray-500 hover:text-gray-900 transition-colors">
-                      <LogOut size={16} color="#ff63ce" />
+                      <LogOut size={16} color="#a61968" />
                     </button>
                   </form>
                 </>
@@ -181,7 +181,7 @@ export default function HeaderNav({
                   </Link>
                   <Link
                     href="/register"
-                    className="inline-flex items-center bg-[#ff63ce] text-white text-xs tracking-[2px] uppercase px-5 py-2.5 rounded-xl hover:brightness-110 active:scale-95 transition-all"
+                    className="inline-flex items-center bg-[#a61968] text-white text-xs tracking-[2px] uppercase px-5 py-2.5 rounded-xl hover:brightness-110 active:scale-95 transition-all"
                   >
                     S'inscrire
                   </Link>
@@ -217,7 +217,7 @@ export default function HeaderNav({
                   className={cn(
                     "flex items-center px-3 py-3 rounded-xl text-sm font-medium transition-colors",
                     isActive(link.href)
-                      ? "text-[#ff63ce] bg-[#ff63ce]/[.08]"
+                      ? "text-[#a61968] bg-[#a61968]/[.08]"
                       : "text-gray-500 hover:text-gray-900 hover:bg-gray-900/[.06]",
                   )}
                 >
@@ -236,7 +236,7 @@ export default function HeaderNav({
                   {isAdmin && (
                     <Link
                       href="/admin"
-                      className="flex items-center px-3 py-3 rounded-xl text-sm font-medium text-[#ff63ce] hover:bg-gray-900/[.06] transition-colors"
+                      className="flex items-center px-3 py-3 rounded-xl text-sm font-medium text-[#a61968] hover:bg-gray-900/[.06] transition-colors"
                     >
                       Admin
                     </Link>
@@ -257,7 +257,7 @@ export default function HeaderNav({
                   </Link>
                   <Link
                     href="/register"
-                    className="mt-2 flex items-center justify-center gap-2 bg-[#ff63ce] text-white text-sm font-medium px-5 py-3 rounded-xl hover:brightness-110 active:scale-[.98] transition-all"
+                    className="mt-2 flex items-center justify-center gap-2 bg-[#a61968] text-white text-sm font-medium px-5 py-3 rounded-xl hover:brightness-110 active:scale-[.98] transition-all"
                   >
                     S'inscrire
                   </Link>

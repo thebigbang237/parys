@@ -22,11 +22,11 @@ export default function ForgotPasswordPage() {
   return (
     <main className="min-h-screen flex">
       {/* Left — brand panel */}
-      <div className="hidden md:flex w-1/2 bg-[#fdf0fa] border-r border-[#f0e0ec] flex-col justify-center items-center px-16">
+      <div className="hidden md:flex w-1/2 bg-[#f9eff4] border-r border-[#f3dfea] flex-col justify-center items-center px-16">
         <div className="max-w-md space-y-8">
           <h1 className="font-serif text-5xl font-medium leading-tight">
             Content Level Up
-            <span className="italic text-[#ff63ce]"> Academy</span>
+            <span className="italic text-[#a61968]"> Academy</span>
           </h1>
           <p className="text-gray-500 text-lg leading-relaxed">
             La plateforme de référence pour les créatrices de contenu
@@ -52,14 +52,14 @@ export default function ForgotPasswordPage() {
           </div>
 
           {submitted ? (
-            <div className="bg-[#fdf0fa] border border-[#ff63ce]/30 text-gray-700 px-4 py-4 text-sm space-y-3">
+            <div className="bg-[#f9eff4] border border-[#a61968]/30 text-gray-700 px-4 py-4 text-sm space-y-3">
               <p>
                 Si un compte existe avec cet email, un lien de réinitialisation
                 vient d&apos;être envoyé. Pense à vérifier tes spams.
               </p>
               <Link
                 href="/login"
-                className="text-[#ff63ce] font-medium hover:underline inline-block"
+                className="text-[#a61968] font-medium hover:underline inline-block"
               >
                 ← Retour à la connexion
               </Link>
@@ -76,7 +76,7 @@ export default function ForgotPasswordPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="votre@email.com"
                   required
-                  className="w-full border-0 border-b border-gray-200 py-3 px-0 text-sm focus:outline-none focus:border-[#ff63ce] transition-colors bg-transparent"
+                  className="w-full border-0 border-b border-gray-200 py-3 px-0 text-sm focus:outline-none focus:border-[#a61968] transition-colors bg-transparent"
                 />
               </div>
 
@@ -84,8 +84,8 @@ export default function ForgotPasswordPage() {
                 type="submit"
                 disabled={loading}
                 className={cn(
-                  "w-full bg-[#ff63ce] text-white py-4 text-xs tracking-[3px] uppercase font-medium transition-all",
-                  loading ? "opacity-60 cursor-not-allowed" : "hover:bg-[#111]",
+                  "w-full bg-[#a61968] text-white py-4 text-xs tracking-[3px] uppercase font-medium transition-all",
+                  loading ? "opacity-60 cursor-not-allowed" : "hover:bg-[#172A39]",
                 )}
               >
                 {loading ? "Envoi..." : "Envoyer le lien"}
@@ -94,7 +94,7 @@ export default function ForgotPasswordPage() {
               <p className="text-center text-sm text-gray-500">
                 <Link
                   href="/login"
-                  className="text-[#ff63ce] font-medium hover:underline"
+                  className="text-[#a61968] font-medium hover:underline"
                 >
                   ← Retour à la connexion
                 </Link>

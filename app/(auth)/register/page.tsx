@@ -50,11 +50,11 @@ export default function RegisterPage() {
 
   return (
     <main className="min-h-screen flex">
-      <div className="hidden md:flex w-1/2 bg-[#fdf0fa] border-r border-[#f0e0ec] flex-col justify-center items-center px-16">
+      <div className="hidden md:flex w-1/2 bg-[#f9eff4] border-r border-[#f3dfea] flex-col justify-center items-center px-16">
         <div className="max-w-md space-y-8">
           <h1 className="font-serif text-5xl font-medium leading-tight">
             Rejoins l'
-            <span className="italic text-[#ff63ce]">Académie</span>
+            <span className="italic text-[#a61968]">Académie</span>
           </h1>
           <p className="text-gray-500 text-lg leading-relaxed">
             Des formations premium pour les créatrices de contenu ambitieuses
@@ -81,7 +81,7 @@ export default function RegisterPage() {
               </div>
 
               {resent && (
-                <div className="bg-[#fdf0fa] border border-[#ff63ce]/30 text-gray-700 px-4 py-3 text-sm">
+                <div className="bg-[#f9eff4] border border-[#a61968]/30 text-gray-700 px-4 py-3 text-sm">
                   Email renvoyé — pense à vérifier tes spams.
                 </div>
               )}
@@ -102,7 +102,7 @@ export default function RegisterPage() {
               <p className="text-center text-sm text-gray-500">
                 <Link
                   href="/login"
-                  className="text-[#ff63ce] font-medium hover:underline"
+                  className="text-[#a61968] font-medium hover:underline"
                 >
                   ← Retour à la connexion
                 </Link>
@@ -156,7 +156,7 @@ export default function RegisterPage() {
                       placeholder={field.placeholder}
                       required
                       minLength={field.name === "password" ? 8 : undefined}
-                      className="w-full border-0 border-b border-gray-200 py-3 px-0 text-sm focus:outline-none focus:border-[#ff63ce] transition-colors bg-transparent"
+                      className="w-full border-0 border-b border-gray-200 py-3 px-0 text-sm focus:outline-none focus:border-[#a61968] transition-colors bg-transparent"
                     />
                   </div>
                 ))}
@@ -165,10 +165,10 @@ export default function RegisterPage() {
                   type="submit"
                   disabled={loading}
                   className={cn(
-                    "w-full bg-[#ff63ce] text-white py-4 text-xs tracking-[3px] uppercase font-medium transition-all",
+                    "w-full bg-[#a61968] text-white py-4 text-xs tracking-[3px] uppercase font-medium transition-all",
                     loading
                       ? "opacity-60 cursor-not-allowed"
-                      : "hover:bg-[#111]",
+                      : "hover:bg-[#172A39]",
                   )}
                 >
                   {loading ? "Création..." : "Créer mon compte"}
@@ -200,7 +200,7 @@ export default function RegisterPage() {
                 Déjà un compte ?{" "}
                 <Link
                   href="/login"
-                  className="text-[#ff63ce] font-medium hover:underline"
+                  className="text-[#a61968] font-medium hover:underline"
                 >
                   Se connecter
                 </Link>

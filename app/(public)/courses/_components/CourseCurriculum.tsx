@@ -46,14 +46,14 @@ export default function CourseCurriculum({
       {modules.map((module, idx) => (
         <div
           key={module.id}
-          className="border border-[#f0e0ec] bg-white overflow-hidden"
+          className="border border-[#f3dfea] bg-white overflow-hidden"
         >
           <button
             onClick={() => toggle(module.id)}
-            className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-[#fdf0fa] transition-colors"
+            className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-[#f9eff4] transition-colors"
           >
             <div className="flex items-center gap-4">
-              <span className="text-xs text-[#ff63ce] font-medium w-6">
+              <span className="text-xs text-[#a61968] font-medium w-6">
                 {String(idx + 1).padStart(2, "0")}
               </span>
               <span className="font-medium text-gray-900">{module.title}</span>
@@ -62,7 +62,7 @@ export default function CourseCurriculum({
                 {module.lessons.length !== 1 ? "s" : ""}
               </span>
             </div>
-            <span className="text-[#ff63ce]">
+            <span className="text-[#a61968]">
               {expanded.includes(module.id) ? (
                 <ChevronUp size={16} />
               ) : (
@@ -72,7 +72,7 @@ export default function CourseCurriculum({
           </button>
 
           {expanded.includes(module.id) && (
-            <div className="border-t border-[#f0e0ec] divide-y divide-[#f0e0ec]">
+            <div className="border-t border-[#f3dfea] divide-y divide-[#f3dfea]">
               {module.lessons.map((lesson, lessonIdx) => {
                 const canAccess = isEnrolled || lesson.is_preview;
 
@@ -85,7 +85,7 @@ export default function CourseCurriculum({
                     <div className="flex-1 flex items-center gap-3">
                       <span
                         className={
-                          canAccess ? "text-[#ff63ce]" : "text-gray-200"
+                          canAccess ? "text-[#a61968]" : "text-gray-200"
                         }
                       >
                         {canAccess ? <Play size={14} /> : <Lock size={14} />}
@@ -100,7 +100,7 @@ export default function CourseCurriculum({
                       </span>
 
                       {lesson.is_preview && !isEnrolled && (
-                        <span className="text-xs bg-[#fdf0fa] text-[#ff63ce] border border-[#f0e0ec] px-2 py-0.5">
+                        <span className="text-xs bg-[#f9eff4] text-[#a61968] border border-[#f3dfea] px-2 py-0.5">
                           Aperçu gratuit
                         </span>
                       )}
@@ -118,7 +118,7 @@ export default function CourseCurriculum({
                   <Link
                     key={lesson.id}
                     href={`/learn/${lesson.id}`}
-                    className="flex items-center gap-4 px-6 py-3 hover:bg-[#fdf0fa] transition-colors"
+                    className="flex items-center gap-4 px-6 py-3 hover:bg-[#f9eff4] transition-colors"
                   >
                     {lessonContent}
                   </Link>

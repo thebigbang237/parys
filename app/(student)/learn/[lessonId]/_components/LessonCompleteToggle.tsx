@@ -40,8 +40,8 @@ export default function LessonCompleteToggle({
       className={cn(
         "flex items-center gap-2 px-4 py-2 text-xs tracking-[2px] uppercase border transition-colors disabled:opacity-60",
         completed
-          ? "border-[#ff63ce] bg-[#fdf0fa] text-[#ff63ce]"
-          : "border-gray-200 text-gray-500 hover:border-[#ff63ce] hover:text-[#ff63ce]",
+          ? "border-[#a61968] bg-[#f9eff4] text-[#a61968]"
+          : "border-gray-200 text-gray-500 hover:border-[#a61968] hover:text-[#a61968]",
       )}
     >
       {completed ? <CheckCircle2 size={14} /> : <Circle size={14} />}

@@ -58,34 +58,34 @@ export default async function HomePage() {
   const streamCustomerCode = process.env.CLOUDFLARE_STREAM_CUSTOMER_CODE;
 
   return (
-    <div className="min-h-screen bg-white pt-24">
+    <div className="min-h-screen bg-[#E9E4E0] pt-24">
               {/* Dot pattern overlay */}
         <div
           aria-hidden="true"
           className="absolute inset-0 opacity-[.5] pointer-events-none"
           style={{
             backgroundImage:
-              "radial-gradient(circle, #ff63ce 1.5px, transparent 1.5px)",
+              "radial-gradient(circle, #a61968 1.5px, transparent 1.5px)",
             backgroundSize: "24px 24px",
           }}
         />
       {/* Hero */}
-      <section className="relative overflow-hidden max-w-6xl h-dvh mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+      <section className="relative  max-w-6xl h-dvh mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
 
 
         <div className="relative z-10">
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-medium text-gray-900 leading-tight sm:leading-none mb-5">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-medium text-[#172A39] leading-tight sm:leading-none mb-5">
             Bienvenue <span>Chez</span>{" "}
-            <span className="font-bold font-sans text-[#ff63ce]">Parys</span>
+            <span className="font-bold font-sans text-[#a61968]">Parys</span>
           </h1>
-          <p className="text-gray-500 text-base sm:text-lg leading-relaxed mb-5 max-w-md">
+          <p className="text-[#172A39]/80 text-base sm:text-lg leading-relaxed mb-5 max-w-md">
             Des formations premium en création de contenu conçues pour les
             femmes ambitieuses d'Afrique et du monde.
           </p>
           <div className="flex gap-4">
             <Link
               href="/courses"
-              className="bg-[#ff63ce] text-white rounded-3xl px-10 py-4 text-xs tracking-[3px] uppercase hover:bg-[#ff63cec7] transition-colors"
+              className="bg-[#a61968] text-white rounded-3xl px-10 py-4 text-xs tracking-[3px] uppercase hover:bg-[#a61968c7] transition-colors"
             >
               Rejoins-moi
             </Link>
@@ -93,20 +93,20 @@ export default async function HomePage() {
         </div>
 
         {/* Right panel */}
-        <div className="relative z-10 h-full aspect-4/6 hidden md:flex overflow-hidden">
+        <div className="relative z-10 h-full aspect-4/6 hidden md:flex">
           <Image
-            src="/images/Parys-Acceuil.png"
+            src="/images/Parys-Acceuil2.png"
             alt="Parys Batonda"
             fill
             priority
-            className="object-contain object-bottom"
+            className="object-contain w-full object-bottom"
           />
         </div>
       </section>
 
       {/* Intro video */}
       <section className="max-w-6xl mx-auto mb-20 px-6">
-        <div className="relative aspect-video bg-[#111] overflow-hidden">
+        <div className="relative rounded-3xl aspect-video bg-[#172A39] overflow-hidden">
           {homeVideoId && streamCustomerCode ? (
             <iframe
               src={`https://customer-${streamCustomerCode}.cloudflarestream.com/${homeVideoId}/iframe?preload=true&poster=${encodeURIComponent(
@@ -119,7 +119,7 @@ export default async function HomePage() {
             />
           ) : (
             <div className="absolute inset-0 flex items-center justify-center">
-              <p className="text-white/40 text-sm">Vidéo bientôt disponible</p>
+              <p className="text-[#172A39]/40 text-sm">Vidéo bientôt disponible</p>
             </div>
           )}
         </div>
@@ -127,20 +127,20 @@ export default async function HomePage() {
 
       {/* Courses preview */}
       {courses.length > 0 && (
-        <section className="bg-[#fdf0fa]  py-24">
+        <section className="bg-[#E9E4E0]/70  py-24">
           <div className="max-w-6xl mx-auto px-6">
             <div className="flex justify-between items-end mb-12 gap-4">
               <div>
-                <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-2">
+                <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#a61968] mb-2">
                   Mes formations
                 </p>
-                <h2 className="font-serif text-xl leading-none sm:text-3xl md:text-4xl font-medium text-gray-900">
+                <h2 className="font-serif text-xl leading-none sm:text-3xl md:text-4xl font-medium text-[#172A39]">
                   Des programmes pensés pour toi
                 </h2>
               </div>
               <Link
                 href="/courses"
-                className="text-xs tracking-[2px] uppercase border-b border-gray-900 pb-0.5 hover:text-[#ff63ce] hover:border-[#ff63ce] transition-colors shrink-0"
+                className="text-xs tracking-[2px] border-b border-gray-900 pb-0.5 hover:text-[#a61968] hover:border-[#a61968] transition-colors shrink-0"
               >
                 Tout voir →
               </Link>
@@ -154,9 +154,9 @@ export default async function HomePage() {
                   <Link
                     key={course.id}
                     href={`/courses/${course.slug}`}
-                    className="group bg-white border border-[#f0e0ec] hover:border-[#ff63ce] transition-colors"
+                    className="group bg-white/60 border rounded-3xl overflow-hidden border-[#f3dfea] hover:border-[#a61968]/40 transition-colors"
                   >
-                    <div className="relative aspect-video bg-[#fdf0fa] overflow-hidden">
+                    <div className="relative aspect-7/6 bg-[#f9eff4] overflow-hidden">
                       {course.thumbnail_url ? (
                         <Image
                           src={course.thumbnail_url}
@@ -166,7 +166,7 @@ export default async function HomePage() {
                         />
                       ) : (
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="font-serif text-5xl text-[#ff63ce] opacity-20 italic">
+                          <span className="font-serif text-5xl text-[#a61968] opacity-20 italic">
                             P
                           </span>
                         </div>
@@ -176,12 +176,12 @@ export default async function HomePage() {
                       <h3 className="font-serif text-xl font-medium text-gray-900 mb-2  transition-all">
                         {course.title}
                       </h3>
-                      <p className="text-sm text-gray-500 line-clamp-2 mb-4">
+                      <p className="text-sm text-[#172A39]/80 line-clamp-2 mb-4">
                         {course.description}
                       </p>
                       <div className="flex justify-between items-center">
 
-                        <span className="text-xs text-[#ff63ce] uppercase">
+                        <span className="text-xs text-[#a61968] uppercase">
                           {isEnrolled ? "Continuer →" : "S'inscrire →"}
                         </span>
                       </div>
@@ -195,23 +195,23 @@ export default async function HomePage() {
       )}
 
       {/* Coaching section */}
-      <section className="border-b border-[#f0e0ec]">
+      <section className="border-b border-[#f3dfea]">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2">
             {/* Left — features */}
-            <div className="px-6 py-24 border-r border-[#f0e0ec]">
+            <div className="px-6 py-24 border-r border-[#f3dfea]">
               <div className="flex items-start justify-between gap-4 mb-12">
                 <div>
-                  <p className="text-xs tracking-[4px] uppercase text-[#ff63ce] mb-2">
+                  <p className="text-xs tracking-[4px] uppercase text-[#a61968] mb-2">
                     Accompagnement privé
                   </p>
-                  <h2 className="font-serif text-xl leading-none md:text-3xl font-medium text-gray-900">
+                  <h2 className="font-serif text-xl leading-none md:text-3xl font-medium text-[#172A39]">
                     Le Coaching 1-to-1
                   </h2>
                 </div>
                 <Link
                   href="/coaching"
-                  className="text-xs tracking-[2px] uppercase border-b border-gray-900 pb-0.5 hover:text-[#ff63ce] hover:border-[#ff63ce] transition-colors shrink-0"
+                  className="text-xs tracking-[2px] border-b border-gray-900 pb-0.5 hover:text-[#a61968] hover:border-[#a61968] transition-colors shrink-0"
                 >
                   Tout voir →
                 </Link>
@@ -235,12 +235,12 @@ export default async function HomePage() {
                   },
                 ].map((f) => (
                   <div key={f.title} className="flex gap-5">
-                    <f.icon className="text-[#ff63ce] mt-0.5" size={22} />
+                    <f.icon className="text-[#a61968] mt-0.5" size={22} />
                     <div>
                       <h4 className="text-xs tracking-[2px] uppercase font-medium text-gray-900 mb-1">
                         {f.title}
                       </h4>
-                      <p className="text-sm text-gray-500 leading-relaxed">
+                      <p className="text-sm text-[#172A39]/80 leading-relaxed">
                         {f.desc}
                       </p>
                     </div>
@@ -250,13 +250,13 @@ export default async function HomePage() {
             </div>
 
             {/* Right — session types */}
-            <div className="bg-[#fdf0fa] px-6 py-24 flex items-center">
+            <div className="bg-[#6e7575]/10 px-6 py-24 rounded-3xl flex items-center">
               {coachingSessions.length === 0 ? (
-                <div className="bg-white border border-[#f0e0ec] p-8 w-full">
+                <div className="bg-white/60 border border-[#f3dfea] p-8 w-full">
                   <h3 className="font-serif text-lg sm:text-xl font-medium text-gray-900 text-center mb-6">
                     Réserver une séance
                   </h3>
-                  <p className="text-sm text-gray-500 text-center py-4">
+                  <p className="text-sm text-[#172A39]/80 text-center py-4">
                     Sessions bientôt disponibles
                   </p>
                 </div>
@@ -282,9 +282,9 @@ export default async function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="px-6 py-24 border-b border-[#f0e0ec]">
+      <section className="px-6 py-24 border-b border-[#f3dfea]">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-gray-900 text-center underline decoration-[#ff63ce] decoration-1 underline-offset-8 mb-16">
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-[#172A39] text-center underline decoration-[#a61968] decoration-1 underline-offset-8 mb-16">
             Ils nous font confiance
           </h2>
           <TestimonialsCarousel
@@ -310,7 +310,7 @@ export default async function HomePage() {
       </section>
 
       {/* Payment methods */}
-      <section className="py-12 border-b border-[#f0e0ec]">
+      <section className="py-12 border-b border-[#f3dfea]">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="flex flex-col sm:flex-row items-center gap-4">
             <span className="text-xs tracking-[3px] uppercase text-gray-500 whitespace-nowrap">
@@ -326,7 +326,7 @@ export default async function HomePage() {
               ].map((p) => (
                 <div
                   key={p.label}
-                  className="px-3 py-1 bg-white border border-[#f0e0ec] font-bold text-[10px]"
+                  className="px-3 py-1 bg-white border border-[#f3dfea] font-bold text-[10px]"
                   style={{ color: p.color }}
                 >
                   {p.label}

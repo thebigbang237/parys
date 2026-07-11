@@ -46,7 +46,7 @@ function Avatar({ user, size = "sm" }: { user: User; size?: "sm" | "md" }) {
   return (
     <div
       className={cn(
-        "rounded-full bg-[#fdf0fa] flex items-center justify-center flex-shrink-0 font-medium text-[#ff63ce]",
+        "rounded-full bg-[#f9eff4] flex items-center justify-center flex-shrink-0 font-medium text-[#a61968]",
         sizeClass,
       )}
     >
@@ -111,7 +111,7 @@ function CommentItem({
           </p>
           <button
             onClick={() => setShowReplyBox(!showReplyBox)}
-            className="text-xs text-gray-500 hover:text-[#ff63ce] transition-colors mt-2"
+            className="text-xs text-gray-500 hover:text-[#a61968] transition-colors mt-2"
           >
             Répondre
           </button>
@@ -120,7 +120,7 @@ function CommentItem({
 
       {/* Replies */}
       {comment.replies.length > 0 && (
-        <div className="ml-11 space-y-3 border-l-2 border-[#f0e0ec] pl-4">
+        <div className="ml-11 space-y-3 border-l-2 border-[#f3dfea] pl-4">
           {comment.replies.map((reply) => (
             <div key={reply.id} className="flex gap-3">
               <Avatar user={reply.user} size="sm" />
@@ -155,13 +155,13 @@ function CommentItem({
               onChange={(e) => setReplyText(e.target.value)}
               placeholder="Écrire une réponse..."
               rows={2}
-              className="w-full border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:border-[#ff63ce] resize-none"
+              className="w-full border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:border-[#a61968] resize-none"
             />
             <div className="flex gap-2 mt-2">
               <button
                 onClick={submitReply}
                 disabled={submitting || !replyText.trim()}
-                className="bg-[#ff63ce] text-white px-4 py-1.5 text-xs tracking-[1px] uppercase disabled:opacity-50 hover:bg-[#111] transition-colors"
+                className="bg-[#a61968] text-white px-4 py-1.5 text-xs tracking-[1px] uppercase disabled:opacity-50 hover:bg-[#172A39] transition-colors"
               >
                 {submitting ? "..." : "Répondre"}
               </button>
@@ -234,13 +234,13 @@ export default function CommentsSection({
             onChange={(e) => setNewComment(e.target.value)}
             placeholder="Poser une question ou partager un commentaire..."
             rows={3}
-            className="w-full border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#ff63ce] transition-colors resize-none"
+            className="w-full border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#a61968] transition-colors resize-none"
           />
           <div className="flex justify-end mt-2">
             <button
               onClick={submitComment}
               disabled={submitting || !newComment.trim()}
-              className="bg-[#ff63ce] text-white px-6 py-2 text-xs tracking-[2px] uppercase disabled:opacity-50 hover:bg-[#111] transition-colors"
+              className="bg-[#a61968] text-white px-6 py-2 text-xs tracking-[2px] uppercase disabled:opacity-50 hover:bg-[#172A39] transition-colors"
             >
               {submitting ? "Envoi..." : "Publier"}
             </button>
@@ -254,7 +254,7 @@ export default function CommentsSection({
           Sois la première à poser une question sur cette leçon.
         </p>
       ) : (
-        <div className="space-y-6 divide-y divide-[#f0e0ec]">
+        <div className="space-y-6 divide-y divide-[#f3dfea]">
           {comments.map((comment) => (
             <div key={comment.id} className="pt-6 first:pt-0">
               <CommentItem

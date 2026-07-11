@@ -79,7 +79,7 @@ export default function SettingsForm({
       {/* Profile */}
       <form
         onSubmit={handleProfileSubmit}
-        className="bg-white border border-[#f0e0ec] p-6 sm:p-8 space-y-6"
+        className="bg-white border border-[#f3dfea] p-6 sm:p-8 space-y-6"
       >
         <h2 className="font-serif text-lg sm:text-xl font-medium text-gray-900">
           Profil
@@ -103,7 +103,7 @@ export default function SettingsForm({
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#ff63ce]"
+            className="w-full border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#a61968]"
           />
         </div>
 
@@ -122,7 +122,7 @@ export default function SettingsForm({
           <p
             className={`text-sm ${
               profileMessage.type === "success"
-                ? "text-[#ff63ce]"
+                ? "text-[#a61968]"
                 : "text-red-500"
             }`}
           >
@@ -133,14 +133,14 @@ export default function SettingsForm({
         <button
           type="submit"
           disabled={profileSaving}
-          className="bg-[#ff63ce] text-white px-8 py-3 text-xs tracking-[2px] uppercase hover:bg-[#111] transition-colors disabled:opacity-60"
+          className="bg-[#a61968] text-white px-8 py-3 text-xs tracking-[2px] uppercase hover:bg-[#172A39] transition-colors disabled:opacity-60"
         >
           {profileSaving ? "Enregistrement..." : "Enregistrer"}
         </button>
       </form>
 
       {/* Password */}
-      <div className="bg-white border border-[#f0e0ec] p-6 sm:p-8 space-y-6">
+      <div className="bg-white border border-[#f3dfea] p-6 sm:p-8 space-y-6">
         <h2 className="font-serif text-lg sm:text-xl font-medium text-gray-900">
           Mot de passe
         </h2>
@@ -160,7 +160,7 @@ export default function SettingsForm({
                 type="password"
                 value={currentPassword}
                 onChange={(e) => setCurrentPassword(e.target.value)}
-                className="w-full border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#ff63ce]"
+                className="w-full border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#a61968]"
               />
             </div>
 
@@ -172,7 +172,7 @@ export default function SettingsForm({
                 type="password"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
-                className="w-full border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#ff63ce]"
+                className="w-full border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#a61968]"
               />
             </div>
 
@@ -184,7 +184,7 @@ export default function SettingsForm({
                 type="password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#ff63ce]"
+                className="w-full border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#a61968]"
               />
             </div>
 
@@ -192,7 +192,7 @@ export default function SettingsForm({
               <p
                 className={`text-sm ${
                   passwordMessage.type === "success"
-                    ? "text-[#ff63ce]"
+                    ? "text-[#a61968]"
                     : "text-red-500"
                 }`}
               >
@@ -203,7 +203,7 @@ export default function SettingsForm({
             <button
               type="submit"
               disabled={passwordSaving}
-              className="bg-[#111] text-white px-8 py-3 text-xs tracking-[2px] uppercase hover:bg-[#ff63ce] transition-colors disabled:opacity-60"
+              className="bg-[#172A39] text-white px-8 py-3 text-xs tracking-[2px] uppercase hover:bg-[#a61968] transition-colors disabled:opacity-60"
             >
               {passwordSaving ? "Enregistrement..." : "Changer le mot de passe"}
             </button>

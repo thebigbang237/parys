@@ -45,7 +45,7 @@ function NavLinks({
               className={cn(
                 "flex items-center gap-3 px-6 py-3 text-xs tracking-[2px] uppercase transition-colors",
                 isActive
-                  ? "bg-[#fdf0fa] text-gray-900 font-medium border-r-2 border-[#ff63ce]"
+                  ? "bg-[#f9eff4] text-gray-900 font-medium border-r-2 border-[#a61968]"
                   : "text-gray-500 hover:bg-gray-50 hover:text-gray-900",
               )}
             >
@@ -77,9 +77,9 @@ export default function StudentShell({
   const initial = (user.name || user.email)[0]?.toUpperCase();
 
   return (
-    <div className="min-h-screen bg-[#fcf8f8] lg:flex">
+    <div className="min-h-screen bg-[#E9E4E0] lg:flex">
       {/* Desktop sidebar */}
-      <aside className="hidden lg:flex lg:flex-col lg:w-64 bg-white border-r border-[#f0e0ec] lg:h-screen lg:sticky lg:top-0 shrink-0">
+      <aside className="hidden lg:flex lg:flex-col lg:w-64 bg-white border-r border-[#f3dfea] lg:h-screen lg:sticky lg:top-0 shrink-0">
         <div className="px-6 py-8">
           <Link href="/" className="shrink-0">
             <Image
@@ -94,7 +94,7 @@ export default function StudentShell({
         </div>
 
         <div className="px-6 mb-8 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full overflow-hidden bg-[#fdf0fa] flex items-center justify-center shrink-0">
+          <div className="w-10 h-10 rounded-full overflow-hidden bg-[#f9eff4] flex items-center justify-center shrink-0">
             {user.image ? (
               <Image
                 src={user.image}
@@ -104,7 +104,7 @@ export default function StudentShell({
                 className="w-full h-full object-cover"
               />
             ) : (
-              <span className="text-[#ff63ce] font-serif font-medium">
+              <span className="text-[#a61968] font-serif font-medium">
                 {initial}
               </span>
             )}
@@ -121,7 +121,7 @@ export default function StudentShell({
           <NavLinks pathname={pathname} />
         </nav>
 
-        <div className="p-6 border-t border-[#f0e0ec]">
+        <div className="p-6 border-t border-[#f3dfea]">
           <form action={logout}>
             <button className="flex items-center gap-2 text-xs tracking-[2px] uppercase text-gray-500 hover:text-gray-900 transition-colors">
               <LogOut size={16} />
@@ -132,7 +132,7 @@ export default function StudentShell({
       </aside>
 
       {/* Mobile top bar */}
-      <div className="lg:hidden sticky top-0 z-40 bg-white border-b border-[#f0e0ec] px-4 py-3 flex items-center justify-between">
+      <div className="lg:hidden sticky top-0 z-40 bg-white border-b border-[#f3dfea] px-4 py-3 flex items-center justify-between">
         <button
           onClick={() => setIsOpen(true)}
           aria-label="Ouvrir le menu"
@@ -142,7 +142,7 @@ export default function StudentShell({
         </button>
         <span className="font-serif text-base font-medium text-gray-900">
           Content Level Up{" "}
-          <span className="text-[#ff63ce] italic">Academy</span>
+          <span className="text-[#a61968] italic">Academy</span>
         </span>
         <NotificationsBell />
       </div>
@@ -164,9 +164,9 @@ export default function StudentShell({
           isOpen ? "translate-x-0" : "-translate-x-full",
         )}
       >
-        <div className="px-6 py-6 flex items-center justify-between border-b border-[#f0e0ec]">
+        <div className="px-6 py-6 flex items-center justify-between border-b border-[#f3dfea]">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full overflow-hidden bg-[#fdf0fa] flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-full overflow-hidden bg-[#f9eff4] flex items-center justify-center shrink-0">
               {user.image ? (
                 <Image
                   src={user.image}
@@ -176,7 +176,7 @@ export default function StudentShell({
                   className="w-full h-full object-cover"
                 />
               ) : (
-                <span className="text-[#ff63ce] font-serif font-medium">
+                <span className="text-[#a61968] font-serif font-medium">
                   {initial}
                 </span>
               )}
@@ -192,7 +192,7 @@ export default function StudentShell({
           <NavLinks pathname={pathname} onNavigate={() => setIsOpen(false)} />
         </nav>
 
-        <div className="p-6 border-t border-[#f0e0ec]">
+        <div className="p-6 border-t border-[#f3dfea]">
           <form action={logout}>
             <button className="flex items-center gap-2 text-xs tracking-[2px] uppercase text-gray-500 hover:text-gray-900 transition-colors">
               <LogOut size={16} />

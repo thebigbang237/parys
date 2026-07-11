@@ -50,7 +50,7 @@ export default function CourseForm({ course }: { course: any }) {
             name="title"
             defaultValue={course.title}
             required
-            className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#ff63ce]"
+            className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#a61968]"
           />
         </div>
 
@@ -63,7 +63,7 @@ export default function CourseForm({ course }: { course: any }) {
             defaultValue={course.description}
             rows={3}
             required
-            className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#ff63ce] resize-none"
+            className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#a61968] resize-none"
           />
         </div>
 
@@ -82,7 +82,7 @@ export default function CourseForm({ course }: { course: any }) {
                 type="number"
                 defaultValue={f.value}
                 min="0"
-                className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#ff63ce]"
+                className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#a61968]"
               />
             </div>
           ))}
@@ -94,7 +94,7 @@ export default function CourseForm({ course }: { course: any }) {
             name="is_free"
             id="is_free_edit"
             defaultChecked={course.is_free}
-            className="accent-[#ff63ce]"
+            className="accent-[#a61968]"
           />
           <label htmlFor="is_free_edit" className="text-sm text-gray-600">
             Gratuite
@@ -103,7 +103,7 @@ export default function CourseForm({ course }: { course: any }) {
 
         <button
           type="submit"
-          className="w-full bg-[#111] text-white py-2.5 text-xs tracking-[2px] uppercase hover:bg-[#ff63ce] transition-colors"
+          className="w-full bg-[#172A39] text-white py-2.5 text-xs tracking-[2px] uppercase hover:bg-[#a61968] transition-colors"
         >
           Sauvegarder
         </button>
@@ -111,7 +111,7 @@ export default function CourseForm({ course }: { course: any }) {
         {message && (
           <p
             className={`flex items-center justify-center gap-1.5 text-xs ${
-              message.type === "success" ? "text-[#ff63ce]" : "text-red-600"
+              message.type === "success" ? "text-[#a61968]" : "text-red-600"
             }`}
           >
             {message.type === "success" ? (

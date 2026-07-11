@@ -105,11 +105,11 @@ export default async function DashboardPage() {
   const firstName = session.user.name?.split(" ")[0] || "toi";
 
   return (
-    <div className="min-h-screen bg-[#fcf8f8]">
+    <div className="min-h-screen bg-[#E9E4E0]">
       {/* Header */}
-      <div className="bg-white border-b border-[#f0e0ec] px-6 py-8">
+      <div className="bg-white border-b border-[#f3dfea] px-6 py-8">
         <div className="max-w-5xl mx-auto">
-          <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-2">
+          <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#a61968] mb-2">
             Mon espace
           </p>
           <h1 className="font-serif text-2xl sm:text-3xl font-medium text-gray-900">
@@ -124,14 +124,14 @@ export default async function DashboardPage() {
       <div className="max-w-5xl mx-auto px-6 py-12 space-y-12">
         {/* Stats */}
         <section className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
-          <div className="p-6 bg-white border border-[#f0e0ec] flex flex-col gap-2">
+          <div className="p-6 bg-white border border-[#f3dfea] flex flex-col gap-2">
             <span className="text-xs tracking-[2px] uppercase text-gray-500">
               Cours complétés
             </span>
             <span className="font-serif text-3xl sm:text-4xl text-gray-900">
               {coursesCompleted}
             </span>
-            <div className="flex items-center gap-1.5 text-xs text-[#ff63ce]">
+            <div className="flex items-center gap-1.5 text-xs text-[#a61968]">
               <TrendingUp size={13} />
               <span>
                 sur {enrollments.length} formation
@@ -140,14 +140,14 @@ export default async function DashboardPage() {
             </div>
           </div>
 
-          <div className="p-6 bg-white border border-[#f0e0ec] flex flex-col gap-2">
+          <div className="p-6 bg-white border border-[#f3dfea] flex flex-col gap-2">
             <span className="text-xs tracking-[2px] uppercase text-gray-500">
               Heures de coaching
             </span>
             <span className="font-serif text-3xl sm:text-4xl text-gray-900">
               {coachingHours}
             </span>
-            <div className="flex items-center gap-1.5 text-xs text-[#ff63ce]">
+            <div className="flex items-center gap-1.5 text-xs text-[#a61968]">
               <Clock size={13} />
               <span>
                 {upcomingBookings.length} session
@@ -156,14 +156,14 @@ export default async function DashboardPage() {
             </div>
           </div>
 
-          <div className="col-span-2 sm:col-span-1 p-6 bg-[#fdf0fa] border border-[#ff63ce]/20 flex flex-col gap-2">
+          <div className="col-span-2 sm:col-span-1 p-6 bg-[#f9eff4] border border-[#a61968]/20 flex flex-col gap-2">
             <span className="text-xs tracking-[2px] uppercase text-gray-500">
               Leçons terminées
             </span>
             <span className="font-serif text-3xl sm:text-4xl text-gray-900">
               {lessonsCompletedTotal}
             </span>
-            <div className="flex items-center gap-1.5 text-xs text-[#ff63ce] font-medium">
+            <div className="flex items-center gap-1.5 text-xs text-[#a61968] font-medium">
               <CheckCircle2 size={13} />
               <span>Continue comme ça</span>
             </div>
@@ -178,20 +178,20 @@ export default async function DashboardPage() {
             </h2>
             <Link
               href="/courses"
-              className="text-xs tracking-[2px] uppercase text-[#ff63ce] hover:underline shrink-0"
+              className="text-xs tracking-[2px] uppercase text-[#a61968] hover:underline shrink-0"
             >
               Voir tout →
             </Link>
           </div>
 
           {enrollmentStats.length === 0 ? (
-            <div className="border border-dashed border-[#f0e0ec] bg-white p-16 text-center">
+            <div className="border border-dashed border-[#f3dfea] bg-white p-16 text-center">
               <p className="text-gray-500 text-sm mb-4">
                 Tu n&apos;es inscrite à aucune formation pour l&apos;instant.
               </p>
               <Link
                 href="/courses"
-                className="bg-[#ff63ce] text-white px-8 py-3 text-xs tracking-[2px] uppercase hover:bg-[#111] transition-colors inline-block"
+                className="bg-[#a61968] text-white px-8 py-3 text-xs tracking-[2px] uppercase hover:bg-[#172A39] transition-colors inline-block"
               >
                 Voir les formations
               </Link>
@@ -204,10 +204,10 @@ export default async function DashboardPage() {
                 return (
                   <div
                     key={stat.enrollment.id}
-                    className="bg-white border border-[#f0e0ec] hover:border-[#ff63ce] transition-colors group"
+                    className="bg-white border border-[#f3dfea] hover:border-[#a61968] transition-colors group"
                   >
                     {/* Thumbnail */}
-                    <div className="relative aspect-video bg-[#fdf0fa] overflow-hidden">
+                    <div className="relative aspect-video bg-[#f9eff4] overflow-hidden">
                       {course.thumbnail_url ? (
                         <Image
                           src={course.thumbnail_url}
@@ -218,7 +218,7 @@ export default async function DashboardPage() {
                         />
                       ) : (
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="font-serif text-5xl text-[#ff63ce] opacity-20 italic">
+                          <span className="font-serif text-5xl text-[#a61968] opacity-20 italic">
                             P
                           </span>
                         </div>
@@ -238,9 +238,9 @@ export default async function DashboardPage() {
                             </span>
                             <span>{stat.progressPct}%</span>
                           </div>
-                          <div className="w-full h-1 bg-[#f0e0ec]">
+                          <div className="w-full h-1 bg-[#f3dfea]">
                             <div
-                              className="h-full bg-[#ff63ce]"
+                              className="h-full bg-[#a61968]"
                               style={{ width: `${stat.progressPct}%` }}
                             />
                           </div>
@@ -250,7 +250,7 @@ export default async function DashboardPage() {
                       {stat.resumeLessonId ? (
                         <Link
                           href={`/learn/${stat.resumeLessonId}`}
-                          className="w-full bg-[#ff63ce] text-white py-3 text-xs tracking-[2px] uppercase hover:bg-[#111] transition-colors text-center block"
+                          className="w-full bg-[#a61968] text-white py-3 text-xs tracking-[2px] uppercase hover:bg-[#172A39] transition-colors text-center block"
                         >
                           {stat.isCompleted
                             ? "Revoir la formation →"
@@ -281,7 +281,7 @@ export default async function DashboardPage() {
               {upcomingBookings.map((booking) => (
                 <div
                   key={booking.id}
-                  className="bg-white border border-[#f0e0ec] px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+                  className="bg-white border border-[#f3dfea] px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
                 >
                   <div>
                     <p className="font-medium text-sm text-gray-900">
@@ -308,7 +308,7 @@ export default async function DashboardPage() {
                     <span
                       className={`text-xs px-2 py-1 rounded-full ${
                         booking.status === "CONFIRMED"
-                          ? "bg-[#fdf0fa] text-[#ff63ce]"
+                          ? "bg-[#f9eff4] text-[#a61968]"
                           : "bg-yellow-50 text-yellow-600"
                       }`}
                     >
@@ -321,7 +321,7 @@ export default async function DashboardPage() {
                         href={booking.meet_join_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-[#ff63ce] text-white px-4 py-2 text-xs tracking-[1px] uppercase hover:bg-[#111] transition-colors"
+                        className="bg-[#a61968] text-white px-4 py-2 text-xs tracking-[1px] uppercase hover:bg-[#172A39] transition-colors"
                       >
                         Rejoindre
                       </a>

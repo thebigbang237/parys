@@ -12,11 +12,11 @@ export default async function ResetPasswordPage({
   return (
     <main className="min-h-screen flex">
       {/* Left — brand panel */}
-      <div className="hidden md:flex w-1/2 bg-[#fdf0fa] border-r border-[#f0e0ec] flex-col justify-center items-center px-16">
+      <div className="hidden md:flex w-1/2 bg-[#f9eff4] border-r border-[#f3dfea] flex-col justify-center items-center px-16">
         <div className="max-w-md space-y-8">
           <h1 className="font-serif text-5xl font-medium leading-tight">
             Content Level Up
-            <span className="italic text-[#ff63ce]"> Academy</span>
+            <span className="italic text-[#a61968]"> Academy</span>
           </h1>
           <p className="text-gray-500 text-lg leading-relaxed">
             La plateforme de référence pour les créatrices de contenu
@@ -47,7 +47,7 @@ export default async function ResetPasswordPage({
               <p>Ce lien de réinitialisation est invalide.</p>
               <Link
                 href="/forgot-password"
-                className="text-[#ff63ce] font-medium hover:underline inline-block"
+                className="text-[#a61968] font-medium hover:underline inline-block"
               >
                 Demander un nouveau lien
               </Link>

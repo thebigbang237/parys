@@ -47,7 +47,7 @@ export default async function AdminStudentsPage({
     <div className="p-8">
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-8">
         <div>
-          <p className="text-xs tracking-[3px] uppercase text-[#ff63ce] mb-1">
+          <p className="text-xs tracking-[3px] uppercase text-[#a61968] mb-1">
             Administration
           </p>
           <h1 className="text-2xl font-serif font-medium">
@@ -60,9 +60,9 @@ export default async function AdminStudentsPage({
             name="q"
             defaultValue={q}
             placeholder="Rechercher par nom ou email..."
-            className="border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#ff63ce] w-full sm:w-64"
+            className="border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#a61968] w-full sm:w-64"
           />
-          <button className="bg-[#111] text-white px-4 py-2 text-xs tracking-[1px] uppercase hover:bg-[#ff63ce] transition-colors">
+          <button className="bg-[#172A39] text-white px-4 py-2 text-xs tracking-[1px] uppercase hover:bg-[#a61968] transition-colors">
             Chercher
           </button>
         </form>
@@ -75,7 +75,7 @@ export default async function AdminStudentsPage({
       ) : (
         <div className="bg-white border border-gray-100 rounded overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-[#fdf0fa] border-b border-[#f0e0ec]">
+            <thead className="bg-[#f9eff4] border-b border-[#f3dfea]">
               <tr>
                 {[
                   "Nom",
@@ -111,7 +111,7 @@ export default async function AdminStudentsPage({
                     <span
                       className={`text-xs px-2 py-1 rounded-full font-medium ${
                         user.role === "ADMIN"
-                          ? "bg-[#fdf0fa] text-[#ff63ce]"
+                          ? "bg-[#f9eff4] text-[#a61968]"
                           : "bg-gray-100 text-gray-500"
                       }`}
                     >
@@ -130,7 +130,7 @@ export default async function AdminStudentsPage({
                   <td className="px-4 py-3">
                     <Link
                       href={`/admin/students/${user.id}`}
-                      className="text-xs text-[#ff63ce] hover:underline"
+                      className="text-xs text-[#a61968] hover:underline"
                     >
                       Voir →
                     </Link>

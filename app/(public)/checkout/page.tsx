@@ -48,9 +48,9 @@ export default async function CheckoutPage({
         : sessionType.price_xaf)
 
     return (
-      <div className="min-h-screen bg-[#fcf8f8] py-16">
+      <div className="min-h-screen bg-[#E9E4E0] py-16">
         <div className="max-w-4xl mx-auto px-6">
-          <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-3">
+          <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#a61968] mb-3">
              Paiement sécurisé
           </p>
           <h1 className="font-serif text-3xl font-medium text-gray-900 mb-12">
@@ -107,9 +107,9 @@ export default async function CheckoutPage({
   if (enrollment) redirect("/dashboard")
 
   return (
-    <div className="min-h-screen bg-[#fcf8f8] py-16">
+    <div className="min-h-screen bg-[#E9E4E0] py-16">
       <div className="max-w-4xl mx-auto px-6">
-        <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-3">
+        <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#a61968] mb-3">
           <Sparkles size={12} /> Paiement sécurisé
         </p>
         <h1 className="font-serif text-3xl font-medium text-gray-900 mb-12">

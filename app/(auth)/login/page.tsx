@@ -70,11 +70,11 @@ function LoginForm() {
   return (
     <main className="min-h-screen flex">
       {/* Left — brand panel */}
-      <div className="hidden md:flex w-1/2 bg-[#fdf0fa] border-r border-[#f0e0ec] flex-col justify-center items-center px-16">
+      <div className="hidden md:flex w-1/2 bg-[#f9eff4] border-r border-[#f3dfea] flex-col justify-center items-center px-16">
         <div className="max-w-md space-y-8">
           <h1 className="font-serif text-5xl font-medium leading-tight">
             Content Level Up
-            <span className="italic text-[#ff63ce]"> Academy</span>
+            <span className="italic text-[#a61968]"> Academy</span>
           </h1>
           <p className="text-gray-500 text-lg leading-relaxed">
             La plateforme de référence pour les créatrices de contenu
@@ -104,7 +104,7 @@ function LoginForm() {
                   type="button"
                   onClick={handleResend}
                   disabled={resending || resent}
-                  className="text-[#ff63ce] font-medium hover:underline disabled:opacity-60 disabled:no-underline"
+                  className="text-[#a61968] font-medium hover:underline disabled:opacity-60 disabled:no-underline"
                 >
                   {resent
                     ? "Email renvoyé ✓"
@@ -127,7 +127,7 @@ function LoginForm() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="votre@email.com"
                 required
-                className="w-full border-0 border-b border-gray-200 py-3 px-0 text-sm focus:outline-none focus:border-[#ff63ce] transition-colors bg-transparent"
+                className="w-full border-0 border-b border-gray-200 py-3 px-0 text-sm focus:outline-none focus:border-[#a61968] transition-colors bg-transparent"
               />
             </div>
 
@@ -138,7 +138,7 @@ function LoginForm() {
                 </label>
                 <Link
                   href="/forgot-password"
-                  className="text-xs text-[#ff63ce] hover:underline"
+                  className="text-xs text-[#a61968] hover:underline"
                 >
                   Oublié ?
                 </Link>
@@ -149,7 +149,7 @@ function LoginForm() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 required
-                className="w-full border-0 border-b border-gray-200 py-3 px-0 text-sm focus:outline-none focus:border-[#ff63ce] transition-colors bg-transparent"
+                className="w-full border-0 border-b border-gray-200 py-3 px-0 text-sm focus:outline-none focus:border-[#a61968] transition-colors bg-transparent"
               />
             </div>
 
@@ -157,8 +157,8 @@ function LoginForm() {
               type="submit"
               disabled={loading}
               className={cn(
-                "w-full bg-[#ff63ce] text-white py-4 text-xs tracking-[3px] uppercase font-medium transition-all",
-                loading ? "opacity-60 cursor-not-allowed" : "hover:bg-[#111]",
+                "w-full bg-[#a61968] text-white py-4 text-xs tracking-[3px] uppercase font-medium transition-all",
+                loading ? "opacity-60 cursor-not-allowed" : "hover:bg-[#172A39]",
               )}
             >
               {loading ? "Connexion..." : "Se connecter"}
@@ -190,7 +190,7 @@ function LoginForm() {
             Pas encore de compte ?{" "}
             <Link
               href="/register"
-              className="text-[#ff63ce] font-medium hover:underline"
+              className="text-[#a61968] font-medium hover:underline"
             >
               Créer mon compte
             </Link>

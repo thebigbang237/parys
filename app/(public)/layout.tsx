@@ -45,7 +45,7 @@ export default async function PublicLayout({
       <main className="flex-1">{children}</main>
 
       {/* Footer */}
-      <footer className="w-full px-6 py-16 flex flex-col items-center gap-12 bg-[#111] text-white border-t border-[#f0e0ec]/10">
+      <footer className="w-full px-6 py-16 flex flex-col items-center gap-12 bg-[#172A39] text-white border-t border-[#f3dfea]/10">
         <Link href="/" className="shrink-0">
           <Image
             src="/images/Logo_Parys_Nom_Noir.png"
@@ -84,7 +84,7 @@ export default async function PublicLayout({
             <InstagramIcon
               width={20}
               height={20}
-              className="cursor-pointer text-gray-400 hover:text-[#ff63ce] transition-colors"
+              className="cursor-pointer text-gray-400 hover:text-[#a61968] transition-colors"
             />
           </a>
           <a
@@ -96,7 +96,7 @@ export default async function PublicLayout({
             <TikTokIcon
               width={20}
               height={20}
-              className="cursor-pointer text-gray-400 hover:text-[#ff63ce] transition-colors"
+              className="cursor-pointer text-gray-400 hover:text-[#a61968] transition-colors"
             />
           </a>
           <a
@@ -108,7 +108,7 @@ export default async function PublicLayout({
             <FacebookIcon
               width={20}
               height={20}
-              className="cursor-pointer text-gray-400 hover:text-[#ff63ce] transition-colors"
+              className="cursor-pointer text-gray-400 hover:text-[#a61968] transition-colors"
             />
           </a>
         </div>

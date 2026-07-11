@@ -37,14 +37,14 @@ export default async function AdminCourseDetailPage({
       {/* Header */}
       <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-8">
         <div>
-          <p className="text-xs tracking-[3px] uppercase text-[#ff63ce] mb-1">
+          <p className="text-xs tracking-[3px] uppercase text-[#a61968] mb-1">
             Formations / {course.title}
           </p>
           <h1 className="text-2xl font-serif font-medium">{course.title}</h1>
           <div className="flex items-center gap-4 mt-2">
             <span className={`text-xs px-2 py-1 rounded-full font-medium ${
               course.status === "PUBLISHED"
-                ? "bg-[#fdf0fa] text-[#ff63ce]"
+                ? "bg-[#f9eff4] text-[#a61968]"
                 : "bg-gray-100 text-gray-500"
             }`}>
               {course.status === "PUBLISHED" ? "Publié" : "Brouillon"}
@@ -58,7 +58,7 @@ export default async function AdminCourseDetailPage({
         <div className="flex gap-3">
           {course.status === "DRAFT" ? (
             <form action={publishCourse.bind(null, course.id)}>
-              <button className="bg-[#ff63ce] text-white px-5 py-2.5 text-xs tracking-[2px] uppercase hover:bg-[#111] transition-colors">
+              <button className="bg-[#a61968] text-white px-5 py-2.5 text-xs tracking-[2px] uppercase hover:bg-[#172A39] transition-colors">
                 Publier
               </button>
             </form>

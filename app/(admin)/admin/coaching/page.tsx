@@ -60,7 +60,7 @@ export default async function AdminCoachingPage({
   return (
     <div className="p-8 space-y-12">
       <div>
-        <p className="text-xs tracking-[3px] uppercase text-[#ff63ce] mb-1">
+        <p className="text-xs tracking-[3px] uppercase text-[#a61968] mb-1">
           Administration
         </p>
         <h1 className="text-2xl font-serif font-medium">Coaching privé</h1>

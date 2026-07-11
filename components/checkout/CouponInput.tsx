@@ -66,19 +66,19 @@ export default function CouponInput({
 
   if (applied) {
     return (
-      <div className="bg-[#fdf0fa] border border-[#f0e0ec] px-4 py-3 flex items-center justify-between">
+      <div className="bg-[#f9eff4] border border-[#f3dfea] px-4 py-3 flex items-center justify-between">
         <div>
-          <p className="flex items-center gap-1 text-xs font-medium text-[#ff63ce]">
+          <p className="flex items-center gap-1 text-xs font-medium text-[#a61968]">
             <Check size={12} /> {applied.message}
           </p>
-          <p className="text-xs text-[#ff63ce] mt-0.5">
+          <p className="text-xs text-[#a61968] mt-0.5">
             Réduction de{" "}
             {formatPrice(applied.discountAmount, currency)} appliquée
           </p>
         </div>
         <button
           onClick={handleRemove}
-          className="text-xs text-[#ff63ce] hover:text-[#111] underline"
+          className="text-xs text-[#a61968] hover:text-[#172A39] underline"
         >
           Retirer
         </button>
@@ -98,14 +98,14 @@ export default function CouponInput({
           onChange={(e) => setCode(e.target.value.toUpperCase())}
           onKeyDown={(e) => e.key === "Enter" && handleApply()}
           placeholder="BLACKFRIDAY"
-          className="flex-1 border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:border-[#ff63ce] transition-colors uppercase"
+          className="flex-1 border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:border-[#a61968] transition-colors uppercase"
         />
         <button
           onClick={handleApply}
           disabled={loading || !code.trim()}
           className={cn(
             "px-4 py-2.5 text-xs tracking-[1px] uppercase font-medium transition-colors",
-            "bg-[#111] text-white hover:bg-[#ff63ce] disabled:opacity-50"
+            "bg-[#172A39] text-white hover:bg-[#a61968] disabled:opacity-50"
           )}
         >
           {loading ? "..." : "Appliquer"}

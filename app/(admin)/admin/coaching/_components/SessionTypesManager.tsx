@@ -73,19 +73,19 @@ export default function SessionTypesManager({
         </h2>
         <button
           onClick={() => setShowForm(!showForm)}
-          className="text-xs text-[#ff63ce] hover:underline"
+          className="text-xs text-[#a61968] hover:underline"
         >
           + Ajouter
         </button>
       </div>
 
       {showForm && (
-        <div className="border border-[#f0e0ec] rounded p-4 mb-4 space-y-3">
+        <div className="border border-[#f3dfea] rounded p-4 mb-4 space-y-3">
           <input
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
             placeholder="Nom de la session"
-            className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#ff63ce]"
+            className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#a61968]"
           />
           <div className="grid grid-cols-2 gap-3">
             <div>
@@ -98,7 +98,7 @@ export default function SessionTypesManager({
                 onChange={(e) =>
                   setForm({ ...form, duration: Number(e.target.value) })
                 }
-                className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#ff63ce] mt-1"
+                className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#a61968] mt-1"
               />
             </div>
           </div>
@@ -118,7 +118,7 @@ export default function SessionTypesManager({
                   onChange={(e) =>
                     setForm({ ...form, [key]: Number(e.target.value) })
                   }
-                  className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#ff63ce] mt-1"
+                  className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#a61968] mt-1"
                 />
               </div>
             ))}
@@ -126,7 +126,7 @@ export default function SessionTypesManager({
           <button
             onClick={handleCreate}
             disabled={loading || !form.name}
-            className="w-full bg-[#ff63ce] text-white py-2 text-xs tracking-[2px] uppercase disabled:opacity-50 hover:bg-[#111] transition-colors"
+            className="w-full bg-[#a61968] text-white py-2 text-xs tracking-[2px] uppercase disabled:opacity-50 hover:bg-[#172A39] transition-colors"
           >
             {loading ? "..." : "Créer"}
           </button>
@@ -154,7 +154,7 @@ export default function SessionTypesManager({
                 onClick={() => toggleActive(s.id, s.active)}
                 className={`text-xs px-2 py-1 rounded-full ${
                   s.active
-                    ? "bg-[#fdf0fa] text-[#ff63ce]"
+                    ? "bg-[#f9eff4] text-[#a61968]"
                     : "bg-gray-100 text-gray-500"
                 }`}
               >

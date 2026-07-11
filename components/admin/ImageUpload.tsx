@@ -96,8 +96,8 @@ export default function ImageUpload({
           "relative border-2 border-dashed rounded overflow-hidden cursor-pointer transition-all",
           aspectClass,
           dragOver
-            ? "border-[#ff63ce] bg-[#fdf0fa]"
-            : "border-gray-200 hover:border-[#ff63ce]",
+            ? "border-[#a61968] bg-[#f9eff4]"
+            : "border-gray-200 hover:border-[#a61968]",
           uploading && "pointer-events-none opacity-60",
         )}
       >
@@ -146,7 +146,7 @@ export default function ImageUpload({
         {uploading && (
           <div className="absolute inset-0 bg-white/80 flex items-center justify-center">
             <div className="text-center">
-              <div className="w-8 h-8 border-2 border-[#ff63ce] border-t-transparent rounded-full animate-spin mx-auto mb-2" />
+              <div className="w-8 h-8 border-2 border-[#a61968] border-t-transparent rounded-full animate-spin mx-auto mb-2" />
               <p className="text-xs text-gray-500">Upload en cours...</p>
             </div>
           </div>

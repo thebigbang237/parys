@@ -102,9 +102,9 @@ export default async function LearnPage({
   }));
 
   return (
-    <div className="min-h-screen bg-[#111] flex flex-col">
+    <div className="min-h-screen bg-[#172A39] flex flex-col">
       {/* Top bar */}
-      <div className="bg-[#111] border-b border-white/10 px-6 py-3 flex items-center justify-between">
+      <div className="bg-[#172A39] border-b border-white/10 px-6 py-3 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <a
             href="/dashboard"
@@ -153,7 +153,7 @@ export default async function LearnPage({
           <div className="bg-white max-w-4xl mx-auto px-8 py-10 space-y-10">
             <div className="flex items-start justify-between gap-4 flex-wrap">
               <div>
-                <p className="text-xs tracking-[3px] uppercase text-[#ff63ce] mb-2">
+                <p className="text-xs tracking-[3px] uppercase text-[#a61968] mb-2">
                   {lesson.module.title}
                 </p>
                 <h1 className="font-serif text-3xl font-medium text-gray-900">

@@ -8,9 +8,9 @@ export default async function AdminPage() {
   if (!session || session.user.role !== "ADMIN") redirect("/dashboard");
 
   return (
-    <main className="min-h-screen bg-[#fcf8f8] p-8">
+    <main className="min-h-screen bg-[#E9E4E0] p-8">
       <div className="max-w-6xl mx-auto">
-        <p className="text-xs tracking-[3px] uppercase text-[#ff63ce] mb-2">
+        <p className="text-xs tracking-[3px] uppercase text-[#a61968] mb-2">
           Administration
         </p>
         <h1 className="text-3xl font-serif font-medium text-gray-900">

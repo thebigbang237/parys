@@ -4,7 +4,7 @@ import { X } from "lucide-react";
 
 export default function CheckoutCancelledPage() {
   return (
-    <div className="min-h-screen bg-[#fcf8f8] flex items-center justify-center">
+    <div className="min-h-screen bg-[#E9E4E0] flex items-center justify-center">
       <div className="text-center max-w-md px-6">
         <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
           <X size={28} className="text-gray-500" />
@@ -17,7 +17,7 @@ export default function CheckoutCancelledPage() {
         </p>
         <Link
           href="/courses"
-          className="bg-[#111] text-white px-10 py-4 text-xs tracking-[3px] uppercase hover:bg-[#ff63ce] transition-colors inline-block"
+          className="bg-[#172A39] text-white px-10 py-4 text-xs tracking-[3px] uppercase hover:bg-[#a61968] transition-colors inline-block"
         >
           Retour aux formations
         </Link>

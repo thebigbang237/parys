@@ -17,10 +17,10 @@ export default async function SettingsPage() {
   if (!user) redirect("/login");
 
   return (
-    <div className="min-h-screen bg-[#fcf8f8]">
-      <div className="bg-white border-b border-[#f0e0ec] px-6 py-8">
+    <div className="min-h-screen bg-[#E9E4E0]">
+      <div className="bg-white border-b border-[#f3dfea] px-6 py-8">
         <div className="max-w-2xl mx-auto">
-          <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-2">
+          <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#a61968] mb-2">
             <Sparkles size={12} /> Mon espace
           </p>
           <h1 className="font-serif text-2xl sm:text-3xl font-medium text-gray-900">

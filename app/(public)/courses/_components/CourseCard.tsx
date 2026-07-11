@@ -39,10 +39,10 @@ export default function CourseCard({
   return (
     <Link
       href={`/courses/${course.slug}`}
-      className="group bg-white border border-[#f0e0ec] flex flex-col hover:border-[#ff63ce] transition-colors duration-300"
+      className="group bg-white/60 rounded-3xl overflow-hidden border border-[#f3dfea] flex flex-col hover:border-[#a61968]/40 transition-colors duration-300"
     >
       {/* Thumbnail */}
-      <div className="relative aspect-video bg-[#fdf0fa] overflow-hidden">
+      <div className="relative aspect-7/6 bg-[#f9eff4] overflow-hidden">
         {course.thumbnail_url ? (
           <Image
             src={course.thumbnail_url}
@@ -53,14 +53,14 @@ export default function CourseCard({
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-[#ff63ce] opacity-30 text-5xl font-serif italic">
+            <span className="text-[#a61968] opacity-30 text-5xl font-serif italic">
               P
             </span>
           </div>
         )}
 
         {course.is_free && (
-          <div className="absolute top-3 left-3 bg-[#ff63ce] text-white text-xs px-2 py-1 tracking-[1px] uppercase">
+          <div className="absolute top-3 left-3 bg-[#a61968] text-white text-xs px-2 py-1 tracking-[1px] uppercase">
             Gratuit
           </div>
         )}
@@ -68,18 +68,18 @@ export default function CourseCard({
 
       {/* Content */}
       <div className="flex flex-col flex-1 p-6">
-        <p className="text-xs tracking-[2px] uppercase text-[#ff63ce] mb-2">
+        <p className="text-xs tracking-[2px] uppercase text-[#a61968] mb-2">
           Par Parys Batonda
         </p>
-        <h3 className="font-serif text-xl font-medium text-gray-900 mb-3 transition-all">
+        <h3 className="font-serif text-xl font-medium text-[#172A39] mb-3 transition-all">
           {course.title}
         </h3>
-        <p className="text-sm text-gray-500 line-clamp-2 leading-relaxed mb-4">
+        <p className="text-sm text-[#172A39]/80 line-clamp-2 leading-relaxed mb-4">
           {course.description}
         </p>
 
         {/* Meta */}
-        <div className="flex gap-4 text-xs text-gray-500 mb-6">
+        <div className="flex gap-4 text-xs text-[#172A39]/80 mb-6">
           <span>
             {course._count.modules} module
             {course._count.modules !== 1 ? "s" : ""}
@@ -96,9 +96,9 @@ export default function CourseCard({
         </div>
 
         {/* Price + CTA */}
-        <div className="mt-auto flex justify-between items-center pt-4 border-t border-[#f0e0ec]">
+        <div className="mt-auto flex justify-between items-center pt-4 border-t border-[#f3dfea]">
 
-          <span className="text-xs tracking-[2px] uppercase text-[#ff63ce] group-hover:underline">
+          <span className="text-xs tracking-[2px] uppercase text-[#a61968] group-hover:underline">
             {isEnrolled ? "Continuer →" : "S'inscrire →"}
           </span>
         </div>

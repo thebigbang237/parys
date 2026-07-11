@@ -79,12 +79,12 @@ export default async function CourseDetailPage({
   }
 
   return (
-    <div className="min-h-screen bg-[#fcf8f8]">
+    <div className="min-h-screen bg-[#E9E4E0]">
       {/* Hero */}
-      <div className="bg-white border-b pt-24 border-[#f0e0ec]">
+      <div className="bg-white border-b pt-24 border-[#f3dfea]">
         <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
-            <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-2">
+            <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#a61968] mb-2">
               Formation
             </p>
             <h1 className="font-serif text-xl md:text-3xl font-medium text-gray-900 leading-tight">
@@ -95,7 +95,7 @@ export default async function CourseDetailPage({
             </p>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 gap-x-6 gap-y-6 min-[450px]:flex sm:gap-8 pb-8 border-b border-[#f0e0ec]">
+            <div className="grid grid-cols-2 gap-x-6 gap-y-6 min-[450px]:flex sm:gap-8 pb-8 border-b border-[#f3dfea]">
               {[
                 { value: course.modules.length, label: "Modules" },
                 { value: totalLessons, label: "Leçons" },
@@ -120,7 +120,7 @@ export default async function CourseDetailPage({
             <div className="pt-8 text-lg md:text-xl lg:text-3xl flex items-center gap-6">
               <div>
                 {isEnrolled ? (
-                  <div className="flex items-center gap-2 text-sm font-medium text-[#ff63ce]">
+                  <div className="flex items-center gap-2 text-sm font-medium text-[#a61968]">
                      Formation débloquée
                   </div>
                 ) : (
@@ -155,7 +155,7 @@ export default async function CourseDetailPage({
           </div>
 
           {/* Thumbnail */}
-          <div className="order-1 md:order-2 relative aspect-video bg-[#fdf0fa] border border-[#f0e0ec] overflow-hidden">
+          <div className="order-1 md:order-2 relative aspect-video bg-[#f9eff4] border border-[#f3dfea] overflow-hidden">
             {course.thumbnail_url ? (
               <Image
                 src={course.thumbnail_url}
@@ -165,7 +165,7 @@ export default async function CourseDetailPage({
               />
             ) : (
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="font-serif text-8xl text-[#ff63ce] opacity-20 italic">
+                <span className="font-serif text-8xl text-[#a61968] opacity-20 italic">
                   P
                 </span>
               </div>
@@ -178,7 +178,7 @@ export default async function CourseDetailPage({
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-3 gap-12">
           <div className="md:col-span-2">
-            <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-4">
+            <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#a61968] mb-4">
                Programme
             </p>
             <h2 className="font-serif text-3xl font-medium text-gray-900 mb-8">
@@ -192,7 +192,7 @@ export default async function CourseDetailPage({
 
           {/* Sticky sidebar */}
           <div className="hidden md:block">
-            <div className="sticky top-8 bg-white border border-[#f0e0ec] p-6 space-y-4">
+            <div className="sticky top-8 bg-white border border-[#f3dfea] p-6 space-y-4">
               <p className="text-xs tracking-[3px] uppercase text-gray-500">
                 Cette formation inclut
               </p>
@@ -211,14 +211,14 @@ export default async function CourseDetailPage({
                     key={item}
                     className="flex items-center gap-3 text-sm text-gray-600"
                   >
-                    <Check size={16} className="text-[#ff63ce]" />
+                    <Check size={16} className="text-[#a61968]" />
                     {item}
                   </div>
                 ))}
 
-              <div className="pt-4 border-t border-[#f0e0ec]">
+              <div className="pt-4 border-t border-[#f3dfea]">
                 {isEnrolled ? (
-                  <div className="flex items-center gap-2 text-sm font-medium text-[#ff63ce] mb-4">
+                  <div className="flex items-center gap-2 text-sm font-medium text-[#a61968] mb-4">
                     <Check size={16} /> Formation débloquée
                   </div>
                 ) : (

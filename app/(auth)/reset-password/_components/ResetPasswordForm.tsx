@@ -38,7 +38,7 @@ export default function ResetPasswordForm({ token }: { token: string }) {
           <p>{error}</p>
           <Link
             href="/forgot-password"
-            className="text-[#ff63ce] font-medium hover:underline inline-block"
+            className="text-[#a61968] font-medium hover:underline inline-block"
           >
             Demander un nouveau lien
           </Link>
@@ -56,7 +56,7 @@ export default function ResetPasswordForm({ token }: { token: string }) {
           placeholder="••••••••"
           required
           minLength={8}
-          className="w-full border-0 border-b border-gray-200 py-3 px-0 text-sm focus:outline-none focus:border-[#ff63ce] transition-colors bg-transparent"
+          className="w-full border-0 border-b border-gray-200 py-3 px-0 text-sm focus:outline-none focus:border-[#a61968] transition-colors bg-transparent"
         />
       </div>
 
@@ -71,7 +71,7 @@ export default function ResetPasswordForm({ token }: { token: string }) {
           placeholder="••••••••"
           required
           minLength={8}
-          className="w-full border-0 border-b border-gray-200 py-3 px-0 text-sm focus:outline-none focus:border-[#ff63ce] transition-colors bg-transparent"
+          className="w-full border-0 border-b border-gray-200 py-3 px-0 text-sm focus:outline-none focus:border-[#a61968] transition-colors bg-transparent"
         />
       </div>
 
@@ -79,8 +79,8 @@ export default function ResetPasswordForm({ token }: { token: string }) {
         type="submit"
         disabled={loading}
         className={cn(
-          "w-full bg-[#ff63ce] text-white py-4 text-xs tracking-[3px] uppercase font-medium transition-all",
-          loading ? "opacity-60 cursor-not-allowed" : "hover:bg-[#111]",
+          "w-full bg-[#a61968] text-white py-4 text-xs tracking-[3px] uppercase font-medium transition-all",
+          loading ? "opacity-60 cursor-not-allowed" : "hover:bg-[#172A39]",
         )}
       >
         {loading ? "Enregistrement..." : "Réinitialiser le mot de passe"}

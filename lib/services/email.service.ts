@@ -12,9 +12,9 @@ export async function sendWelcomeEmail(to: string, name: string) {
     subject: "Bienvenue sur Content Level Up Academy 🎉",
     html: `
       <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
-        <h2 style="color:#111;">Bienvenue, ${name} !</h2>
+        <h2 style="color:#172A39;">Bienvenue, ${name} !</h2>
         <p>Ton compte Content Level Up Academy est créé. Tu peux maintenant accéder à toutes les formations.</p>
-        <a href="${APP_URL}/courses" style="background:#ff63ce;color:white;padding:12px 24px;text-decoration:none;display:inline-block;margin-top:16px;">
+        <a href="${APP_URL}/courses" style="background:#a61968;color:white;padding:12px 24px;text-decoration:none;display:inline-block;margin-top:16px;">
           Voir les formations →
         </a>
         <p style="color:#888;font-size:12px;margin-top:32px;">Content Level Up Academy · parysbatonda.com</p>
@@ -35,10 +35,10 @@ export async function sendCourseEnrollmentEmail(
     subject: `Inscription confirmée — ${courseTitle}`,
     html: `
       <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
-        <h2 style="color:#111;">Inscription confirmée ✓</h2>
+        <h2 style="color:#172A39;">Inscription confirmée ✓</h2>
         <p>Bonjour ${name},</p>
         <p>Tu es maintenant inscrite à la formation <strong>${courseTitle}</strong>.</p>
-        <a href="${APP_URL}/dashboard" style="background:#ff63ce;color:white;padding:12px 24px;text-decoration:none;display:inline-block;margin-top:16px;">
+        <a href="${APP_URL}/dashboard" style="background:#a61968;color:white;padding:12px 24px;text-decoration:none;display:inline-block;margin-top:16px;">
           Accéder à ma formation →
         </a>
         <p style="color:#888;font-size:12px;margin-top:32px;">Content Level Up Academy · parysbatonda.com</p>
@@ -72,16 +72,16 @@ export async function sendBookingConfirmedEmail(
     subject: `Session confirmée — ${sessionName}`,
     html: `
       <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
-        <h2 style="color:#111;">Session confirmée ✓</h2>
+        <h2 style="color:#172A39;">Session confirmée ✓</h2>
         <p>Bonjour ${name},</p>
         <p>Votre session <strong>${sessionName}</strong> est confirmée.</p>
         <table style="border-collapse:collapse;width:100%;margin:16px 0;">
-          <tr><td style="padding:8px;color:#888;border-bottom:1px solid #f0e0ec;">Date</td>
-              <td style="padding:8px;border-bottom:1px solid #f0e0ec;">${dateStr} à ${timeStr}</td></tr>
+          <tr><td style="padding:8px;color:#888;border-bottom:1px solid #f3dfea;">Date</td>
+              <td style="padding:8px;border-bottom:1px solid #f3dfea;">${dateStr} à ${timeStr}</td></tr>
           <tr><td style="padding:8px;color:#888;">Durée</td>
               <td style="padding:8px;">${duration} minutes</td></tr>
         </table>
-        ${meetUrl ? `<a href="${meetUrl}" style="background:#ff63ce;color:white;padding:12px 24px;text-decoration:none;display:inline-block;margin-top:8px;">Rejoindre la session →</a>` : ""}
+        ${meetUrl ? `<a href="${meetUrl}" style="background:#a61968;color:white;padding:12px 24px;text-decoration:none;display:inline-block;margin-top:8px;">Rejoindre la session →</a>` : ""}
         <p style="color:#888;font-size:12px;margin-top:32px;">Content Level Up Academy · parysbatonda.com</p>
       </div>
     `,
@@ -106,10 +106,10 @@ export async function sendBookingReminderEmail(
     subject: `Rappel — Votre session commence demain`,
     html: `
       <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
-        <h2 style="color:#111;">Votre session est demain ⏰</h2>
+        <h2 style="color:#172A39;">Votre session est demain ⏰</h2>
         <p>Bonjour ${name},</p>
         <p>Rappel : votre session <strong>${sessionName}</strong> commence demain à <strong>${timeStr}</strong>.</p>
-        ${meetUrl ? `<a href="${meetUrl}" style="background:#ff63ce;color:white;padding:12px 24px;text-decoration:none;display:inline-block;margin-top:16px;">Rejoindre la session →</a>` : "<p>Le lien de visio vous sera envoyé bientôt.</p>"}
+        ${meetUrl ? `<a href="${meetUrl}" style="background:#a61968;color:white;padding:12px 24px;text-decoration:none;display:inline-block;margin-top:16px;">Rejoindre la session →</a>` : "<p>Le lien de visio vous sera envoyé bientôt.</p>"}
         <p style="color:#888;font-size:12px;margin-top:32px;">Content Level Up Academy · parysbatonda.com</p>
       </div>
     `,
@@ -139,7 +139,7 @@ export async function sendBookingCancelledEmail(
     subject: `Session annulée — ${sessionName}`,
     html: `
       <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
-        <h2 style="color:#111;">Votre session a été annulée</h2>
+        <h2 style="color:#172A39;">Votre session a été annulée</h2>
         <p>Bonjour ${name},</p>
         <p>Votre session <strong>${sessionName}</strong> prévue le ${dateStr} à ${timeStr} a été annulée.</p>
         <p>Si tu penses qu'il s'agit d'une erreur ou souhaites reprogrammer, réponds simplement à cet email.</p>
@@ -160,10 +160,10 @@ export async function sendBookingCompletedEmail(
     subject: `Merci pour votre session — ${sessionName}`,
     html: `
       <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
-        <h2 style="color:#111;">Session terminée ✓</h2>
+        <h2 style="color:#172A39;">Session terminée ✓</h2>
         <p>Bonjour ${name},</p>
         <p>Ta session <strong>${sessionName}</strong> est maintenant marquée comme terminée. Merci de ta confiance !</p>
-        <a href="${APP_URL}/dashboard" style="background:#ff63ce;color:white;padding:12px 24px;text-decoration:none;display:inline-block;margin-top:16px;">
+        <a href="${APP_URL}/dashboard" style="background:#a61968;color:white;padding:12px 24px;text-decoration:none;display:inline-block;margin-top:16px;">
           Retrouver mon espace →
         </a>
         <p style="color:#888;font-size:12px;margin-top:32px;">Content Level Up Academy · parysbatonda.com</p>
@@ -183,9 +183,9 @@ export async function sendVerificationEmail(
     subject: "Confirme ton adresse email",
     html: `
       <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
-        <h2 style="color:#111;">Bienvenue, ${name} !</h2>
+        <h2 style="color:#172A39;">Bienvenue, ${name} !</h2>
         <p>Encore une étape avant d'accéder à ton compte Content Level Up Academy : confirme ton adresse email en cliquant sur le bouton ci-dessous. Ce lien expire dans 24 heures.</p>
-        <a href="${verifyUrl}" style="background:#ff63ce;color:white;padding:12px 24px;text-decoration:none;display:inline-block;margin-top:16px;">
+        <a href="${verifyUrl}" style="background:#a61968;color:white;padding:12px 24px;text-decoration:none;display:inline-block;margin-top:16px;">
           Confirmer mon email →
         </a>
         <p style="color:#888;font-size:13px;margin-top:24px;">Si tu n'es pas à l'origine de cette inscription, tu peux ignorer cet email.</p>
@@ -206,10 +206,10 @@ export async function sendPasswordResetEmail(
     subject: "Réinitialise ton mot de passe",
     html: `
       <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
-        <h2 style="color:#111;">Réinitialisation du mot de passe</h2>
+        <h2 style="color:#172A39;">Réinitialisation du mot de passe</h2>
         <p>Bonjour ${name},</p>
         <p>Tu as demandé à réinitialiser ton mot de passe sur Content Level Up Academy. Clique sur le bouton ci-dessous pour en choisir un nouveau. Ce lien expire dans 1 heure.</p>
-        <a href="${resetUrl}" style="background:#ff63ce;color:white;padding:12px 24px;text-decoration:none;display:inline-block;margin-top:16px;">
+        <a href="${resetUrl}" style="background:#a61968;color:white;padding:12px 24px;text-decoration:none;display:inline-block;margin-top:16px;">
           Réinitialiser mon mot de passe →
         </a>
         <p style="color:#888;font-size:13px;margin-top:24px;">Si tu n'es pas à l'origine de cette demande, tu peux ignorer cet email — ton mot de passe restera inchangé.</p>
@@ -226,11 +226,11 @@ export async function sendGoogleAccountResetAttemptEmail(to: string, name: strin
     subject: "Ton compte utilise la connexion Google",
     html: `
       <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
-        <h2 style="color:#111;">Pas de mot de passe à réinitialiser</h2>
+        <h2 style="color:#172A39;">Pas de mot de passe à réinitialiser</h2>
         <p>Bonjour ${name},</p>
         <p>Quelqu'un a demandé une réinitialisation de mot de passe pour ce compte, mais celui-ci est connecté via Google — il n'y a pas de mot de passe associé.</p>
         <p>Pour te connecter, utilise simplement le bouton "Continuer avec Google" sur la page de connexion.</p>
-        <a href="${APP_URL}/login" style="background:#111;color:white;padding:12px 24px;text-decoration:none;display:inline-block;margin-top:16px;">
+        <a href="${APP_URL}/login" style="background:#172A39;color:white;padding:12px 24px;text-decoration:none;display:inline-block;margin-top:16px;">
           Aller à la connexion →
         </a>
         <p style="color:#888;font-size:13px;margin-top:24px;">Si tu n'es pas à l'origine de cette demande, tu peux ignorer cet email.</p>
@@ -272,45 +272,45 @@ export async function sendAdminNewBookingEmail(params: {
     subject: `📅 Nouvelle réservation — ${params.sessionName}`,
     html: `
       <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
-        <h2 style="color:#111;">Nouvelle réservation coaching 📅</h2>
+        <h2 style="color:#172A39;">Nouvelle réservation coaching 📅</h2>
 
         <table style="width:100%;border-collapse:collapse;margin:16px 0;">
-          <tr style="background:#fdf0fa;">
-            <td style="padding:10px;color:#888;border-bottom:1px solid #f0e0ec;width:35%;">Étudiante</td>
-            <td style="padding:10px;border-bottom:1px solid #f0e0ec;font-weight:bold;">
+          <tr style="background:#f9eff4;">
+            <td style="padding:10px;color:#888;border-bottom:1px solid #f3dfea;width:35%;">Étudiante</td>
+            <td style="padding:10px;border-bottom:1px solid #f3dfea;font-weight:bold;">
               ${params.studentName}
             </td>
           </tr>
           <tr>
-            <td style="padding:10px;color:#888;border-bottom:1px solid #f0e0ec;">Email</td>
-            <td style="padding:10px;border-bottom:1px solid #f0e0ec;">
+            <td style="padding:10px;color:#888;border-bottom:1px solid #f3dfea;">Email</td>
+            <td style="padding:10px;border-bottom:1px solid #f3dfea;">
               <a href="mailto:${params.studentEmail}">${params.studentEmail}</a>
             </td>
           </tr>
-          <tr style="background:#fdf0fa;">
-            <td style="padding:10px;color:#888;border-bottom:1px solid #f0e0ec;">Session</td>
-            <td style="padding:10px;border-bottom:1px solid #f0e0ec;">${params.sessionName}</td>
+          <tr style="background:#f9eff4;">
+            <td style="padding:10px;color:#888;border-bottom:1px solid #f3dfea;">Session</td>
+            <td style="padding:10px;border-bottom:1px solid #f3dfea;">${params.sessionName}</td>
           </tr>
           <tr>
-            <td style="padding:10px;color:#888;border-bottom:1px solid #f0e0ec;">Date</td>
-            <td style="padding:10px;border-bottom:1px solid #f0e0ec;">${dateStr} à ${timeStr}</td>
+            <td style="padding:10px;color:#888;border-bottom:1px solid #f3dfea;">Date</td>
+            <td style="padding:10px;border-bottom:1px solid #f3dfea;">${dateStr} à ${timeStr}</td>
           </tr>
-          <tr style="background:#fdf0fa;">
-            <td style="padding:10px;color:#888;border-bottom:1px solid #f0e0ec;">Durée</td>
-            <td style="padding:10px;border-bottom:1px solid #f0e0ec;">${params.duration} minutes</td>
+          <tr style="background:#f9eff4;">
+            <td style="padding:10px;color:#888;border-bottom:1px solid #f3dfea;">Durée</td>
+            <td style="padding:10px;border-bottom:1px solid #f3dfea;">${params.duration} minutes</td>
           </tr>
           <tr>
-            <td style="padding:10px;color:#888;border-bottom:1px solid #f0e0ec;">Montant</td>
-            <td style="padding:10px;border-bottom:1px solid #f0e0ec;color:#ff63ce;font-weight:bold;">
+            <td style="padding:10px;color:#888;border-bottom:1px solid #f3dfea;">Montant</td>
+            <td style="padding:10px;border-bottom:1px solid #f3dfea;color:#a61968;font-weight:bold;">
               ${new Intl.NumberFormat("en-US").format(Math.round(params.amount))} ${params.currency}
             </td>
           </tr>
           ${
             params.intakeGoal
               ? `
-          <tr style="background:#fdf0fa;">
-            <td style="padding:10px;color:#888;border-bottom:1px solid #f0e0ec;">Objectif</td>
-            <td style="padding:10px;border-bottom:1px solid #f0e0ec;">${params.intakeGoal}</td>
+          <tr style="background:#f9eff4;">
+            <td style="padding:10px;color:#888;border-bottom:1px solid #f3dfea;">Objectif</td>
+            <td style="padding:10px;border-bottom:1px solid #f3dfea;">${params.intakeGoal}</td>
           </tr>`
               : ""
           }
@@ -326,7 +326,7 @@ export async function sendAdminNewBookingEmail(params: {
         </table>
 
         <a href="${APP_URL}/admin/coaching"
-           style="background:#111;color:white;padding:12px 24px;text-decoration:none;display:inline-block;margin-top:8px;">
+           style="background:#172A39;color:white;padding:12px 24px;text-decoration:none;display:inline-block;margin-top:8px;">
           Confirmer la session →
         </a>
 
@@ -353,35 +353,35 @@ export async function sendAdminNewEnrollmentEmail(params: {
     subject: `💰 Nouvelle inscription — ${params.courseTitle}`,
     html: `
       <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
-        <h2 style="color:#111;">Nouvelle inscription formation 💰</h2>
+        <h2 style="color:#172A39;">Nouvelle inscription formation 💰</h2>
 
         <table style="width:100%;border-collapse:collapse;margin:16px 0;">
-          <tr style="background:#fdf0fa;">
-            <td style="padding:10px;color:#888;border-bottom:1px solid #f0e0ec;width:35%;">Étudiante</td>
-            <td style="padding:10px;border-bottom:1px solid #f0e0ec;font-weight:bold;">
+          <tr style="background:#f9eff4;">
+            <td style="padding:10px;color:#888;border-bottom:1px solid #f3dfea;width:35%;">Étudiante</td>
+            <td style="padding:10px;border-bottom:1px solid #f3dfea;font-weight:bold;">
               ${params.studentName}
             </td>
           </tr>
           <tr>
-            <td style="padding:10px;color:#888;border-bottom:1px solid #f0e0ec;">Email</td>
-            <td style="padding:10px;border-bottom:1px solid #f0e0ec;">
+            <td style="padding:10px;color:#888;border-bottom:1px solid #f3dfea;">Email</td>
+            <td style="padding:10px;border-bottom:1px solid #f3dfea;">
               <a href="mailto:${params.studentEmail}">${params.studentEmail}</a>
             </td>
           </tr>
-          <tr style="background:#fdf0fa;">
-            <td style="padding:10px;color:#888;border-bottom:1px solid #f0e0ec;">Formation</td>
-            <td style="padding:10px;border-bottom:1px solid #f0e0ec;">${params.courseTitle}</td>
+          <tr style="background:#f9eff4;">
+            <td style="padding:10px;color:#888;border-bottom:1px solid #f3dfea;">Formation</td>
+            <td style="padding:10px;border-bottom:1px solid #f3dfea;">${params.courseTitle}</td>
           </tr>
           <tr>
             <td style="padding:10px;color:#888;">Montant encaissé</td>
-            <td style="padding:10px;color:#ff63ce;font-weight:bold;">
+            <td style="padding:10px;color:#a61968;font-weight:bold;">
               ${new Intl.NumberFormat("en-US").format(Math.round(params.amount))} ${params.currency}
             </td>
           </tr>
         </table>
 
         <a href="${APP_URL}/admin/students"
-           style="background:#111;color:white;padding:12px 24px;text-decoration:none;display:inline-block;margin-top:8px;">
+           style="background:#172A39;color:white;padding:12px 24px;text-decoration:none;display:inline-block;margin-top:8px;">
           Voir les étudiantes →
         </a>
 

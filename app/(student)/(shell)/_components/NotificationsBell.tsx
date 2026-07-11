@@ -61,17 +61,17 @@ export default function NotificationsBell() {
       <button
         onClick={handleOpen}
         aria-label="Notifications"
-        className="relative p-2 text-gray-700 hover:text-[#ff63ce] transition-colors bg-white border border-[#f0e0ec] rounded-full lg:border-0 lg:bg-transparent"
+        className="relative p-2 text-gray-700 hover:text-[#a61968] transition-colors bg-white border border-[#f3dfea] rounded-full lg:border-0 lg:bg-transparent"
       >
         <Bell size={20} />
         {activity.length > 0 && (
-          <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#ff63ce] rounded-full" />
+          <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#a61968] rounded-full" />
         )}
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-80 max-w-[90vw] bg-white border border-[#f0e0ec] shadow-lg z-50">
-          <div className="px-4 py-3 border-b border-[#f0e0ec]">
+        <div className="absolute right-0 mt-2 w-80 max-w-[90vw] bg-white border border-[#f3dfea] shadow-lg z-50">
+          <div className="px-4 py-3 border-b border-[#f3dfea]">
             <p className="text-xs tracking-[2px] uppercase text-gray-500">
               Activité récente
             </p>
@@ -90,10 +90,10 @@ export default function NotificationsBell() {
                 <div
                   key={item.id}
                   className={cn(
-                    "flex gap-3 px-4 py-3 border-b border-[#f0e0ec] last:border-b-0",
+                    "flex gap-3 px-4 py-3 border-b border-[#f3dfea] last:border-b-0",
                   )}
                 >
-                  <span className="text-[#ff63ce] mt-0.5 shrink-0">
+                  <span className="text-[#a61968] mt-0.5 shrink-0">
                     {item.type === "payment" ? (
                       <CreditCard size={16} />
                     ) : (

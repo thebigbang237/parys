@@ -164,8 +164,8 @@ export default function AvailabilityManager({
               className={cn(
                 "aspect-square text-sm rounded transition-colors relative",
                 isPast && "text-gray-200 cursor-not-allowed",
-                !isPast && !isSelected && "text-gray-700 hover:bg-[#fdf0fa]",
-                isSelected && "bg-[#ff63ce] text-white",
+                !isPast && !isSelected && "text-gray-700 hover:bg-[#f9eff4]",
+                isSelected && "bg-[#a61968] text-white",
               )}
             >
               {day}
@@ -173,7 +173,7 @@ export default function AvailabilityManager({
                 <span
                   className={cn(
                     "absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full",
-                    isSelected ? "bg-white" : "bg-[#ff63ce]",
+                    isSelected ? "bg-white" : "bg-[#a61968]",
                   )}
                 />
               )}
@@ -183,7 +183,7 @@ export default function AvailabilityManager({
       </div>
 
       {selectedDate && (
-        <div className="border border-[#f0e0ec] rounded p-4 space-y-3">
+        <div className="border border-[#f3dfea] rounded p-4 space-y-3">
           <p className="text-sm font-medium text-gray-900">
             {new Date(selectedDate + "T12:00:00").toLocaleDateString("fr-FR", {
               weekday: "long",
@@ -237,7 +237,7 @@ export default function AvailabilityManager({
                 onChange={(e) =>
                   setForm({ ...form, start_time: e.target.value })
                 }
-                className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#ff63ce] mt-1"
+                className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#a61968] mt-1"
               />
             </div>
             <div>
@@ -250,14 +250,14 @@ export default function AvailabilityManager({
                 onChange={(e) =>
                   setForm({ ...form, end_time: e.target.value })
                 }
-                className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#ff63ce] mt-1"
+                className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#a61968] mt-1"
               />
             </div>
           </div>
           <button
             onClick={handleAdd}
             disabled={loading}
-            className="w-full bg-[#111] text-white py-2 text-xs tracking-[2px] uppercase disabled:opacity-50 hover:bg-[#ff63ce] transition-colors"
+            className="w-full bg-[#172A39] text-white py-2 text-xs tracking-[2px] uppercase disabled:opacity-50 hover:bg-[#a61968] transition-colors"
           >
             {loading ? "..." : "+ Ajouter ce créneau"}
           </button>

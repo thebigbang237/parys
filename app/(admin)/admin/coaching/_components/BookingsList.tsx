@@ -71,7 +71,7 @@ export default function BookingsList({
 
   const statusColor: Record<string, string> = {
     PENDING: "bg-yellow-50 text-yellow-600",
-    CONFIRMED: "bg-[#fdf0fa] text-[#ff63ce]",
+    CONFIRMED: "bg-[#f9eff4] text-[#a61968]",
     CANCELLED: "bg-red-50 text-red-600",
     COMPLETED: "bg-gray-100 text-gray-500",
   }
@@ -89,7 +89,7 @@ export default function BookingsList({
       ) : (
         <div className="bg-white border border-gray-100 rounded overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-[#fdf0fa] border-b border-[#f0e0ec]">
+            <thead className="bg-[#f9eff4] border-b border-[#f3dfea]">
               <tr>
                 {["Étudiante", "Session", "Date", "Montant", "Statut", "Actions"].map((h) => (
                   <th
@@ -146,7 +146,7 @@ export default function BookingsList({
                         <button
                           onClick={() => confirmBooking(booking.id)}
                           disabled={loading === booking.id}
-                          className="text-xs bg-[#ff63ce] text-white px-3 py-1 hover:bg-[#111] transition-colors disabled:opacity-50"
+                          className="text-xs bg-[#a61968] text-white px-3 py-1 hover:bg-[#172A39] transition-colors disabled:opacity-50"
                         >
                           Confirmer
                         </button>
@@ -166,7 +166,7 @@ export default function BookingsList({
                             href={booking.meet_join_url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-xs text-[#ff63ce] hover:underline block"
+                            className="text-xs text-[#a61968] hover:underline block"
                           >
                             Lien Meet →
                           </a>
@@ -175,7 +175,7 @@ export default function BookingsList({
                           <button
                             onClick={() => completeBooking(booking.id)}
                             disabled={loading === booking.id}
-                            className="text-xs bg-gray-800 text-white px-3 py-1 hover:bg-[#111] transition-colors disabled:opacity-50"
+                            className="text-xs bg-gray-800 text-white px-3 py-1 hover:bg-[#172A39] transition-colors disabled:opacity-50"
                           >
                             Marquer terminée
                           </button>

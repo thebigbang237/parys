@@ -38,17 +38,17 @@ export default async function CoursesPage() {
     course.modules.reduce((sum, m) => sum + m._count.lessons, 0)
 
   return (
-    <div className="min-h-screen bg-[#fcf8f8] ">
+    <div className="min-h-screen bg-[#E9E4E0] ">
       {/* Header */}
-      <div className="bg-white pt-24 border-b border-[#f0e0ec]">
+      <div className="bg-[#E9E4E0] pt-24 border-b border-[#f3dfea]">
         <div className="max-w-6xl mx-auto px-6 py-16">
-          <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-1">
+          <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#a61968] mb-1">
             Formations
           </p>
-          <h1 className="font-serif text-xl md:text-5xl font-medium text-gray-900 mb-2">
+          <h1 className="font-serif text-xl md:text-5xl font-medium text-[#172A39] mb-2">
             Toutes les formations
           </h1>
-          <p className="text-gray-500 text-lg max-w-xl">
+          <p className="text-[#172A39]/80 text-lg max-w-xl">
             Des programmes premium pour développer tes compétences et
             propulser ta carrière créative.
           </p>
@@ -56,10 +56,10 @@ export default async function CoursesPage() {
       </div>
 
       {/* Grid */}
-      <div className="max-w-6xl mx-auto px-6 py-16">
+      <div className="max-w-6xl mx-auto px-6 pb-16">
         {courses.length === 0 ? (
           <div className="text-center py-24">
-            <p className="text-gray-500">Aucune formation disponible pour l'instant.</p>
+            <p className="text-[#172A39]/80">Aucune formation disponible pour l'instant.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

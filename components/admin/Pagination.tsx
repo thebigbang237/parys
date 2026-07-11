@@ -35,7 +35,7 @@ export default function Pagination({
           className={`text-xs px-3 py-1.5 rounded border transition-colors ${
             currentPage <= 1
               ? "border-gray-100 text-gray-300 pointer-events-none"
-              : "border-gray-200 text-gray-600 hover:border-[#ff63ce] hover:text-[#ff63ce]"
+              : "border-gray-200 text-gray-600 hover:border-[#a61968] hover:text-[#a61968]"
           }`}
         >
           ← Précédent
@@ -46,7 +46,7 @@ export default function Pagination({
           className={`text-xs px-3 py-1.5 rounded border transition-colors ${
             currentPage >= totalPages
               ? "border-gray-100 text-gray-300 pointer-events-none"
-              : "border-gray-200 text-gray-600 hover:border-[#ff63ce] hover:text-[#ff63ce]"
+              : "border-gray-200 text-gray-600 hover:border-[#a61968] hover:text-[#a61968]"
           }`}
         >
           Suivant →

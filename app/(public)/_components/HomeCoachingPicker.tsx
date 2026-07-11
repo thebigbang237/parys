@@ -24,8 +24,8 @@ export default function HomeCoachingPicker({
   );
 
   return (
-    <div className="bg-white border border-[#f0e0ec] p-6 sm:p-8 space-y-4 w-full">
-      <h3 className="font-serif text-lg sm:text-xl font-medium text-gray-900 text-center mb-6">
+    <div className="bg-white/60 rounded-3xl border border-[#f3dfea] p-6 sm:p-8 space-y-4 w-full">
+      <h3 className="font-serif text-lg sm:text-xl font-medium text-[#172A39] text-center mb-6">
         Réserver une séance
       </h3>
 
@@ -37,19 +37,19 @@ export default function HomeCoachingPicker({
           className={cn(
             "w-full p-5 border text-left transition-colors",
             selectedId === s.id
-              ? "border-[#ff63ce] bg-[#fdf0fa]"
-              : "border-[#f0e0ec] hover:border-[#ff63ce]",
+              ? "border-[#a61968] bg-[#f9eff4]"
+              : "border-[#f3dfea] hover:border-[#a61968]",
           )}
         >
           <div className="flex justify-between items-center mb-1">
-            <span className="text-xs tracking-[2px] uppercase font-medium text-gray-900">
+            <span className="text-xs tracking-[2px] uppercase font-medium text-[#172A39]">
               {s.name}
             </span>
-            <span className="font-serif text-lg text-gray-900">
+            <span className="font-serif text-lg text-[#172A39]">
               {formatPrice(s.price, currency as any)}
             </span>
           </div>
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-[#172A39]/80">
             Session de {s.duration} minutes
           </p>
         </button>
@@ -57,7 +57,7 @@ export default function HomeCoachingPicker({
 
       <Link
         href={selectedId ? `/coaching?sessionType=${selectedId}` : "/coaching"}
-        className="w-full bg-[#111] text-white py-4 text-xs tracking-[3px] uppercase hover:bg-[#ff63ce] transition-colors text-center block mt-4"
+        className="w-full bg-[#172A39] text-white py-4 text-xs tracking-[3px] uppercase hover:bg-[#a61968] transition-colors text-center block mt-4"
       >
         Continuer vers le calendrier →
       </Link>

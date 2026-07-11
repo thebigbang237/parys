@@ -22,18 +22,18 @@ export default async function CoachingPage({
   ]);
 
   return (
-    <div className="min-h-screen bg-[#fcf8f8]">
+    <div className="min-h-screen bg-[#E9E4E0]">
       {/* Hero */}
-      <div className="bg-white border-b pt-24 border-[#f0e0ec]">
+      <div className="bg-[#E9E4E0] border-b pt-24 border-[#f3dfea]">
         <div className="max-w-5xl mx-auto px-6 py-16">
-          <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#ff63ce] mb-1">
+          <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#a61968] mb-1">
             Coaching privé
           </p>
-          <h1 className="font-serif text-xl md:text-3xl font-medium text-gray-900 mb-2">
+          <h1 className="font-serif text-xl md:text-3xl font-medium text-[#172A39] mb-2">
             Un accompagnement{" "}
-            <span className=" text-[#ff63ce]">sur-mesure</span>
+            <span className=" text-[#a61968]">sur-mesure</span>
           </h1>
-          <p className="text-gray-500 text-base sm:text-lg max-w-xl">
+          <p className="text-[#172A39]/80 text-base sm:text-lg max-w-xl">
             Réservez une session en tête-à-tête avec Parys. Stratégie, création
             de contenu, personal branding — des moments qui change tout.
           </p>
@@ -43,7 +43,7 @@ export default async function CoachingPage({
       <div className="max-w-5xl mx-auto px-6 py-16">
         {sessionTypes.length === 0 ? (
           <div className="text-center py-16">
-            <p className="text-gray-500">
+            <p className="text-[#172A39]/80">
               Aucune session disponible pour l'instant.
             </p>
           </div>

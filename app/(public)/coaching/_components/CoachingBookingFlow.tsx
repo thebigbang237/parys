@@ -162,7 +162,7 @@ export default function CoachingBookingFlow({
         {/* Left — features */}
         <div className="flex flex-col justify-center space-y-10">
           <div>
-            <p className="text-xs tracking-[4px] uppercase text-[#ff63ce] mb-2">
+            <p className="text-xs tracking-[4px] uppercase text-[#a61968] mb-2">
               Accompagnement privé
             </p>
             <h2 className="font-serif text-xl md:text-3xl font-medium text-gray-900 md:mb-8">
@@ -189,7 +189,7 @@ export default function CoachingBookingFlow({
               },
             ].map((feature) => (
               <div key={feature.title} className="flex gap-5">
-                <feature.icon className="text-[#ff63ce] mt-0.5" size={22} />
+                <feature.icon className="text-[#a61968] mt-0.5" size={22} />
                 <div>
                   <h4 className="text-xs tracking-[2px] uppercase font-medium text-gray-900 mb-1">
                     {feature.title}
@@ -204,9 +204,9 @@ export default function CoachingBookingFlow({
         </div>
 
         {/* Right — session selector */}
-        <div className="bg-[#fdf0fa] max-sm:px-2 p-8">
-          <div className="bg-white border border-[#f0e0ec]  p-8 space-y-6">
-            <h3 className="font-serif text-xl font-medium text-gray-900 text-center">
+        <div className="bg-[#6e7575]/10 max-sm:px-2 p-8">
+          <div className="bg-white/60 border border-[#f3dfea]  p-8 space-y-6">
+            <h3 className="font-serif text-xl font-medium text-[#172A39] text-center">
               Réserver une séance
             </h3>
 
@@ -218,19 +218,19 @@ export default function CoachingBookingFlow({
                   className={cn(
                     "w-full p-5 border text-left transition-colors",
                     selectedType?.id === type.id
-                      ? "border-[#ff63ce] bg-[#fdf0fa]"
-                      : "border-[#f0e0ec] hover:border-[#ff63ce]",
+                      ? "border-[#a61968]/60 bg-[#f9eff4]"
+                      : "border-[#f3dfea] hover:border-[#a61968]/60",
                   )}
                 >
                   <div className="flex justify-between items-center mb-1">
                     <span className="text-xs tracking-[2px] uppercase font-medium text-gray-900">
                       {type.name}
                     </span>
-                    <span className="font-serif text-lg text-gray-900">
+                    <span className="font-serif text-lg text-[#172A39]/80">
                       {formatPrice(type.price, currency as any)}
                     </span>
                   </div>
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-[#172A39]/80">
                     Session de {type.duration} minutes
                   </p>
                 </button>
@@ -240,7 +240,7 @@ export default function CoachingBookingFlow({
             <button
               onClick={() => selectedType && setStep("calendar")}
               disabled={!selectedType}
-              className="w-full bg-[#111] text-white py-4 text-xs tracking-[3px] uppercase hover:bg-[#ff63ce] transition-colors disabled:opacity-40"
+              className="w-full bg-[#172A39] text-white py-4 text-xs tracking-[3px] uppercase hover:bg-[#a61968] transition-colors disabled:opacity-40"
             >
               Continuer vers le calendrier →
             </button>
@@ -262,37 +262,37 @@ export default function CoachingBookingFlow({
         <div className="flex items-center gap-4">
           <button
             onClick={() => setStep("select")}
-            className="text-xs text-gray-500 hover:text-gray-600"
+            className="text-xs text-[#172A39] hover:text-gray-600"
           >
             ← Retour
           </button>
           <span className="text-xs text-gray-300">|</span>
-          <span className="text-xs text-gray-500">{selectedType?.name}</span>
+          <span className="text-xs text-[#172A39]/80">{selectedType?.name}</span>
         </div>
 
         <div>
-          <p className="text-xs tracking-[4px] uppercase text-[#ff63ce] mb-2">
+          <p className="text-xs tracking-[4px] uppercase text-[#a61968] mb-2">
             02 — Choisir une date
           </p>
-          <p className="text-xs text-gray-500 mb-6">
+          <p className="text-xs text-[#172A39]/80 mb-6">
             Les dates disponibles sont mises en évidence en rose.
           </p>
 
-          <div className="bg-white border border-[#f0e0ec] p-8 max-w-md">
+          <div className="bg-white/60 border border-[#f3dfea] p-8 max-w-md">
             {/* Month nav */}
             <div className="flex items-center justify-between mb-6">
               <button
                 onClick={() => setCurrentMonth(new Date(year, month - 1, 1))}
-                className="text-gray-500 hover:text-gray-600 w-8 h-8 flex items-center justify-center"
+                className="text-[#172A39]/80 hover:text-gray-600 w-8 h-8 flex items-center justify-center"
               >
                 <ChevronLeft size={18} />
               </button>
-              <span className="font-medium text-gray-900">
+              <span className="font-medium text-[#172A39]">
                 {MONTHS_FR[month]} {year}
               </span>
               <button
                 onClick={() => setCurrentMonth(new Date(year, month + 1, 1))}
-                className="text-gray-500 hover:text-gray-600 w-8 h-8 flex items-center justify-center"
+                className="text-[#172A39]/80 hover:text-gray-600 w-8 h-8 flex items-center justify-center"
               >
                 <ChevronRight size={18} />
               </button>
@@ -301,7 +301,7 @@ export default function CoachingBookingFlow({
             {/* Day headers */}
             <div className="grid grid-cols-7 mb-2">
               {DAYS_FR.map((d) => (
-                <div key={d} className="text-center text-xs text-gray-500 py-1">
+                <div key={d} className="text-center text-xs text-[#172A39]/80 py-1">
                   {d}
                 </div>
               ))}
@@ -310,7 +310,7 @@ export default function CoachingBookingFlow({
             {/* Days grid */}
             {loadingDays ? (
               <div className="h-40 flex items-center justify-center">
-                <div className="w-6 h-6 border-2 border-[#ff63ce] border-t-transparent rounded-full animate-spin" />
+                <div className="w-6 h-6 border-2 border-[#a61968] border-t-transparent rounded-full animate-spin" />
               </div>
             ) : (
               <div className="grid grid-cols-7 gap-1">
@@ -347,9 +347,9 @@ export default function CoachingBookingFlow({
                         !isPast &&
                           isAvailable &&
                           !isSelected &&
-                          "text-[#ff63ce] font-medium hover:bg-[#fdf0fa] ring-1 ring-[#f0e0ec]",
+                          "text-[#a61968] font-medium hover:bg-[#f9eff4] ring-1 ring-[#f3dfea]",
                         isSelected &&
-                          "bg-[#ff63ce] text-white ring-1 ring-[#ff63ce]",
+                          "bg-[#a61968] text-white ring-1 ring-[#a61968]",
                       )}
                     >
                       {day}
@@ -360,9 +360,9 @@ export default function CoachingBookingFlow({
             )}
 
             {/* Legend */}
-            <div className="flex items-center gap-4 mt-4 pt-4 border-t border-[#f0e0ec]">
+            <div className="flex items-center gap-4 mt-4 pt-4 border-t border-[#f3dfea]">
               <div className="flex items-center gap-1.5">
-                <div className="w-3 h-3 rounded ring-1 ring-[#f0e0ec] bg-white" />
+                <div className="w-3 h-3 rounded ring-1 ring-[#f3dfea] bg-white/60" />
                 <span className="text-xs text-gray-500">Disponible</span>
               </div>
               <div className="flex items-center gap-1.5">
@@ -389,8 +389,8 @@ export default function CoachingBookingFlow({
           >
             ← Retour
           </button>
-          <span className="text-xs text-gray-300">|</span>
-          <span className="text-xs text-gray-500">
+          <span className="text-xs text-[#172A39]/80">|</span>
+          <span className="text-xs text-[#172A39]/80">
             {selectedDate?.toLocaleDateString("fr-FR", {
               weekday: "long",
               day: "numeric",
@@ -400,26 +400,26 @@ export default function CoachingBookingFlow({
         </div>
 
         <div>
-          <p className="text-xs tracking-[4px] uppercase text-[#ff63ce] mb-2">
+          <p className="text-xs tracking-[4px] uppercase text-[#a61968] mb-2">
             03 — Choisir un créneau
           </p>
-          <p className="text-xs text-gray-500 mb-6">
+          <p className="text-xs text-[#172A39]/80 mb-6">
             Session de {selectedType?.duration} minutes
           </p>
 
           {loadingSlots ? (
-            <div className="flex items-center gap-3 text-gray-500">
-              <div className="w-4 h-4 border-2 border-[#ff63ce] border-t-transparent rounded-full animate-spin" />
+            <div className="flex items-center gap-3 text-[#172A39]/80">
+              <div className="w-4 h-4 border-2 border-[#a61968] border-t-transparent rounded-full animate-spin" />
               Chargement des créneaux...
             </div>
           ) : availableSlots.length === 0 ? (
-            <div className="bg-white border border-[#f0e0ec] p-8 text-center">
-              <p className="text-gray-500 mb-4">
+            <div className="bg-white/60 border border-[#f3dfea] p-8 text-center">
+              <p className="text-[#172A39]/80 mb-4">
                 Aucun créneau disponible ce jour-là.
               </p>
               <button
                 onClick={() => setStep("calendar")}
-                className="text-xs text-[#ff63ce] hover:underline"
+                className="text-xs text-[#a61968] hover:underline"
               >
                 Choisir une autre date
               </button>
@@ -438,8 +438,8 @@ export default function CoachingBookingFlow({
                     className={cn(
                       "px-5 py-3 border text-sm transition-colors text-left",
                       isSelected
-                        ? "border-[#ff63ce] bg-[#fdf0fa] text-[#ff63ce] font-medium"
-                        : "border-[#f0e0ec] bg-white hover:border-[#ff63ce] text-gray-700",
+                        ? "border-[#a61968] bg-[#f9eff4] text-[#a61968] font-medium"
+                        : "border-[#f3dfea] bg-white hover:border-[#a61968] text-gray-700",
                     )}
                   >
                     <div className="font-medium">
@@ -464,7 +464,7 @@ export default function CoachingBookingFlow({
           {selectedSlot && (
             <button
               onClick={() => setStep("intake")}
-              className="mt-8 bg-[#ff63ce] text-white px-10 py-4 text-xs tracking-[3px] uppercase hover:bg-[#111] transition-colors"
+              className="mt-8 bg-[#a61968] text-white px-10 py-4 text-xs tracking-[3px] uppercase hover:bg-[#172A39] transition-colors"
             >
               Continuer →
             </button>
@@ -488,11 +488,11 @@ export default function CoachingBookingFlow({
         </div>
 
         <div>
-          <p className="text-xs tracking-[4px] uppercase text-[#ff63ce] mb-6">
+          <p className="text-xs tracking-[4px] uppercase text-[#a61968] mb-6">
             04 — Préparer la session
           </p>
 
-          <div className="bg-white border border-[#f0e0ec] p-8 space-y-6">
+          <div className="bg-white border border-[#f3dfea] p-8 space-y-6">
             <div className="space-y-2">
               <label className="text-xs tracking-[2px] uppercase text-gray-500">
                 Quel est votre objectif principal ?
@@ -502,7 +502,7 @@ export default function CoachingBookingFlow({
                 onChange={(e) => setIntake({ ...intake, goal: e.target.value })}
                 rows={3}
                 placeholder="Ex: Développer ma stratégie de contenu Instagram..."
-                className="w-full border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#ff63ce] resize-none"
+                className="w-full border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#a61968] resize-none"
               />
             </div>
 
@@ -517,12 +517,12 @@ export default function CoachingBookingFlow({
                 }
                 rows={3}
                 placeholder="Ex: Je n'arrive pas à être régulière..."
-                className="w-full border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#ff63ce] resize-none"
+                className="w-full border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#a61968] resize-none"
               />
             </div>
 
             {/* Summary */}
-            <div className="border border-[#f0e0ec] rounded p-4 space-y-2 bg-[#fdf0fa]">
+            <div className="border border-[#f3dfea] rounded p-4 space-y-2 bg-[#f9eff4]">
               <div className="flex justify-between text-sm">
                 <span className="text-gray-500">Session</span>
                 <span className="font-medium">{selectedType?.name}</span>
@@ -546,7 +546,7 @@ export default function CoachingBookingFlow({
                     })}
                 </span>
               </div>
-              <div className="flex justify-between text-sm font-medium pt-2 border-t border-[#f0e0ec]">
+              <div className="flex justify-between text-sm font-medium pt-2 border-t border-[#f3dfea]">
                 <span>Total</span>
                 <span className="font-serif text-lg">
                   {formatPrice(selectedType!.price, currency as any)}
@@ -563,7 +563,7 @@ export default function CoachingBookingFlow({
             <button
               onClick={createBooking}
               disabled={loading}
-              className="w-full bg-[#ff63ce] text-white py-4 text-xs tracking-[3px] uppercase hover:bg-[#111] transition-colors disabled:opacity-60"
+              className="w-full bg-[#a61968] text-white py-4 text-xs tracking-[3px] uppercase hover:bg-[#172A39] transition-colors disabled:opacity-60"
             >
               {loading
                 ? "Création de la réservation..."

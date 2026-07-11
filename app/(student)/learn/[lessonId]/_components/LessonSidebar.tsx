@@ -62,7 +62,7 @@ export default function LessonSidebar({
 
   if (collapsed) {
     return (
-      <div className="w-10 bg-[#1a1a1a] border-r border-white/10 flex flex-col items-center py-4">
+      <div className="w-10 bg-[#172A39] border-r border-white/10 flex flex-col items-center py-4">
         <button
           onClick={() => setCollapsed(false)}
           className="text-white/40 hover:text-white transition-colors"
@@ -74,7 +74,7 @@ export default function LessonSidebar({
   }
 
   return (
-    <div className="w-72 bg-[#1a1a1a] border-r border-white/10 flex flex-col overflow-hidden">
+    <div className="w-72 bg-[#172A39] border-r border-white/10 flex flex-col overflow-hidden">
       {/* Header */}
       <div className="px-4 py-4 border-b border-white/10 flex items-center justify-between">
         <span className="text-white/60 text-xs tracking-[2px] uppercase">
@@ -125,7 +125,7 @@ export default function LessonSidebar({
                       className={cn(
                         "flex items-center gap-3 px-4 py-2.5 text-left transition-colors",
                         isCurrent
-                          ? "bg-[#ff63ce]/20 border-l-2 border-[#ff63ce]"
+                          ? "bg-[#a61968]/20 border-l-2 border-[#a61968]"
                           : "hover:bg-white/5 border-l-2 border-transparent",
                       )}
                     >
@@ -148,9 +148,9 @@ export default function LessonSidebar({
                         )}
                       </div>
                       {isCurrent ? (
-                        <Play size={12} className="text-[#ff63ce]" />
+                        <Play size={12} className="text-[#a61968]" />
                       ) : isCompleted ? (
-                        <CheckCircle2 size={14} className="text-[#ff63ce]" />
+                        <CheckCircle2 size={14} className="text-[#a61968]" />
                       ) : !hasVideo ? (
                         <Circle size={10} className="text-white/20" />
                       ) : null}

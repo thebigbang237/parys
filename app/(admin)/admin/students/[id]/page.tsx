@@ -5,10 +5,10 @@ import Link from "next/link";
 
 const statusColor: Record<string, string> = {
   PENDING: "bg-yellow-50 text-yellow-600",
-  SUCCESS: "bg-[#fdf0fa] text-[#ff63ce]",
+  SUCCESS: "bg-[#f9eff4] text-[#a61968]",
   FAILED: "bg-red-50 text-red-600",
   REFUNDED: "bg-gray-100 text-gray-500",
-  CONFIRMED: "bg-[#fdf0fa] text-[#ff63ce]",
+  CONFIRMED: "bg-[#f9eff4] text-[#a61968]",
   CANCELLED: "bg-red-50 text-red-600",
   COMPLETED: "bg-gray-100 text-gray-500",
 };
@@ -44,7 +44,7 @@ export default async function AdminStudentDetailPage({
       <div>
         <Link
           href="/admin/students"
-          className="text-xs text-gray-500 hover:text-[#ff63ce] transition-colors"
+          className="text-xs text-gray-500 hover:text-[#a61968] transition-colors"
         >
           ← Étudiantes
         </Link>
@@ -55,7 +55,7 @@ export default async function AdminStudentDetailPage({
           <span
             className={`text-xs px-2 py-1 rounded-full font-medium ${
               user.role === "ADMIN"
-                ? "bg-[#fdf0fa] text-[#ff63ce]"
+                ? "bg-[#f9eff4] text-[#a61968]"
                 : "bg-gray-100 text-gray-500"
             }`}
           >

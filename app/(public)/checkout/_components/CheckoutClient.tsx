@@ -368,8 +368,8 @@ export default function CheckoutClient({
   // ── Pending screen ──
   if (mobileMoneyPending) {
     return (
-      <div className="max-w-md mx-auto bg-white border border-[#f0e0ec] p-12 text-center space-y-6">
-        <div className="w-16 h-16 border-4 border-[#ff63ce] border-t-transparent rounded-full animate-spin mx-auto" />
+      <div className="max-w-md mx-auto bg-white border border-[#f3dfea] p-12 text-center space-y-6">
+        <div className="w-16 h-16 border-4 border-[#a61968] border-t-transparent rounded-full animate-spin mx-auto" />
         <div>
           <h3 className="font-serif text-2xl font-medium text-gray-900 mb-3">
             Confirmez sur votre téléphone
@@ -400,13 +400,13 @@ export default function CheckoutClient({
   return (
     <div className="grid md:grid-cols-2 gap-12">
       {/* ── LEFT — Order summary ── */}
-      <div className="bg-white border border-[#f0e0ec] p-8 h-fit">
+      <div className="bg-white border border-[#f3dfea] p-8 h-fit">
         <h2 className="text-xs tracking-[3px] uppercase text-gray-500 mb-6">
           Récapitulatif
         </h2>
 
-        <div className="flex gap-4 pb-6 border-b border-[#f0e0ec]">
-          <div className="w-20 h-14 bg-[#fdf0fa] flex-shrink-0 overflow-hidden">
+        <div className="flex gap-4 pb-6 border-b border-[#f3dfea]">
+          <div className="w-20 h-14 bg-[#f9eff4] flex-shrink-0 overflow-hidden">
             {course.thumbnail_url ? (
               <img
                 src={course.thumbnail_url}
@@ -415,7 +415,7 @@ export default function CheckoutClient({
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center">
-                <span className="font-serif text-2xl text-[#ff63ce] opacity-30 italic">
+                <span className="font-serif text-2xl text-[#a61968] opacity-30 italic">
                   P
                 </span>
               </div>
@@ -435,7 +435,7 @@ export default function CheckoutClient({
         </div>
 
         {/* Price breakdown */}
-        <div className="py-6 border-b border-[#f0e0ec] space-y-3">
+        <div className="py-6 border-b border-[#f3dfea] space-y-3">
           <div className="flex justify-between text-sm">
             <span className="text-gray-500">Sous-total</span>
             <span className="text-gray-900">
@@ -444,7 +444,7 @@ export default function CheckoutClient({
           </div>
 
           {couponDiscountedPrice !== null && (
-            <div className="flex justify-between text-sm text-[#ff63ce]">
+            <div className="flex justify-between text-sm text-[#a61968]">
               <span>Réduction code promo</span>
               <span>
                 -{" "}
@@ -462,7 +462,7 @@ export default function CheckoutClient({
           </div>
 
           {currency !== "XAF" && currency !== "XOF" && (
-            <div className="flex justify-between text-xs text-gray-500 pt-1 border-t border-[#f0e0ec]">
+            <div className="flex justify-between text-xs text-gray-500 pt-1 border-t border-[#f3dfea]">
               <span>Équivalent XAF</span>
               <span>≈ {formatPrice(course.price_xaf, "XAF")}</span>
             </div>
@@ -479,7 +479,7 @@ export default function CheckoutClient({
           </span>
         </div>
 
-        <div className="mt-4 pt-4 border-t border-[#f0e0ec] flex items-center gap-2">
+        <div className="mt-4 pt-4 border-t border-[#f3dfea] flex items-center gap-2">
           <span className="text-xs text-gray-500">Via</span>
           {method === "mobile_money" && selectedOperator ? (
             <div className="flex items-center gap-2">
@@ -490,7 +490,7 @@ export default function CheckoutClient({
                   className="h-5 object-contain"
                 />
               )}
-              <span className="text-xs font-medium text-[#ff63ce]">
+              <span className="text-xs font-medium text-[#a61968]">
                 {selectedOperator.displayName}
               </span>
             </div>
@@ -499,7 +499,7 @@ export default function CheckoutClient({
               className={cn(
                 "text-xs px-2 py-1 font-medium",
                 method === "mobile_money"
-                  ? "bg-[#fdf0fa] text-[#ff63ce]"
+                  ? "bg-[#f9eff4] text-[#a61968]"
                   : "bg-blue-50 text-[#003087]",
               )}
             >
@@ -510,7 +510,7 @@ export default function CheckoutClient({
       </div>
 
       {/* ── RIGHT — Payment form ── */}
-      <div className="bg-white border border-[#f0e0ec] p-8 space-y-6">
+      <div className="bg-white border border-[#f3dfea] p-8 space-y-6">
         {/* Currency */}
         <div>
           <h2 className="text-xs tracking-[3px] uppercase text-gray-500 mb-3">
@@ -525,7 +525,7 @@ export default function CheckoutClient({
                   "flex-1 py-2.5 text-xs tracking-[2px] uppercase border transition-all font-medium",
                   (c === "XAF" && currency !== "USD" && currency !== "EUR") ||
                     currency === c
-                    ? "border-[#ff63ce] bg-[#fdf0fa] text-[#ff63ce]"
+                    ? "border-[#a61968] bg-[#f9eff4] text-[#a61968]"
                     : "border-gray-200 text-gray-500 hover:border-gray-300",
                 )}
               >
@@ -545,7 +545,7 @@ export default function CheckoutClient({
                   "text-center py-1.5 text-xs transition-all",
                   (c === "XAF" && currency !== "USD" && currency !== "EUR") ||
                     currency === c
-                    ? "text-[#ff63ce] font-medium"
+                    ? "text-[#a61968] font-medium"
                     : "text-gray-500",
                 )}
               >
@@ -564,7 +564,7 @@ export default function CheckoutClient({
             <div className="relative">
               <button
                 onClick={() => setShowCountryPicker(!showCountryPicker)}
-                className="w-full flex items-center gap-3 border border-gray-200 px-4 py-3 hover:border-[#ff63ce] transition-colors text-sm"
+                className="w-full flex items-center gap-3 border border-gray-200 px-4 py-3 hover:border-[#a61968] transition-colors text-sm"
               >
                 <span className="text-lg">
                   {PAWAPAY_COUNTRIES[country]?.flag || (
@@ -584,8 +584,8 @@ export default function CheckoutClient({
                       key={code}
                       onClick={() => handleCountrySelect(code)}
                       className={cn(
-                        "w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-[#fdf0fa] transition-colors text-left",
-                        country === code && "bg-[#fdf0fa]",
+                        "w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-[#f9eff4] transition-colors text-left",
+                        country === code && "bg-[#f9eff4]",
                       )}
                     >
                       <span>{config.flag}</span>
@@ -602,7 +602,7 @@ export default function CheckoutClient({
                         setMethod("paypal");
                         setShowCountryPicker(false);
                       }}
-                      className="w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-[#fdf0fa] transition-colors text-left"
+                      className="w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-[#f9eff4] transition-colors text-left"
                     >
                       <Globe size={16} />
                       <span className="flex-1">Autre pays</span>
@@ -637,7 +637,7 @@ export default function CheckoutClient({
                 className={cn(
                   "w-full p-4 border text-left transition-colors cursor-pointer",
                   method === "mobile_money"
-                    ? "border-[#ff63ce] bg-[#fdf0fa]"
+                    ? "border-[#a61968] bg-[#f9eff4]"
                     : "border-gray-200 hover:border-gray-300",
                 )}
               >
@@ -668,7 +668,7 @@ export default function CheckoutClient({
                         className={cn(
                           "flex items-center gap-2 px-3 py-2 border transition-colors",
                           selectedOperator?.provider === op.provider
-                            ? "border-[#ff63ce] bg-white"
+                            ? "border-[#a61968] bg-white"
                             : "border-gray-200 bg-white hover:border-gray-300",
                         )}
                       >
@@ -683,7 +683,7 @@ export default function CheckoutClient({
                           {op.displayName}
                         </span>
                         {selectedOperator?.provider === op.provider && (
-                          <Check size={14} className="text-[#ff63ce]" />
+                          <Check size={14} className="text-[#a61968]" />
                         )}
                       </button>
                     ))}
@@ -701,7 +701,7 @@ export default function CheckoutClient({
               className={cn(
                 "w-full p-4 border text-left transition-colors",
                 method === "paypal"
-                  ? "border-[#ff63ce] bg-[#fdf0fa]"
+                  ? "border-[#a61968] bg-[#f9eff4]"
                   : "border-gray-200 hover:border-gray-300",
               )}
             >
@@ -742,7 +742,7 @@ export default function CheckoutClient({
               placeholder={
                 PAWAPAY_COUNTRIES[country]?.placeholder || "+XXX XXXXXXXXX"
               }
-              className="w-full border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#ff63ce] transition-colors"
+              className="w-full border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#a61968] transition-colors"
             />
             {selectedOperator && (
               <p className="text-xs text-gray-500">
@@ -784,7 +784,7 @@ export default function CheckoutClient({
               : handlePayPalPayment
           }
           disabled={loading || (method === "mobile_money" && !selectedOperator)}
-          className="w-full bg-[#ff63ce] text-white py-4 text-xs tracking-[3px] uppercase font-medium hover:bg-[#111] transition-colors disabled:opacity-60"
+          className="w-full bg-[#a61968] text-white py-4 text-xs tracking-[3px] uppercase font-medium hover:bg-[#172A39] transition-colors disabled:opacity-60"
         >
           {loading
             ? "Traitement en cours..."

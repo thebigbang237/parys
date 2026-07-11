@@ -64,7 +64,7 @@ export default function NewCouponForm() {
             name="code"
             required
             placeholder="BLACKFRIDAY2024"
-            className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#ff63ce] uppercase"
+            className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#a61968] uppercase"
           />
         </div>
 
@@ -80,7 +80,7 @@ export default function NewCouponForm() {
                 onClick={() => setDiscountType(t)}
                 className={`flex-1 py-2 text-xs border transition-colors ${
                   discountType === t
-                    ? "border-[#ff63ce] bg-[#fdf0fa] text-[#ff63ce]"
+                    ? "border-[#a61968] bg-[#f9eff4] text-[#a61968]"
                     : "border-gray-200 text-gray-500"
                 }`}
               >
@@ -101,7 +101,7 @@ export default function NewCouponForm() {
             max={discountType === "PERCENTAGE" ? "100" : undefined}
             required
             placeholder={discountType === "PERCENTAGE" ? "30" : "5000"}
-            className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#ff63ce]"
+            className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#a61968]"
           />
         </div>
 
@@ -112,7 +112,7 @@ export default function NewCouponForm() {
           <input
             name="expires_at"
             type="date"
-            className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#ff63ce]"
+            className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#a61968]"
           />
           <p className="text-xs text-gray-300">
             Laisser vide = pas d'expiration
@@ -128,18 +128,18 @@ export default function NewCouponForm() {
             type="number"
             min="1"
             placeholder="100"
-            className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#ff63ce]"
+            className="w-full border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#a61968]"
           />
           <p className="text-xs text-gray-300">Laisser vide = illimité</p>
         </div>
 
         {error && <p className="text-xs text-red-500">{error}</p>}
-        {success && <p className="text-xs text-[#ff63ce]">{success}</p>}
+        {success && <p className="text-xs text-[#a61968]">{success}</p>}
 
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-[#ff63ce] text-white py-2.5 text-xs tracking-[2px] uppercase hover:bg-[#111] transition-colors disabled:opacity-60"
+          className="w-full bg-[#a61968] text-white py-2.5 text-xs tracking-[2px] uppercase hover:bg-[#172A39] transition-colors disabled:opacity-60"
         >
           {loading ? "Création..." : "Créer le code"}
         </button>

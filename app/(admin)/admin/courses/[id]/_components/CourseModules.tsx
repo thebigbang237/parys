@@ -81,7 +81,7 @@ export default function CourseModules({ course }: { course: Course }) {
               onClick={() => toggleModule(module.id)}
               className="flex items-center gap-2 text-left flex-1"
             >
-              <span className="text-[#ff63ce]">
+              <span className="text-[#a61968]">
                 {expandedModules.includes(module.id) ? (
                   <ChevronDown size={14} />
                 ) : (
@@ -128,12 +128,12 @@ export default function CourseModules({ course }: { course: Course }) {
             onChange={(e) => setNewModuleTitle(e.target.value)}
             placeholder="Titre du nouveau module..."
             onKeyDown={(e) => e.key === "Enter" && handleAddModule()}
-            className="flex-1 border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#ff63ce]"
+            className="flex-1 border border-gray-200 rounded px-3 py-2 text-sm focus:outline-none focus:border-[#a61968]"
           />
           <button
             onClick={handleAddModule}
             disabled={addingModule || !newModuleTitle.trim()}
-            className="bg-[#ff63ce] text-white px-4 py-2 text-xs tracking-[1px] uppercase disabled:opacity-50 hover:bg-[#111] transition-colors"
+            className="bg-[#a61968] text-white px-4 py-2 text-xs tracking-[1px] uppercase disabled:opacity-50 hover:bg-[#172A39] transition-colors"
           >
             {addingModule ? "..." : "+ Module"}
           </button>
@@ -202,7 +202,7 @@ function LessonRow({ lesson, courseId }: { lesson: Lesson; courseId: string }) {
         <div className="text-sm font-medium truncate">{lesson.title}</div>
         <div className="flex items-center gap-2 mt-0.5">
           {videoId ? (
-            <span className="flex items-center gap-1 text-xs text-[#ff63ce]">
+            <span className="flex items-center gap-1 text-xs text-[#a61968]">
               <CheckCircle2 size={12} /> Vidéo uploadée
             </span>
           ) : (
@@ -224,7 +224,7 @@ function LessonRow({ lesson, courseId }: { lesson: Lesson; courseId: string }) {
         <div className="flex items-center gap-2">
           <div className="w-24 h-1.5 bg-gray-200 rounded-full overflow-hidden">
             <div
-              className="h-full bg-[#ff63ce] transition-all duration-300"
+              className="h-full bg-[#a61968] transition-all duration-300"
               style={{ width: `${uploadProgress}%` }}
             />
           </div>
@@ -246,7 +246,7 @@ function LessonRow({ lesson, courseId }: { lesson: Lesson; courseId: string }) {
           />
           <button
             onClick={() => fileInputRef.current?.click()}
-            className="flex items-center gap-1 text-xs text-[#ff63ce] hover:underline opacity-0 group-hover:opacity-100 transition-opacity"
+            className="flex items-center gap-1 text-xs text-[#a61968] hover:underline opacity-0 group-hover:opacity-100 transition-opacity"
           >
             {videoId ? (
               "Remplacer"
@@ -304,21 +304,21 @@ function AddLessonForm({
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Titre de la leçon..."
         onKeyDown={(e) => e.key === "Enter" && handleAdd()}
-        className="flex-1 border border-gray-200 rounded px-3 py-1.5 text-xs focus:outline-none focus:border-[#ff63ce]"
+        className="flex-1 border border-gray-200 rounded px-3 py-1.5 text-xs focus:outline-none focus:border-[#a61968]"
       />
       <label className="flex items-center gap-1 text-xs text-gray-500 whitespace-nowrap">
         <input
           type="checkbox"
           checked={isPreview}
           onChange={(e) => setIsPreview(e.target.checked)}
-          className="accent-[#ff63ce]"
+          className="accent-[#a61968]"
         />
         Aperçu
       </label>
       <button
         onClick={handleAdd}
         disabled={adding || !title.trim()}
-        className="bg-gray-800 text-white px-3 py-1.5 text-xs disabled:opacity-50 hover:bg-[#ff63ce] transition-colors"
+        className="bg-gray-800 text-white px-3 py-1.5 text-xs disabled:opacity-50 hover:bg-[#a61968] transition-colors"
       >
         {adding ? "..." : "+ Leçon"}
       </button>

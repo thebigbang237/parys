@@ -9,7 +9,7 @@ const PAGE_SIZE = 25;
 
 const statusColor: Record<string, string> = {
   PENDING: "bg-yellow-50 text-yellow-600",
-  SUCCESS: "bg-[#fdf0fa] text-[#ff63ce]",
+  SUCCESS: "bg-[#f9eff4] text-[#a61968]",
   FAILED: "bg-red-50 text-red-600",
   REFUNDED: "bg-gray-100 text-gray-500",
 };
@@ -71,7 +71,7 @@ export default async function AdminBookingsPage({
   return (
     <div className="p-8">
       <div className="mb-8">
-        <p className="text-xs tracking-[3px] uppercase text-[#ff63ce] mb-1">
+        <p className="text-xs tracking-[3px] uppercase text-[#a61968] mb-1">
           Administration
         </p>
         <h1 className="text-2xl font-serif font-medium">
@@ -86,7 +86,7 @@ export default async function AdminBookingsPage({
             href={buildHref(t.key, status)}
             className={`text-xs px-3 py-1.5 rounded-full transition-colors ${
               (type || undefined) === t.key
-                ? "bg-[#111] text-white"
+                ? "bg-[#172A39] text-white"
                 : "bg-gray-100 text-gray-500 hover:bg-gray-200"
             }`}
           >
@@ -101,7 +101,7 @@ export default async function AdminBookingsPage({
             href={buildHref(type, s.key)}
             className={`text-xs px-3 py-1.5 rounded-full transition-colors ${
               (status || undefined) === s.key
-                ? "bg-[#ff63ce] text-white"
+                ? "bg-[#a61968] text-white"
                 : "bg-gray-100 text-gray-500 hover:bg-gray-200"
             }`}
           >
@@ -117,7 +117,7 @@ export default async function AdminBookingsPage({
       ) : (
         <div className="bg-white border border-gray-100 rounded overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-[#fdf0fa] border-b border-[#f0e0ec]">
+            <thead className="bg-[#f9eff4] border-b border-[#f3dfea]">
               <tr>
                 {[
                   "Étudiante",
@@ -143,7 +143,7 @@ export default async function AdminBookingsPage({
                   <td className="px-4 py-3">
                     <Link
                       href={`/admin/students/${p.user.id}`}
-                      className="text-sm text-gray-900 hover:text-[#ff63ce] hover:underline"
+                      className="text-sm text-gray-900 hover:text-[#a61968] hover:underline"
                     >
                       {p.user.name || p.user.email}
                     </Link>

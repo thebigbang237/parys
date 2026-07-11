@@ -28,10 +28,10 @@ export default function TestimonialsCarousel({
       <div className="hidden md:grid md:grid-cols-3 gap-12">
         {testimonials.map((t) => (
           <div key={t.name} className="flex flex-col items-center text-center">
-            <p className="font-serif text-xl italic text-gray-900 leading-relaxed mb-8">
+            <p className="font-serif text-xl italic text-[#172A39] leading-relaxed mb-8">
               "{t.quote}"
             </p>
-            <p className="text-xs tracking-[4px] uppercase font-medium text-gray-500">
+            <p className="text-xs tracking-[4px] uppercase font-medium text-[#172A39]/80">
               {t.name}
             </p>
           </div>
@@ -50,10 +50,10 @@ export default function TestimonialsCarousel({
                 key={t.name}
                 className="w-full shrink-0 flex flex-col items-center text-center px-4"
               >
-                <p className="font-serif text-xl italic text-gray-900 leading-relaxed mb-8">
+                <p className="font-serif text-xl italic text-[#172A39] leading-relaxed mb-8">
                   "{t.quote}"
                 </p>
-                <p className="text-xs tracking-[4px] uppercase font-medium text-gray-500">
+                <p className="text-xs tracking-[4px] uppercase font-medium text-[#172A39]/80">
                   {t.name}
                 </p>
               </div>
@@ -68,7 +68,7 @@ export default function TestimonialsCarousel({
               onClick={() => setIndex(i)}
               aria-label={`Voir le témoignage ${i + 1}`}
               className={`h-1.5 rounded-full transition-all ${
-                i === index ? "w-6 bg-[#ff63ce]" : "w-1.5 bg-[#f0e0ec]"
+                i === index ? "w-6 bg-[#a61968]" : "w-1.5 bg-[#f3dfea]"
               }`}
             />
           ))}

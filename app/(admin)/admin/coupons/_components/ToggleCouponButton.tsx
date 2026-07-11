@@ -32,7 +32,7 @@ export default function ToggleCouponButton({
       className={`text-xs underline transition-colors ${
         active
           ? "text-red-400 hover:text-red-600"
-          : "text-[#ff63ce] hover:text-[#111]"
+          : "text-[#a61968] hover:text-[#172A39]"
       }`}
     >
       {loading ? "..." : active ? "Désactiver" : "Activer"}

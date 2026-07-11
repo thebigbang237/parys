@@ -59,20 +59,18 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen bg-[#E9E4E0] pt-24">
-              {/* Dot pattern overlay */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 opacity-[.5] pointer-events-none"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, #a61968 1.5px, transparent 1.5px)",
-            backgroundSize: "24px 24px",
-          }}
-        />
+      {/* Dot pattern overlay */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 opacity-[.5] pointer-events-none"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, #a61968 1.5px, transparent 1.5px)",
+          backgroundSize: "24px 24px",
+        }}
+      />
       {/* Hero */}
       <section className="relative  max-w-6xl h-dvh mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-
-
         <div className="relative z-10">
           <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-medium text-[#172A39] leading-tight sm:leading-none mb-5">
             Bienvenue <span>Chez</span>{" "}
@@ -106,7 +104,7 @@ export default async function HomePage() {
 
       {/* Intro video */}
       <section className="max-w-6xl mx-auto mb-20 px-6">
-        <div className="relative rounded-3xl aspect-video bg-[#172A39] overflow-hidden">
+        <div className="relative rounded-3xl aspect-video bg-[#172A39] overflow-hidden drop-shadow-lg">
           {homeVideoId && streamCustomerCode ? (
             <iframe
               src={`https://customer-${streamCustomerCode}.cloudflarestream.com/${homeVideoId}/iframe?preload=true&poster=${encodeURIComponent(
@@ -119,7 +117,9 @@ export default async function HomePage() {
             />
           ) : (
             <div className="absolute inset-0 flex items-center justify-center">
-              <p className="text-[#172A39]/40 text-sm">Vidéo bientôt disponible</p>
+              <p className="text-[#172A39]/40 text-sm">
+                Vidéo bientôt disponible
+              </p>
             </div>
           )}
         </div>
@@ -180,7 +180,6 @@ export default async function HomePage() {
                         {course.description}
                       </p>
                       <div className="flex justify-between items-center">
-
                         <span className="text-xs text-[#a61968] uppercase">
                           {isEnrolled ? "Continuer →" : "S'inscrire →"}
                         </span>

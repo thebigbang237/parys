@@ -12,7 +12,7 @@
      everywhere as its "important/display heading" class, so it points to
      Inter. Body text has no explicit class and uses `font-sans` (the
      Tailwind default), which points to Merriweather. */
-  --font-sans: var(--font-merriweather);
+  --font-sans: var(--font-Montserrat);
   --font-serif: var(--font-inter);
   --font-mono: var(--font-geist-mono);
 }

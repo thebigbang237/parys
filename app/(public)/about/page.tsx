@@ -57,7 +57,7 @@ export default function AboutPage() {
                 &ldquo;Partager son expérience, c&rsquo;est aussi continuer à
                 apprendre.&rdquo;
               </p>
-              <p className="text-gray-500 text-sm sm:text-lg leading-relaxed">
+              <p className="text-[#172A39]/80 text-sm sm:text-lg leading-relaxed">
                 Au fil des années, son parcours l&rsquo;a menée derrière et
                 devant la caméra&nbsp;: animatrice sur Chill Zone (Vox Africa),
                 chroniqueuse sur Même pas fatiguée&nbsp;! (Canal+), et aussi son

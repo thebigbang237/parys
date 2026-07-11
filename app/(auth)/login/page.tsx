@@ -158,7 +158,9 @@ function LoginForm() {
               disabled={loading}
               className={cn(
                 "w-full bg-[#a61968] text-white py-4 text-xs tracking-[3px] uppercase font-medium transition-all",
-                loading ? "opacity-60 cursor-not-allowed" : "hover:bg-[#172A39]",
+                loading
+                  ? "opacity-60 cursor-not-allowed"
+                  : "hover:bg-[#172A39]",
               )}
             >
               {loading ? "Connexion..." : "Se connecter"}

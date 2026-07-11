@@ -13,8 +13,8 @@ const inter = localFont({
 });
 
 const merriweather = localFont({
-  src: "../public/fonts/Merriweather_96pt-Regular.ttf",
-  variable: "--font-merriweather",
+  src: "../public/fonts/Montserrat-Regular.ttf",
+  variable: "--font-Montserrat",
   weight: "400",
   display: "swap",
 });

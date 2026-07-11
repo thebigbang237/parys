@@ -24,7 +24,7 @@ export default function HomeCoachingPicker({
   );
 
   return (
-    <div className="bg-white/60 rounded-3xl border border-[#f3dfea] p-6 sm:p-8 space-y-4 w-full">
+    <div className="bg-white/60  border border-[#f3dfea] p-6 sm:p-8 space-y-4 w-full">
       <h3 className="font-serif text-lg sm:text-xl font-medium text-[#172A39] text-center mb-6">
         Réserver une séance
       </h3>

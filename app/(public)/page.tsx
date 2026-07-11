@@ -250,7 +250,7 @@ export default async function HomePage() {
             </div>
 
             {/* Right — session types */}
-            <div className="bg-[#6e7575]/10 px-6 py-24 rounded-3xl flex items-center">
+            <div className="bg-[#6e7575]/10 px-6 py-24  flex items-center">
               {coachingSessions.length === 0 ? (
                 <div className="bg-white/60 border border-[#f3dfea] p-8 w-full">
                   <h3 className="font-serif text-lg sm:text-xl font-medium text-gray-900 text-center mb-6">

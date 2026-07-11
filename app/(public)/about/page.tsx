@@ -5,7 +5,7 @@ import { Sparkles, Gem, Share2, FingerprintPattern } from "lucide-react";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-white ">
+    <div className="min-h-screen bg-[#E9E4E0] ">
       <div
         aria-hidden="true"
         className="absolute inset-0 opacity-[.5] pointer-events-none"
@@ -36,7 +36,7 @@ export default function AboutPage() {
 
         <div className="border border-[#a61968] md:col-span-5 relative hidden md:flex aspect-4/5 overflow-hidden items-end">
           <Image
-            src="/images/Parys-About2.png"
+            src="/images/Parys-About3.png"
             alt="Parys Batonda"
             fill
             priority
@@ -53,7 +53,7 @@ export default function AboutPage() {
               Son histoire
             </p>
             <div className="space-y-4">
-              <p className="font-serif italic text-sm md:text-2xl text-gray-900 leading-tight">
+              <p className="font-serif italic text-sm md:text-2xl text-[#172A39] leading-tight">
                 &ldquo;Partager son expérience, c&rsquo;est aussi continuer à
                 apprendre.&rdquo;
               </p>
@@ -64,7 +64,7 @@ export default function AboutPage() {
                 propre show, Le Parys Show, qu&rsquo;elle produit elle-même et
                 diffuse sur sa chaîne YouTube.
               </p>
-              <p className="text-gray-500 text-sm sm:text-lg leading-relaxed">
+              <p className="text-[#172A39]/80 text-sm sm:text-lg leading-relaxed">
                 Au-delà des plateaux, Parys a su fédérer une communauté fidèle,
                 qui la suit pour son authenticité, la qualité de son travail et
                 les valeurs qu&rsquo;elle défend.
@@ -72,7 +72,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="relative pl-10 border-l border-[#f3dfea] space-y-14 py-2">
+          <div className="relative pl-10 border-l border-[#172A39]/20 space-y-14 py-2">
             <div className="relative">
               <div className="absolute -left-[45px] top-1 w-2.5 h-2.5 rounded-full bg-[#a61968]" />
               <h4 className="text-xs tracking-[2px] uppercase font-medium text-gray-900 mb-2">
@@ -87,7 +87,7 @@ export default function AboutPage() {
               <h4 className="text-xs tracking-[2px] uppercase font-medium text-gray-900 mb-2">
                 Télé &amp; digital
               </h4>
-              <p className="text-sm text-gray-500 leading-relaxed">
+              <p className="text-sm text-[#172A39]/80 leading-relaxed">
                 Chill Zone (Vox Africa), Même pas fatiguée&nbsp;! (Canal+), puis
                 Le Parys Show, produit et diffusé sur YouTube.
               </p>
@@ -97,7 +97,7 @@ export default function AboutPage() {
               <h4 className="text-xs tracking-[2px] uppercase font-medium text-gray-900 mb-2">
                 2023 — Level up
               </h4>
-              <p className="text-sm text-gray-500 leading-relaxed">
+              <p className="text-sm text-[#172A39]/80 leading-relaxed">
                 Le déclic de vouloir grandir, se dépasser — et transmettre.
                 Naissance des formations et du coaching.
               </p>
@@ -117,58 +117,58 @@ export default function AboutPage() {
               className="object-cover"
             />
           </div>
-          <p className="text-xs tracking-[3px] uppercase text-gray-500 mt-6 text-center">
+          <p className="text-xs tracking-[3px] uppercase text-[#172A39]/80 mt-6 text-center">
             Le Parys Show — sa propre émission, produite et diffusée sur YouTube
           </p>
         </div>
       </section>
 
       {/* Values */}
-      <section className="bg-[#f9eff4] border-y border-[#f3dfea] py-24">
+      <section className="bg-[#6e7575]/10 border-y border-[#f3dfea] py-24">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-gray-900 text-center mb-16">
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-[#172A39] text-center mb-16">
             Ce qui l&rsquo;anime
           </h2>
           <div className="grid md:grid-cols-3 gap-0 border border-[#f3dfea]">
-            <div className="p-12 bg-white border-b md:border-b-0 md:border-r border-[#f3dfea] flex flex-col items-center text-center">
+            <div className="p-12 bg-white/60 border-b md:border-b-0 md:border-r border-[#f3dfea] flex flex-col items-center text-center">
               <FingerprintPattern
                 className="text-[#a61968] mb-6"
                 size={32}
                 strokeWidth={1.5}
               />
-              <h3 className="text-xs tracking-[2px] uppercase font-medium text-gray-900 mb-4">
+              <h3 className="text-xs tracking-[2px] uppercase font-medium text-[#172A39] mb-4">
                 Authenticité
               </h3>
-              <p className="text-sm text-gray-500 leading-relaxed">
+              <p className="text-sm text-[#172A39]/80 leading-relaxed">
                 Ce supplément d&rsquo;âme qui fédère une communauté fidèle
                 depuis 2018&nbsp;: être soi, sans filtre, à l&rsquo;écran comme
                 en dehors.
               </p>
             </div>
-            <div className="p-12 bg-white border-b md:border-b-0 md:border-r border-[#f3dfea] flex flex-col items-center text-center">
+            <div className="p-12 bg-white/60 border-b md:border-b-0 md:border-r border-[#f3dfea] flex flex-col items-center text-center">
               <Gem
                 className="text-[#a61968] mb-6"
                 size={32}
                 strokeWidth={1.5}
               />
-              <h3 className="text-xs tracking-[2px] uppercase font-medium text-gray-900 mb-4">
+              <h3 className="text-xs tracking-[2px] uppercase font-medium text-[#172A39] mb-4">
                 Exigence
               </h3>
-              <p className="text-sm text-gray-500 leading-relaxed">
+              <p className="text-sm text-[#172A39]/80 leading-relaxed">
                 Une qualité de travail irréprochable, plateau après plateau,
                 épisode après épisode du Parys Show.
               </p>
             </div>
-            <div className="p-12 bg-white flex flex-col items-center text-center">
+            <div className="p-12 bg-white/60 flex flex-col items-center text-center">
               <Share2
                 className="text-[#a61968] mb-6"
                 size={32}
                 strokeWidth={1.5}
               />
-              <h3 className="text-xs tracking-[2px] uppercase font-medium text-gray-900 mb-4">
+              <h3 className="text-xs tracking-[2px] uppercase font-medium text-[#172A39] mb-4">
                 Transmission
               </h3>
-              <p className="text-sm text-gray-500 leading-relaxed">
+              <p className="text-sm text-[#172A39]/80 leading-relaxed">
                 La conviction que partager son expérience, c&rsquo;est aussi
                 continuer à apprendre — et faire grandir celles qui la suivent.
               </p>
@@ -194,8 +194,8 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="w-full px-6 py-24 flex justify-center">
-        <div className="w-full max-w-4xl bg-[#f9eff4] border border-[#f3dfea] p-10 sm:p-16 md:p-24 text-center">
+      <section className="w-full px-6 pb-24 flex justify-center">
+        <div className="w-full max-w-4xl bg-white/60 border border-[#f3dfea] p-10 sm:p-16 md:p-24 text-center">
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium text-gray-900 mb-6">
             Prête à passer au niveau supérieur&nbsp;?
           </h2>

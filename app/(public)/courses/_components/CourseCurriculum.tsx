@@ -46,7 +46,7 @@ export default function CourseCurriculum({
       {modules.map((module, idx) => (
         <div
           key={module.id}
-          className="border border-[#f3dfea] bg-white overflow-hidden"
+          className="border border-[#f3dfea] bg-white/60 overflow-hidden"
         >
           <button
             onClick={() => toggle(module.id)}
@@ -56,8 +56,8 @@ export default function CourseCurriculum({
               <span className="text-xs text-[#a61968] font-medium w-6">
                 {String(idx + 1).padStart(2, "0")}
               </span>
-              <span className="font-medium text-gray-900">{module.title}</span>
-              <span className="text-xs text-gray-500">
+              <span className="font-medium text-[#172A39]">{module.title}</span>
+              <span className="text-xs text-[#172A39]/80">
                 {module.lessons.length} leçon
                 {module.lessons.length !== 1 ? "s" : ""}
               </span>
@@ -78,14 +78,14 @@ export default function CourseCurriculum({
 
                 const lessonContent = (
                   <>
-                    <span className="text-xs text-gray-300 w-6">
+                    <span className="text-xs text-[#172A39]/60 w-6">
                       {String(lessonIdx + 1).padStart(2, "0")}
                     </span>
 
                     <div className="flex-1 flex items-center gap-3">
                       <span
                         className={
-                          canAccess ? "text-[#a61968]" : "text-gray-200"
+                          canAccess ? "text-[#a61968]" : "text-[#172A39]/60"
                         }
                       >
                         {canAccess ? <Play size={14} /> : <Lock size={14} />}
@@ -93,7 +93,7 @@ export default function CourseCurriculum({
 
                       <span
                         className={`text-sm ${
-                          canAccess ? "text-gray-700" : "text-gray-500"
+                          canAccess ? "text-[#172A39]" : "text-[#172A39]/60"
                         }`}
                       >
                         {lesson.title}
@@ -107,7 +107,7 @@ export default function CourseCurriculum({
                     </div>
 
                     {lesson.duration_seconds && (
-                      <span className="text-xs text-gray-500">
+                      <span className="text-xs text-[#172A39]/60">
                         {formatDuration(lesson.duration_seconds)}
                       </span>
                     )}

@@ -105,7 +105,7 @@ export default async function DashboardPage() {
   const firstName = session.user.name?.split(" ")[0] || "toi";
 
   return (
-    <div className="min-h-screen bg-[#E9E4E0]">
+    <div className="min-h-screen bg-white">
       {/* Header */}
       <div className="bg-white border-b border-[#f3dfea] px-6 py-8">
         <div className="max-w-5xl mx-auto">

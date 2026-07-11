@@ -368,10 +368,10 @@ export default function CheckoutClient({
   // ── Pending screen ──
   if (mobileMoneyPending) {
     return (
-      <div className="max-w-md mx-auto bg-white border border-[#f3dfea] p-12 text-center space-y-6">
+      <div className="max-w-md mx-auto bg-white/60 border border-[#f3dfea] p-12 text-center space-y-6">
         <div className="w-16 h-16 border-4 border-[#a61968] border-t-transparent rounded-full animate-spin mx-auto" />
         <div>
-          <h3 className="font-serif text-2xl font-medium text-gray-900 mb-3">
+          <h3 className="font-serif text-2xl font-medium text-[#172A39]/80 mb-3">
             Confirmez sur votre téléphone
           </h3>
           {selectedOperator?.logo && (
@@ -381,16 +381,16 @@ export default function CheckoutClient({
               className="h-8 mx-auto mb-3 object-contain"
             />
           )}
-          <p className="text-sm text-gray-500 leading-relaxed">
+          <p className="text-sm text-[#172A39]/80 leading-relaxed">
             Une demande de paiement{" "}
             <strong>{selectedOperator?.displayName}</strong> a été envoyée au
-            numéro <strong className="text-gray-900">{phoneNumber}</strong>.
+            numéro <strong className="text-[#172A39]">{phoneNumber}</strong>.
           </p>
-          <p className="text-sm text-gray-500 mt-2">
+          <p className="text-sm text-[#172A39]/80 mt-2">
             Entrez votre PIN Mobile Money pour confirmer.
           </p>
         </div>
-        <p className="text-xs text-gray-300 tracking-[3px] uppercase animate-pulse">
+        <p className="text-xs text-[#172A39]/60 tracking-[3px] uppercase animate-pulse">
           En attente...
         </p>
       </div>
@@ -400,8 +400,8 @@ export default function CheckoutClient({
   return (
     <div className="grid md:grid-cols-2 gap-12">
       {/* ── LEFT — Order summary ── */}
-      <div className="bg-white border border-[#f3dfea] p-8 h-fit">
-        <h2 className="text-xs tracking-[3px] uppercase text-gray-500 mb-6">
+      <div className="bg-white/60 border border-[#f3dfea] p-8 h-fit">
+        <h2 className="text-xs tracking-[3px] uppercase text-[#172A39]/80 mb-6">
           Récapitulatif
         </h2>
 
@@ -422,11 +422,11 @@ export default function CheckoutClient({
             )}
           </div>
           <div>
-            <p className="text-xs text-gray-500 mb-1">
+            <p className="text-xs text-[#172A39]/80 mb-1">
               {productType === "COACHING" ? "Session coaching" : "Formation"}
             </p>
-            <p className="font-medium text-gray-900">{course.title}</p>
-            <p className="text-xs text-gray-500 mt-1">
+            <p className="font-medium text-[#172A39]">{course.title}</p>
+            <p className="text-xs text-[#172A39]/80 mt-1">
               {productType === "COACHING"
                 ? "Session 1-to-1 avec Parys"
                 : "Accès à vie"}
@@ -437,8 +437,8 @@ export default function CheckoutClient({
         {/* Price breakdown */}
         <div className="py-6 border-b border-[#f3dfea] space-y-3">
           <div className="flex justify-between text-sm">
-            <span className="text-gray-500">Sous-total</span>
-            <span className="text-gray-900">
+            <span className="text-[#172A39]/80">Sous-total</span>
+            <span className="text-[#172A39]">
               {formatPrice(price, currency)}
             </span>
           </div>
@@ -457,12 +457,12 @@ export default function CheckoutClient({
           )}
 
           <div className="flex justify-between text-sm">
-            <span className="text-gray-500">Frais de traitement</span>
-            <span className="text-gray-500">Inclus</span>
+            <span className="text-[#172A39]/80">Frais de traitement</span>
+            <span className="text-[#172A39]/80">Inclus</span>
           </div>
 
           {currency !== "XAF" && currency !== "XOF" && (
-            <div className="flex justify-between text-xs text-gray-500 pt-1 border-t border-[#f3dfea]">
+            <div className="flex justify-between text-xs text-[#172A39]/80 pt-1 border-t border-[#f3dfea]">
               <span>Équivalent XAF</span>
               <span>≈ {formatPrice(course.price_xaf, "XAF")}</span>
             </div>
@@ -471,16 +471,16 @@ export default function CheckoutClient({
 
         {/* Total */}
         <div className="pt-6 flex justify-between items-center">
-          <span className="text-xs tracking-[2px] uppercase text-gray-500">
+          <span className="text-xs tracking-[2px] uppercase text-[#172A39]/80">
             Total
           </span>
-          <span className="font-serif text-3xl font-medium text-gray-900">
+          <span className="font-serif text-3xl font-medium text-[#172A39]">
             {formatPrice(finalPrice, currency)} {/* ← finalPrice not price */}
           </span>
         </div>
 
         <div className="mt-4 pt-4 border-t border-[#f3dfea] flex items-center gap-2">
-          <span className="text-xs text-gray-500">Via</span>
+          <span className="text-xs text-[#172A39]/80">Via</span>
           {method === "mobile_money" && selectedOperator ? (
             <div className="flex items-center gap-2">
               {selectedOperator.logo && (
@@ -510,10 +510,10 @@ export default function CheckoutClient({
       </div>
 
       {/* ── RIGHT — Payment form ── */}
-      <div className="bg-white border border-[#f3dfea] p-8 space-y-6">
+      <div className="bg-white/60 border border-[#f3dfea] p-8 space-y-6">
         {/* Currency */}
         <div>
-          <h2 className="text-xs tracking-[3px] uppercase text-gray-500 mb-3">
+          <h2 className="text-xs tracking-[3px] uppercase text-[#172A39]/80 mb-3">
             Devise
           </h2>
           <div className="flex gap-2">
@@ -526,7 +526,7 @@ export default function CheckoutClient({
                   (c === "XAF" && currency !== "USD" && currency !== "EUR") ||
                     currency === c
                     ? "border-[#a61968] bg-[#f9eff4] text-[#a61968]"
-                    : "border-gray-200 text-gray-500 hover:border-gray-300",
+                    : "border-gray-200 text-[#172A39]/80 hover:border-gray-300",
                 )}
               >
                 {c}
@@ -546,7 +546,7 @@ export default function CheckoutClient({
                   (c === "XAF" && currency !== "USD" && currency !== "EUR") ||
                     currency === c
                     ? "text-[#a61968] font-medium"
-                    : "text-gray-500",
+                    : "text-[#172A39]/80",
                 )}
               >
                 {formatPrice(p, c)}
@@ -558,7 +558,7 @@ export default function CheckoutClient({
         {/* Country picker */}
         {currency !== "USD" && currency !== "EUR" && (
           <div>
-            <h2 className="text-xs tracking-[3px] uppercase text-gray-500 mb-3">
+            <h2 className="text-xs tracking-[3px] uppercase text-[#172A39]/80 mb-3">
               Votre pays
             </h2>
             <div className="relative">
@@ -571,10 +571,10 @@ export default function CheckoutClient({
                     <Globe size={18} className="inline" />
                   )}
                 </span>
-                <span className="text-gray-900">
+                <span className="text-[#172A39]">
                   {PAWAPAY_COUNTRIES[country]?.name || "Choisir votre pays"}
                 </span>
-                <ChevronDown size={16} className="ml-auto text-gray-500" />
+                <ChevronDown size={16} className="ml-auto text-[#172A39]/80" />
               </button>
 
               {showCountryPicker && (
@@ -584,13 +584,13 @@ export default function CheckoutClient({
                       key={code}
                       onClick={() => handleCountrySelect(code)}
                       className={cn(
-                        "w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-[#f9eff4] transition-colors text-left",
+                        "w-full flex cursor-pointer items-center gap-3 px-4 py-3 text-sm hover:bg-[#f9eff4] transition-colors text-left",
                         country === code && "bg-[#f9eff4]",
                       )}
                     >
                       <span>{config.flag}</span>
                       <span className="flex-1">{config.name}</span>
-                      <span className="text-xs text-gray-500">
+                      <span className="text-xs text-[#172A39]/80">
                         {config.currency}
                       </span>
                     </button>
@@ -602,11 +602,11 @@ export default function CheckoutClient({
                         setMethod("paypal");
                         setShowCountryPicker(false);
                       }}
-                      className="w-full flex items-center gap-3 px-4 py-3 text-sm hover:bg-[#f9eff4] transition-colors text-left"
+                      className="w-full cursor-pointer flex items-center gap-3 px-4 py-3 text-sm hover:bg-[#f9eff4] transition-colors text-left"
                     >
                       <Globe size={16} />
                       <span className="flex-1">Autre pays</span>
-                      <span className="text-xs text-gray-500">
+                      <span className="text-xs text-[#172A39]/80">
                         USD / PayPal
                       </span>
                     </button>
@@ -619,7 +619,7 @@ export default function CheckoutClient({
 
         {/* Payment method */}
         <div>
-          <h2 className="text-xs tracking-[3px] uppercase text-gray-500 mb-3">
+          <h2 className="text-xs tracking-[3px] uppercase text-[#172A39]/80 mb-3">
             Moyen de paiement
           </h2>
           <div className="space-y-3">
@@ -641,7 +641,7 @@ export default function CheckoutClient({
                     : "border-gray-200 hover:border-gray-300",
                 )}
               >
-                <p className="font-medium text-sm text-gray-900 mb-3">
+                <p className="font-medium text-sm text-[#172A39] mb-3">
                   Mobile Money
                 </p>
 
@@ -666,7 +666,7 @@ export default function CheckoutClient({
                           setMethod("mobile_money");
                         }}
                         className={cn(
-                          "flex items-center gap-2 px-3 py-2 border transition-colors",
+                          "flex items-center gap-2 px-3 py-2 border cursor-pointer transition-colors",
                           selectedOperator?.provider === op.provider
                             ? "border-[#a61968] bg-white"
                             : "border-gray-200 bg-white hover:border-gray-300",
@@ -679,7 +679,7 @@ export default function CheckoutClient({
                             className="h-5 w-auto object-contain"
                           />
                         )}
-                        <span className="text-xs font-medium text-gray-700">
+                        <span className="text-xs font-medium text-[#172A39]/80">
                           {op.displayName}
                         </span>
                         {selectedOperator?.provider === op.provider && (
@@ -689,7 +689,7 @@ export default function CheckoutClient({
                     ))}
                   </div>
                 ) : (
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-[#172A39]/80">
                     Chargement des opérateurs...
                   </p>
                 )}
@@ -699,7 +699,7 @@ export default function CheckoutClient({
             <button
               onClick={() => handleMethodSelect("paypal")}
               className={cn(
-                "w-full p-4 border text-left transition-colors",
+                "w-full p-4 border text-left transition-colors cursor-pointer",
                 method === "paypal"
                   ? "border-[#a61968] bg-[#f9eff4]"
                   : "border-gray-200 hover:border-gray-300",
@@ -707,10 +707,10 @@ export default function CheckoutClient({
             >
               <div className="flex justify-between items-center">
                 <div>
-                  <p className="font-medium text-sm text-gray-900">
+                  <p className="font-medium text-sm text-[#172A39]">
                     PayPal / Carte bancaire
                   </p>
-                  <p className="text-xs text-gray-500 mt-0.5">
+                  <p className="text-xs text-[#172A39]/80 mt-0.5">
                     {method === "paypal" &&
                     currency !== "USD" &&
                     currency !== "EUR"
@@ -727,10 +727,10 @@ export default function CheckoutClient({
         {/* Phone number */}
         {method === "mobile_money" && (
           <div className="space-y-2">
-            <label className="text-xs tracking-[2px] uppercase text-gray-500">
+            <label className="text-xs tracking-[2px] uppercase text-[#172A39]/80">
               Numéro Mobile Money
               {phonePrefix && (
-                <span className="text-gray-300 ml-2 normal-case">
+                <span className="text-[#172A39]/60 ml-2 normal-case">
                   (indicatif +{phonePrefix})
                 </span>
               )}
@@ -745,7 +745,7 @@ export default function CheckoutClient({
               className="w-full border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#a61968] transition-colors"
             />
             {selectedOperator && (
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-[#172A39]/80">
                 Numéro {selectedOperator.displayName} associé à votre compte
                 Mobile Money
               </p>
@@ -784,7 +784,7 @@ export default function CheckoutClient({
               : handlePayPalPayment
           }
           disabled={loading || (method === "mobile_money" && !selectedOperator)}
-          className="w-full bg-[#a61968] text-white py-4 text-xs tracking-[3px] uppercase font-medium hover:bg-[#172A39] transition-colors disabled:opacity-60"
+          className="w-full bg-[#a61968] cursor-pointer text-white py-4 text-xs tracking-[3px] uppercase font-medium hover:bg-[#172A39] transition-colors disabled:opacity-60"
         >
           {loading
             ? "Traitement en cours..."
@@ -795,7 +795,7 @@ export default function CheckoutClient({
               : `Payer avec PayPal`}
         </button>
 
-        <p className="text-xs text-gray-500 text-center">
+        <p className="text-xs text-[#172A39]/80 text-center">
           Paiement 100% sécurisé · Accès immédiat après confirmation
         </p>
       </div>

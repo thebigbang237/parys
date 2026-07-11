@@ -81,8 +81,8 @@ export default async function CourseDetailPage({
   return (
     <div className="min-h-screen bg-[#E9E4E0]">
       {/* Hero */}
-      <div className="bg-white border-b pt-24 border-[#f3dfea]">
-        <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12 items-center">
+      <div className="bg-[#E9E4E0] border-b pt-24 border-[#f3dfea]">
+        <div className="max-w-6xl mx-auto border-b border-[#172A39] px-6 py-16 grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
             <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#a61968] mb-2">
               Formation
@@ -103,13 +103,13 @@ export default async function CourseDetailPage({
                   value: totalDuration > 0 ? formatDuration(totalDuration) : "—",
                   label: "Durée totale",
                 },
-                { value: course._count.enrollments, label: "Étudiantes" },
+                { value: course._count.enrollments, label: "Étudiants" },
               ].map((stat) => (
                 <div key={stat.label}>
-                  <div className="font-serif text-xl sm:text-2xl font-medium text-gray-900">
+                  <div className="font-serif text-xl sm:text-2xl font-medium text-[#172A39]">
                     {stat.value}
                   </div>
-                  <div className="text-xs tracking-[2px] text-gray-500 mt-1">
+                  <div className="text-xs tracking-[2px] text-[#172A39]/80 mt-1">
                     {stat.label}
                   </div>
                 </div>
@@ -125,13 +125,13 @@ export default async function CourseDetailPage({
                   </div>
                 ) : (
                   <>
-                    <div className="font-serif font-medium text-gray-900">
+                    <div className="font-serif font-medium text-[#172A39]">
                       {course.is_free
                         ? "Gratuit"
                         : formatPrice(price, geo.currency)}
                     </div>
                     {!course.is_free && geo.currency !== "XAF" && (
-                      <div className=" text-gray-500 mt-1">
+                      <div className=" text-[#172A39]/80 mt-1">
                         ≈ {formatPrice(course.price_xaf, "XAF")}
                       </div>
                     )}
@@ -181,7 +181,7 @@ export default async function CourseDetailPage({
             <p className="flex items-center gap-1.5 text-xs tracking-[4px] uppercase text-[#a61968] mb-4">
                Programme
             </p>
-            <h2 className="font-serif text-3xl font-medium text-gray-900 mb-8">
+            <h2 className="font-serif text-3xl font-medium text-[#172A39] mb-8">
               Ce que tu vas apprendre
             </h2>
             <CourseCurriculum
@@ -192,8 +192,8 @@ export default async function CourseDetailPage({
 
           {/* Sticky sidebar */}
           <div className="hidden md:block">
-            <div className="sticky top-8 bg-white border border-[#f3dfea] p-6 space-y-4">
-              <p className="text-xs tracking-[3px] uppercase text-gray-500">
+            <div className="sticky top-8 bg-white/60 border border-[#f3dfea] p-6 space-y-4">
+              <p className="text-xs tracking-[3px] uppercase text-[#172A39]/80">
                 Cette formation inclut
               </p>
               {[
@@ -209,7 +209,7 @@ export default async function CourseDetailPage({
                 .map((item) => (
                   <div
                     key={item}
-                    className="flex items-center gap-3 text-sm text-gray-600"
+                    className="flex items-center gap-3 text-sm text-[#172A39]/80"
                   >
                     <Check size={16} className="text-[#a61968]" />
                     {item}
@@ -222,7 +222,7 @@ export default async function CourseDetailPage({
                     <Check size={16} /> Formation débloquée
                   </div>
                 ) : (
-                  <div className="font-serif text-3xl font-medium text-gray-900 mb-4">
+                  <div className="font-serif text-3xl font-medium text-[#172A39] mb-4">
                     {course.is_free
                       ? "Gratuit"
                       : formatPrice(price, geo.currency)}

@@ -77,7 +77,7 @@ export default function StudentShell({
   const initial = (user.name || user.email)[0]?.toUpperCase();
 
   return (
-    <div className="min-h-screen bg-[#E9E4E0] lg:flex">
+    <div className="min-h-screen bg-white lg:flex">
       {/* Desktop sidebar */}
       <aside className="hidden lg:flex lg:flex-col lg:w-64 bg-white border-r border-[#f3dfea] lg:h-screen lg:sticky lg:top-0 shrink-0">
         <div className="px-6 py-8">
